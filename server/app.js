@@ -10,9 +10,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import indexRouter from "./modules/index/index.router.js";
-import userRouter from "./modules/user/user.router.js";
-import adminRouter from "./modules/admin/admin.router.js";
+import publicRouter from "./modules/public/public.routes.js";
+import userRouter from "./modules/user/user.routes.js";
+import adminRouter from "./modules/admin/admin.routes.js";
 
 
 const app = express();
@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter); // Invitados externos
+app.use('/', publicRouter); // Invitados externos
 app.use('/user', userRouter); // Usuarios Logueados
 app.use('/admin', adminRouter); // Adminisrador
 
@@ -44,4 +44,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500).json({message: "Error de server"});
 });
 
-module.exports = app;
+export default app;
