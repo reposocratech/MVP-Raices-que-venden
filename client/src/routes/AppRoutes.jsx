@@ -1,24 +1,49 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useContext } from 'react'
 import { AuthContext } from '../context/AuthContextProvider'
 
 
 //importacion de las rutas publicas
 import { PublicRoutes } from './PublicRoutes'
 import { PublicLayout } from '../layouts/PublicLayout'
+
 const Home = lazy(() => import('../pages/PublicPages/Home/Home'));
 const About = lazy (() => import ('../pages/PublicPages/About/About'));
 const Login = lazy (() => import('../pages/PublicPages/Auth/Login/Login'));
 const Register = lazy (() => import('../pages/PublicPages/Auth/Register/Register'));
 const Contact = lazy (() => import('../pages/PublicPages/Contact/Contact'));
 const Services = lazy (() => import('../pages/PublicPages/Services/Services'));
+const Shop = lazy(() => import('../pages/PublicPages/Shop/Shop'));
 const ErrorPage = lazy(() => import('../pages/PublicPages/ErrorPage/ErrorPage'));
 
-//importacion de las rutas privadas
 
+
+//RUTAS PRIVADAS
+import { PrivateRoutes } from './PrivateRoutes';
+//importacion de las rutas de User
+
+import { UserLayout } from '../layouts/UserLayout';
+
+const MyOrders = lazy(() => import('../pages/UserPages/MyOrders/MyOrders'));
+
+const MyProfile = lazy(() => import('../pages/UserPages/MyProfile/MyProfile'));
+const ChooseDate = lazy(() => import('../pages/UserPages/ChooseDate/ChooseDate'));
+const MyTexts = lazy(() => import('../pages/UserPages/MyTexts/MyTexts'));
 
 //importacion de las ruta de Admin
+import { AdminLayout } from '../layouts/AdminLayout';
+const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
+const Appointments = lazy(() => import('../pages/AdminPages/Appointments/Appointments'));
+const Calendar = lazy(() => import('../pages/AdminPages/Calendar/Calendar'));
+const AdminUsers = lazy(() => import('../pages/AdminPages/AdminUsers/AdminUsers'));
+const AdminService = lazy(() => import('../pages/AdminPages/AdminService/AdminService'));
+const Dashboard = lazy(() => import('../pages/AdminPages/Dashboard/Dashboard'));
+const Writer = lazy(() => import('../pages/AdminPages/Writer/Writer'));
+
+
 
 export const AppRoutes = () => {
+  const {user} = useContext(AuthContext);
+
   return (
     <BrowserRouter>
       <Suspense>
@@ -32,10 +57,36 @@ export const AppRoutes = () => {
               <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}/>
               <Route path='/contact' element={<Contact/>}/>
+              {/* Servicios dinamicos??? */}
               <Route path='/services' element={<Services/>}/>
+              <Route path='/shop' element={<Shop />} />
             </Route>
           </Route>
-
+          {/* Rutas User */}
+          <Route element={<PrivateRoutes/>}>
+            <Route element={<UserLayout />}>
+              <Route path='/' element={<Home/>}/>
+              {/* Servicios dinamicos??? */}
+              <Route path='/services' element={<Services/>}/>
+              <Route path='/user/shop' element={<Shop />} />
+              <Route path='/user/orders' element={<MyOrders />} />
+              <Route path='/user/texts' element={<MyTexts/>}/>
+              <Route path='/user/chooseDate' element={<ChooseDate />} />
+              <Route path='/user/profile' element={<MyProfile/>}/>
+            </Route>
+          </Route>
+          {/* Rutas Admin */}
+          <Route element={<PrivateRoutes />}>
+            <Route element={<AdminLayout />}>
+              <Route path='/admin/write' element={<Writer />} />
+              <Route path='/admin/dashboard' element={<Dashboard/>}/>
+              <Route path='/admin/service' element={<AdminService />}/>
+              <Route path='/admin/users' element={<AdminUsers/>} />
+              <Route path='/admin/calendar' element={<Calendar />} />
+              <Route path='/admin/appointments' element={<Appointments />} />
+              <Route path='/admin/orders' element={<AdminOrders />} />
+            </Route>
+          </Route>
 
 
 
