@@ -1,18 +1,20 @@
 :root{
   --primary-color: #FAF8F4;
   --text-color: #5A4633;
+  --green-color:#7B9C7A;
 }
 
-.nav-public{
+nav{
   background-color: var(--primary-color) ;
 
+  img{
+    width: 100px;
+    padding-bottom: 10px;
+  }
    .nav-parents > *{
-    color: red;
-    
-    .active{
-    color: blue;
+    color: var(--text-color);
   }
-  }
+ 
 
  
   
