@@ -56,7 +56,7 @@ CREATE TABLE appointment (
     app_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 pendiente | 2 confirmado | 3 cancelado
     app_day TINYINT UNSIGNED NOT NULL, -- de 1 a 5 para de lunes a viernes
     app_hour TIME NOT NULL,  -- "10:00 - 11:00"
-    app_date DATalE NOT NULL, -- 23/09/2025
+    app_date DATE NOT NULL, -- 23/09/2025
     user_id INT UNSIGNED NOT NULL,
     CONSTRAINT fk_user_1 FOREIGN KEY (user_id)
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
