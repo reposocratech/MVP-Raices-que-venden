@@ -3,6 +3,8 @@ import { AuthContext } from '../context/AuthContextProvider'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 
+
+
 //importacion de las rutas publicas
 import { PublicRoutes } from './PublicRoutes'
 import { PublicLayout } from '../layouts/PublicLayout'
