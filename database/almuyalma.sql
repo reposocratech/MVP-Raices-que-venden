@@ -47,7 +47,7 @@ CREATE TABLE service (
 CREATE TABLE availability (
     availability_id MEDIUMINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
     availability_day TINYINT NOT NULL, -- de 1 a 5 para de lunes a viernes
-    availability_hour VARCHAR(25)  NOT NULL -- "10:00 - 11:00"
+    availability_hour TINYINT UNSIGNED  NOT NULL -- "08:00 - 09:00" de 1 a 12, para 8 am y 8 pm
 );
 
     
@@ -55,7 +55,7 @@ CREATE TABLE appointment (
     appointment_2_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
     app_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 pendiente | 2 confirmado | 3 cancelado
     app_day TINYINT UNSIGNED NOT NULL, -- de 1 a 5 para de lunes a viernes
-    app_hour VARCHAR(25) NOT NULL,  -- "10:00 - 11:00"
+    app_hour TINYINT UNSIGNED NOT NULL,  -- "08:00 - 09:00" de 1 a 12, para 8 am y 8 pm
     app_date DATE NOT NULL, -- 23/09/2025
     user_id INT UNSIGNED NOT NULL,
     CONSTRAINT fk_user_1 FOREIGN KEY (user_id)
