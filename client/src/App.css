@@ -2,7 +2,7 @@
 
 :root{
     /* Colores */
-    --primary-color: #FAF8F4;
+    --primary-color: hsl(40, 37%, 97%);
     --primary-color-2: #f5f1e8;
     --primary-color-dark: #f3f3e5;
     --secundary-color: #8b6e52;
@@ -25,6 +25,6 @@
     --font-title: 'Georgia', serif;
     --font-body: 'Georgia', serif;
     --font-form: 'Arial', sans-serif;
- 
+
 
   }
