@@ -5,6 +5,7 @@ import { Boton } from "../../../components/Boton/Boton";
 
 const Home = () => {
   return (
+
     <>
       <section className="home">
         <Container>

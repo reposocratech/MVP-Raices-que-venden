@@ -27,4 +27,9 @@
     bottom: 1rem;
     padding-inline-start: 1rem;
   }
+
+  .btn-admin {
+    width: fit-content;
+    padding-right: 0 !important;
+  }
 }

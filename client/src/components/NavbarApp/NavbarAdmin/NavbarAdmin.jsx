@@ -16,7 +16,9 @@ export const NavbarAdmin = () => {
 
   return (
     <>
-      <Boton aspecto="btn-1" onClick={handleShow} valor='Abrir menu' />
+      <div className='p-3'>
+        <Boton aspecto="btn-6 btn-admin" icon='bi bi-list' onClick={handleShow}/>
+      </div>
 
       <Offcanvas show={show} onHide={handleClose} className='aside-admin'>
         <Offcanvas.Header closeButton>

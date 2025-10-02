@@ -1,5 +1,5 @@
 
-nav{
+.nav-user{
   background-color: var(--primary-color) ;
 
   img{
@@ -34,8 +34,6 @@ nav{
       text-decoration: underline;
       font-weight:600 ;
   }
-    }
-
 
    a.nav-link:hover{
     color: var(--tertiary-color-dark);
@@ -52,4 +50,8 @@ nav{
 
 
   }
+}
+
+
+  
   
