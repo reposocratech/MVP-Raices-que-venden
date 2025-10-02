@@ -2,24 +2,18 @@
 :root{
   --primary-color: #FAF8F4;
   --text-color: #5A4633;
-<<<<<<< HEAD
   --bs-nav-link-hover-color:#5A4633 !important;
 }
 
 
-nav{
+.nav-public{
   background-color: var(--primary-color) ;
-
-
-   .nav-parents > *{
-
-  
 
   img{
     width: 100px;
     padding-bottom: 10px;
   }
-   .nav-parents > *{
+  .nav-parents > *{
     color: var(--secundary-color-dark);
     font-weight:500 ;
     
@@ -30,9 +24,9 @@ nav{
       width: 20%;
 
       a{
-        color: var(--primary-color);  
-
+        color: var(--primary-color);
       }
+      
       a:hover{
         background-color: transparent;
         color: var(--secundary-color-dark);
@@ -40,39 +34,20 @@ nav{
         transition: all 0.2s ease-in-out;
       }
     }
-=======
-  --green-color:#7B9C7A;
-}
-
-nav{
-  background-color: var(--primary-color) ;
-
-  img{
-    width: 100px;
-    padding-bottom: 10px;
   }
-   .nav-parents > *{
-    color: var(--text-color);
->>>>>>> 50dc937b9927eb8b762b40c377e10d69ba701224
-  }
- 
-
+  
   a.nav-link:focus{
       color: var(--tertiary-color-dark);
       text-decoration: underline;
       font-weight:600 ;
-
   }
-    }
 
-
-   a.nav-link:hover{
+  a.nav-link:hover{
     color: var(--tertiary-color-dark);
     text-decoration: underline;
     font-weight:600 ;
   }
-
 }
 
 
-  
+   
