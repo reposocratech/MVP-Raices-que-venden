@@ -13,7 +13,7 @@
     width: 100px;
     padding-bottom: 10px;
   }
-   .nav-parents > *{
+  .nav-parents > *{
     color: var(--secundary-color-dark);
     font-weight:500 ;
     
@@ -24,9 +24,9 @@
       width: 20%;
 
       a{
-        color: var(--primary-color);  
-
+        color: var(--primary-color);
       }
+      
       a:hover{
         background-color: transparent;
         color: var(--secundary-color-dark);
@@ -35,12 +35,11 @@
       }
     }
   }
-
+  
   a.nav-link:focus{
       color: var(--tertiary-color-dark);
       text-decoration: underline;
       font-weight:600 ;
-
   }
 
   a.nav-link:hover{

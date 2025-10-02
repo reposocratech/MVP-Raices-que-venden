@@ -1,0 +1,52 @@
+.section-about{
+    min-height:calc(100vh - 150px);
+  display: flex;
+    justify-content: center;
+    align-items: center;
+   background: 
+    linear-gradient(rgba(255, 255, 255, 0.876), rgb(255, 255, 255, 0.876)), 
+    url(../../../../public/fondo/fondo.jpg);
+}
+
+.about{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  .about-img{
+    text-align: center;
+
+    img{
+      width: 336px;
+      border-radius: 50%;
+    }
+
+    p{
+      font-weight: bold;
+      font-size: 29px;
+      color: var(--tertiary-color);
+      padding-top: 1rem;
+    }
+  }
+
+  .about-text{
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    border: 2px solid var(--tertiary-color);
+    border-radius: 10px;
+    h2{
+      text-align: center;
+      color: var(--tertiary-color);
+    }
+
+    p{
+      padding-top: 1rem;
+    }
+  }
+
+  @media (width<600px){
+    padding-inline: 2rem
+  }
+}
