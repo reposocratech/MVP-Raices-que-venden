@@ -8,7 +8,7 @@ export const NavbarApp = () => {
   return (
     <Navbar collapseOnSelect expand="lg" className="nav-public">
       <Container>
-        <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand>
+       {/*  <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className='nav-parents' id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
@@ -27,10 +27,7 @@ export const NavbarApp = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
-            </Nav.Link>
+            
 
             <div className='d-flex gap-2'>
               <Boton
