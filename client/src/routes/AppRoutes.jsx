@@ -83,7 +83,7 @@ export const AppRoutes = () => {
             <Route element={<AdminLayout />}>
               <Route path='/admin/write' element={<Writer />} />
               <Route path='/admin/dashboard' element={<Dashboard/>}/>
-              <Route path='/admin/service' element={<AdminService />}/>
+              <Route path='/admin/services' element={<AdminService />}/>
               <Route path='/admin/users' element={<AdminUsers/>} />
               <Route path='/admin/calendar' element={<Calendar />} />
               <Route path='/admin/appointments' element={<Appointments />} />

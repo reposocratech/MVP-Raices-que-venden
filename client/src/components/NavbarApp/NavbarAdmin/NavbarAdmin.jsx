@@ -1,30 +1,43 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-import AlmuLogo from '/logo/logo-marron.png';
+import {Offcanvas, Button} from 'react-bootstrap';
+import AlmuLogo from '/logo/logo-blanco-claro.png';
 
 import './navbarAdmin.css'
+import { Li } from '../../Boton/Li';
+import { Link } from 'react-router-dom';
+import { Boton } from '../../Boton/Boton';
 
 export const NavbarAdmin = () => {
   const [show, setShow] = useState(false);
+  const [view, setView] = useState('write');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch
-      </Button>
+      <Boton aspecto="btn-1" onClick={handleShow} valor='Abrir menu' />
 
       <Offcanvas show={show} onHide={handleClose} className='aside-admin'>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>
-            <img src={AlmuLogo} alt="" className='almuBrand'/>
-          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          
+          <img src={AlmuLogo} alt=""/>
+          <div className="nav-options">
+            <ul>
+              <Li icon='bi bi-pen' valor='Copywriting' as={Link} to='/admin/write' active={view === 'write'} onClick={()=>setView('write')}/>
+              <Li icon='bi bi-columns' valor='Dashboard' as={Link} to='/admin/dashboard' active={view === 'dashboard'} onClick={()=>setView('dashboard')}/>
+              <Li icon='bi bi-briefcase' valor='Servicios' as={Link} to='/admin/services' active={view === 'services'} onClick={()=>setView('services')}/>
+              <Li icon='bi bi-person' valor='Usuarios' as={Link} to='/admin/users' active={view === 'users'} onClick={()=>setView('users')}/>
+              <Li icon='bi bi-calendar2-week' valor='Calendario'as={Link} to='/admin/calendar' active={view === 'calendar'} onClick={()=>setView('calendar')}/>
+              <Li icon='bi bi-check2-circle' valor='Citas'as={Link} to='/admin/appointments' active={view === 'appointments'} onClick={()=>setView('appointments')}/>
+              <Li icon='bi bi-bag-check' valor='Pedidos'as={Link} to='/admin/orders' active={view === 'orders'} onClick={()=>setView('orders')}/>
+            
+            </ul>
+            <ul className='footer-list'>
+              <Boton aspecto='btn-5' icon='bi bi-escape' valor='Cerrar sesión'/>
+            </ul>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </>
