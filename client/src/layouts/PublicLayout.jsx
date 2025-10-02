@@ -4,9 +4,11 @@ import FooterApp from '../components/FooterApp/FooterApp'
 import { Outlet } from 'react-router-dom'
 import './publicLayout.css'
 
+
 export const PublicLayout = () => {
   return (
     <>
+
     {/* Encabezado */}
     <header>
       <NavbarApp/>
@@ -19,6 +21,7 @@ export const PublicLayout = () => {
     <footer>
       <FooterApp/>
     </footer>
+
     </>
   )
 }

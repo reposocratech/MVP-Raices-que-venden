@@ -1,33 +1,36 @@
-import React from 'react'
+
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap'
 import './navbarpublic.css'
 import { Boton } from '../../Boton/Boton'
+import {Link} from 'react-router-dom'
 
 
 export const NavbarApp = () => {
+
+
   return (
-    <Navbar collapseOnSelect expand="lg" className="nav-public">
+    <Navbar collapseOnSelect expand="lg">
       <Container>
        {/*  <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse className='nav-parents' id="responsive-navbar-nav">
+        <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
-            <Nav.Link >Inicio</Nav.Link>
-            <Nav.Link >Pricing</Nav.Link>
-            <NavDropdown className='nav-parents' title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+            <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
+               <NavDropdown className='nav-parents' title="Servicios" id="collapsible-nav-dropdown">
+             
+                <NavDropdown.Item >Redes sociales</NavDropdown.Item>
+                <NavDropdown.Item >Email marketing</NavDropdown.Item>
+                <NavDropdown.Item >Redacción web</NavDropdown.Item>
+                 <NavDropdown.Item >Todo en uno</NavDropdown.Item>
+              
+             
             </NavDropdown>
+            
+            <Nav.Link  as={Link} to='/about'  >Sobre mí</Nav.Link>
+            <Nav.Link  as={Link} to='/contact'  >Contactar</Nav.Link>
+         
           </Nav>
           <Nav>
-            
 
             <div className='d-flex gap-2'>
               <Boton
@@ -39,6 +42,7 @@ export const NavbarApp = () => {
                 aspecto="btn-2"
                 icon="bi bi-box-arrow-in-right"
                 valor="Iniciar sesión"
+                
                 />
             </div>
           </Nav>

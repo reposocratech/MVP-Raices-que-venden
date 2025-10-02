@@ -1,20 +1,62 @@
+
 :root{
   --primary-color: #FAF8F4;
   --text-color: #5A4633;
   --bs-nav-link-hover-color:#5A4633 !important;
 }
 
-.nav-public{
+
+nav{
   background-color: var(--primary-color) ;
 
-  
 
    .nav-parents > *{
 
   
 
+  img{
+    width: 100px;
+    padding-bottom: 10px;
+  }
+   .nav-parents > *{
+    color: var(--secundary-color-dark);
+    font-weight:500 ;
+    
+    
+    div{
+      background-color: var(--tertiary-color);
+      box-shadow: 0 0 10px 2px var(--tertiary-color);
+      width: 20%;
+
+      a{
+        color: var(--primary-color);  
+
+      }
+      a:hover{
+        background-color: transparent;
+        color: var(--secundary-color-dark);
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+      }
+    }
   }
 
- 
+  a.nav-link:focus{
+      color: var(--tertiary-color-dark);
+      text-decoration: underline;
+      font-weight:600 ;
+
+  }
+    }
+
+
+   a.nav-link:hover{
+    color: var(--tertiary-color-dark);
+    text-decoration: underline;
+    font-weight:600 ;
+  }
+
   
-}
+
+
+  

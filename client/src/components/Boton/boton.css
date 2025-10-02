@@ -101,6 +101,7 @@
     color: var(--primary-color);
 }
 
+
 .btn-err-1 {
     background-color: transparent;
     color: var(--err-color);
@@ -145,8 +146,34 @@
         
     }
 }
-
+  
 .btn-err-2:hover{
     background-color: var(--err-color-dark);
     color: var(--primary-color);
+
+
+.btn-5 {
+    background-color: transparent;
+
+    color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-hight);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    i{
+        padding-right: 0.5rem;
+        font-size: 1.1rem;
+        
+    }
+}
+
+.btn-5:hover{
+    background-color: var(--primary-color);
+    color: var(--secundary-color);
 }
