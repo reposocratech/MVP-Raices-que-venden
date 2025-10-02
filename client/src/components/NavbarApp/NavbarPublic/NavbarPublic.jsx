@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap'
+=======
+import React from 'react'
+import {Nav, Navbar, Container, NavDropdown, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+>>>>>>> 50dc937b9927eb8b762b40c377e10d69ba701224
 import './navbarpublic.css'
 import { Boton } from '../../Boton/Boton'
 import {Link} from 'react-router-dom'
+
 
 
 export const NavbarApp = () => {
@@ -15,6 +22,7 @@ export const NavbarApp = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
+<<<<<<< HEAD
             <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
                <NavDropdown className='nav-parents' title="Servicios" id="collapsible-nav-dropdown">
              
@@ -45,6 +53,24 @@ export const NavbarApp = () => {
                 
                 />
             </div>
+=======
+            <Nav.Link as={Link} to='/' >Inicio</Nav.Link>
+               <NavDropdown className='nav-parents' title="Servicios" id="collapsible-nav-dropdown">
+              <NavDropdown.Item >Redes sociales</NavDropdown.Item>
+              <NavDropdown.Item >Email Marketing</NavDropdown.Item>
+              <NavDropdown.Item >Redaccion web</NavDropdown.Item>
+               <NavDropdown.Item >Pack completo</NavDropdown.Item>
+             
+            </NavDropdown>
+            
+            <Nav.Link >Mis pedidos</Nav.Link>
+            <Nav.Link >Agendar cita</Nav.Link>
+         
+          </Nav>
+          <Nav>
+            <Button>hola</Button>
+             <Button>hola</Button>
+>>>>>>> 50dc937b9927eb8b762b40c377e10d69ba701224
           </Nav>
         </Navbar.Collapse>
       </Container>
