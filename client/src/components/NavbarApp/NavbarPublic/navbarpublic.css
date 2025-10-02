@@ -19,12 +19,14 @@
     
     
     div{
-      background-color: var(--tertiary-color);
-      box-shadow: 0 0 10px 2px var(--tertiary-color);
+      background-color: var(--primary-color);
+     /*  box-shadow: 0 0 7px 2px rgba(0,0,0,0.2); */
+      border: 1px solid var(--secundary-color);
+      border-radius: var(--border-low);
       width: 20%;
 
       a{
-        color: var(--primary-color);
+        color: var(--segundary-color);
       }
       
       a:hover{

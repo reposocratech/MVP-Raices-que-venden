@@ -40,7 +40,7 @@ const Calendar = lazy(() => import('../pages/AdminPages/Calendar/Calendar'));
 const AdminUsers = lazy(() => import('../pages/AdminPages/AdminUsers/AdminUsers'));
 const AdminService = lazy(() => import('../pages/AdminPages/AdminService/AdminService'));
 const Dashboard = lazy(() => import('../pages/AdminPages/Dashboard/Dashboard'));
-const Writer = lazy(() => import('../pages/AdminPages/Writer/Writer'));
+const Writer = lazy(() => import('../pages/AdminPages/Writer/Writer/Writer'));
 
 
 
