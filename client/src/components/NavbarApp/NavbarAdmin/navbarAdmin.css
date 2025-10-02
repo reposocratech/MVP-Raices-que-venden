@@ -1,0 +1,7 @@
+.aside-admin {
+  background-color: white;
+  img {
+    width: 300px;
+    mix-blend-mode: hard-light;
+  }
+}

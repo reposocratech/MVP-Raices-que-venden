@@ -1,7 +1,16 @@
 import React from 'react'
+import {Outlet} from 'react-router-dom'
+import { NavbarAdmin } from '../components/NavbarApp/NavbarAdmin/NavbarAdmin'
 
 export const AdminLayout = () => {
   return (
-    <div>AdminLayout</div>
+    <>
+      <header>
+        < NavbarAdmin />
+      </header>
+      <main>
+        < Outlet />
+      </main>
+    </>
   )
 }
