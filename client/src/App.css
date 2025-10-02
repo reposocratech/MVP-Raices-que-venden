@@ -3,6 +3,7 @@
 :root{
     /* Colores */
     --primary-color: #FAF8F4;
+    --primary-color-dark: #f3f3e5;
     --secundary-color: #8b6e52;
     --secundary-color-dark: #5A4633;
     --tertiary-color: #7b9c7a;
@@ -15,6 +16,12 @@
     --border-hight: 50px;
 
     /* Padding */
+
+
+    /* tipografia */
+    --font-title: 'Georgia', serif;
+    --font-body: 'Georgia', serif;
+    --font-form: 'Arial', sans-serif;
  
 
   }
