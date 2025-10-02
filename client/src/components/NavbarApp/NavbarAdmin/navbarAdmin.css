@@ -1,7 +1,30 @@
 .aside-admin {
-  background-color: white;
+  .offcanvas-header,
+  .offcanvas-body {
+    padding: 0;
+    background-color: var(--secundary-color);
+    text-align: center;
+    position: relative;
+  }
+
+  .offcanvas-header {
+    padding: 1rem;
+  }
   img {
     width: 300px;
-    mix-blend-mode: hard-light;
+  }
+
+  ul {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: start;
+  }
+
+  .footer-list {
+    position: absolute;
+    bottom: 1rem;
+    padding-inline-start: 1rem;
   }
 }

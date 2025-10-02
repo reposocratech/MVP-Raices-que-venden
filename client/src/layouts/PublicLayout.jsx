@@ -6,9 +6,17 @@ import { Outlet } from 'react-router-dom'
 export const PublicLayout = () => {
   return (
     <>
-    <NavbarApp/>
+
+   
+    <header>
+      <NavbarApp/>
+      </header>
+ 
     <Outlet/>
-    <FooterApp/>
+    <footer>
+      <FooterApp/>
+      </footer>
+
     </>
   )
 }
