@@ -1,0 +1,102 @@
+
+.btn-1 {
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-hight);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    i{
+        padding-right: 0.5rem;
+        font-size: 1.1rem;
+
+    }
+}
+
+.btn-1:hover{
+    background-color: var(--secundary-color-dark);
+    color: var(--primary-color);
+}
+
+
+.btn-2 {
+    background-color: transparent;
+    color: var(--secundary-color);
+    border: 1px solid var(--secundary-color);
+    border-radius: var(--border-hight);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    i{
+        padding-right: 0.5rem;
+        font-size: 1.1rem;
+        
+    }
+}
+
+.btn-2:hover{
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+}
+
+.btn-3 {
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: var(--border-hight);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    i{
+        padding-right: 0.5rem;
+        font-size: 1.1rem;
+        
+    }
+}
+
+.btn-3:hover{
+    background-color: var(--tertiary-color-dark);
+    color: var(--primary-color);
+}
+
+
+.btn-4 {
+    background-color: transparent;
+    color: var(--tertiary-color);
+    border: 1px solid var(--tertiary-color);
+    border-radius: var(--border-hight);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    i{
+        padding-right: 0.5rem;
+        font-size: 1.1rem;
+        
+    }
+}
+
+.btn-4:hover{
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+}

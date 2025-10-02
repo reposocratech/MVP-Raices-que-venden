@@ -1,6 +1,7 @@
 import React from 'react'
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap'
 import './navbarpublic.css'
+import { Boton } from '../../Boton/Boton'
 
 
 export const NavbarApp = () => {
@@ -30,6 +31,19 @@ export const NavbarApp = () => {
             <Nav.Link eventKey={2} href="#memes">
               Dank memes
             </Nav.Link>
+
+            <div className='d-flex gap-2'>
+              <Boton
+                aspecto="btn-1"
+       
+                valor="Registrar"
+                />
+              <Boton
+                aspecto="btn-2"
+                icon="bi bi-box-arrow-in-right"
+                valor="Iniciar sesión"
+                />
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
