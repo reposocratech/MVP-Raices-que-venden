@@ -18,7 +18,7 @@ const Home = () => {
             <a href="#vermas" className='btn btn-size btn-outline-dark'>Saber más</a>
             </div>
           </div>
-          <div className='col-md-6'>
+          <div className='col-md-6 d-none d-sm-block'>
             <img 
             src="/images/home.png"
             alt="imagen camino almendros en flor"
