@@ -1,6 +1,5 @@
 .footer-padre {
-    position: fixed;
-    bottom: 0;
+    display: flex;
     width: 100%;
     background-color: var(--secundary-color);
     color: white;
