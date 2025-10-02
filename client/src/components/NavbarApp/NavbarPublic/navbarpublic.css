@@ -6,13 +6,8 @@
 }
 
 
-nav{
+.nav-public{
   background-color: var(--primary-color) ;
-
-
-   .nav-parents > *{
-
-  
 
   img{
     width: 100px;
@@ -47,16 +42,13 @@ nav{
       font-weight:600 ;
 
   }
-    }
 
-
-   a.nav-link:hover{
+  a.nav-link:hover{
     color: var(--tertiary-color-dark);
     text-decoration: underline;
     font-weight:600 ;
   }
+}
 
-  
 
-
-  
+   

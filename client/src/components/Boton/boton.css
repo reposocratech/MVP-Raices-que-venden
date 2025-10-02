@@ -150,7 +150,7 @@
 .btn-err-2:hover{
     background-color: var(--err-color-dark);
     color: var(--primary-color);
-
+}
 
 .btn-5 {
     background-color: transparent;
@@ -176,4 +176,28 @@
 .btn-5:hover{
     background-color: var(--primary-color);
     color: var(--secundary-color);
+}
+
+.btn-6 {
+    background-color: transparent;
+
+    color: var(--secundary-color);
+    border: none;
+    border-radius: var(--border-hight);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+    i{
+        font-size: 1.5rem;
+    }
+}
+
+.btn-6:hover{
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
 }

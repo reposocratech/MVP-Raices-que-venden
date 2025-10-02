@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 export const NavbarUser = () => {
   return (
-     <Navbar collapseOnSelect expand="lg" className='d-flex justify-content-center align-items-center'>
+     <Navbar collapseOnSelect expand="lg" className='nav-user d-flex justify-content-center align-items-center'>
       <Container>
         <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
