@@ -1,6 +1,18 @@
 
+:root{
+  --primary-color: #FAF8F4;
+  --text-color: #5A4633;
+  --bs-nav-link-hover-color:#5A4633 !important;
+}
+
+
 nav{
   background-color: var(--primary-color) ;
+
+
+   .nav-parents > *{
+
+  
 
   img{
     width: 100px;
@@ -33,6 +45,7 @@ nav{
       color: var(--tertiary-color-dark);
       text-decoration: underline;
       font-weight:600 ;
+
   }
     }
 
