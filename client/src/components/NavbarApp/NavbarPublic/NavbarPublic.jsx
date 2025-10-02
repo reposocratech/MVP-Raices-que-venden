@@ -2,16 +2,19 @@
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap'
 import './navbarpublic.css'
 import { Boton } from '../../Boton/Boton'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
+
+
 
 
 export const NavbarApp = () => {
 
+  const navigate = useNavigate();
 
   return (
     <Navbar collapseOnSelect expand="lg">
       <Container>
-       {/*  <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand> */}
+        <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
@@ -35,14 +38,14 @@ export const NavbarApp = () => {
             <div className='d-flex gap-2'>
               <Boton
                 aspecto="btn-1"
-       
                 valor="Registrar"
+                onClick={() => navigate("/register")}
                 />
               <Boton
                 aspecto="btn-2"
                 icon="bi bi-box-arrow-in-right"
                 valor="Iniciar sesión"
-                
+                onClick={() => navigate("/login")}
                 />
             </div>
           </Nav>

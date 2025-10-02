@@ -12,6 +12,7 @@
     transition: 0.3s;
     cursor: pointer;
 
+
     i{
         padding-right: 0.5rem;
         font-size: 1.1rem;
@@ -38,6 +39,7 @@
     transition: 0.3s;
     cursor: pointer;
 
+
     i{
         padding-right: 0.5rem;
         font-size: 1.1rem;
@@ -62,6 +64,7 @@
     align-items: center;
     transition: 0.3s;
     cursor: pointer;
+    
 
     i{
         padding-right: 0.5rem;
@@ -89,6 +92,7 @@
     transition: 0.3s;
     cursor: pointer;
 
+
     i{
         padding-right: 0.5rem;
         font-size: 1.1rem;
@@ -115,6 +119,7 @@
     transition: 0.3s;
     cursor: pointer;
 
+
     i{
         padding-right: 0.5rem;
         font-size: 1.1rem;
@@ -140,6 +145,7 @@
     transition: 0.3s;
     cursor: pointer;
 
+
     i{
         padding-right: 0.5rem;
         font-size: 1.1rem;
@@ -150,7 +156,7 @@
 .btn-err-2:hover{
     background-color: var(--err-color-dark);
     color: var(--primary-color);
-
+}
 
 .btn-5 {
     background-color: transparent;
@@ -165,6 +171,7 @@
     align-items: center;
     transition: 0.3s;
     cursor: pointer;
+    
 
     i{
         padding-right: 0.5rem;
