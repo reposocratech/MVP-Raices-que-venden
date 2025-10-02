@@ -1,5 +1,5 @@
 
 
 .main-layout{
-    height: 70dvh;
+    min-height:calc(100vh - 150px);
 }
