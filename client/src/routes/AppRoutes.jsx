@@ -13,6 +13,7 @@ const Home = lazy(() => import('../pages/PublicPages/Home/Home'));
 const About = lazy (() => import ('../pages/PublicPages/About/About'));
 const Login = lazy (() => import('../pages/PublicPages/Auth/Login/Login'));
 const Register = lazy (() => import('../pages/PublicPages/Auth/Register/Register'));
+const Confirm = lazy(() => import('../pages/PublicPages/Confirm/Confirm'));
 const Contact = lazy (() => import('../pages/PublicPages/Contact/Contact'));
 const Services = lazy (() => import('../pages/PublicPages/Services/Services'));
 const Shop = lazy(() => import('../pages/PublicPages/Shop/Shop'));
@@ -34,6 +35,7 @@ const MyTexts = lazy(() => import('../pages/UserPages/MyTexts/MyTexts'));
 
 //importacion de las ruta de Admin
 import { AdminLayout } from '../layouts/AdminLayout';
+
 const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
 const Appointments = lazy(() => import('../pages/AdminPages/Appointments/Appointments'));
 const Calendar = lazy(() => import('../pages/AdminPages/Calendar/Calendar'));
@@ -63,6 +65,7 @@ export const AppRoutes = () => {
               {/* Servicios dinamicos??? */}
               <Route path='/services' element={<Services/>}/>
               <Route path='/shop' element={<Shop />} />
+              <Route path='/confirm/:token' element={<Confirm />} />
             </Route>
           </Route>
           {/* Rutas User */}

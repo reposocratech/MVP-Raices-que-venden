@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="email.css">
+</head>
+<body class="ppal">
+    <h1>Hola ${name},</h1>
+    <h2>Confirma tu correo</h2>
+    <button onclick="window.location.href='http://localhost:5173/user/confirm/${token}'">
+      Pulsa aquí
+    </button>
+    
+</body>
+</html>
+<script type="module" src="emailServices.js"></script>

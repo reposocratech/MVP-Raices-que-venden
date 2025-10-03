@@ -10,11 +10,12 @@ class UserDal {
             if (maxUserId === null) {
                 maxUserId = 1;
             }else {
-                maxUserId++
+                maxUserId++;
             }
 
             let sql = "INSERT INTO user (user_id, email, password) VALUES (?, ?, ?)";
-            await executeQuery(sql, [maxUserId, ...data])
+            await executeQuery(sql, [maxUserId, ...data]);
+            return maxUserId;
         } catch (error) {
             throw error
         }

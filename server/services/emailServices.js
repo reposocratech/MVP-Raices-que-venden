@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 
-export const sendMail = (email, name) =>{
+export const sendMailConfirm = (email, name, token=null) =>{
 
 
     let emailBody = `<!DOCTYPE html>
@@ -22,11 +22,48 @@ export const sendMail = (email, name) =>{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="email.css">
+    <style>
+        :root {
+  --font-title: 'Georgia', serif;
+  --font-body: 'Georgia', serif;
+  --primary-color: hsl(40, 37%, 97%);
+  --primary-color-2: #f5f1e8;
+  --primary-color-dark: #f3f3e5;
+  --secundary-color: #8b6e52;
+  --secundary-color-dark: #5A4633;
+  --tertiary-color: #7b9c7a;
+  --tertiary-color-dark: #597258;
+}
+
+.ppal {
+  background-color: var(--primary-color);
+  color: var(--secundary-color-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    background-color: var(--secundary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: 50px;
+    transition: 0.3s;
+    &:hover {
+      background-color: var(--secundary-color-dark);
+    }
+  }
+}
+    </style>
 </head>
-<body class="ppal" style="background-color:red">
-    <h1>Bienvenid@ a ${name} nuestra aplicación</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ab neque rerum laborum quasi aspernatur corrupti hic nisi ex delectus. Odit accusamus, id aliquam neque ut sunt consectetur officiis vero?</p>
+<body class="ppal">
+    <h1>Hola ${name},</h1>
+    <h2>Confirma tu correo</h2>
+    <a href='http://localhost:5173/user/confirm/${token}'>
+      Pulsa aquí
+    </a>
     
 </body>
 </html>`
@@ -36,7 +73,7 @@ export const sendMail = (email, name) =>{
     //             .catch((err)=>console.error(err))
     
     transporter.sendMail({
-        from: '"Santi" <pruebasSantidev@gmail.com>',
+        from: '"AlmuyAlma" <pruebasSantidev@gmail.com>',
         to: email,
         subject: "Confirmación de registro de user",
         text: "Bienvenid@ a nuestra aplicación",
@@ -47,3 +84,4 @@ export const sendMail = (email, name) =>{
     console.log("email enviado");
     
 }
+
