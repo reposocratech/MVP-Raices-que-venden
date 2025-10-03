@@ -29,7 +29,6 @@ class UserController{
 
 
 
-
     //login
     login = async(req, res) => {
         try {    
@@ -73,6 +72,7 @@ class UserController{
                             })
         }
     }
+
     
 }
 
