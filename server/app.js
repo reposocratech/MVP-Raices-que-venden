@@ -25,9 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', publicRouter); // Invitados externos
-app.use('/user', userRouter); // Usuarios Logueados
-app.use('/admin', adminRouter); // Adminisrador
+app.use('/api/', publicRouter); // Invitados externos
+app.use('/api/user', userRouter); // Usuarios Logueados
+app.use('/api/admin', adminRouter); // Adminisrador
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

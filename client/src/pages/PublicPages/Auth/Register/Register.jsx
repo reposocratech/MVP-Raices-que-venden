@@ -1,26 +1,59 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import './register.css';
 import { Boton } from '../../../../components/Boton/Boton';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useState } from 'react';
+import {ZodError} from 'zod'
+import { registerUserSchema } from '../../../../schema/registerUserSchema';
+import { fetchData } from '../../../../helpers/axiosHelper';
 
 const inicialValue = {
   email:"",
-  password:""
+  password:"",
+  repetirPassword:""
 }
 
 const Register = () => {
 
-  const [text, setText] = useState(inicialValue)
-  const [showPass, setShowPass] = useState(false)
-  const [showPassRep, setShowPassRep] = useState(false)
+  const navigate = useNavigate()
+
+  const [text, setText] = useState(inicialValue);
+  const [showPass, setShowPass] = useState(false);
+  const [showPassRep, setShowPassRep] = useState(false);
+  const [valorError, setValorError] = useState();
+  const [errMsg, setErrMsg] = useState("");
+
 
   const handleChange = (e) => {
     const {name, value} = e.target;
     setText({...text, [name]:value})
 
   }
-  console.log(text)
+
+  const onSubmit = async  (e) => {
+    e.preventDefault()
+    try {
+      registerUserSchema.parse(text);
+      const res =  await fetchData('/user/register', 'POST', text );
+      console.log(res)
+      navigate('/login');
+
+    } catch (error) {
+      if (error instanceof ZodError) {
+        const fieldErrors = {};
+        error.issues.forEach((e) => {
+          fieldErrors[e.path[0]] = e.message;
+        })
+        setValorError(fieldErrors);
+        console.log(fieldErrors)
+        setErrMsg("");
+      }else if (error.response.data.errno === 1062) {
+        setErrMsg("¡Este correo ya esta registrado!")
+      }else {
+        console.log("otro error" , error)
+      }
+    }
+  }
 
 
   return (
@@ -35,6 +68,7 @@ const Register = () => {
               id='email' 
               type="text"
               name='email'
+              value={text.email}
               onChange={handleChange}
               />
           </div>
@@ -45,6 +79,7 @@ const Register = () => {
                 id='password'
                 type={showPass ? "text" : "password"}
                 name='password'
+                value={text.password}
                 className='w-100'
                 onChange={handleChange}
                  />
@@ -59,6 +94,8 @@ const Register = () => {
               <input
                 id='repetirPassword'
                 name='repetirPassword'
+                value={text.repetirPassword}
+                onChange={handleChange}
                 type={showPassRep ? "text" : "password"}
                 className='w-100'
               />
@@ -101,6 +138,7 @@ const Register = () => {
             <Boton
               aspecto="btn-3 w-100"
               valor="Registrar"
+              onClick={onSubmit}
             />
           </div>
           <div className='link-sesion'>
