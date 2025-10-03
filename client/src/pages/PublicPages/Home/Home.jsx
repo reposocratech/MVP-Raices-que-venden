@@ -20,7 +20,7 @@ const Home = () => {
                 en ella existe la raíz de nuestra esencia y cultura. Por ello
                 quiero hacer crecer cualquier rincón rural en valor.
               </p>
-              <Boton className="" aspecto="btn-2 fw-bold" valor="Saber más" />
+              <Boton className="btn" aspecto="btn-2 fw-bold" valor="Saber más" />
             </Col>
             <Col md={6} className="image-col">
               <img

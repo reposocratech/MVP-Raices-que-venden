@@ -6,7 +6,6 @@
 }
 .home .container {
   background-color: var(--primary-color-dark);
-  padding: 40px 20px;
   max-width: 1600px;
   border-radius: 10px;
   margin: 0 auto;
@@ -61,3 +60,6 @@ h2 {
     color: var(--secundary-color-dark);
 
   }
+
+
+  
