@@ -17,37 +17,12 @@
     color: var(--secundary-color-dark);
     font-weight:500 ;
     
-    
-    div{
-      background-color: var(--primary-color);
-     /*  box-shadow: 0 0 7px 2px rgba(0,0,0,0.2); */
-      border: 1px solid var(--secundary-color);
-      border-radius: var(--border-low);
-      width: 20%;
-
-      a{
-        color: var(--segundary-color);
-      }
-      
-      a:hover{
-        background-color: transparent;
-        color: var(--secundary-color-dark);
-        font-weight: bold;
-        transition: all 0.2s ease-in-out;
-      }
-    }
   }
   
-  a.nav-link:focus{
-      color: var(--tertiary-color-dark);
-      text-decoration: underline;
-      font-weight:600 ;
-  }
-
   a.nav-link:hover{
     color: var(--tertiary-color-dark);
     text-decoration: underline;
-    font-weight:600 ;
+    font-weight: bold;
   }
 }
 

@@ -12,16 +12,8 @@ export const NavbarUser = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
             <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
-               <NavDropdown className='nav-parents' title="Servicios" id="collapsible-nav-dropdown">
-             
-                   <NavDropdown.Item >Redes sociales</NavDropdown.Item>
-                <NavDropdown.Item >Email marketing</NavDropdown.Item>
-                <NavDropdown.Item >Redacción web</NavDropdown.Item>
-                 <NavDropdown.Item >Todo en uno</NavDropdown.Item>
-              
-             
-            </NavDropdown>
-            
+             <Nav.Link   as={Link} to='/services'  >Servicios</Nav.Link>
+            <Nav.Link  as={Link} to='/about'  >Almudena</Nav.Link>  
             <Nav.Link  as={Link} to='/user/orders'  >Mis pedidos</Nav.Link>
             <Nav.Link  as={Link} to='/user/chooseDate'  >Agendar cita</Nav.Link>
          
@@ -32,14 +24,6 @@ export const NavbarUser = () => {
               <img src="" alt="" />
             </div>
 
-            <NavDropdown className='nav-parents'id="collapsible-nav-dropdown">
-             
-                <NavDropdown.Item as={Link} to='/user/profile' > Mi perfil</NavDropdown.Item>
-                <NavDropdown.Item>Modificar perfil</NavDropdown.Item>
-                 <NavDropdown.Item  >Salir</NavDropdown.Item>
-              
-             
-            </NavDropdown>
 
           </Nav>
         </Navbar.Collapse>
