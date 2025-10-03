@@ -23,6 +23,7 @@ CREATE TABLE user (
     register_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+SELECT * FROM user;
 
 create table social_network(
 	social_network_id INT UNSIGNED PRIMARY KEY,

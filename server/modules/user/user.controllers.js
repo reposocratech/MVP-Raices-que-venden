@@ -1,4 +1,6 @@
+import { sendMailConfirm } from "../../services/emailServices.js";
 import { hashString } from "../../utils/hashUtils.js";
+import { generateTokenConfirm } from "../../utils/tokenUtils.js";
 import userDal from './user.dal.js'
 
 class UserController{
@@ -11,10 +13,12 @@ class UserController{
             
             // Preparar la data con el password hacheado
             let data = [email, hashPass];
-
             // Enviamos la data al DAL
-            await userDal.register(data);
-            res.status(200).json({message: "Hola mundo"})
+            const userId = await userDal.register(data);
+            console.log(userId, '*****');
+            const token = generateTokenConfirm(userId);
+            sendMailConfirm(email, 'carlos', token);
+            res.status(200).json({message: "Hola mundo"});
 
         } catch (error) {
             console.log(error)
@@ -22,6 +26,8 @@ class UserController{
             
         }
     }
+
+    
 }
 
 export default new UserController();
