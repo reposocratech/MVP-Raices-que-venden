@@ -8,4 +8,6 @@ const router = express.Router();
 // Registar el usuario
 router.post('/register', userController.register)
 
+
+
 export default router;
