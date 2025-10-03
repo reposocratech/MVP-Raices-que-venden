@@ -134,6 +134,7 @@ const Register = () => {
             <Boton
               valor="Cancelar"
               aspecto="btn-err-1 w-50"
+              onClick={()=> navigate('/')}
             />
             <Boton
               aspecto="btn-3 w-100"

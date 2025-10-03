@@ -21,6 +21,18 @@ class UserDal {
         }
         
     }
+
+
+    findEmail = async(email) => {
+        try {
+            let sql = 'SELECT user_id, password FROM user WHERE email = ?'
+            const result = await executeQuery(sql, [email]);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 export default new UserDal();
