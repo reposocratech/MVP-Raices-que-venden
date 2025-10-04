@@ -38,6 +38,7 @@ CREATE TABLE service (
     service_id SMALLINT UNSIGNED NOT NULL PRIMARY KEY, -- let id = select max(service_id) from service; id++; insert into servics.... (id)
     service_name VARCHAR(55) NOT NULL,
     service_description VARCHAR(500) NOT NULL,
+    service_special BOOLEAN NOT NULL DEFAULT 0, -- si es especial(ej: todo en uno) será 1 y tendrá otros estilos
     service_image VARCHAR(200) NOT NULL, -- OJO!!! si son varias imágenes habrá que crear una tabla!!!
     service_price DECIMAL(7,2), -- 9.999,99
     is_visible BOOLEAN NOT NULL DEFAULT 0
