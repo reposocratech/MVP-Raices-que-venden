@@ -18,7 +18,7 @@ const Contact = lazy (() => import('../pages/PublicPages/Contact/Contact'));
 const Services = lazy (() => import('../pages/PublicPages/Services/Services'));
 const Shop = lazy(() => import('../pages/PublicPages/Shop/Shop'));
 const ErrorPage = lazy(() => import('../pages/PublicPages/ErrorPage/ErrorPage'));
-
+const ServiceDetail = lazy(() => import('../pages/PublicPages/Services/ServiceDetail'))
 
 
 //RUTAS PRIVADAS
@@ -70,6 +70,7 @@ export const AppRoutes = () => {
               <Route path='/services' element={<Services/>}/>
               <Route path='/shop' element={<Shop />} />
               <Route path='/confirm/:token' element={<Confirm />} />
+              <Route path='/service/:id' elem={<ServiceDetail />} />
             </Route>
           </Route>
           {/* Rutas User */}
