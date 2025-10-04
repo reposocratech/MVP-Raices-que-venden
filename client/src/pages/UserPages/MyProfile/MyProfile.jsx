@@ -1,6 +1,13 @@
+import { Container } from "react-bootstrap";
+
 const MyProfile = () => {
   return (
-    <div>MyProfile</div>
+    <>
+      <Container>
+        <h2>Mis Perfil</h2>
+        <hr />
+      </Container>
+    </>
   )
 }
 

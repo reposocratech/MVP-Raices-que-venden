@@ -1,6 +1,13 @@
+import { Container } from "react-bootstrap";
+
 const Shop = () => {
   return (
-    <div>Shop</div>
+    <>
+      <Container>
+          <h2>Tienda</h2>
+          <hr />
+      </Container>
+    </>
   )
 }
 

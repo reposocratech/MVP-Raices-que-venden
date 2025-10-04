@@ -1,9 +1,13 @@
+import { Container } from "react-bootstrap";
 
 
 const MyAppointments = () => {
     return (
         <>
-        <h2>Mis Citas</h2>
+        <Container>
+            <h2>Mis Citas</h2>
+            <hr />
+        </Container>
         </>
     )
 }

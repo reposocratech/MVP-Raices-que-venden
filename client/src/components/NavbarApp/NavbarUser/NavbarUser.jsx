@@ -18,7 +18,7 @@ export const NavbarUser = () => {
           <Nav className="me-auto nav-parents">
             <Nav.Link  as={Link} to='/'>Inicio</Nav.Link>
             <Nav.Link  as={Link} to='/services'>Servicios</Nav.Link>
-            <Nav.Link  as={Link} to='//user/shop'>Tienda</Nav.Link>
+            <Nav.Link  as={Link} to='/user/shop'>Tienda</Nav.Link>
             <Nav.Link  as={Link} to='/user/chooseDate'  >Agendar cita</Nav.Link>
           </Nav>
 
