@@ -28,13 +28,15 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { UserLayout } from '../layouts/UserLayout';
 
 const MyOrders = lazy(() => import('../pages/UserPages/MyOrders/MyOrders'));
-
+const MyAppointments = lazy(() => import('../pages/UserPages/MyAppointments/MyAppointments'))
 const MyProfile = lazy(() => import('../pages/UserPages/MyProfile/MyProfile'));
-const ChooseDate = lazy(() => import('../pages/UserPages/ChooseDate/ChooseDate'));
 const MyTexts = lazy(() => import('../pages/UserPages/MyTexts/MyTexts'));
+const ChooseDate = lazy(() => import('../pages/UserPages/ChooseDate/ChooseDate'));
+
 
 //importacion de las ruta de Admin
 import { AdminLayout } from '../layouts/AdminLayout';
+
 
 const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
 const Appointments = lazy(() => import('../pages/AdminPages/Appointments/Appointments'));
@@ -47,7 +49,9 @@ const Writer = lazy(() => import('../pages/AdminPages/Writer/Writer/Writer'));
 
 
 export const AppRoutes = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
+  console.log("Desde el AppRoutes" , user)
 
   return (
     <BrowserRouter>
@@ -55,7 +59,7 @@ export const AppRoutes = () => {
         <Routes>
 
           {/* Rutas publicas */}
-          <Route element={<PublicRoutes/>} >
+          <Route element={<PublicRoutes user={user}/>} >
             <Route element={<PublicLayout/>} >
               <Route path='/' element={<Home/>}/>
               <Route path='/about' element={<About/>} />
@@ -70,20 +74,21 @@ export const AppRoutes = () => {
             </Route>
           </Route>
           {/* Rutas User */}
-          <Route element={<PrivateRoutes/>}>
+          <Route element={<PrivateRoutes user={user} requiredType={2} />}>
             <Route element={<UserLayout />}>
               <Route path='/' element={<Home/>}/>
               {/* Servicios dinamicos??? */}
               <Route path='/services' element={<Services/>}/>
               <Route path='/user/shop' element={<Shop />} />
-              <Route path='/user/orders' element={<MyOrders />} />
+              <Route path='/user/myorders' element={<MyOrders />} />
               <Route path='/user/texts' element={<MyTexts/>}/>
               <Route path='/user/chooseDate' element={<ChooseDate />} />
+              <Route path='/user/myAppointments' element={<MyAppointments />} />
               <Route path='/user/profile' element={<MyProfile/>}/>
             </Route>
           </Route>
           {/* Rutas Admin */}
-          <Route element={<PrivateRoutes />}>
+          <Route element={<PrivateRoutes user={user} requiredType={1}  />}>
             <Route element={<AdminLayout />}>
               <Route path='/admin/write' element={<Writer />} />
               <Route path='/admin/dashboard' element={<Dashboard/>}/>

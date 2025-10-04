@@ -63,6 +63,32 @@ class UserController{
     //3.- login traer datos del user
     getUserToken = async(req, res) => {
         try {
+            const {user_id} = req;
+            console.log("Desde get Token", user_id)
+            const result = await userDal.findUserById(user_id);
+            console.log(result)
+            
+
+            let userData = {}
+
+            userData = {
+                user_id: result[0].user_id,
+                user_name: result[0].user_name,
+                nif_cif: result[0].nif_cif,
+                type: result[0].type,
+                email: result[0].email,
+                user_description: result[0].user_description,
+                company_name: result[0].company_name,
+                address: result[0].address,
+                province: result[0].province,
+                city: result[0].city,
+                phone_number: result[0].phone_number,
+                avatar: result[0].avatar,
+            }
+
+            res.status(200).json({user: userData})
+
+
             
         } catch (error) {
              console.log(error);

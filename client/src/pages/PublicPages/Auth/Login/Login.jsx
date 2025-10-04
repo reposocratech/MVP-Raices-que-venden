@@ -38,7 +38,7 @@ const Login = () => {
         const resUser = await fetchData('/user/getUserToken', 'GET', null, token);
         setToken(token);
         setUser(resUser.data.user);
-        setTexts(resUser.data.texts);
+        
 
       } catch (error) {
         console.log(error)
@@ -67,7 +67,7 @@ const Login = () => {
             <div className='div-pass'>
               <input
                 id='password'
-                type='password'
+                type={showPass ? 'text' :'password'} 
                 name='password'
                 value={login.password}
                 className='w-100'
