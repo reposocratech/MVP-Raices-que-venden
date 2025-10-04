@@ -2,8 +2,13 @@ import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap'
 import './navbaruser.css'
 import { Boton } from '../../Boton/Boton'
 import {Link} from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../../context/AuthContextProvider'
 
 export const NavbarUser = () => {
+
+  const { logOut } = useContext(AuthContext);
+
   return (
      <Navbar collapseOnSelect expand="lg" className='nav-user d-flex justify-content-center align-items-center'>
       <Container>
@@ -11,34 +16,55 @@ export const NavbarUser = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
-            <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
-               <NavDropdown className='nav-parents' title="Servicios" id="collapsible-nav-dropdown">
-             
-                   <NavDropdown.Item >Redes sociales</NavDropdown.Item>
-                <NavDropdown.Item >Email marketing</NavDropdown.Item>
-                <NavDropdown.Item >Redacción web</NavDropdown.Item>
-                 <NavDropdown.Item >Todo en uno</NavDropdown.Item>
-              
-             
-            </NavDropdown>
-            
-            <Nav.Link  as={Link} to='/user/orders'  >Mis pedidos</Nav.Link>
+            <Nav.Link  as={Link} to='/'>Inicio</Nav.Link>
+            <Nav.Link  as={Link} to='/services'>Servicios</Nav.Link>
+            <Nav.Link  as={Link} to='//user/shop'>Tienda</Nav.Link>
             <Nav.Link  as={Link} to='/user/chooseDate'  >Agendar cita</Nav.Link>
-         
           </Nav>
-          <Nav className='nav-parents'>
 
-            <div className='nav-photo'>
+          <Nav className='nav-parents'>
+            <div  
+              className='nav-photo'
+              >
               <img src="" alt="" />
             </div>
 
             <NavDropdown className='nav-parents'id="collapsible-nav-dropdown">
-             
-                <NavDropdown.Item as={Link} to='/user/profile' > Mi perfil</NavDropdown.Item>
-                <NavDropdown.Item>Modificar perfil</NavDropdown.Item>
-                 <NavDropdown.Item  >Salir</NavDropdown.Item>
+
+                <NavDropdown.Item 
+                  as={Link} 
+                  to='/user/profile' 
+                  >
+                    <i className="bi bi-person-check"></i> 
+                    Mi perfil
+                </NavDropdown.Item>
+
+                <NavDropdown.Item 
+                  as={Link} 
+                  to='/user/myorders' 
+                  ><i className="bi bi-bag-check"></i> 
+                  Mis Compras
+                </NavDropdown.Item>
+
+                <NavDropdown.Item 
+                  as={Link} 
+                  to='/user/texts'
+                  >
+                  <i className="bi bi-file-earmark-text"></i> 
+                  Mis Textos
+                </NavDropdown.Item>
+
+                <NavDropdown.Item 
+                  as={Link} to='/user/myAppointments' ><i className="bi bi-calendar-check"></i>  
+                  Mis Citas
+                  </NavDropdown.Item>
+                <NavDropdown.Item 
+                  onClick={logOut} 
+                  >
+                    <i className="bi bi-box-arrow-left"></i> 
+                    Salir
+                    </NavDropdown.Item>
               
-             
             </NavDropdown>
 
           </Nav>
