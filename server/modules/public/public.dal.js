@@ -19,6 +19,22 @@ class PublicDal {
             throw error;
         }
     }
+
+    showServices = async ()=> {
+
+      try {
+        const sql = 'SELECT * FROM service';
+        const services = await executeQuery(sql);
+        console.log("***************", services)
+        return services;
+        
+
+      }catch (error) {
+        console.log(error);
+        throw error;
+      }
+
+    }
 }
 
 export default new PublicDal();
