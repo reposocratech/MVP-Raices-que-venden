@@ -6,9 +6,10 @@
     --primary-color-2: #f5f1e8;
     --primary-color-dark: #f3f3e5;
     --secundary-color: #8b6e52;
-    --secundary-color-dark: #5A4633;
+    --secundary-color-dark: #5C4033;
     --tertiary-color: #7b9c7a;
     --tertiary-color-dark: #597258;
+    --tertiary-color-almu: #4B7F52;
     --err-color: #DC143C;
     --err-color-dark: #BF1234;
     --primary-oscuro:#e7e2d8;
@@ -28,3 +29,8 @@
 
 
   }
+
+  body{
+    font-family: var(--font-title);
+  }
+  

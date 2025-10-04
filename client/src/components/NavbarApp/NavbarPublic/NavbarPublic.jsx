@@ -20,18 +20,9 @@ export const NavbarApp = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
             <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
-               <NavDropdown className='nav-parents' title="Servicios" id="collapsible-nav-dropdown">
-             
-                <NavDropdown.Item >Redes sociales</NavDropdown.Item>
-                <NavDropdown.Item >Email marketing</NavDropdown.Item>
-                <NavDropdown.Item >Redacción web</NavDropdown.Item>
-                 <NavDropdown.Item >Todo en uno</NavDropdown.Item>
-              
-             
-            </NavDropdown>
-            
-            <Nav.Link  as={Link} to='/about'  >Sobre mí</Nav.Link>
-            <Nav.Link  as={Link} to='/contact'  >Contactar</Nav.Link>
+            <Nav.Link   as={Link} to='/services'  >Servicios</Nav.Link>
+            <Nav.Link  as={Link} to='/about'  >Almudena</Nav.Link>
+            <Nav.Link  as={Link} to='/contact'  >Contacto</Nav.Link>
          
           </Nav>
           <Nav>
