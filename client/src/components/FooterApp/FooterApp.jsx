@@ -29,8 +29,8 @@ const FooterApp = () => {
             </div>
             <div className="row justify-content-center text-center">
               <div className="col-md-8">
-                <p className="mb-1">© 2025 Raíces que Venden · Almuyalma</p>
-                <p className="mb-2">
+                <p className="mb-1 text-light">© 2025 Raíces que Venden · Almuyalma</p>
+                <p className="mb-2 text-light">
                   Desde Castellón y la terreta, para toda España.
                 </p>
               </div>

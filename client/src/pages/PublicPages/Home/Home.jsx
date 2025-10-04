@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import "./home.css";
 import { Boton } from "../../../components/Boton/Boton";
+import { AuthContext } from "../../../context/AuthContextProvider";
+import CardService from "../../../components/cardService/CardService";
 
 const Home = () => {
+   
+  const { services } = useContext(AuthContext);
+console.log(services)
   return (
 
     <>
@@ -50,29 +55,23 @@ const Home = () => {
       </section>
       <section className="section-servicios">
         <Container>
-          <Row className="justify-content-center aling-items-center">
-            <Col>
-              <h2 class="servicios-title">Servicios</h2>
-              <div class="servicio-card">
-                <img
-                  src=""
-                  alt="Imagen del servicio"
-                  class="card-img"
-                />
-                <div class="card-content">
-                  <h3 class="card-title">Copywriting emocional</h3>
-                  <p class="card-text">
-                    Transformo tu mensaje en una historia que conecta con el
-                    alma rural. Palabras que venden sin perder la esencia.
-                  </p>
-                  <a href="" class="card-button">
-                    Ver más
-                  </a>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container>
+          <Row className="justify-content-center">
+          <Col className="mb-4 d-flex justify-content-center"
+          md={6} lg={4}
+          >
+          {services.map((servicio)=> {  
+           return(
+            <CardService
+            service_id={servicio.service_id}
+            name={servicio.service_name}
+            description={servicio.service_description}
+            image={servicio.service_image}
+            />
+         )
+         })}
+         </Col>
+        </Row>
+      </Container>   
       </section>
     </>
   );

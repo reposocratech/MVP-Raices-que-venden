@@ -1,0 +1,13 @@
+.card-service {
+  width: 300px;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px;
+  background-color: var(--primary-color);
+}
+
+.card-img {
+    height: 200px;
+    object-fit: cover;
+}
+
