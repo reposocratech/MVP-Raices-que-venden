@@ -61,7 +61,7 @@ export const sendMailConfirm = (email, name, token=null) =>{
 <body class="ppal">
     <h1>Hola ${name},</h1>
     <h2>Confirma tu correo</h2>
-    <a href='http://localhost:5173/user/confirm/${token}'>
+    <a href='http://localhost:5173/confirm/${token}'>
       Pulsa aquí
     </a>
     

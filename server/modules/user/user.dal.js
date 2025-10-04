@@ -33,6 +33,16 @@ class UserDal {
         }
     }
 
+    findUserById = async (id) => {
+        try {
+            let sql = "SELECT * FROM user WHERE user_id = ?";
+            const result = executeQuery(sql, [id])
+            return result
+        } catch (error) {
+            throw error
+        }
+    }
+
 }
 
 export default new UserDal();
