@@ -1,6 +1,13 @@
+import { Container } from "react-bootstrap";
+
 const MyOrders = () => {
   return (
-    <div>MyOrders</div>
+    <>
+    <Container>
+      <h2>Mis Compras</h2>
+      <hr />
+    </Container>
+    </>
   )
 }
 

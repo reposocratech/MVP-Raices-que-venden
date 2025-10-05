@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavbarUser } from '../components/NavbarApp/NavbarUser/NavbarUser'
-import FooterApp from '../components/FooterApp/FooterApp';
-import './publicLayout.css'
-import { Outlet } from 'react-router-dom';
+import FooterApp from '../components/FooterApp/FooterApp'
+import './layout.css'
+import { Outlet } from 'react-router-dom'
 
 
 export const UserLayout = () => {
@@ -12,8 +12,8 @@ export const UserLayout = () => {
     <NavbarUser/>
    </header>
    <main className='main-layout'>
-    <Outlet/>
-   </main>
+      <Outlet/>
+    </main>
    <footer>
     <FooterApp/>
    </footer>

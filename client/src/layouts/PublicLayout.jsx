@@ -2,7 +2,7 @@ import React from 'react'
 import { NavbarApp } from '../components/NavbarApp/NavbarPublic/NavbarPublic'
 import FooterApp from '../components/FooterApp/FooterApp'
 import { Outlet } from 'react-router-dom'
-import './publicLayout.css'
+import './layout.css'
 
 
 export const PublicLayout = () => {

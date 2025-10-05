@@ -1,6 +1,13 @@
+import { Container } from "react-bootstrap";
+
 const ChooseDate = () => {
   return (
-    <div>ChooseDate</div>
+    <>
+      <Container>
+        <h2>Citas Disponibles</h2>
+        <hr />
+      </Container>
+    </>
   )
 }
 

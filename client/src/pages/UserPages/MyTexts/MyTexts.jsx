@@ -1,6 +1,13 @@
+import { Container } from "react-bootstrap";
+
 const MyTexts = () => {
   return (
-    <div>MyTexts</div>
+    <>
+      <Container>
+        <h2>Mis Textos</h2>
+        <hr />
+      </Container>
+    </>
   )
 }
 
