@@ -17,7 +17,7 @@ console.log(services)
           <Row className="align-items-center">
             <Col md={6} className="texto-home">
               <h1 className="h1-ppal">Raíces que Venden</h1>
-              <h5>Copywriting rural con alma · By Almuyalma</h5>
+              <p className="h5">Copywriting rural con alma · By Almuyalma</p>
               <p>
                 Convierto las cosas en emociones, convierto cada detalle en una
                 

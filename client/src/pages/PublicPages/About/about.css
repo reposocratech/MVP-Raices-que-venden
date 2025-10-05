@@ -6,14 +6,23 @@
    background: 
     linear-gradient(rgba(255, 255, 255, 0.876), rgb(255, 255, 255, 0.876)), 
     url(../../../../public/fondo/fondo.jpg);
+
+    h1{
+      text-align: center;
+      color: var(--tertiary-color-almu);
+      padding-bottom: 3rem;
+      font-weight: bold;
+    }
 }
 
 .about{
   margin-top: 1rem;
   margin-bottom: 1rem;
+  
 
   .about-img{
     text-align: center;
+    padding-inline: 4rem;
 
     img{
       width: 336px;
@@ -22,7 +31,8 @@
 
     p{
       font-weight: bold;
-      font-size: 29px;
+      font-size: 1.25rem;
+      text-wrap: pretty;
       color: var(--tertiary-color);
       padding-top: 1rem;
     }

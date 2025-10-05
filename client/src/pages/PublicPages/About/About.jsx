@@ -5,6 +5,9 @@ const About = () => {
   return (
     <section className='section-about'>
       <Container className="about">
+        <h1>
+          Conoce a Almudena: La Esencia de Almuyalma
+        </h1>
         <Row className='div-row'>
           <Col className="about-img" sm={12} md={6}>
             <img src="/image/almu.png" alt="" />
@@ -16,17 +19,10 @@ const About = () => {
           <Col className="about-text" sm={12} md={6}>
             <h2>Una historia con raízes</h2>
             <p>
-              Soy Almudena Torres López y detrás de Raíces que Venden no hay una
-              gran agencia, ni un gran equipo. Hay una sola persona: yo, con mis
-              manos, mis palabras y toda mi ilusión al servicio de tu negocio. Mi
-              historia comienza en Mondéjas (Guadalajra, Castilla-La Mancha), un
-              pueblo pequeño que me enseñó desde niña el valor de lo auténtico, lo
-              cercano y lo rural. Hoy vivo en tierras valecianas, entre naranjos,
-              tradiciones y la calidez de la gente de Castellón y de toda la
-              Comunitat Valenciana. Desde aquí, acompaño a negocios rurales y
-              locales de toda España, porque un queso manchego, un aceite de Jaén
-              o una casa rural en Galicia... todos ellos merecen palabras que los
-              hagan brillar.
+              <span className='fw-semibold'>Almuyalma</span> nace de la convicción de que la <span className='fw-semibold'>historia y la identidad</span> de un proyecto rural son su activo más valioso. Soy Almudena y mi compromiso es traducir la pasión que pones en tu tierra y tu oficio con textos que resuenen con tu público.
+            </p>
+            <p>
+              "Creo que el <span className='fw-semibold'>copywriting</span> que tiene raíces, que horna la tradición y que está firmemente orientado a un futuro sostenible para el entorno rural. Trabajamos con el alma para sembrar palabras que florecen en ventas"
             </p>
           </Col>
         </Row>
