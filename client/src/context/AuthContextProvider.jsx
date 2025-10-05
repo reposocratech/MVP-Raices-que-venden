@@ -6,7 +6,6 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({children}) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState(null);
-
   const [texts, setTexts] = useState([]); //pensar nombre, si queremos cambiar habria que cambiarlo en login.jsx
   const [services, setServices] = useState([])
 

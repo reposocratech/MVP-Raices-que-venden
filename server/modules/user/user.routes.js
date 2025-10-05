@@ -15,6 +15,12 @@ router.post('/login', userController.login)
 //3.- login, traer datos del usuario en funcion del id del token
 router.get('/getUserToken', tokenVerify, userController.getUserToken)
 
+// Editar Datos personales del usuario
+router.put('/editPersonalData', tokenVerify, userController.editPesonalData)
+
+// Editar Datos de facturación del usuario
+router.put('/editFacturationData', tokenVerify, userController.editFacturationData)
+
 
 
 

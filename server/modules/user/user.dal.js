@@ -43,6 +43,40 @@ class UserDal {
         }
     }
 
+    editPesonalData = async (values) => {
+        try {
+            let sql =  `UPDATE user SET 
+                        user_name = ?, 
+                        last_name = ?, 
+                        phone_number = ?, 
+                        user_description = ? 
+                        WHERE user_id = ?
+                        `
+            const result = await executeQuery(sql, values)
+            console.log(result)
+            
+        } catch (error) {
+            throw error
+        }
+    }
+
+    editFacturationData = async (values) => {
+        try {
+            let sql =  `UPDATE user SET 
+                        company_name = ?, 
+                        nif_cif = ?, 
+                        city = ?, 
+                        province = ?,
+                        address = ? 
+                        WHERE user_id = ?
+                        `
+            const result = await executeQuery(sql, values)
+            console.log(result)
+            
+        } catch (error) {
+            throw error
+        }
+    }
 }
 
 export default new UserDal();

@@ -51,7 +51,7 @@ const Writer = lazy(() => import('../pages/AdminPages/Writer/Writer/Writer'));
 export const AppRoutes = () => {
   const { user } = useContext(AuthContext);
 
-  console.log("Desde el AppRoutes" , user)
+  /* console.log("Desde el AppRoutes" , user) */
 
   return (
     <BrowserRouter>

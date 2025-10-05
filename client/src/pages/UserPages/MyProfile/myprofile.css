@@ -1,0 +1,113 @@
+
+.contenedor-profile {
+    min-height: calc(100dvh - 150px);
+    h2 {
+        color: var(--tertiary-color-almu);
+    }
+    .sub-container-profile {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+
+        .img-profile{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 50%;
+            }
+
+            .edit-link {
+                text-decoration: none;
+                color: var(--secundary-color);
+                transition: all 0.3s;
+
+                i {
+                    padding-right: 0.5rem;
+                }
+            }
+
+            .edit-link:hover {
+                color: var(--secundary-color-dark);
+            }
+        }
+
+        .data-profile {
+            h4 {
+                color: var(--tertiary-color-almu);
+            }
+            p {
+                font-weight: 400;
+                color: var(--secundary-color-dark);
+                span{
+                    font-weight: 600;
+                }
+            }
+
+            .personal-data{
+                background-color: var(--primary-color);
+                border-radius: var(--border-medium);
+                padding: 1rem;
+                padding-inline: 2rem;
+                margin-block: 1rem;
+                box-shadow: 0 0 7px 1px rgba(0,0,0,0.1);
+                position: relative;
+
+                .edit-link {
+                    text-decoration: none;
+                    color: var(--secundary-color);
+                    transition: all 0.3s;
+                    position: absolute;
+                    inset-block-start: 0;
+                    inset-inline-end: 0;
+                    padding: 1rem;
+                    padding-inline: 2rem;
+    
+                    i {
+                        padding-right: 0.5rem;
+                    }
+
+                }
+
+                .edit-link:hover {
+                    color: var(--secundary-color-dark);
+                }
+            }
+
+            .facturation-data {
+                box-shadow: 0 0 7px 1px rgba(0,0,0,0.1);
+                background-color: var(--primary-color);
+                border-radius: var(--border-medium);
+                padding: 1rem;
+                padding-inline: 2rem;
+                margin-block: 1rem;
+                position: relative;
+
+                .edit-link {
+                    text-decoration: none;
+                    color: var(--secundary-color);
+                    transition: all 0.3s;
+                    position: absolute;
+                    inset-block-start: 0;
+                    inset-inline-end: 0;
+                    padding: 1rem;
+                    padding-inline: 2rem;
+    
+                    i {
+                        padding-right: 0.5rem;
+                    }
+
+                }
+
+                .edit-link:hover {
+                    color: var(--secundary-color-dark);
+                }
+            }
+
+        }
+
+    }
+
+}
