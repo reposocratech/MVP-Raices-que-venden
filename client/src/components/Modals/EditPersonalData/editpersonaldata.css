@@ -1,0 +1,33 @@
+
+
+
+
+    .edit-form {
+        width: 100%;
+        padding: 1rem;
+
+        .input-div{
+            display: flex;
+            flex-direction: column;
+            padding-top: 0.5rem;
+            
+
+            input {
+                border-radius: var(--border-hight);
+                padding: 0.5rem 1rem; 
+                border: 1px solid var(--secundary-color);
+
+            }
+
+            textarea{
+                border-radius: var(--border-medium);
+                padding: 0.5rem 1rem; 
+                border: 1px solid var(--secundary-color);
+            }
+
+        }
+
+    
+
+        
+    }

@@ -74,6 +74,7 @@ class UserController{
             userData = {
                 user_id: result[0].user_id,
                 user_name: result[0].user_name,
+                last_name: result[0].last_name,
                 nif_cif: result[0].nif_cif,
                 type: result[0].type,
                 email: result[0].email,
@@ -96,6 +97,68 @@ class UserController{
                                 message:"error de server",
                                 dataError: error
                             })
+        }
+    }
+
+    // Editar los datos personales
+    editPesonalData = async(req, res) => {
+        try {
+            const { user_id, 
+                    user_name, 
+                    last_name, 
+                    phone_number, 
+                    user_description
+                } = req.body;
+
+                /* console.log(req.body) */
+
+            let values = [
+                
+                    user_name, 
+                    last_name, 
+                    phone_number, 
+                    user_description,
+                    user_id
+            ]
+            
+            await userDal.editPesonalData(values);
+            res.status(200).json({message: "Cambio de datos Personales con exito"})
+            
+         
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                                    message:"error de server",
+                                    dataError: error
+                                    })
+        }
+    }
+
+    editFacturationData = async( req, res) => {
+        try {
+            const {
+                user_id, 
+                company_name,
+                nif_cif,
+                city,
+                province,
+                address
+                } = req.body
+            let values = [
+                company_name,
+                nif_cif,
+                city,
+                province,
+                address,
+                user_id
+            ]
+
+            await userDal.editFacturationData(values)
+            res.status(200).json({message: "Cambio de datos de facturación con exito"})
+        } catch (error) {
+            res.status(500).json({  messaje: "Error server",
+                                    dataError: error
+                                    })
         }
     }
 

@@ -4,6 +4,7 @@ import { Boton } from '../../Boton/Boton'
 import {Link} from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../context/AuthContextProvider'
+import notAvatar from '../../../../public/icons/notAvatar.png'
 
 export const NavbarUser = () => {
 
@@ -27,7 +28,7 @@ export const NavbarUser = () => {
             <div  
               className='nav-photo'
               >
-              <img src="" alt="" />
+              <img src={notAvatar} alt="User image" />
             </div>
 
             <NavDropdown className='nav-parents'id="collapsible-nav-dropdown">

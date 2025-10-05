@@ -5,7 +5,7 @@ export const PrivateRoutes = ({user, requiredType}) => {
 
   const navigate = useNavigate();
 
-  console.log("Desde el PrivateRoutes" , user)
+  /* console.log("Desde el PrivateRoutes" , user) */
 
   useEffect(() => {
     if (user?.type !== requiredType) {
