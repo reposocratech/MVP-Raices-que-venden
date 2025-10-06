@@ -1,0 +1,33 @@
+.admin-card-service {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  width: 300px;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: var(--primary-color);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.175);
+}
+
+
+
+.card-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.btn-visible {
+  width: max-content;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.btn-card {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+}
+
+.card-img-blur {
+  filter: blur(2px) grayscale(80%) brightness(60%);
+}
