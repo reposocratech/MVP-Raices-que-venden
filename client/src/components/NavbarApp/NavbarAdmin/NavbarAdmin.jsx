@@ -21,7 +21,7 @@ export const NavbarAdmin = () => {
   return (
     <>
       <div className='p-3'>
-        <Boton aspecto="btn-6 btn-admin" icon='bi bi-list' onClick={handleShow}/>
+        <Boton aspecto="btn-rounded-1 btn-admin" icon='bi bi-list' onClick={handleShow}/>
       </div>
 
       <Offcanvas show={show} onHide={handleClose} className='aside-admin'>
