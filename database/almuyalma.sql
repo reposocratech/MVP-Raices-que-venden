@@ -126,3 +126,10 @@ CREATE TABLE purchase (
     CONSTRAINT fk_product_1 FOREIGN KEY (product_id)
     REFERENCES product(product_id) ON DELETE CASCADE ON UPDATE CASCADE    
 );
+
+
+INSERT INTO service(service_id, service_name, service_description, service_image) VALUES(1, "marketing", "textos escritos", "estaimagen");
+
+
+SELECT * FROM social_network;
+ 

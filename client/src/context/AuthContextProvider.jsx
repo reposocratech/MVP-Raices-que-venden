@@ -11,6 +11,7 @@ export const AuthContextProvider = ({children}) => {
 
   /* console.log("Desde el AuthContext" , user , token) */
 
+
   const logOut = () => {
     setUser(null);
     setToken(null);

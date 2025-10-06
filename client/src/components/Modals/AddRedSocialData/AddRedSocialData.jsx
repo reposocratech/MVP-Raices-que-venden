@@ -5,8 +5,8 @@ import { useContext, useState } from "react";
 import { fetchData } from "../../../helpers/axiosHelper";
 import { AuthContext } from "../../../context/AuthContextProvider";
 
-export const AddRedSocialData = ({ handleClose, show }) => {
-  const { user, setUser, token } = useContext(AuthContext);
+export const AddRedSocialData = ({ handleClose, show}) => {
+  const { user, token } = useContext(AuthContext);
 
   const [newRedSocial, setNewRedSocial] = useState({ name: '', link: '' });
 
@@ -17,25 +17,20 @@ export const AddRedSocialData = ({ handleClose, show }) => {
 
   const onSubmit = async () => {
     try {
-  
       const data = {
         user_id: user.user_id, 
         name: newRedSocial.name,
         link: newRedSocial.link
       };
 
-      // Llamada al back
-      const res = await fetchData('/user/addRedSocialData', 'POST', data, token);
+      // Añadir las redes a la base de datos.
+      await fetchData('/user/addRedSocialData', 'POST', data, token);
 
-      // Actualizamos
-      setUser({
-        ...user,
-        texts: [...(user.texts || []), res.newRedSocial]
-      });
 
      //limpiar
       setNewRedSocial({ name: '', link: '' });
-      handleClose();
+
+      handleClose(); 
     } catch (error) {
       console.error("Error al añadir red social:", error);
     }

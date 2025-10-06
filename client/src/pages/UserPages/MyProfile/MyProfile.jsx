@@ -1,5 +1,5 @@
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContextProvider';
@@ -9,14 +9,42 @@ import { EditPersonalData } from '../../../components/Modals/EditPersonalData/Ed
 import { EditFacturationData } from '../../../components/Modals/EditFacturationData/EditFacturationData';
 import { EditImage } from "../../../components/Modals/EditImage/EditImage";
 import { AddRedSocialData } from '../../../components/Modals/AddRedSocialData/AddRedSocialData';
+import { fetchData } from '../../../helpers/axiosHelper';
+import { Boton } from '../../../components/Boton/Boton';
+import { iconsRedes } from '../../../middlewares/iconsRedes.js';
   
 
 const MyProfile = () => {
-  const { user, texts } = useContext(AuthContext);
+  const { user, setUser, token} = useContext(AuthContext);
+
   const [showPersonal, setShowPersonal] = useState(false);
   const [showFacturation, setShowFacturation] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [showRedSocial, setShowRedSocial] = useState(false);
+  const [redes, setRedes] = useState([])
+  
+  console.log(redes)
+
+  useEffect(() => {
+
+    const fetchRedes = async  ()=> {
+      try {
+        
+        const res = await fetchData('/user/getRedSocial', 'GET',  null , token );
+        
+        setUser({
+          ...user,
+          redes: setRedes(...user.redes || [], res.data.redSocial)
+        }); 
+
+        } catch (error) {
+          console.log(error)
+        }
+    }
+    fetchRedes()
+      
+  },[showRedSocial])
+
 
   const handleClosePersonal = () => {
     setShowPersonal(false);
@@ -120,27 +148,39 @@ const MyProfile = () => {
             <div className="facturation-data">
               <h4>Mis redes sociales</h4>
               <hr />
-              {texts?.map((elem) => {
-                return (
-                  <div
-                    key={elem?.social_network_id}
-                    className=" d-flex gap-4 border border-2 rounded p-5 m-4"
-                  >
-                    <div>
-                      <h3>{elem?.name}</h3>
-                      <p>{elem?.link}</p>
-                    </div>
-                    <div> {/* botones por terminar */}
-                      <Boton aspecto="btn-1" valor="editar" />
-                      <Boton aspecto="btn-err-1" valor="Borrar" />
-                    </div>
-                  </div>
-                );
-              })}
+              {redes?.map((e) => {
+                  return (
+                      <Row className='map-redes' key={e.social_network_id}>
+                        <Col sm={1}>
+                          <i className={iconsRedes(e.name)}></i>
+                        </Col>
+                        <Col sm={2}>
+                          <p>{e.name}</p>
+                        </Col>
+                        <Col sm={6}>
+                          <p>{e.link}</p>
+                        </Col>
+                        <Col sm={3} className='d-flex justify-content-center align-content-center'>
+                          <Boton
+                            icon="bi bi-pencil-square"
+                            aspecto="btn-6"
+                          />
+                           <Boton
+                            icon="bi bi-trash3"
+                            aspecto="btn-6"
+                          />
+                        </Col>
+                      </Row>
+                      
+                    
+                  )
+                })
+              }
+                
 
               <Link onClick={editRedSocialData} className="edit-link">
-                <i className="bi bi-pencil-square"></i>
-                Añadir
+                <i className="bi bi-plus-circle"></i>
+                Añadir Red Social
               </Link>
             </div>
           </Col>
@@ -168,6 +208,7 @@ const MyProfile = () => {
       <AddRedSocialData
         show={showRedSocial}
         handleClose={handleCloseRedSocial}
+        setRedes={setRedes}
       />
 
       {/* Editar red social */}
