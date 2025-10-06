@@ -1,14 +1,28 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import "./home.css";
 import { Boton } from "../../../components/Boton/Boton";
-import { AuthContext } from "../../../context/AuthContextProvider";
 import CardService from "../../../components/cardService/CardService";
+import { fetchData } from "../../../helpers/axiosHelper";
 
 const Home = () => {
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetchData("/getServices", "GET");
+        console.log("esto es la respuesta del backkkk", response.data)
+        setServices(response.data);
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchServices()
+  }, []);
    
-  const { services } = useContext(AuthContext);
-console.log(services)
   return (
 
     <>
@@ -94,12 +108,14 @@ console.log(services)
         <Container>
           <Row className="justify-content-center">
             <h2 className="text-center fw-bold pt-4 title">Nuestras semillas de Copywriting</h2>
+          <Row className="justify-content-centr">
           <Col className="mb-4 d-flex justify-content-center"
           md={6} lg={4}
           >
           {services.map((servicio)=> {  
            return(
             <CardService
+            key={servicio.service_id}
             service_id={servicio.service_id}
             name={servicio.service_name}
             description={servicio.service_description}
