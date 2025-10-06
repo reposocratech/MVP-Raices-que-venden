@@ -150,6 +150,35 @@ class UserController {
       user_id
     }
 
+    editImage = async ( req, res) => {
+        try {
+
+            const user_id = JSON.parse(req.body.data);
+            
+            let values = []
+            if (req.file) {
+                values = [req.file.filename, user_id];
+                console.log(req.file)
+
+
+            }
+             await userDal.editImage(values);
+                
+
+            res.status(200).json({
+                    message: "Imagen editada",
+                    filename: req.file?.filename
+                })
+
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({message: "Error server",
+                                    dataError: error
+                                    })
+                                    
+        }
+    }
+
     const newRedSocial = await userDal.addRedSocialData(data);
     
     res.status(200).json({ message: 'Red social añadida', newRedSocial});

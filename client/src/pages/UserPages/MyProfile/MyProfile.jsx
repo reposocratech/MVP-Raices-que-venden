@@ -1,3 +1,4 @@
+
 import { useContext, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -6,12 +7,15 @@ import notAvatar from './../../../../public/icons/notAvatar.png';
 import './myprofile.css';
 import { EditPersonalData } from '../../../components/Modals/EditPersonalData/EditPersonalData';
 import { EditFacturationData } from '../../../components/Modals/EditFacturationData/EditFacturationData';
+import { EditImage } from "../../../components/Modals/EditImage/EditImage";
 import { EditRedSocialData } from '../../../components/Modals/EditRedSocialData/EditRedSocialData';
+  
 
 const MyProfile = () => {
   const { user, texts } = useContext(AuthContext);
   const [showPersonal, setShowPersonal] = useState(false);
   const [showFacturation, setShowFacturation] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   const [showRedSocial, setShowRedSocial] = useState(false);
 
   const handleClosePersonal = () => {
@@ -38,20 +42,27 @@ const MyProfile = () => {
     setShowRedSocial(true);
   };
 
+  const handleCloseImage = () => {
+    setShowImage(false)
+  }
+
+  const editImage = () => {
+    setShowImage(true)
+  }
+
   return (
     <>
       <Container className="py-3 contenedor-profile">
         <h2>Mi Perfil</h2>
         <hr />
         <Row sm={1} md={1} lg={2} className="sub-container-profile py-5">
-          <Col className="img-profile">
-            <h2>
-              ¡Hola{' '}
-              <span>{user?.user_name ? user?.user_name : user?.email}!</span>
-            </h2>
-            <img src={!user?.avatar ? notAvatar : 'hola'} alt="" />
-            <Link className="edit-link">
-              <i className="bi bi-pencil-square"></i>
+          <Col  className="img-profile">
+            <h2>¡Hola <span>{user?.user_name ? user?.user_name : user?.email}!</span></h2>
+            <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt="" />
+            <Link 
+              onClick={editImage}
+              className="edit-link"
+              ><i className="bi bi-pencil-square"></i> 
               Cambiar imagen
             </Link>
           </Col>
@@ -138,6 +149,23 @@ const MyProfile = () => {
       <EditPersonalData
         show={showPersonal}
         handleClose={handleClosePersonal}
+        />
+      {/* Modal editar datos de facturación */}
+      <EditFacturationData
+        show={showFacturation}
+        handleClose={handleCloseFacturation}
+        />  
+
+      {/* Modal editar la imagen */}
+      <EditImage
+        show={showImage}
+        handleClose={handleCloseImage}
+      />
+
+
+      </>
+  )
+}
         user={user}
       />
 

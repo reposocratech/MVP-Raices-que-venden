@@ -2,6 +2,7 @@ import express, { Router } from 'express'
 /* import userControllers from './user.controllers.js' */
 import { tokenVerify } from '../../middlewares/tokenVerify.js'
 import userController from './user.controllers.js'
+import uploadImage from '../../middlewares/multerSingle.js';
 
 const router = express.Router();
 
@@ -20,6 +21,9 @@ router.put('/editPersonalData', tokenVerify, userController.editPesonalData)
 
 // Editar Datos de facturación del usuario
 router.put('/editFacturationData', tokenVerify, userController.editFacturationData)
+
+// Editar la imagen del usuario
+router.put('/editImage', tokenVerify, uploadImage("users"), userController.editImage)
 
 //Editar Datos de redes sociales
 router.post('/addRedSocialData', tokenVerify, userController.addRedSocialData);

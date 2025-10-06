@@ -14,9 +14,15 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap:1rem;
 
             img {
                 width: 50%;
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                object-position:top;
+                border-radius: 50%;
+                border: 5px solid var(--tertiary-color-almu)
             }
 
             .edit-link {

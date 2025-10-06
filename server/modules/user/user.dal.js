@@ -96,6 +96,21 @@ class UserDal {
     } finally {
         connection.release();
     }
+
+    editImage = async (values) =>  {
+        try {
+            console.log("Desde DAL EDIT IMAGE", values)
+            if (values.length === 2) {
+                let sql =   `UPDATE user SET avatar = ?
+                            WHERE user_id = ?`;
+                let result = await executeQuery(sql, values);
+                console.log("Desde DAL EDIT IMAGE", result)
+            }
+            
+        } catch (error) {
+            throw error
+        }
+    }
 }
 
 
