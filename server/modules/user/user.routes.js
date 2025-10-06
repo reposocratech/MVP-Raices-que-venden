@@ -21,6 +21,9 @@ router.put('/editPersonalData', tokenVerify, userController.editPesonalData)
 // Editar Datos de facturación del usuario
 router.put('/editFacturationData', tokenVerify, userController.editFacturationData)
 
+//Editar Datos de redes sociales
+router.post('/addRedSocialData', tokenVerify, userController.addRedSocialData);
+
 
 
 
