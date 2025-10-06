@@ -6,11 +6,13 @@ import notAvatar from './../../../../public/icons/notAvatar.png'
 import './myprofile.css'
 import { EditPersonalData } from "../../../components/Modals/EditPersonalData/EditPersonalData";
 import { EditFacturationData } from "../../../components/Modals/EditFacturationData/EditFacturationData";
+import { EditImage } from "../../../components/Modals/EditImage/EditImage";
 
 const MyProfile = () => {
   const {user} = useContext(AuthContext);
-  const [showPersonal, setShowPersonal] = useState(false)
-  const [showFacturation, setShowFacturation] = useState(false)
+  const [showPersonal, setShowPersonal] = useState(false);
+  const [showFacturation, setShowFacturation] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   const handleClosePersonal = () => {
     setShowPersonal(false)
@@ -28,16 +30,25 @@ const MyProfile = () => {
     setShowFacturation(true)
   }
 
+  const handleCloseImage = () => {
+    setShowImage(false)
+  }
+
+  const editImage = () => {
+    setShowImage(true)
+  }
+
   return (
     <>
       <Container className="py-3 contenedor-profile">
         <h2>Mi Perfil</h2>
         <hr />
         <Row sm={1} md={1} lg={2} className="sub-container-profile py-5">
-          <Col className="img-profile">
+          <Col  className="img-profile">
             <h2>¡Hola <span>{user?.user_name ? user?.user_name : user?.email}!</span></h2>
-            <img src={!user?.avatar ? notAvatar : "hola"} alt="" />
+            <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt="" />
             <Link 
+              onClick={editImage}
               className="edit-link"
               ><i className="bi bi-pencil-square"></i> 
               Cambiar imagen
@@ -83,14 +94,20 @@ const MyProfile = () => {
       <EditPersonalData
         show={showPersonal}
         handleClose={handleClosePersonal}
-        user={user}
         />
-
+      {/* Modal editar datos de facturación */}
       <EditFacturationData
         show={showFacturation}
-        handleClose={handleCloseFacturation }
-        user={user}
+        handleClose={handleCloseFacturation}
         />  
+
+      {/* Modal editar la imagen */}
+      <EditImage
+        show={showImage}
+        handleClose={handleCloseImage}
+      />
+
+
       </>
   )
 }
