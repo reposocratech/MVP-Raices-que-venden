@@ -52,11 +52,48 @@ const Home = () => {
         </Container>
       </section>
 
-      <section className="section-2">
+      <section className="section-2 ">
+      <Container>
+        <Row className="text-center">
+          <h2 className="mb-4 title">La autenticidad es tu mayor ventaja</h2>
+          <Col md={4}>
+          <i className="bi bi-flower1 fs-4"></i>
+          <h3 className="h3-title">Conexión con la Tierra</h3>
+          <p>
+            Entemos el valor del proceso lento, la tradicción y los productos de cercanía. Lo plasmamos en cada texto
+          </p>
+          </Col>
+
+           <Col md={4}>
+          <i className="bi bi-chat-left-dots fs-4"></i>
+          <h3 className="h3-title">Mensajes con Alma</h3>
+          <p>
+            Huimos del marketing vacío. Tu comunicación será tan genuina como tu trabajo diario. Palabaras que resuenan
+          </p>
+          </Col>
+
+           <Col md={4}>
+          <i className="bi bi-activity fs-4"></i>
+          <h3 className="h3-title">Resultados Tangibles</h3>
+          <p>
+            Un buen <strong>copy</strong> no es solo bonito, es estratégico. Te ayudamos a traer, fidelizar y aumnetar tus ventas online.
+          </p>
+          </Col>
+        </Row>
+      </Container>
+      </section>
+
+      <section className="section-3">
         <Container>
-          <Row className="aling-items-center">
-            <Col md={6} className="texto-home">
-              <h2 className="fs-2 pb-2">Sumamos historias juntos...</h2>
+          <Row className="aling-items-center d-flex justify-content-center">
+
+              {/* Cuando tengamos foto cambiar */}
+            <Col md={6} className="text-center pb-2" >
+            <img className="w-75 img " src="/images/home.png" alt="" />
+            </Col>
+
+             <Col md={6} className="texto-home">
+              <h2 className="fs-2 pb-2 fw-bold">Sumamos historias juntos...</h2>
               <p>
                 Convierto las cosas en emociones, convierto cada detalle en una
                 historia emocional. La vida rural es lo más valioso que tenemos,
@@ -69,6 +106,8 @@ const Home = () => {
       </section>
       <section className="section-servicios">
         <Container>
+          <Row className="justify-content-center">
+            <h2 className="text-center fw-bold pt-4 title">Nuestras semillas de Copywriting</h2>
           <Row className="justify-content-centr">
           <Col className="mb-4 d-flex justify-content-center"
           md={6} lg={4}
