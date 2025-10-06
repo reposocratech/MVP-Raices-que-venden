@@ -1,11 +1,11 @@
 import { Modal } from "react-bootstrap"; 
 import { Boton } from "../../Boton/Boton";
-import './editRedSocialData.css';
+import './addredsocialdata.css';
 import { useContext, useState } from "react";
 import { fetchData } from "../../../helpers/axiosHelper";
 import { AuthContext } from "../../../context/AuthContextProvider";
 
-export const EditRedSocialData = ({ handleClose, show }) => {
+export const AddRedSocialData = ({ handleClose, show }) => {
   const { user, setUser, token } = useContext(AuthContext);
 
   const [newRedSocial, setNewRedSocial] = useState({ name: '', link: '' });
