@@ -109,21 +109,22 @@ const Home = () => {
         <Container>
           <Row className="justify-content-center">
             <h2 className="text-center fw-bold pt-4 title">Nuestras semillas de Copywriting</h2>
-          <Col className="mb-4 d-flex justify-content-center"
-          md={6} lg={4}
-          >
           {services.map((servicio)=> {  
            return(
+            <Col className="mb-4 d-flex justify-content-center"
+          md={6} lg={4} key={servicio.service_id}
+          >
             <CardService
-            key={servicio.service_id}
+            
             service_id={servicio.service_id}
             name={servicio.service_name}
             description={servicio.service_description}
             image={servicio.service_image}
             />
+          </Col>
          )
          })}
-         </Col>
+         
         </Row>
       </Container>   
       </section>
