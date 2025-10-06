@@ -79,6 +79,7 @@ export const AppRoutes = () => {
               <Route path='/' element={<Home/>}/>
               {/* Servicios dinamicos??? */}
               <Route path='/services' element={<Services/>}/>
+              <Route path='/about' element={<About/>} />
               <Route path='/user/shop' element={<Shop />} />
               <Route path='/user/myorders' element={<MyOrders />} />
               <Route path='/user/texts' element={<MyTexts/>}/>
@@ -90,6 +91,7 @@ export const AppRoutes = () => {
           {/* Rutas Admin */}
           <Route element={<PrivateRoutes user={user} requiredType={1}  />}>
             <Route element={<AdminLayout />}>
+             <Route path='/' element={<Home/>}/>
               <Route path='/admin/write' element={<Writer />} />
               <Route path='/admin/dashboard' element={<Dashboard/>}/>
               <Route path='/admin/services' element={<AdminService />}/>

@@ -6,6 +6,8 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({children}) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState(null);
+  const [services, setServices] = useState([])
+
 
   /* console.log("Desde el AuthContext" , user , token) */
 
@@ -46,6 +48,8 @@ export const AuthContextProvider = ({children}) => {
                setUser,
                token,
                setToken,
+               services,
+               setServices,
                logOut
                }}>
     

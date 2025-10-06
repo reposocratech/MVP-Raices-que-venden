@@ -76,6 +76,7 @@ const Home = () => {
           {services.map((servicio)=> {  
            return(
             <CardService
+            key={servicio.service_id}
             service_id={servicio.service_id}
             name={servicio.service_name}
             description={servicio.service_description}

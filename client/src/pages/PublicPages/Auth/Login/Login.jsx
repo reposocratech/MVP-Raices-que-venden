@@ -14,7 +14,7 @@ const initialValue = {
 
 const Login = () => {
 
-  const { setUser, setToken, setTexts } = useContext(AuthContext)
+  const { setUser, setToken } = useContext(AuthContext)
 
   const [ login, setLogin ] = useState(initialValue);
   const [showPass, setShowPass] = useState(false);

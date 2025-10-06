@@ -4,7 +4,6 @@ import './editpersonaldata.css'
 import { useContext, useState } from "react"
 import { fetchData } from "../../../helpers/axiosHelper"
 import { AuthContext } from "../../../context/AuthContextProvider"
-import { useNavigate } from "react-router-dom"
 
 
 

@@ -1,0 +1,29 @@
+
+
+.edit-form {
+    width: 100%;
+    padding: 1rem;
+    color: var(--secundary-color);
+
+    .div-file{
+        
+        display: flex;
+        flex-direction: column;
+        padding-top: 0.5rem;
+        text-align: center;
+        border-radius: var(--border-hight);
+        padding: 0.5rem 1rem; 
+        border: 2px dashed var(--secundary-color);
+        label{
+            cursor: pointer;
+
+            i {
+                padding-right: 0.5rem;
+            }
+        }
+        
+        
+    }
+
+}
+

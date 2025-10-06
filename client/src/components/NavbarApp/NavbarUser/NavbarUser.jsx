@@ -8,7 +8,7 @@ import notAvatar from '../../../../public/icons/notAvatar.png'
 
 export const NavbarUser = () => {
 
-  const { logOut } = useContext(AuthContext);
+  const { logOut, user } = useContext(AuthContext);
 
   return (
      <Navbar collapseOnSelect expand="lg" className='nav-user d-flex justify-content-center align-items-center'>
@@ -17,9 +17,9 @@ export const NavbarUser = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
-            <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
+            <Nav.Link   as={Link} to='/'>Inicio</Nav.Link>
             <Nav.Link   as={Link} to='/services'  >Servicios</Nav.Link>
-            <Nav.Link  as={Link} to='/about'  >Almudena</Nav.Link>  
+            <Nav.Link  as={Link} to='/about'>Almudena</Nav.Link>  
             <Nav.Link  as={Link} to='/user/shop'>Tienda</Nav.Link>
             <Nav.Link  as={Link} to='/user/chooseDate'  >Agendar cita</Nav.Link>
           </Nav>
@@ -28,7 +28,7 @@ export const NavbarUser = () => {
             <div  
               className='nav-photo'
               >
-              <img src={notAvatar} alt="User image" />
+              <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt="" />
             </div>
 
             <NavDropdown className='nav-parents'id="collapsible-nav-dropdown">
