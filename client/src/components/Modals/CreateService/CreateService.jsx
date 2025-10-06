@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import { Boton } from '../../Boton/Boton';
 import './createService.css';
 import { fetchData } from '../../../helpers/axiosHelper';
+import { AuthContext } from '../../../context/AuthContextProvider';
 
 const initialValue = {
   service_name: '',
@@ -10,24 +11,35 @@ const initialValue = {
   service_price: ''
 }
 
-export const CreateService = ({handleClose, show}) => {
+export const CreateService = ({handleClose, show, setServices}) => {
+  const {token} = useContext(AuthContext);
   const [newServiceData, setNewServiceData] = useState(initialValue);
-
+  const [newImg, setNewImg] = useState('');
   const handleChange = (e) => {
     e.preventDefault();
     const {name, value} = e.target;
     setNewServiceData({...newServiceData, [name]: value});
   }
 
+  const handleChangeImg = (e) => {
+    setNewImg(e.target.files[0]);
+  }
+
   const onSubmit = async() => {
     try {
 
       const newFormData = new FormData();
+      console.log(newServiceData);
+      newFormData.append('dataService', JSON.stringify(newServiceData));
+      newFormData.append('img', newImg);
 
-      newFormData.append('data', JSON.stringify(newServiceData));
-      newFormData.append('img', serviceImage)
+      console.log(Array.from(newFormData.entries()));
+      
 
-      await fetchData('/createService', 'POST')
+      let res = await fetchData('/admin/createService', 'POST', newFormData, token);
+      setServices(prevServices=>[...prevServices,res.data[0]]);
+      
+      handleClose();
       
     } catch (error) {
       console.log(error);
@@ -73,13 +85,12 @@ export const CreateService = ({handleClose, show}) => {
                   />
             </div>
             <div className='input-div'>
-                <label htmlFor="price">Coste</label>
+                <label htmlFor="img">Coste</label>
                 <input
-                  id='price'
-                  type="text"
-                  name='service_price'
-                  value={null}
-                  onChange={handleChange}
+                  id='img'
+                  type="file"
+                  name='img'
+                  onChange={handleChangeImg}
                   />
             </div>
         </form>
@@ -92,7 +103,7 @@ export const CreateService = ({handleClose, show}) => {
             valor="Cancelar"
           />
           <Boton 
-            onClick={null}
+            onClick={onSubmit}
             aspecto="btn-1"
             valor="Guardar"
           />

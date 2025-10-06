@@ -43,7 +43,7 @@ const AdminService = () => {
           )
         })}
       </Row>
-      <CreateService show={showCreateService} handleClose={()=>setShowCreateService(false)}/>
+      <CreateService show={showCreateService} handleClose={()=>setShowCreateService(false)} setServices={setServices}/>
     </Container>
   )
 }
