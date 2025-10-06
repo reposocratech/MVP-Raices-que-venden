@@ -17,9 +17,9 @@ export const NavbarUser = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents">
-            <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
+            <Nav.Link   as={Link} to='/'>Inicio</Nav.Link>
             <Nav.Link   as={Link} to='/services'  >Servicios</Nav.Link>
-            <Nav.Link  as={Link} to='/about'  >Almudena</Nav.Link>  
+            <Nav.Link  as={Link} to='/about'>Almudena</Nav.Link>  
             <Nav.Link  as={Link} to='/user/shop'>Tienda</Nav.Link>
             <Nav.Link  as={Link} to='/user/chooseDate'  >Agendar cita</Nav.Link>
           </Nav>

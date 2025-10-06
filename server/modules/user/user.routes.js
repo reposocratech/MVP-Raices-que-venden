@@ -25,6 +25,9 @@ router.put('/editFacturationData', tokenVerify, userController.editFacturationDa
 // Editar la imagen del usuario
 router.put('/editImage', tokenVerify, uploadImage("users"), userController.editImage)
 
+//Editar Datos de redes sociales
+router.post('/addRedSocialData', tokenVerify, userController.addRedSocialData);
+
 
 
 
