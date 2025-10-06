@@ -84,13 +84,15 @@ export const CreateService = ({handleClose, show, setServices}) => {
                   onChange={handleChange}
                   />
             </div>
-            <div className='input-div'>
-                <label htmlFor="img">Coste</label>
+            <span>Imagen</span>
+            <div className='input-div img-input'>
+                <label htmlFor="img"><i className="bi bi-image"></i></label>
                 <input
                   id='img'
                   type="file"
                   name='img'
                   onChange={handleChangeImg}
+                  hidden
                   />
             </div>
         </form>
