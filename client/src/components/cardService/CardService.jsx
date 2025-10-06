@@ -14,7 +14,7 @@ const CardService = ({service_id, name, description,image }) => {
         <h3>{name}</h3>
         <p>{description}</p>
         <div className="d-flex gap-3 justify-content-center">
-            <Boton className='btn' aspecto='btn-2'valor='Saber más' onClick={()=>navigate(`/service/${service_id}`)}/>
+            <Boton className='btn' aspecto='btn-3'valor='Saber más' onClick={()=>navigate(`/service/${service_id}`)}/>
             
             <Boton className='btn' aspecto='btn-3' valor='Contactar' onClick={()=>navigate("/contact")} />
             

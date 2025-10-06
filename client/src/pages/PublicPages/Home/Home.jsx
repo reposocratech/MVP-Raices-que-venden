@@ -1,14 +1,28 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import "./home.css";
 import { Boton } from "../../../components/Boton/Boton";
-import { AuthContext } from "../../../context/AuthContextProvider";
 import CardService from "../../../components/cardService/CardService";
+import { fetchData } from "../../../helpers/axiosHelper";
 
 const Home = () => {
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetchData("/getServices", "GET");
+        console.log("esto es la respuesta del backkkk", response.data)
+        setServices(response.data);
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchServices()
+  }, []);
    
-  const { services } = useContext(AuthContext);
-console.log(services)
   return (
 
     <>
@@ -55,7 +69,7 @@ console.log(services)
       </section>
       <section className="section-servicios">
         <Container>
-          <Row className="justify-content-center">
+          <Row className="justify-content-centr">
           <Col className="mb-4 d-flex justify-content-center"
           md={6} lg={4}
           >
