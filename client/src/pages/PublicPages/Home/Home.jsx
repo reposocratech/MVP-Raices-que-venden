@@ -4,6 +4,7 @@ import "./home.css";
 import { Boton } from "../../../components/Boton/Boton";
 import CardService from "../../../components/cardService/CardService";
 import { fetchData } from "../../../helpers/axiosHelper";
+import NewsletterForm from "../../../components/newsletterForm/NewsletterForm";
 
 const Home = () => {
 
@@ -125,6 +126,16 @@ const Home = () => {
          </Col>
         </Row>
       </Container>   
+      </section>
+      <section className="newsletter-section">
+        <Container>
+          <Row>
+            <Col md={12}>
+            <NewsletterForm />      
+            </Col>
+          </Row>
+        </Container>
+
       </section>
     </>
   );
