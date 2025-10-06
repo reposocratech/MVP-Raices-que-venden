@@ -1,0 +1,31 @@
+.contact{
+  background-color: #7b9c7a9b;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+
+  .input-div{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+    label{
+      padding-top: 1rem;
+      color: var(--tertiary-color-darkgreen);
+      font-weight: bold;
+    }
+    
+    input{
+      border: 2px solid var(--tertiary-color);
+      border-radius: var(--border-hight);
+      height: 50px;
+    }
+
+    .texts{
+      border: 2px solid var(--tertiary-color);
+     height: 150px;
+     border-radius: var( --border-medium);
+    }
+  }
+}

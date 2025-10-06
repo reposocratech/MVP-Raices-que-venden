@@ -57,7 +57,7 @@ const Home = () => {
         <Row className="text-center">
           <h2 className="mb-4 title">La autenticidad es tu mayor ventaja</h2>
           <Col md={4}>
-          <i className="bi bi-flower1 fs-4"></i>
+          <i className="bi bi-flower1 fs-4 icono"></i>
           <h3 className="h3-title">Conexión con la Tierra</h3>
           <p>
             Entemos el valor del proceso lento, la tradicción y los productos de cercanía. Lo plasmamos en cada texto
@@ -65,7 +65,7 @@ const Home = () => {
           </Col>
 
            <Col md={4}>
-          <i className="bi bi-chat-left-dots fs-4"></i>
+          <i className="bi bi-chat-left-dots fs-4 icono"></i>
           <h3 className="h3-title">Mensajes con Alma</h3>
           <p>
             Huimos del marketing vacío. Tu comunicación será tan genuina como tu trabajo diario. Palabaras que resuenan
@@ -73,7 +73,7 @@ const Home = () => {
           </Col>
 
            <Col md={4}>
-          <i className="bi bi-activity fs-4"></i>
+          <i className="bi bi-activity fs-4 icono"></i>
           <h3 className="h3-title">Resultados Tangibles</h3>
           <p>
             Un buen <strong>copy</strong> no es solo bonito, es estratégico. Te ayudamos a traer, fidelizar y aumnetar tus ventas online.
@@ -108,7 +108,6 @@ const Home = () => {
         <Container>
           <Row className="justify-content-center">
             <h2 className="text-center fw-bold pt-4 title">Nuestras semillas de Copywriting</h2>
-          <Row className="justify-content-centr">
           <Col className="mb-4 d-flex justify-content-center"
           md={6} lg={4}
           >
