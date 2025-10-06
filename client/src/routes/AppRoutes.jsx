@@ -70,7 +70,7 @@ export const AppRoutes = () => {
               <Route path='/services' element={<Services/>}/>
               <Route path='/shop' element={<Shop />} />
               <Route path='/confirm/:token' element={<Confirm />} />
-              <Route path='/service/:id' elem={<ServiceDetail />} />
+              <Route path='/service/:id' element={<ServiceDetail />} />
             </Route>
           </Route>
           {/* Rutas User */}

@@ -8,6 +8,7 @@ export const AuthContextProvider = ({children}) => {
   const [token, setToken] = useState(null);
   const [services, setServices] = useState([])
 
+
   /* console.log("Desde el AuthContext" , user , token) */
 
   const logOut = () => {
@@ -38,21 +39,7 @@ export const AuthContextProvider = ({children}) => {
   },[])
   
 
-  useEffect(()=>{
-   const loadServices = async () => {
-    try {
-      const result = await fetchData("/getServices", "GET");
-      console.log(result);
-      setServices(result.data);
-    
-
-    }catch (error){
-      console.log(error);
-    }
-   };
-   loadServices();
-
-  }, []);
+  
 
   return (
     <AuthContext.Provider 
