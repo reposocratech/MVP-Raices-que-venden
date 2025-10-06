@@ -140,15 +140,7 @@ class UserController {
     }
   };
 
-  //Añadir datos de  redes sociales
-  addRedSocialData = async (req, res) => {
-  try {
-    const { user_id, name, link } = req.body;
-    let data = {
-      name,
-      link,
-      user_id
-    }
+
 
     editImage = async ( req, res) => {
         try {
@@ -179,17 +171,27 @@ class UserController {
         }
     }
 
-    const newRedSocial = await userDal.addRedSocialData(data);
-    
-    res.status(200).json({ message: 'Red social añadida', newRedSocial});
+      //Añadir datos de  redes sociales
+    addRedSocialData = async (req, res) => {
+        try {
+          const { user_id, name, link } = req.body;
+          let data = {
+            name,
+            link,
+            user_id
+          }
 
-  } catch (error) {
-  res.status(500).json({
-        message: 'error de server',
-        dataError: error,
-      });
-  }
-}
+        const newRedSocial = await userDal.addRedSocialData(data);
+        
+        res.status(200).json({ message: 'Red social añadida', newRedSocial});
+
+      } catch (error) {
+      res.status(500).json({
+            message: 'error de server',
+            dataError: error,
+          });
+      }
+    }
 
 }
 

@@ -8,7 +8,7 @@ import './myprofile.css';
 import { EditPersonalData } from '../../../components/Modals/EditPersonalData/EditPersonalData';
 import { EditFacturationData } from '../../../components/Modals/EditFacturationData/EditFacturationData';
 import { EditImage } from "../../../components/Modals/EditImage/EditImage";
-import { EditRedSocialData } from '../../../components/Modals/EditRedSocialData/EditRedSocialData';
+import { AddRedSocialData } from '../../../components/Modals/AddRedSocialData/AddRedSocialData';
   
 
 const MyProfile = () => {
@@ -115,6 +115,8 @@ const MyProfile = () => {
                 Editar
               </Link>
             </div>
+
+
             <div className="facturation-data">
               <h4>Mis redes sociales</h4>
               <hr />
@@ -162,27 +164,21 @@ const MyProfile = () => {
         handleClose={handleCloseImage}
       />
 
+      {/* Añadir redes social */}
+      <AddRedSocialData
+        show={showRedSocial}
+        handleClose={handleCloseRedSocial}
+      />
+
+      {/* Editar red social */}
+
+      {/* Eliminar red social */}
+       
+
 
       </>
   )
 }
-        user={user}
-      />
 
-      <EditFacturationData
-        show={showFacturation}
-        handleClose={handleCloseFacturation}
-        user={user}
-      />
-
-      <EditRedSocialData
-        show={showRedSocial}
-        setShow={setShowRedSocial}
-        handleClose={handleCloseRedSocial}
-        user={user}
-      />
-    </>
-  );
-};
 
 export default MyProfile;
