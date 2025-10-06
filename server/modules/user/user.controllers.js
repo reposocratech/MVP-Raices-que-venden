@@ -175,21 +175,46 @@ class UserController {
     addRedSocialData = async (req, res) => {
         try {
           const { user_id, name, link } = req.body;
-          let data = {
+          let data = [
+            user_id,
             name,
             link,
-            user_id
-          }
+          ]
 
         const newRedSocial = await userDal.addRedSocialData(data);
         
-        res.status(200).json({ message: 'Red social añadida', newRedSocial});
+        res.status(200).json(
+          { message: 'Red social añadida', 
+            redSocial: newRedSocial
+          }); 
 
       } catch (error) {
+        console.log(error)
       res.status(500).json({
             message: 'error de server',
             dataError: error,
           });
+      }
+    }
+
+    getRedSocial = async (req, res) => {
+      try {
+        const { user_id } = req;
+        
+        let result =  await userDal.getRedSocial(user_id);
+
+        res.status(200).json({
+          message: "Red social creada con exito",
+          redSocial: result
+        })
+        console.log("Desde el getRedSOCIAL CONTROLLER", result)
+        
+      } catch (error) {
+        console.log(error)
+        res.status(500).json({
+          message:'Error server', 
+          dataError: error
+        })
       }
     }
 

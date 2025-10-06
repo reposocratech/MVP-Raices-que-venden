@@ -28,6 +28,8 @@ router.put('/editImage', tokenVerify, uploadImage("users"), userController.editI
 //Editar Datos de redes sociales
 router.post('/addRedSocialData', tokenVerify, userController.addRedSocialData);
 
+router.get('/getRedSocial', tokenVerify, userController.getRedSocial)
+
 
 
 

@@ -9,7 +9,7 @@ export const AuthContextProvider = ({children}) => {
   const [texts, setTexts] = useState([]); //pensar nombre, si queremos cambiar habria que cambiarlo en login.jsx
   const [services, setServices] = useState([])
 
-  /* console.log("Desde el AuthContext" , user , token) */
+  console.log("Desde el AuthContext" , user)
 
   const logOut = () => {
     setUser(null);

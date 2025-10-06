@@ -73,6 +73,7 @@ export const AppRoutes = () => {
               <Route path='/service/:id' elem={<ServiceDetail />} />
             </Route>
           </Route>
+
           {/* Rutas User */}
           <Route element={<PrivateRoutes user={user} requiredType={2} />}>
             <Route element={<UserLayout />}>
@@ -88,6 +89,7 @@ export const AppRoutes = () => {
               <Route path='/user/profile' element={<MyProfile/>}/>
             </Route>
           </Route>
+
           {/* Rutas Admin */}
           <Route element={<PrivateRoutes user={user} requiredType={1}  />}>
             <Route element={<AdminLayout />}>

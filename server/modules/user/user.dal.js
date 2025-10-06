@@ -90,28 +90,42 @@ class UserDal {
   }
 
   addRedSocialData = async (data) => {
-    const { user_id, name, link } = data;
-    const connection = await dbPool.getConnection();
 
     try {
-        await connection.beginTransaction();
-        
-        const sql = `INSERT INTO social_network (user_id, name, link) VALUES (?, ?, ?)`;
-        const values = [user_id, name, link];
-        
-        await connection.query(sql, values);
-        
-        await connection.commit();
-        return { id: result.insertId, user_id, name, link };
+
+      let sql1 = 'SELECT MAX(social_network_id) as social_id from social_network';
+
+      let [result] = await executeQuery(sql1);
+      let { social_id } = result;
+      if (social_id === null) {
+        social_id = 1;
+      } else {
+        social_id++;
+      }
+
+      let sql = `INSERT INTO social_network 
+                (social_network_id, user_id, name, link) VALUES (?, ?, ?, ?)`
+      await executeQuery(sql, [social_id, ...data]);
 
 
     } catch (error) {
-        await connection.rollback();
         throw error;
-    } finally {
-        connection.release();
+    } 
+
+  }
+
+  getRedSocial = async (user_id) => {
+    try {
+
+      let sql = 'SELECT * FROM social_network WHERE user_id = ?'
+
+      let result = await executeQuery(sql, user_id);
+      
+      return result
+    } catch (error) {
+      throw error
     }
-}
+  }
 
 
 }

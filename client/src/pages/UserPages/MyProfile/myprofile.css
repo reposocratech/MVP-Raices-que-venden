@@ -110,6 +110,18 @@
                 .edit-link:hover {
                     color: var(--secundary-color-dark);
                 }
+
+                .map-redes {
+
+                    div {
+                        display: flex;
+                        align-items: center;
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
             }
 
         }
