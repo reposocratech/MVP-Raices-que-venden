@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {Offcanvas, Button} from 'react-bootstrap';
 import AlmuLogo from '/logo/logo-blanco-claro.png';
 
@@ -6,8 +6,12 @@ import './navbarAdmin.css'
 import { Li } from '../../Boton/Li';
 import { Link } from 'react-router-dom';
 import { Boton } from '../../Boton/Boton';
+import { AuthContext } from '../../../context/AuthContextProvider';
 
 export const NavbarAdmin = () => {
+
+ const { logOut } = useContext(AuthContext)
+
   const [show, setShow] = useState(false);
   const [view, setView] = useState('write');
 
@@ -37,7 +41,11 @@ export const NavbarAdmin = () => {
             
             </ul>
             <ul className='footer-list'>
-              <Boton aspecto='btn-5' icon='bi bi-escape' valor='Cerrar sesión'/>
+              <Boton 
+              onClick={logOut}
+              aspecto='btn-5' 
+              icon='bi bi-escape' 
+              valor='Cerrar sesión'/>
             </ul>
           </div>
         </Offcanvas.Body>
