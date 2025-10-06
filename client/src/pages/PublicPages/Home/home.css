@@ -95,7 +95,7 @@ h2 {
     padding-top: 2rem;
     padding-bottom: 3rem;
   }
-  i{
+  .icono{
      color: var(--secundary-color-dark);
   }
 
@@ -110,6 +110,7 @@ h2 {
       font-size: .8rem;
     }
   }
+ 
 
   
   
