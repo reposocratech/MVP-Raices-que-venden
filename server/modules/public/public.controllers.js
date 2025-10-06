@@ -33,6 +33,23 @@ class PublicController {
       }
 
     }
+
+    getServiceDetail = async (req, res) => {
+      const {id} = req.params;
+      
+      try {
+        const serviceData = await publicDal.getServiceDetail(id);
+        console.log(serviceData)
+        res.status(200).json(serviceData)
+
+      } catch (error) {
+        console.log(error)
+        res.status(500).json({message: "***********", error})
+        throw error;
+
+      }
+
+    }
 }
 
 export default new PublicController();

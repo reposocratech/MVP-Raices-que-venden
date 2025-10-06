@@ -10,19 +10,19 @@ const FooterApp = () => {
             <div className="col d-flex justify-content-center mt-3 mb-2">
               <a>
                 <i
-                  className="bi bi-instagram"
+                  className="bi bi-instagram "
                   style={{ fontSize: "1.5rem" }}
                 ></i>
               </a>
               <a className="text-white mx-4">
                 <i
-                  className="bi bi-facebook"
+                  className="bi bi-facebook "
                   style={{ fontSize: "1.5rem" }}
                 ></i>
               </a>
               <a>
                 <i
-                  className="bi bi-linkedin"
+                  className="bi bi-linkedin "
                   style={{ fontSize: "1.5rem" }}
                 ></i>
               </a>

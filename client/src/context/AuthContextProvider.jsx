@@ -6,10 +6,11 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({children}) => {
   const [user, setUser] = useState();
   const [token, setToken] = useState(null);
-  const [texts, setTexts] = useState([]); //pensar nombre, si queremos cambiar habria que cambiarlo en login.jsx
   const [services, setServices] = useState([])
 
-  console.log("Desde el AuthContext" , user)
+
+  /* console.log("Desde el AuthContext" , user , token) */
+
 
   const logOut = () => {
     setUser(null);
@@ -39,21 +40,7 @@ export const AuthContextProvider = ({children}) => {
   },[])
   
 
-  useEffect(()=>{
-   const loadServices = async () => {
-    try {
-      const result = await fetchData("/getServices", "GET");
-      console.log(result);
-      setServices(result.data);
-    
-
-    }catch (error){
-      console.log(error);
-    }
-   };
-   loadServices();
-
-  }, []);
+  
 
   return (
     <AuthContext.Provider 
@@ -62,8 +49,6 @@ export const AuthContextProvider = ({children}) => {
                setUser,
                token,
                setToken,
-               texts,
-               setTexts,
                services,
                setServices,
                logOut

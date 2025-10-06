@@ -44,6 +44,10 @@ CREATE TABLE service (
     is_visible BOOLEAN NOT NULL DEFAULT 0
 );
 
+SELECT * FROM service;
+
+INSERT INTO service(service_id, service_name, service_description, service_image)
+VALUES(2, "marketing", "textos escritos", "estaimagen");
 
 
 CREATE TABLE availability (

@@ -1,0 +1,46 @@
+.edit-form {
+    width: 100%;
+    padding: 1rem;
+
+    .input-div{
+        display: flex;
+        flex-direction: column;
+        padding-top: 0.5rem;
+        
+
+        input {
+            border-radius: var(--border-hight);
+            padding: 0.5rem 1rem; 
+            border: 1px solid var(--secundary-color);
+
+        }
+
+        textarea{
+            border-radius: var(--border-medium);
+            padding: 0.5rem 1rem; 
+            border: 1px solid var(--secundary-color);
+        }
+
+        
+
+    }
+
+    span {
+        display: inline-block;
+        margin-block-start: 0.5rem;
+    }
+
+    .img-input {
+            border: 2px dashed var(--secundary-color);
+            border-radius: var(--border-medium);
+            padding: 0.5rem 1rem;
+            text-align: center;
+            i {
+                color: var(--secundary-color);
+            }
+        }
+
+    
+
+    
+}

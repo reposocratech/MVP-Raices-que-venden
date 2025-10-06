@@ -1,0 +1,62 @@
+.section-contact{
+    min-height:calc(100vh - 150px);
+  display: flex;
+    justify-content: center;
+    align-items: center;
+   background: 
+    linear-gradient(rgba(255, 255, 255, 0.876), rgb(255, 255, 255, 0.876)), 
+    url(../../../../public/fondo/fondo.jpg);
+
+    h1{
+      text-align: center;
+      color: var(--tertiary-color-almu);
+      padding-bottom: 3rem;
+      font-weight: bold;
+    }
+}
+
+.container-contact{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  
+
+  .formcontact{
+    text-align: center;
+    padding-inline: 4rem;
+
+    p{
+      font-weight: bold;
+      font-size: 1.25rem;
+      text-wrap-style: pretty;
+      color: var(--tertiary-color);
+      padding-top: 1rem;
+    }
+  }
+
+  .contact-text{
+    background-color: var(--primary-color);
+    border: 2px solid var(--tertiary-color);
+    border-radius: var(--border-low);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2rem;
+    padding-bottom: 5rem;
+    h2{
+      text-align: center;
+      color: var(--tertiary-color);
+    }
+
+
+  }
+
+  img.imgAlmu{
+    width: 50%;
+      border-radius:50%;
+      transform: translate(140px, -80px);
+    }
+
+  @media (width<600px){
+    padding-inline: 2rem
+  }
+}

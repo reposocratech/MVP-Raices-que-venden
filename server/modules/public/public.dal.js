@@ -35,6 +35,19 @@ class PublicDal {
       }
 
     }
+    getServiceDetail = async (id) => {
+      try {
+      const sql = 'SELECT * FROM service WHERE service_id = ?'
+      const [service] = await executeQuery(sql, [id]);
+      return service;
+
+      } catch (error) {
+        console.log(error)
+        throw error;
+
+      }
+
+    }
 }
 
 export default new PublicDal();
