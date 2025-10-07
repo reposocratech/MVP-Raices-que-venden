@@ -1,6 +1,11 @@
+import React from 'react'
+import AdminCalendar from '../../../components/AdminCalendar/AdminCalendar';
+
 const Calendar = () => {
   return (
-    <div>Calendar</div>
+    <div>
+      <AdminCalendar />
+    </div>
   )
 }
 
