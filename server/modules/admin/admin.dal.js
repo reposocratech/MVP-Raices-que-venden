@@ -6,7 +6,6 @@ class AdminDal {
     try {
       const sql = 'SELECT * FROM service';
       const services = await executeQuery(sql);
-      console.log("***************", services)
       return services;
       
 
@@ -38,8 +37,71 @@ class AdminDal {
       const [result3] = await connection.query(sql3);
 
       await connection.commit();
-
+      
       return result3;
+
+    } catch (error) {
+      await connection.rollback();
+      console.log(error);
+      throw error;
+    } finally {
+      if(connection){
+        connection.release();
+      }
+    }
+  }
+
+  modifyService = async (data) => {
+    const connection = await dbPool.getConnection();
+
+    try {
+      await connection.beginTransaction();
+
+      let values = [data.service_name, data.service_description, data.service_price, data.service_id];
+      let sql1 = 'UPDATE service SET service_name=?, service_description=?, service_price=? WHERE service_id=?';
+      if(data.service_image){
+        values =[data.service_name, data.service_description, data.service_price, data.service_image, data.service_id];
+        sql1='UPDATE service SET service_name=?, service_description=?, service_price=?, service_image=? WHERE service_id=?'
+      }
+      console.log('hasta aca llega');
+      
+      await connection.query(sql1, values);
+
+      let sql2 = 'SELECT * FROM service WHERE service_id=?';
+      const result = await connection.query(sql2, [data.service_id]);
+
+      console.log('resp modify ', result);
+      return result;
+
+    } catch (error) {
+      await connection.rollback();
+      console.log(error);
+      throw error;
+    } finally {
+      if(connection){
+        connection.release();
+      }
+    }
+  }
+
+  alterVisible = async ({service_id, is_visible}) => {
+    try {
+      let sql = 'UPDATE service SET is_visible=? WHERE service_id=?';
+      const values = [is_visible, service_id];
+
+      const result = await executeQuery(sql, values);
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  deleteService = async (service_id) => {
+    try {
+      let sql = 'DELETE FROM service WHERE service_id=?';
+
+      await executeQuery(sql, [service_id]);
 
     } catch (error) {
       console.log(error);
