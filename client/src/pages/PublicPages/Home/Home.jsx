@@ -18,7 +18,7 @@ const Home = () => {
         setServices(response.data);
 
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
     fetchServices()
