@@ -28,9 +28,8 @@ const AdminService = () => {
   
   const alterVisible = async (serviceData) => {
     const {service_id} = serviceData;
-    console.log(service_id);
     const newVisibility = await fetchData('/admin/alterVisible', 'PUT', serviceData, token);
-    setServices(prevServices=>prevServices.map((service)=>service.service_id!==service_id?service:{...service, is_visible: newVisibility}));
+    setServices(prevServices=>prevServices.map((service)=>service.service_id!==service_id?service:{...service, is_visible: newVisibility.data}));
     
   }
 
@@ -80,8 +79,8 @@ const AdminService = () => {
         })}
       </Row>
       <CreateService show={showCreateService} handleClose={()=>setShowCreateService(false)} setServices={setServices}/>
-      {selectedService && showModifyService && <ModifyService show={showModifyService} handleClose={handleCloseEdit} setServices={setServices} service={selectedService} deselect={()=>setSelectedService(null)}/>}
-      {selectedService && showDeleteService && <DeleteService show={showDeleteService} handleClose={handleCloseDelete} setServices={setServices} service={selectedService} deselect={()=>setSelectedService(null)}/>}
+      {selectedService && <ModifyService show={showModifyService} handleClose={handleCloseEdit} setServices={setServices} service={selectedService} deselect={()=>setSelectedService(null)}/>}
+      {selectedService && <DeleteService show={showDeleteService} handleClose={handleCloseDelete} setServices={setServices} service={selectedService} deselect={()=>setSelectedService(null)}/>}
     </Container>
   )
 }
