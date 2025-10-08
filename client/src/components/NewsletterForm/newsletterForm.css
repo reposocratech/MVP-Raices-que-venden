@@ -3,3 +3,6 @@
     font-family: var(--font-form);
 }
 
+.newsletter-text {
+    color: var(--secundary-color-dark);
+}

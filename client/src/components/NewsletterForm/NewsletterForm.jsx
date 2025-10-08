@@ -36,7 +36,7 @@ const NewsletterForm = () => {
 
   return (
     <>
-    <Container className="d-flex justify-content-center my-5">
+    <Container className="d-flex justify-content-center my-5 fw-bold">
         <Row className="justify-content-center">
             <Col> 
       <Card className="p-4 mb-4 shadow-sm rounded-4 card-newsletter">
@@ -47,7 +47,7 @@ const NewsletterForm = () => {
           <Form
           onSubmit={handleSubmit}
           >
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 newsletter-text">
             <Form.Label>Nombre: </Form.Label>
             <Form.Control 
             type="text" 
@@ -58,7 +58,7 @@ const NewsletterForm = () => {
             required 
             />
           </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 newsletter-text">
               <Form.Label>Email: </Form.Label>
               <Form.Control
                 type="email"
