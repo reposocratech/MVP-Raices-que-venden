@@ -107,6 +107,7 @@ class UserDal {
                 (social_network_id, user_id, name, link) VALUES (?, ?, ?, ?)`
       await executeQuery(sql, [social_id, ...data]);
 
+      return social_id;
 
     } catch (error) {
         throw error;
@@ -124,6 +125,19 @@ class UserDal {
       return result
     } catch (error) {
       throw error
+    }
+  }
+
+  deleteRedSocial = async (id) => {
+    try {
+
+      if (id) {
+        let sql = 'DELETE FROM social_network WHERE social_network_id = ?';
+        await executeQuery(sql, [id]);
+      }
+      
+    } catch (error) {
+      throw error;
     }
   }
 
