@@ -108,6 +108,36 @@ class AdminDal {
       throw error;
     }
   }
+
+  addDayHour = async (values) =>  {
+    try {
+      let sql = `INSERT INTO availability (availability_day, availability_hour) VALUES(?,?)`
+      const result = await executeQuery(sql, values)
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
+  getAllDaysHours = async () => {
+    try {
+      let sql = 'SELECT * FROM availability';
+      let result = await executeQuery(sql)
+      return result;
+    } catch (error) {
+      throw error
+    }
+  }
+
+  deleteDayHour = async (values) => {
+    try { 
+      let sql = `DELETE FROM availability WHERE availability_day=? AND availability_hour=?`;
+      await executeQuery(sql, values);
+      
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export default new AdminDal();

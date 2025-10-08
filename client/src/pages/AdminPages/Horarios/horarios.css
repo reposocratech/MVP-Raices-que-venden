@@ -1,0 +1,14 @@
+
+
+.title {
+    color: var(--tertiary-color-almu);
+}
+
+hr {
+    color: var(--tertiary-color-almu);
+}
+
+.title-days {
+    color: var(--secundary-color-dark);
+    font-size: 1.5rem;
+}
