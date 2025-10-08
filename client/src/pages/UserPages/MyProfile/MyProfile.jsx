@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -7,52 +6,50 @@ import notAvatar from './../../../../public/icons/notAvatar.png';
 import './myprofile.css';
 import { EditPersonalData } from '../../../components/Modals/EditPersonalData/EditPersonalData';
 import { EditFacturationData } from '../../../components/Modals/EditFacturationData/EditFacturationData';
-import { EditImage } from "../../../components/Modals/EditImage/EditImage";
+import { EditImage } from '../../../components/Modals/EditImage/EditImage';
 import { AddRedSocialData } from '../../../components/Modals/AddRedSocialData/AddRedSocialData';
 import { fetchData } from '../../../helpers/axiosHelper';
 import { Boton } from '../../../components/Boton/Boton';
 import { iconsRedes } from '../../../middlewares/iconsRedes.js';
-
-  
+import { EditRedSocialData } from '../../../components/Modals/EditRedSocialData/EditRedSocialData.jsx';
 
 const MyProfile = () => {
-  const { user, setUser, token} = useContext(AuthContext);
+  const { user, setUser, token } = useContext(AuthContext);
 
   const [showPersonal, setShowPersonal] = useState(false);
   const [showFacturation, setShowFacturation] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [showRedSocial, setShowRedSocial] = useState(false);
-  const [redes, setRedes] = useState([])
-  
-  useEffect(() => {
-    const fetchRedes = async  ()=> {
-      try {
-          const res = await fetchData('/user/getRedSocial', 'GET',  null , token );
- 
-          setRedes(res.data.redSocial)
+  const [showEditRed, setShowEditRed] = useState(false);
+  const [selectedRed, setSelectedRed] = useState(null);
+  const [redes, setRedes] = useState([]);
 
-        } catch (error) {
-          console.log(error)
-        }
-    }
-    fetchRedes()
-  },[])
+  useEffect(() => {
+    const fetchRedes = async () => {
+      try {
+        const res = await fetchData('/user/getRedSocial', 'GET', null, token);
+
+        setRedes(res.data.redSocial);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchRedes();
+  }, []);
 
   const addRedSocial = (red) => {
-    setRedes([...redes, red])
-  }
+    setRedes([...redes, red]);
+  };
 
   const deleteRedSocial = async (id) => {
     try {
-      await fetchData(`/user/deleteRedSocial/${id}`, "DELETE" , null , token);
+      await fetchData(`/user/deleteRedSocial/${id}`, 'DELETE', null, token);
 
-      setRedes(redes.filter(e => e.social_network_id !== id))
-
+      setRedes(redes.filter((e) => e.social_network_id !== id));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-
+  };
 
   const handleClosePersonal = () => {
     setShowPersonal(false);
@@ -70,21 +67,31 @@ const MyProfile = () => {
     setShowFacturation(true);
   };
 
- const handleCloseRedSocial = () => {
-  setShowRedSocial(false);
-};
+  const handleCloseRedSocial = () => {
+    setShowRedSocial(false);
+  };
 
-  const editRedSocialData = () => {
+  const addRedSocialData = () => {
     setShowRedSocial(true);
   };
 
   const handleCloseImage = () => {
-    setShowImage(false)
-  }
+    setShowImage(false);
+  };
 
   const editImage = () => {
-    setShowImage(true)
-  }
+    setShowImage(true);
+  };
+
+  const editRedSocialData = (red) => {
+    setSelectedRed(red);
+    setShowEditRed(true);
+  };
+
+  const handleCloseEditRed = () => {
+    setShowEditRed(false);
+    setSelectedRed(null);
+  };
 
   return (
     <>
@@ -92,13 +99,21 @@ const MyProfile = () => {
         <h2>Mi Perfil</h2>
         <hr />
         <Row sm={1} md={1} lg={2} className="sub-container-profile py-5">
-          <Col  className="img-profile">
-            <h2>¡Hola <span>{user?.user_name ? user?.user_name : user?.email}!</span></h2>
-            <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt="" />
-            <Link 
-              onClick={editImage}
-              className="edit-link"
-              ><i className="bi bi-pencil-square"></i> 
+          <Col className="img-profile">
+            <h2>
+              ¡Hola{' '}
+              <span>{user?.user_name ? user?.user_name : user?.email}!</span>
+            </h2>
+            <img
+              src={
+                user?.avatar
+                  ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`
+                  : notAvatar
+              }
+              alt=""
+            />
+            <Link onClick={editImage} className="edit-link">
+              <i className="bi bi-pencil-square"></i>
               Cambiar imagen
             </Link>
           </Col>
@@ -152,41 +167,41 @@ const MyProfile = () => {
               </Link>
             </div>
 
-
             <div className="facturation-data">
               <h4>Mis redes sociales</h4>
               <hr />
               {redes?.map((e) => {
-                  return (
-                      <Row className='map-redes' key={e.social_network_id}>
-                        <Col sm={1}>
-                          <i className={iconsRedes(e.name)}></i>
-                        </Col>
-                        <Col sm={2}>
-                          <p>{e.name}</p>
-                        </Col>
-                        <Col sm={6}>
-                          <p>{e.link}</p>
-                        </Col>
-                        <Col sm={3} className='d-flex justify-content-center align-content-center'>
-                          <Boton
-                            icon="bi bi-pencil-square"
-                            aspecto="btn-rounded-ok"
-                            
-                          />
-                           <Boton
-                            icon="bi bi-trash3"
-                            aspecto="btn-rounded-err"
-                            onClick={() => deleteRedSocial(e.social_network_id)}
-                          />
-                        </Col>
-                      </Row>
-                  )
-                })
-              }
-                
+                return (
+                  <Row className="map-redes" key={e.social_network_id}>
+                    <Col sm={1}>
+                      <i className={iconsRedes(e.name)}></i>
+                    </Col>
+                    <Col sm={2}>
+                      <p>{e.name}</p>
+                    </Col>
+                    <Col sm={6}>
+                      <p>{e.link}</p>
+                    </Col>
+                    <Col
+                      sm={3}
+                      className="d-flex justify-content-center align-content-center"
+                    >
+                      <Boton
+                        icon="bi bi-pencil-square"
+                        aspecto="btn-rounded-ok"
+                        onClick={() => editRedSocialData(e)}
+                      />
+                      <Boton
+                        icon="bi bi-trash3"
+                        aspecto="btn-rounded-err"
+                        onClick={() => deleteRedSocial(e.social_network_id)}
+                      />
+                    </Col>
+                  </Row>
+                );
+              })}
 
-              <Link onClick={editRedSocialData} className="edit-link">
+              <Link onClick={addRedSocialData} className="edit-link">
                 <i className="bi bi-plus-circle"></i>
                 Añadir Red Social
               </Link>
@@ -196,21 +211,15 @@ const MyProfile = () => {
       </Container>
 
       {/* Modal editar datos perosonales */}
-      <EditPersonalData
-        show={showPersonal}
-        handleClose={handleClosePersonal}
-        />
+      <EditPersonalData show={showPersonal} handleClose={handleClosePersonal} />
       {/* Modal editar datos de facturación */}
       <EditFacturationData
         show={showFacturation}
         handleClose={handleCloseFacturation}
-        />  
+      />
 
       {/* Modal editar la imagen */}
-      <EditImage
-        show={showImage}
-        handleClose={handleCloseImage}
-      />
+      <EditImage show={showImage} handleClose={handleCloseImage} />
 
       {/* Añadir redes social */}
       <AddRedSocialData
@@ -221,15 +230,16 @@ const MyProfile = () => {
       />
 
       {/* Editar red social */}
-
+      <EditRedSocialData
+        show={showEditRed}
+        handleClose={handleCloseEditRed}
+        red={selectedRed}
+        setRedes={setRedes}
+      />
 
       {/* Eliminar red social */}
-       
-
-
-      </>
-  )
-}
-
+    </>
+  );
+};
 
 export default MyProfile;

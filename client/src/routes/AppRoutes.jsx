@@ -78,10 +78,10 @@ export const AppRoutes = () => {
           {/* Rutas User */}
           <Route element={<PrivateRoutes user={user} requiredType={2} />}>
             <Route element={<UserLayout />}>
-              <Route path='/' element={<Home/>}/>
+              <Route path='/user' element={<Home/>}/>
               {/* Servicios dinamicos??? */}
-              <Route path='/services' element={<Services/>}/>
-              <Route path='/about' element={<About/>} />
+              <Route path='/user/services' element={<Services/>}/>
+              <Route path='/user/about' element={<About/>} />
               <Route path='/user/shop' element={<Shop />} />
               <Route path='/user/myorders' element={<MyOrders />} />
               <Route path='/user/texts' element={<MyTexts/>}/>

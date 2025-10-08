@@ -1,5 +1,41 @@
+
 .card-newsletter {
-    background-color: #acc9ab;
+    background-color: transparent;
     font-family: var(--font-form);
+    margin-inline: 15rem;
+    border: 0;
+
+    .title{
+        font-weight: bold;
+        color: var(--secundary-color-dark);
+        font-family:var(--font-title) ;
+        font-size: 2rem;
+    }
+
+
+    .label{
+        font-weight: bold;
+        color: var(--secundary-color-dark);
+    }
+
 }
 
+@media (width<1200px){
+    .card-newsletter{
+        margin-inline: 9rem;
+    }
+}
+@media (width<992px){
+    .card-newsletter{
+        margin-inline: 4rem;
+    }
+}
+@media (width<768px){
+    .card-newsletter{
+        margin-inline: 0;
+
+        .title{
+            font-size: 1.1rem;
+        }
+    }
+}
