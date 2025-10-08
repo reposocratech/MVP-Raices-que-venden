@@ -41,7 +41,7 @@ import MyCalendar from '../pages/UserPages/MyCalendar/MyCalendar'
 
 const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
 const Appointments = lazy(() => import('../pages/AdminPages/Appointments/Appointments'));
-const Calendar = lazy(() => import('../pages/AdminPages/Calendar/Calendar'));
+const Horarios = lazy(() => import('../pages/AdminPages/Horarios/Horarios'));
 const AdminUsers = lazy(() => import('../pages/AdminPages/AdminUsers/AdminUsers'));
 const AdminService = lazy(() => import('../pages/AdminPages/AdminService/AdminService'));
 const Dashboard = lazy(() => import('../pages/AdminPages/Dashboard/Dashboard'));
@@ -99,7 +99,7 @@ export const AppRoutes = () => {
               <Route path='/admin/dashboard' element={<Dashboard/>}/>
               <Route path='/admin/services' element={<AdminService />}/>
               <Route path='/admin/users' element={<AdminUsers/>} />
-              <Route path='/admin/calendar' element={<Calendar />} />
+              <Route path='/admin/horarios' element={<Horarios />} />
               <Route path='/admin/appointments' element={<Appointments />} />
               <Route path='/admin/orders' element={<AdminOrders />} />
             </Route>

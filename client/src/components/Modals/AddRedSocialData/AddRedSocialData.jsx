@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { fetchData } from "../../../helpers/axiosHelper";
 import { AuthContext } from "../../../context/AuthContextProvider";
 
-export const AddRedSocialData = ({ handleClose, show}) => {
+export const AddRedSocialData = ({ handleClose, show, addRedSocial}) => {
   const { user, token } = useContext(AuthContext);
 
   const [newRedSocial, setNewRedSocial] = useState({ name: '', link: '' });
@@ -24,7 +24,14 @@ export const AddRedSocialData = ({ handleClose, show}) => {
       };
 
       // Añadir las redes a la base de datos.
-      await fetchData('/user/addRedSocialData', 'POST', data, token);
+      let res = await fetchData('/user/addRedSocialData', 'POST', data, token);
+      
+      let { idRedSocial } = res.data;
+
+      addRedSocial({
+        ...data,
+        social_network_id: idRedSocial
+      })
 
 
      //limpiar
@@ -44,17 +51,26 @@ export const AddRedSocialData = ({ handleClose, show}) => {
 
       <Modal.Body>
         <form className="edit-form">
-          <div className="d-flex flex-column mb-3">
+          <div className="input-div">
             <label>Nombre de la red</label>
-            <input
+            <select
               type="text"
               name="name"
               value={newRedSocial.name}
               onChange={handleChange}
               placeholder="Ej: Instagram"
-            />
+            >
+              <option value="facebook">Facebook</option>
+              <option value="instagram">Instagram</option>
+              <option value="threads">Threads</option>
+              <option value="tiktok">TikTok</option>
+              <option value="x">X (twitter)</option>
+              <option value="youtube">Youtube</option>
+              <option value="twitch">Twitch</option>
+              <option value="vimeo">Vimeo</option>
+            </select>
           </div>
-          <div className="d-flex flex-column">
+          <div className="input-div">
             <label>URL</label>
             <input
               type="text"

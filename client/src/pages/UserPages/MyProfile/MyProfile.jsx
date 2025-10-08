@@ -12,6 +12,7 @@ import { AddRedSocialData } from '../../../components/Modals/AddRedSocialData/Ad
 import { fetchData } from '../../../helpers/axiosHelper';
 import { Boton } from '../../../components/Boton/Boton';
 import { iconsRedes } from '../../../middlewares/iconsRedes.js';
+
   
 
 const MyProfile = () => {
@@ -23,27 +24,34 @@ const MyProfile = () => {
   const [showRedSocial, setShowRedSocial] = useState(false);
   const [redes, setRedes] = useState([])
   
-  console.log(redes)
-
   useEffect(() => {
-
     const fetchRedes = async  ()=> {
       try {
-        
-        const res = await fetchData('/user/getRedSocial', 'GET',  null , token );
-        
-        setUser({
-          ...user,
-          redes: setRedes(...user.redes || [], res.data.redSocial)
-        }); 
+          const res = await fetchData('/user/getRedSocial', 'GET',  null , token );
+ 
+          setRedes(res.data.redSocial)
 
         } catch (error) {
           console.log(error)
         }
     }
     fetchRedes()
-      
-  },[showRedSocial])
+  },[])
+
+  const addRedSocial = (red) => {
+    setRedes([...redes, red])
+  }
+
+  const deleteRedSocial = async (id) => {
+    try {
+      await fetchData(`/user/deleteRedSocial/${id}`, "DELETE" , null , token);
+
+      setRedes(redes.filter(e => e.social_network_id !== id))
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
   const handleClosePersonal = () => {
@@ -163,16 +171,16 @@ const MyProfile = () => {
                         <Col sm={3} className='d-flex justify-content-center align-content-center'>
                           <Boton
                             icon="bi bi-pencil-square"
-                            aspecto="btn-6"
+                            aspecto="btn-rounded-ok"
+                            
                           />
                            <Boton
                             icon="bi bi-trash3"
-                            aspecto="btn-6"
+                            aspecto="btn-rounded-err"
+                            onClick={() => deleteRedSocial(e.social_network_id)}
                           />
                         </Col>
                       </Row>
-                      
-                    
                   )
                 })
               }
@@ -209,9 +217,11 @@ const MyProfile = () => {
         show={showRedSocial}
         handleClose={handleCloseRedSocial}
         setRedes={setRedes}
+        addRedSocial={addRedSocial}
       />
 
       {/* Editar red social */}
+
 
       {/* Eliminar red social */}
        
