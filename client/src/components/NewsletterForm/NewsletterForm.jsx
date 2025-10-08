@@ -20,7 +20,7 @@ const NewsletterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetchData("/newsletter", "POST", formData);
+      const response = await fetchData("/mailChimp/subscribe", "POST", formData);
 
       if (response.status === 200){
         alert("¡Gracias por suscribirte!");
