@@ -5,10 +5,13 @@ import { Boton } from "../../../components/Boton/Boton";
 import CardService from "../../../components/cardService/CardService";
 import { fetchData } from "../../../helpers/axiosHelper";
 import NewsletterForm from "../../../components/newsletterForm/NewsletterForm";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 
   const [services, setServices] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -28,11 +31,13 @@ const Home = () => {
   return (
 
     <>
+      
+
       <section className="home">
-        <Container>
+        <Container fluid>
           <Row className="align-items-center">
-            <Col md={6} className="texto-home">
-              <h1 className="h1-ppal">Raíces que Venden</h1>
+            <Col md={6} className="texto-home px-5">
+              <h1 className="h1-home">Raíces que Venden</h1>
               <p className="h5">Copywriting rural con alma · By Almuyalma</p>
               <p>
                 Convierto las cosas en emociones, convierto cada detalle en una
@@ -41,13 +46,16 @@ const Home = () => {
                 en ella existe la raíz de nuestra esencia y cultura. Por ello
                 quiero hacer crecer cualquier rincón rural en valor.
               </p>
-              <Boton className="btn" aspecto="btn-2 fw-bold" valor="Saber más" />
+              <div className="btn-home">
+                <Button className="btn" onClick={()=> navigate('/contact')} >Contactar</Button>
+              </div>
+            
             </Col>
             <Col md={6} className="image-col">
               <img
                 src="/images/home.png"
                 alt="imagen camino almendros en flor"
-                className="img-fluid img-rounded-left"
+                className="img-fluid "
               />
             </Col>
           </Row>
@@ -56,12 +64,13 @@ const Home = () => {
 
       <section className="section-2 ">
       <Container>
+         <h2 className="mb-4 title text-center">La autenticidad es tu mayor ventaja</h2>
         <Row className="text-center">
-          <h2 className="mb-4 title">La autenticidad es tu mayor ventaja</h2>
+         
           <Col md={4}>
           <i className="bi bi-flower1 fs-4 icono"></i>
           <h3 className="h3-title">Conexión con la Tierra</h3>
-          <p>
+          <p className="p-text">
             Entemos el valor del proceso lento, la tradicción y los productos de cercanía. Lo plasmamos en cada texto
           </p>
           </Col>
@@ -69,7 +78,7 @@ const Home = () => {
            <Col md={4}>
           <i className="bi bi-chat-left-dots fs-4 icono"></i>
           <h3 className="h3-title">Mensajes con Alma</h3>
-          <p>
+          <p className="p-text">
             Huimos del marketing vacío. Tu comunicación será tan genuina como tu trabajo diario. Palabaras que resuenan
           </p>
           </Col>
@@ -77,7 +86,7 @@ const Home = () => {
            <Col md={4}>
           <i className="bi bi-activity fs-4 icono"></i>
           <h3 className="h3-title">Resultados Tangibles</h3>
-          <p>
+          <p className="p-text">
             Un buen <strong>copy</strong> no es solo bonito, es estratégico. Te ayudamos a traer, fidelizar y aumnetar tus ventas online.
           </p>
           </Col>
@@ -94,8 +103,8 @@ const Home = () => {
             <img className="w-75 img " src="/images/home.png" alt="" />
             </Col>
 
-             <Col md={6} className="texto-home">
-              <h2 className="fs-2 pb-2 fw-bold">Sumamos historias juntos...</h2>
+             <Col md={6} className="texto ">
+              <h2 className="pb-2 fw-bold">Sumamos historias juntos...</h2>
               <p>
                 Convierto las cosas en emociones, convierto cada detalle en una
                 historia emocional. La vida rural es lo más valioso que tenemos,
@@ -130,11 +139,12 @@ const Home = () => {
         </Row>
       </Container>   
       </section>
+
       <section className="newsletter-section">
         <Container>
           <Row>
             <Col md={12}>
-            <NewsletterForm />      
+            <NewsletterForm /> 
             </Col>
           </Row>
         </Container>

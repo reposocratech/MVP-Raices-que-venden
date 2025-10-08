@@ -34,7 +34,7 @@ router.get('/getRedSocial', tokenVerify, userController.getRedSocial)
 //Eliminar data
 router.delete('/deleteRedSocial/:social_network_id', tokenVerify, userController.deleteRedSocial)
 
-
+router.put('/editRedSocial/:social_network_id', tokenVerify, userController.editRedSocial)
 
 
 export default router;

@@ -141,6 +141,16 @@ class UserDal {
     }
   }
 
+  editRedSocial = async(values) => {
+    try {
+      let sql = `UPDATE social_network SET name=?, link=? WHERE social_network_id = ?`
+      await executeQuery(sql, values);
+
+    } catch (error) {
+      throw error;
+    }
+  }
+
 
 }
 
