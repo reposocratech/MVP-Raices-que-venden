@@ -63,9 +63,9 @@ class UserController {
   getUserToken = async (req, res) => {
     try {
       const { user_id } = req;
-      console.log('Desde get Token', user_id);
+      /* console.log('Desde get Token', user_id); */
       const result = await userDal.findUserById(user_id);
-      console.log(result);
+      /* console.log(result); */
 
       let userData = {};
 

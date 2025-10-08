@@ -1,14 +1,22 @@
-import { Container } from "react-bootstrap";
+import React from 'react'
+import { Col, Container, Row } from "react-bootstrap";
+import MyCalendar from "../MyCalendar/MyCalendar";
+import './chooseDate.css'
 
 const ChooseDate = () => {
   return (
-    <>
-      <Container>
-        <h2>Citas Disponibles</h2>
+    <div>
+        <Container className='titulo-citas'>
+        <h2>Elige tu cita</h2>
         <hr />
-      </Container>
-    </>
+        <Row className='container-choose'>
+            <Col> 
+            <MyCalendar />
+            </Col>
+        </Row>
+           
+        </Container>
+    </div>
   )
 }
-
-export default ChooseDate;
+export default ChooseDate

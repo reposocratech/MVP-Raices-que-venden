@@ -1,13 +1,13 @@
-import { Container } from "react-bootstrap";
-
+import React from 'react'
+import { Container } from 'react-bootstrap';
 
 const MyAppointments = () => {
     return (
         <>
         <Container>
-            <h2>Mis Citas</h2>
-            <hr />
-        </Container>
+        <h2>Mis citas</h2>
+        <hr />
+        </Container>  
         </>
     )
 }

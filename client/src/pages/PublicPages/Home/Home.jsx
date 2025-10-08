@@ -14,11 +14,12 @@ const Home = () => {
     const fetchServices = async () => {
       try {
         const response = await fetchData("/getServices", "GET");
+        const visibleServices = response.data.filter(service => service.is_visible === 1);
         console.log("esto es la respuesta del backkkk", response.data)
-        setServices(response.data);
+        setServices(visibleServices);
 
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
     fetchServices()
@@ -120,6 +121,7 @@ const Home = () => {
             name={servicio.service_name}
             description={servicio.service_description}
             image={servicio.service_image}
+
             />
           </Col>
          )
