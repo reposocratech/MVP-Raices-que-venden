@@ -2,8 +2,10 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import { format, parse, startOfWeek, getDay } from "date-fns";
 import { es } from "date-fns/locale";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { AuthContext } from "../../../context/AuthContextProvider";
+import { fetchData } from "../../../helpers/axiosHelper";
 
 
 const locales = {
@@ -18,7 +20,7 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-const appoiments = [
+/*const appoiments = [
   {
     status: "free",
     start: new Date(2025, 9, 8, 10, 0),
@@ -41,29 +43,79 @@ const appoiments = [
   },
 ];
 
-let finalApp = appoiments
+
+let finalApp = appoitments
   .filter((e) => e.status === "free")
   .map((e) => ({
     ...e,
     title: "Disponible",
-  }));
+  })); */
 
 export default function MyCalendar() {
   const [view, setView] = useState("month");
   const [date, setDate] = useState(new Date());
   const [reserved, setReserved] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const {user} = useContext(AuthContext)
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const response = await fetchData("/appointment/available", "GET");
+        const available = response.map((e) => ({
+          ...e,
+          start: new Date(e.start),
+          end: new Date(e.end),
+          title: "Disponible"
+      
+        }));
+
+        setEvents(available)
+        console.log(response)
+
+      } catch (error) {
+        console.log(error)
+
+      }
+    }
+    fetchAppointments();
+  }, []);
 
   const handleReservedEvent = (event) => {
     setReserved(event);
     setShowModal(true);
   };
 
+  const enviarReserva = async () => {
+    if (!reserved) return;
+    
+    const fecha = reserved.start
+    const app_day = fecha.getDay();
+    const app_hour = fecha.getHours() - 7;
+    const app_date = fecha.toISOString().split('T')[0];  
+
+    try { 
+      const response = await fetchData('/appointment/reserve', 'POST', {
+        app_day,
+        app_hour,
+        app_date,
+        user_id: user.user_id
+      })
+      console.log(response);
+      setShowModal(false);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   return (
     <div className="h-[600px] p-4 bg-gray-50 rounded-2xl shadow-md">
       <Calendar
         localizer={localizer}
-        events={finalApp}
+        events={events}
         startAccessor="start"
         endAccessor="end"
         views={["month", "week", "day"]}
@@ -103,6 +155,9 @@ export default function MyCalendar() {
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Entendido
+          </Button>
+          <Button variant="primary" onClick={enviarReserva}>
+            Enviar reserva
           </Button>
         </Modal.Footer>
       </Modal>
