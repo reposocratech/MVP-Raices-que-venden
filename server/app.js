@@ -13,6 +13,8 @@ const __dirname = path.dirname(__filename);
 import publicRouter from "./modules/public/public.routes.js";
 import userRouter from "./modules/user/user.routes.js";
 import adminRouter from "./modules/admin/admin.routes.js";
+import appointmentRouter from './modules/appointment/appointment.routes.js'
+
 
 
 const app = express();
@@ -28,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/', publicRouter); // Invitados externos
 app.use('/api/user', userRouter); // Usuarios Logueados
 app.use('/api/admin', adminRouter); // Adminisrador
+app.use('/api/appointment', appointmentRouter); //reservas de citas
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

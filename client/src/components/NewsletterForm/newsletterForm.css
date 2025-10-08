@@ -20,6 +20,10 @@
 
 }
 
+
+.newsletter-text {
+    color: var(--secundary-color-dark);
+
 @media (width<1200px){
     .card-newsletter{
         margin-inline: 9rem;
@@ -38,4 +42,5 @@
             font-size: 1.1rem;
         }
     }
+
 }
