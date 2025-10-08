@@ -18,6 +18,11 @@ export const NavbarAdmin = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const selectView = (view) => {
+      setView(view)
+      handleClose()
+  }
+
   return (
     <>
       <div className='p-3'>
@@ -31,13 +36,13 @@ export const NavbarAdmin = () => {
           <img src={AlmuLogo} alt=""/>
           <div className="nav-options">
             <ul>
-              <Li icon='bi bi-pen' valor='Copywriting' as={Link} to='/admin/write' active={view === 'write'} onClick={()=>setView('write')}/>
-              <Li icon='bi bi-columns' valor='Dashboard' as={Link} to='/admin/dashboard' active={view === 'dashboard'} onClick={()=>setView('dashboard')}/>
-              <Li icon='bi bi-briefcase' valor='Servicios' as={Link} to='/admin/services' active={view === 'services'} onClick={()=>setView('services')}/>
-              <Li icon='bi bi-person' valor='Usuarios' as={Link} to='/admin/users' active={view === 'users'} onClick={()=>setView('users')}/>
-              <Li icon='bi bi-calendar2-week' valor='Calendario'as={Link} to='/admin/calendar' active={view === 'calendar'} onClick={()=>setView('calendar')}/>
-              <Li icon='bi bi-check2-circle' valor='Citas'as={Link} to='/admin/appointments' active={view === 'appointments'} onClick={()=>setView('appointments')}/>
-              <Li icon='bi bi-bag-check' valor='Pedidos'as={Link} to='/admin/orders' active={view === 'orders'} onClick={()=>setView('orders')}/>
+              <Li icon='bi bi-pen' valor='Copywriting' as={Link} to='/admin/write' active={view === 'write'} onClick={()=>selectView('write')}/>
+              <Li icon='bi bi-columns' valor='Dashboard' as={Link} to='/admin/dashboard' active={view === 'dashboard'} onClick={()=>selectView('dashboard')}/>
+              <Li icon='bi bi-briefcase' valor='Servicios' as={Link} to='/admin/services' active={view === 'services'} onClick={()=>selectView('services')}/>
+              <Li icon='bi bi-person' valor='Usuarios' as={Link} to='/admin/users' active={view === 'users'} onClick={()=>selectView('users')}/>
+              <Li icon='bi bi-calendar2-week' valor='Horarios'as={Link} to='/admin/horarios' active={view === 'horarios'} onClick={()=>selectView('horarios')}/>
+              <Li icon='bi bi-check2-circle' valor='Citas'as={Link} to='/admin/appointments' active={view === 'appointments'} onClick={()=>selectView('appointments')}/>
+              <Li icon='bi bi-bag-check' valor='Pedidos'as={Link} to='/admin/orders' active={view === 'orders'} onClick={()=>selectView('orders')}/>
             
             </ul>
             <ul className='footer-list'>

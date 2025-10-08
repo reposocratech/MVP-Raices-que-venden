@@ -181,11 +181,11 @@ class UserController {
             link,
           ]
 
-        const newRedSocial = await userDal.addRedSocialData(data);
+        const newIdRedSocial = await userDal.addRedSocialData(data);
         
         res.status(200).json(
           { message: 'Red social añadida', 
-            redSocial: newRedSocial
+            idRedSocial: newIdRedSocial
           }); 
 
       } catch (error) {
@@ -216,6 +216,42 @@ class UserController {
           dataError: error
         })
       }
+    }
+
+    //borrar datos de redes sociales
+    deleteRedSocial =  async (req, res) => {
+      try {
+        const { social_network_id } = req.params;
+        await userDal.deleteRedSocial(social_network_id);
+
+        res.status(200).json({
+          message: "Red social eliminada correctamente",
+        })
+        
+      } catch (error) {
+        console.log(error);
+        res.status(500).json({
+          message: "Error server",
+          dataError: error
+        })
+      }
+    } 
+
+
+    //editar redes sociales
+    editRedSocial = async(req, res) => {
+        try {
+          
+          const { name, link} = req.body;
+          const { social_network_id } = req.params;
+          let values = [ name, link, social_network_id ]
+          await userDal.editRedSocial(values);
+
+          res.status(200).json({message: 'Red social editada correctamente'});
+          console.log(values)
+        } catch (error) {
+            res.status(500).json({message: "Error server", dataError: error})
+        }
     }
 
 }
