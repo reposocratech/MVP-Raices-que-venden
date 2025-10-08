@@ -1,20 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Boton } from '../Boton/Boton'
 
 import './adminCardService.css'
 
 export const AdminCardService = ({name, description, image=null, price=null, category=null, is_visible, alterVisible, modify, deleteService}) => {
-  const [visible, setVisible] = useState(is_visible);
 
   const changeVisible = async () => {
-    alterVisible()
-    setVisible(!visible);
+    await alterVisible()
   }
 
   return (
     <>
       <div className={`admin-card-service mb-3`}>
-        <img src={image? `${import.meta.env.VITE_SERVER_IMAGES}/services/${image}`:null} alt="image service" className={`card-img ${visible?null:'card-img-blur'}`} />
+        <img src={image? `${import.meta.env.VITE_SERVER_IMAGES}/services/${image}`:null} alt="image service" className={`card-img ${is_visible?null:'card-img-blur'}`} />
         <h3>{name}</h3>
         <p>{description}</p>
         <div className="d-flex gap-3 justify-content-between">
@@ -23,7 +21,7 @@ export const AdminCardService = ({name, description, image=null, price=null, cat
               <Boton aspecto='btn-1' valor='Post' onClick={null} />
             :null}
         </div>
-        <Boton onClick={changeVisible} icon={visible ? "bi bi-eye" : "bi bi-eye-slash"} aspecto='btn-rounded-2 btn-visible' />
+        <Boton onClick={changeVisible} icon={is_visible ? "bi bi-eye" : "bi bi-eye-slash"} aspecto='btn-rounded-2 btn-visible' />
       </div>
     <div className='d-flex justify-content-between'>
       <Boton aspecto='btn-rounded-2 btn-card' valor='25 post'/>

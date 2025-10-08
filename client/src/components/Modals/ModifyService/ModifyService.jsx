@@ -5,7 +5,7 @@ import './modifyService.css';
 import { fetchData } from '../../../helpers/axiosHelper';
 import { AuthContext } from '../../../context/AuthContextProvider';
 
-export const ModifyService = ({handleClose, show, setServices, service}) => {
+export const ModifyService = ({handleClose, show, setServices, service, deselect}) => {
   const {token} = useContext(AuthContext);
   const [editServiceData, setEditServiceData] = useState(service);
   const [newImg, setNewImg] = useState('');
@@ -33,7 +33,7 @@ export const ModifyService = ({handleClose, show, setServices, service}) => {
       const res = await fetchData('/admin/modifyService', 'PUT', newFormData, token);
       const updatedService = res.data[0][0];
       setServices(prevServices=>prevServices.map((elem)=>elem.service_id!==updatedService.service_id?elem:updatedService));
-      
+      deselect();
       handleClose();
       
     } catch (error) {
