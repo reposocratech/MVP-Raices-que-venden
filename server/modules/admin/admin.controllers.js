@@ -1,3 +1,4 @@
+import executeQuery from "../../config/db.js";
 import adminDal from "./admin.dal.js";
 
 class AdminController {
@@ -103,6 +104,50 @@ class AdminController {
     } catch (error) {
       console.log(error);
       res.status(500).json({message: "error **************", error})
+    }
+  }
+
+  addDayHour = async (req, res) => {
+    try {
+      const {day, hour} = req.body;
+      let values = [day, hour]
+      const result = adminDal.addDayHour(values)
+      res.status(200).json({messaje: 'Día y hora añadidas con exito',
+                            data: result})
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({messaje: "Error server",
+                            dataError: error
+                            })
+    }
+  }
+
+  getAllDaysHours = async (req, res) => {
+    try {
+      let result = await adminDal.getAllDaysHours()
+      res.status(200).json({message: "Todas los días y horas extraidos con exito",
+                            daysHours: result
+      })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({message: "Error server",
+                            dataError: error
+                            })
+    }
+  }
+
+  deleteDayHour = async (req, res) => {
+    try {
+      const {day, hour} = req.body;
+      let values = [day, hour]
+      await adminDal.deleteDayHour(values)
+      res.status(200).json({messaje:"Día y hora eliminadas con exito"})
+      
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
     }
   }
 

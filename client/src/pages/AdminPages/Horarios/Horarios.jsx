@@ -1,87 +1,99 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { obtenerHoras } from "../../../middlewares/diasyHorarios";
+import { converteNumInTextDay, diasHoras} from "../../../middlewares/diasyHorarios.js";
+import { useContext, useEffect, useState } from "react";
+import { Boton } from "../../../components/Boton/Boton";
+import { fetchData } from "../../../helpers/axiosHelper.js";
+import { AuthContext } from "../../../context/AuthContextProvider.jsx";
+import './horarios.css'
 
-const posDayHours = [
-  '1-1', 
-  '1-2',
-  '1-3',
-  '1-4', 
-  '1-5', 
-  '1-6',
-  '1-7',
-  '1-8',
-  '1-9',
-  '1-10',
-  '1-11',
-  '2-1', 
-  '2-2',
-  '2-3',
-  '2-4', 
-  '2-5', 
-  '2-6',
-  '2-7',
-  '2-8',
-  '2-9',
-  '2-10',
-  '2-11',
-  '3-1', 
-  '3-2',
-  '3-3',
-  '3-4', 
-  '3-5', 
-  '3-6',
-  '3-7',
-  '3-8',
-  '3-9',
-  '3-10',
-  '3-11',
-  '4-1', 
-  '4-2',
-  '4-3',
-  '4-4', 
-  '4-5', 
-  '4-6',
-  '4-7',
-  '4-8',
-  '4-9',
-  '4-10',
-  '4-11',
-  '5-1', 
-  '5-2',
-  '5-3',
-  '5-4', 
-  '5-5', 
-  '5-6',
-  '5-7',
-  '5-8',
-  '5-9',
-  '5-10',
-  '5-11']
 
-  console.log(obtenerHoras("08:00","14:00","01:00"))
-
+const hourDayPanel = {
+  day: 5,
+  starHourAllDay: "08:00",
+  endHourAllDay: "20:00",
+  duration:"01:00"
+}
 const Horarios = () => {
-  
 
+  const { token } = useContext(AuthContext)
+
+  const ftnHourDay = diasHoras( hourDayPanel.day,
+                                hourDayPanel.starHourAllDay,
+                                hourDayPanel.endHourAllDay,
+                                hourDayPanel.duration)
+  
+  const [hourDay, setHourDay] = useState(ftnHourDay)
+
+  // Array de las horas de disponibilidad semanal
+  const [availability, setAvailability] = useState([])
+
+
+  useEffect(() => {
+    try {
+      const getAllDaysHours = async () => {
+        let result = await fetchData('/admin/getAllDaysHours', 'GET', null, token);
+        setAvailability([...availability, ...result.data.daysHours]);
+      }
+      getAllDaysHours()
+    } catch (error) {
+      console.log(error)
+    }
+  },[])
+
+  //
+  const getDayHour = async(availability_day, availability_hour) => {
+
+    try {
+      let datos = {
+        day: availability_day,
+        hour: availability_hour
+      }
     
+      const existe = availability.some(e => e.availability_day === availability_day && e.availability_hour === availability_hour)
+
+      if (existe) {
+        await fetchData('/admin/deleteDayHour', 'DELETE', datos, token);
+
+        setAvailability(availability.filter(e => !(e.availability_day === availability_day && e.availability_hour === availability_hour)))
+      }
+      else {
+        await fetchData('/admin/addDayHour', 'POST', datos, token);
+        
+        setAvailability([...availability, {
+            availability_day,
+            availability_hour,
+          }]);
+      }   
+    } catch (error) {
+      console.log(error)
+    }
+    
+  }
+
   return (
     <Container>
-      <Row lg={5}>
-        <Col>
-          <p>Lunes</p>
-        </Col>
-        <Col>
-          <p>Martes</p>
-        </Col>
-        <Col>
-          <p>Miercoles</p>
-        </Col>
-        <Col>
-          <p>Jueves</p>
-        </Col>
-        <Col>
-          <p>Viernes</p>
-        </Col>
+      <h2 className="title">Horarios disponibilidad citas</h2>
+      <hr />
+      <Row lg={hourDayPanel.day}>
+        { hourDay.map((e,i) => {
+          return(
+            <Col className="text-center" key={i+1}>
+              <p className="title-days">{converteNumInTextDay(i+1)}</p>
+              {e[i+1].map ( h => {
+                return (
+                  <Boton 
+                    key={(i+1) + "-" + h}
+                    onClick={() => getDayHour((i+1), h)}
+                    aspecto={availability.some(e => e.availability_day === (i+1) && e.availability_hour === h) ? 'btn-1 w-100 my-2' : 'btn-6 w-100 my-2'}
+                    valor={h + ":00 - " + (h + 1) + ":00"}
+                  />
+                )
+              })}
+            </Col>
+          )
+
+        }) }
+       
       </Row>
       
     </Container>

@@ -2,7 +2,7 @@
 .btn-1 {
     background-color: var(--secundary-color);
     color: var(--primary-color);
-    border: none;
+    border: 1px solid var(--secundary-color);
     border-radius: var(--border-hight);
     padding-inline: 1rem;
     padding-block: 0.5rem;
@@ -102,6 +102,32 @@
 
 .btn-4:hover{
     background-color: var(--tertiary-color);
+    color: var(--primary-color);
+}
+
+.btn-6 {
+    background-color: var(--primary-oscuro);
+    color: var(--secundary-color-dark);
+    border: 1px solid var(--primary-oscuro);
+    border-radius: var(--border-hight);
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+
+
+    i{
+        padding-right: 0.5rem;
+        font-size: 1.1rem;
+
+    }
+}
+
+.btn-6:hover{
+    background-color: var(--secundary-color-dark);
     color: var(--primary-color);
 }
 

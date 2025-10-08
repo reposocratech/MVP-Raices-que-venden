@@ -2,6 +2,7 @@ import express from "express";
 import adminController from "./admin.controllers.js";
 import uploadImage from "../../middlewares/multerSingle.js";
 import { tokenVerify } from "../../middlewares/tokenVerify.js";
+import adminControllers from "./admin.controllers.js";
 
 const router = express.Router();
 
@@ -14,5 +15,11 @@ router.put('/modifyService', tokenVerify, uploadImage('services'), adminControll
 router.put('/alterVisible', adminController.alterVisible);
 
 router.delete('/deleteService', tokenVerify, adminController.deleteService);
+
+router.post('/addDayHour', tokenVerify, adminController.addDayHour)
+
+router.get('/getAllDaysHours', tokenVerify, adminController.getAllDaysHours)
+
+router.delete('/deleteDayHour', tokenVerify, adminControllers.deleteDayHour)
 
 export default router;
