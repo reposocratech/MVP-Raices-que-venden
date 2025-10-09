@@ -1,7 +1,6 @@
 .admin-card-service {
   display: flex;
   flex-direction: column;
-  height: 350px;
   width: 300px;
   border-radius: 12px;
   padding: 16px;
@@ -32,4 +31,8 @@
 
 .card-img-blur {
   filter: blur(2px) grayscale(80%) brightness(60%);
+}
+
+.service-name{
+  color: var(--tertiary-color);
 }
