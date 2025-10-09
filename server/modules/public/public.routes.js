@@ -13,5 +13,8 @@ router.get("/getServices", publicController.showServices);
 router.get('/getService/:id', publicController.getServiceDetail);
 
 
+//correo de contacto
+router.post('/emailcontact', publicController.emailContact)
+
 
 export default router;

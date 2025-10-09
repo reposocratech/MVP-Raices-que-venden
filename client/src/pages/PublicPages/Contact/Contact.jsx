@@ -20,12 +20,10 @@ const Contact = () => {
               <p>
                 Contáctanos directamente o síguenos para ver ejemplos de proyectos rurales que ya están floreciendo.
               </p>
-              <p><i class="bi bi-envelope-at"></i>     correo de almudena
+              <p><i class="bi bi-envelope-at"></i>     almuyalma.raices@gmail.com
               </p>
               <p>
-                <i class="bi bi-whatsapp"></i>        telefono de almudena
-              </p>
-              <p> <i class="bi bi-globe"></i>          redes sociales de almudena
+                <i class="bi bi-whatsapp"></i>        +34 658748225
               </p>
             </div>
             <img className='imgAlmu' src="/image/almu.png" alt="" />

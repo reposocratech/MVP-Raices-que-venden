@@ -88,6 +88,7 @@ export const AppRoutes = () => {
               <Route path='/user/chooseDate' element={<ChooseDate/>} />
               <Route path='/user/myAppointments' element={<MyAppointments />} />
               <Route path='/user/profile' element={<MyProfile/>}/>
+               
             </Route>
           </Route>
 

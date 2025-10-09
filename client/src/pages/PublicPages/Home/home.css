@@ -82,7 +82,7 @@ h2 {
     }
 
   .text-center{
-    p{
+    .p-text{
       padding-inline: 4rem;
     }
   }

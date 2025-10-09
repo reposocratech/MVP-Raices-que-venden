@@ -1,0 +1,54 @@
+.section-service {
+  .service-detail {
+    padding: 0;
+
+    .header-section-service {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30vh;
+      padding: 0;
+      margin: 0;
+      overflow: hidden; 
+      z-index: 0;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 90%, var(--primary-color-homedark) 100%),
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url(../../../../public/fondo/fondo-home.png);
+        background-size: cover;
+        background-position: center;
+        filter: blur(2px);
+        transform: scale(1.05);
+        z-index: 0;
+        
+      }
+
+      .title-service {
+        color: var(--primary-color);
+        font-weight: bold;
+        z-index: 1; 
+        position: relative;
+      }
+    }
+  }
+
+
+  .file-service{
+
+
+    .card-service-unic{
+       background-color: var(--primary-color-homedark);
+      border: none;
+    }
+    
+  }
+
+}
