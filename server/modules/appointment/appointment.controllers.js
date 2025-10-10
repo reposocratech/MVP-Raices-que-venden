@@ -19,51 +19,44 @@ class AppointmentController {
         }
     }
 
-    getAvailableAppointment = async (req, res) => {
-        try {
-            const today = new Date();
-            const startDate = new Date(today);
-            startDate.setDate(today.getDate() +1)
+   getAvailableAppointment = async (req, res) => {
+  try {
+    const availability = await appointmentDal.getAllDaysHours();
+    const citas = [];
 
+    for (let i = 1; i <= 31; i++) {
+      const fecha = new Date();
+      fecha.setDate(fecha.getDate() + i);
+      const diaSemana = fecha.getDay();
 
-            const endDate = new Date();
-            endDate.setDate(today.getDate() + 28);
+      const horas = availability
+        .filter((a) => a.availability_day === diaSemana)
+        .map((a) => Number(a.availability_hour));
 
-            const result = await appointmentDal.getAvailableAppointment(
-                today.toISOString().split("T")[0],
-                endDate.toISOString().split("T")[0]
-            );
+      for (const hora of horas) {
+        const start = new Date(fecha);
+        start.setHours(hora, 0, 0, 0);
 
-            // transformar los datos para el front
-            const transformed = result.map((e) =>{
-                //const hour = parseInt(e.app_hour) + 7;
-                //const hour = Number(e.app_hour.match(/\d+/)?.[0]) + 7;
+        const end = new Date(start);
+        end.setHours(start.getHours() + 1);
 
-                const rawHour = typeof e.app_hour === "string"
-                ? Number(e.app_hour.match(/\d+/)?.[0])
-                : Number(e.app_hour);
-                const hour = rawHour + 7;
+        citas.push({
+          start,
+          end,
+          title: "Disponible",
+          status: "free",
+        });
+      }
+    }
 
-                const start = new Date(`${e.app_date}T${hour.toString().padStart(2, '0')}:00:00`);
-                const end = new Date(`${e.app_date}T${(hour + 1).toString().padStart(2, '0')}:00:00`);
+    res.json({ result: citas });
+  } catch (error) {
+    console.error("error al ver citas", error);
+    res.status(500).json({ message: "Error al generar las citas", error });
+  }
+};
 
-
-                return {
-                    ...e,
-                    start,
-                    end,
-                    title: "Disponible"
-                }
-            })
-         
-            res.json({ result: transformed });
-
-        } catch (error) {
-            console.log(error)
-            throw error;
-
-        }
-    } 
+  
 }
 
 

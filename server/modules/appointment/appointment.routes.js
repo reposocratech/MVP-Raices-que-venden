@@ -10,7 +10,4 @@ router.post('/reserve' , appointmentControllers.reserve)
 router.get('/available' , appointmentControllers.getAvailableAppointment)
 
 
-
-
-
 export default router;
