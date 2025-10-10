@@ -94,7 +94,7 @@ const MyProfile = () => {
   };
 
   return (
-    <>
+    <section /* className='section-profile' */>
       <Container className="py-3 contenedor-profile">
         <h2>Mi Perfil</h2>
         <hr />
@@ -238,7 +238,7 @@ const MyProfile = () => {
       />
 
       {/* Eliminar red social */}
-    </>
+    </section>
   );
 };
 

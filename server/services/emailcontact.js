@@ -5,17 +5,21 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: 'cristina31101995@gmail.com',
-    pass: 'ahyasfdxnxejojzi',
+    user: 'almuyalma.raices@gmail.com',
+    pass: 'zbxjchvvceyafbnf',
   },
-})
+});
 
-
-export const emailcontact = async(user_name, email, company_name, user_description) => {
-  
-  
-  let emailcontact = `
- <!DOCTYPE html>
+//email que recibe almu
+export const emailcontact = async (
+  adminEmail,
+  user_name,
+  email,
+  company_name,
+  user_description
+) => {
+  let emailcontacthtml = `
+<!DOCTYPE html>
 <html lang="es">
 
   <head>
@@ -68,11 +72,12 @@ export const emailcontact = async(user_name, email, company_name, user_descripti
                     >
                       <strong style="color: #5C4033;">Nombre:</strong><br>
                       ${user_name} <br>
-                       <strong style="color: #5C4033;">Email:</strong><br>
-                      ${email} <br>
+                      <strong style="color: #5C4033;">Email:</strong><br>
+                      <span style="text-decoration: none !important; color: black !important;">${email}</span> <br>
                       <strong style="color: #5C4033;">Nombre del
                         proyecto:</strong><br> ${company_name}<br>
-                      <strong style="color: #5C4033;">Su historia y necesidades:</strong><br>
+                      <strong style="color: #5C4033;">Su historia y
+                        necesidades:</strong><br>
                       <span
                         style="display:block; margin-top:5px;">${user_description}</span>
                     </td>
@@ -83,14 +88,18 @@ export const emailcontact = async(user_name, email, company_name, user_descripti
                   Responde diréctamente a este correo para ponerte en contacto
                   con la persona.
                 </p>
-                <p style="text-align:center; margin-top:20px;">
+                <div style="text-align:center; margin-top:20px;">
                   <p
+                    style="display:inline-block; padding:12px 30px; border-radius:20px; border:1px solid #7b9c7a; background-color: #7b9c7a; font-weight:bold; color:#4B7F52 !important; text-decoration:none;">
+                    <a
+                      href="mailto:${email}"
+                      style="color:white!important; text-decoration:none !important;"
+                    >
+                      Púlsame para responder
+                    </a>
+                  </p>
+                </div>
 
-                    style="display:inline-block; padding:12px 20px; border-radius:5px; border: 1px solid #4B7F52; font-weight:bold;"
-                  >
-                    ${email}
-                </p>
-                </p>
               </td>
             </tr>
 
@@ -98,7 +107,9 @@ export const emailcontact = async(user_name, email, company_name, user_descripti
               <td
                 style="background-color:#8b6e52; text-align:center; padding:20px; font-size:12px; color:#f5f1e8;"
               >
-                © 2025 Raíces. Todos los derechos reservados.
+                © 2025 Raíces que Venden · Almuyalma
+                <br>
+                Desde Castellón y la terreta, para toda España.
               </td>
             </tr>
 
@@ -109,20 +120,14 @@ export const emailcontact = async(user_name, email, company_name, user_descripti
   </body>
 
 </html>
-  `
-
-  // transporter.verify()
-  //             .then(()=>console.log("todo ok"))
-  //             .catch((err)=>console.error(err))
+  `;
 
   await transporter.sendMail({
-    from: '"AlmuyAlma (Raíces que venden)" <cristina31101995@gmail.com>',
-    to: email,
-    subject: '🌿 Nuevo mensaje de contacto',
-    html: emailcontact,
+    from: '"AlmuyAlma (Raíces que venden)" <almuyalma.raices@gmail.com>',
+    to: adminEmail,
+    subject: 'Nuevo mensaje de contacto',
+    html: emailcontacthtml,
   });
 
   console.log('email enviado');
-
-
 };

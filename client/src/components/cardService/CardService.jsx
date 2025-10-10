@@ -8,7 +8,7 @@ const CardService = ({service_id, name, description,image }) => {
 
 
   return (
-    <div className="card card-service mb-3 text-center">
+    <div className="card card-service mb-3 justify-content-between">
         
         <img src={image? `${import.meta.env.VITE_SERVER_IMAGES}/services/${image}`:null} alt="image service" className="card-img" />
         <p className='h5 pt-2 name-service'>{name}</p>

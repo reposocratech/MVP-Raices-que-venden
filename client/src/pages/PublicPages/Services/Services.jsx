@@ -31,12 +31,13 @@ const Services = () => {
   return (
     <section className="section-servicios">
         <Container>
-          <Row className="justify-content-center">
             <h2 className="text-center fw-bold pt-4 title">Nuestras semillas de Copywriting</h2>
+          <Row lg={4} className="justify-content-center">
+          
           {services.map((servicio)=> {  
            return(
             <Col className="mb-4 d-flex justify-content-center"
-          md={6} lg={4} key={servicio.service_id}
+           key={servicio.service_id}
           >
             <CardService
             
