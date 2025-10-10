@@ -1,14 +1,41 @@
-  import React from 'react'
+  import React, { useContext } from 'react'
 import { Button, Modal } from 'react-bootstrap';
+import { AuthContext } from '../../../context/AuthContextProvider';
+import { fetchData } from '../../../helpers/axiosHelper';
 
 
   
   export const AppointmentReserved = ({ reserved, showModal, setShowModal}) => {
+    console.log(reserved)
+
+    const { user, token } = useContext(AuthContext)
 
 
-    const enviaReserva = () => {
-        console.log("Reserva enviada", reserved)
-        setShowModal(false)
+    const enviaReserva =  async () => {
+        try {
+    
+            const datos = {
+                
+                user_id: user.user_id,
+                app_status: 1,
+                app_day: reserved.start.getDay(),
+                app_hour: reserved.start.getHours(),
+                app_date: reserved.start.toISOString().split("T")[0], // → '2025-10-13'
+
+            
+            }
+
+            
+            let result = await fetchData('/appointment/reservedAppointment', 'POST', datos, token);
+            
+            console.log(result);     
+            
+        } catch (error) {
+            
+            console.log(error)
+        }
+        
+        setShowModal(true)
     }
 
     return (
