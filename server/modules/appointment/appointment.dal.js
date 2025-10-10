@@ -16,7 +16,7 @@ class AppointmentDal {
 
     getAvailableAppointment = async (startDate, endDate) => {
         try {
-            const sql = 'SELECT * FROM appointment WHERE app_status = "free" AND app_date BETWEEN ? AND ? '
+            const sql = 'SELECT * FROM appointment WHERE app_status = 1 AND app_date BETWEEN ? AND ? '
 
             const result = await executeQuery(sql, [startDate, endDate])
             return result;

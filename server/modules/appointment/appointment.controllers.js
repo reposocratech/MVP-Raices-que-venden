@@ -22,7 +22,9 @@ class AppointmentController {
     getAvailableAppointment = async (req, res) => {
         try {
             const today = new Date();
-            today.setDate(today.getDate() + 1);
+            const startDate = new Date(today);
+            startDate.setDate(today.getDate() +1)
+
 
             const endDate = new Date();
             endDate.setDate(today.getDate() + 28);
@@ -31,7 +33,30 @@ class AppointmentController {
                 today.toISOString().split("T")[0],
                 endDate.toISOString().split("T")[0]
             );
-            res.json(result);
+
+            // transformar los datos para el front
+            const transformed = result.map((e) =>{
+                //const hour = parseInt(e.app_hour) + 7;
+                //const hour = Number(e.app_hour.match(/\d+/)?.[0]) + 7;
+
+                const rawHour = typeof e.app_hour === "string"
+                ? Number(e.app_hour.match(/\d+/)?.[0])
+                : Number(e.app_hour);
+                const hour = rawHour + 7;
+
+                const start = new Date(`${e.app_date}T${hour.toString().padStart(2, '0')}:00:00`);
+                const end = new Date(`${e.app_date}T${(hour + 1).toString().padStart(2, '0')}:00:00`);
+
+
+                return {
+                    ...e,
+                    start,
+                    end,
+                    title: "Disponible"
+                }
+            })
+         
+            res.json({ result: transformed });
 
         } catch (error) {
             console.log(error)
