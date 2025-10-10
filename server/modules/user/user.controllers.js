@@ -155,8 +155,7 @@ class UserController {
 
             }
              await userDal.editImage(values);
-                
-
+            
             res.status(200).json({
                     message: "Imagen editada",
                     filename: req.file?.filename
@@ -190,10 +189,10 @@ class UserController {
 
       } catch (error) {
         console.log(error)
-      res.status(500).json({
-            message: 'error de server',
-            dataError: error,
-          });
+        res.status(500).json({
+              message: 'error de server',
+              dataError: error,
+            });
       }
     }
 
@@ -207,7 +206,6 @@ class UserController {
           message: "Red social creada con exito",
           redSocial: result
         })
-        console.log("Desde el getRedSOCIAL CONTROLLER", result)
         
       } catch (error) {
         console.log(error)
@@ -248,7 +246,6 @@ class UserController {
           await userDal.editRedSocial(values);
 
           res.status(200).json({message: 'Red social editada correctamente'});
-          console.log(values)
         } catch (error) {
             res.status(500).json({message: "Error server", dataError: error})
         }

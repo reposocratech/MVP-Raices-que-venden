@@ -27,8 +27,9 @@ const Login = () => {
   }
 
   const onSubmit = async(e) => {
-      e.preventDefault();
+      
       try {
+        e.preventDefault();
 
         const res = await fetchData('/user/login', 'POST', login);
         const token = res.data.token;
