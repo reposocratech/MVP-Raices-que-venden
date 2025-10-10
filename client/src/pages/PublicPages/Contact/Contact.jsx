@@ -26,7 +26,7 @@ const Contact = () => {
                 <i class="bi bi-whatsapp"></i>        +34 658748225
               </p>
             </div>
-            <img className='imgAlmu' src="/image/almu.png" alt="" />
+            <img className='imgAlmu' src="/image/almu5.jpg" alt="" />
           </Col>
         </Row>
       </Container>
