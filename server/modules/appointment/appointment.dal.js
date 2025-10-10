@@ -2,9 +2,9 @@ import executeQuery from "../../config/db.js";
 
 class AppointmentDal {
 
-    reserveAppointment = async (data) => {
+    reservedAppointment = async (data) => {
         try {
-            const sql = 'INSERT INTO appointment (app_day, app_hour, app_date, user_id) VALUES (?,?,?,?)'
+            const sql = 'INSERT INTO appointment (user_id, app_status, app_day, app_hour, app_date) VALUES (?,?,?,?,?)'
             const result = await executeQuery(sql, data);
             return result;
 
@@ -57,4 +57,4 @@ console.log("***********", citas)
 }
 }
 
-export default new AppointmentDal;
+export default new AppointmentDal();
