@@ -1,6 +1,15 @@
+import { Container } from "react-bootstrap";
+
+
+
 const Appointments = () => {
   return (
-    <div>Appointments</div>
+      <Container>
+        <h2 className="title">Citas</h2>
+        <hr />
+
+
+      </Container>
   )
 }
 
