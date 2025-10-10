@@ -56,24 +56,42 @@ export default function MyCalendar() {
   const [date, setDate] = useState(new Date());
   const [reserved, setReserved] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const {user} = useContext(AuthContext)
+  const {user, token} = useContext(AuthContext)
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const response = await fetchData("/appointment/available", "GET");
-        const available = response.map((e) => ({
+        const response = await fetchData("/appointment/available", "GET", null, token);
+
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() +1);
+
+        const fourWeeksLater = new Date(today);
+        fourWeeksLater.setDate(today.getDate() + 28);
+
+        console.log(response) || [];
+
+       const available = response.data?.result
+        .filter((e) => {
+          const startDate = new Date(e.start);
+          return (
+            e.app_status === 1 &&
+            startDate >= tomorrow &&
+            startDate <= fourWeeksLater
+          )
+        })
+        .map((e) => ({
           ...e,
           start: new Date(e.start),
           end: new Date(e.end),
-          title: "Disponible"
-      
-        }));
+          title: "Disponible",
+        }))
 
+        console.log(available)
         setEvents(available)
-        console.log(response)
-
+        
       } catch (error) {
         console.log(error)
 
