@@ -25,6 +25,9 @@ const Horarios = () => {
   
   const [hourDay, setHourDay] = useState(ftnHourDay)
 
+  //------------
+/*   const [appointment, setAppointment] = useState([]) */
+
   // Array de las horas de disponibilidad semanal
   const [availability, setAvailability] = useState([])
 
