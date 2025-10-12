@@ -1,108 +1,98 @@
-import { Container } from "react-bootstrap";
-import { ftnArrCalendar, ftnFechaDisponibilidad } from "../../../middlewares/generadorCitas.js";
+import { Container, Row , Col} from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContextProvider.jsx";
-import { fetchData } from "../../../helpers/axiosHelper.js";
 
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
-import { format, parse, startOfWeek, getDay } from 'date-fns'
-import { es } from 'date-fns/locale'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import { Boton } from "../../../components/Boton/Boton.jsx";
+import { AdminAppointmentList } from "../../../components/AdminAppointmentList/AdminAppointmentList.jsx";
+import AdminAppointmentCalendar from "../../../components/AdminAppointmentCalendar/AdminAppointmentCalendar.jsx";
+import { fetchData } from "../../../helpers/axiosHelper.js";
 
 
 
 
 const Appointments = () => {
-    const { token } = useContext(AuthContext)
+    const { token } = useContext(AuthContext);
+    const [view, setView] = useState('list');
+    const [appointments, setAppointments] = useState([])
+    const [statusFilter, setStatusFilter] = useState([])
 
-    // Array de las horas de disponibilidad semanal
-    const [availability, setAvailability] = useState([])
-  
-    // Funcionalidad para transpormar availability
-    const fechasDisponibilidad = ftnFechaDisponibilidad(availability);
-  
-    // Funcionalidad para generar Appointments
-    const arrCalendar =  ftnArrCalendar(fechasDisponibilidad)
-    console.log(arrCalendar)
-
-    const [view, setView] = useState('month');
-    const [date, setDate] = useState(new Date())
-
-
-    const locales = {
-      'es': es,
-    }
-    
-    const localizer = dateFnsLocalizer({
-      format,
-      parse,
-      startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
-      getDay,
-      locales,
-    })
-
-  
     useEffect(() => {
-      try {
-        const getAllDaysHours = async () => {
-          let result = await fetchData('/admin/getAllDaysHours', 'GET', null, token);
-          setAvailability([...availability, ...result.data.daysHours]);
-          
+        try {
+           const fetchAppoitment = async () => {
+            const result = await fetchData('/admin/getAppoitment', 'GET', null, token)
+            setAppointments(result.data.citas)
+            setStatusFilter(result.data.citas)
+          }
+          fetchAppoitment()
+        } catch (error) {
+          console.log(error)
         }
-       
-        getAllDaysHours()
+    },[])
+    
+    const onConfirm = async (appointment_id) => {
+      try {
+        const data = {
+          appointment_id
+        }
+        await fetchData('/admin/appointmentConfirm', 'PUT', data, token)
+        const result = await fetchData('/admin/getAppoitment', 'GET', null, token)
+        setAppointments(result.data.citas)
+        setStatusFilter(result.data.citas)
+        
       } catch (error) {
         console.log(error)
       }
-  
-    
-    },[])
+    }
 
-
-  return (
-      <Container>
-        <h2 className="title">Citas</h2>
-        <hr />
-        <div className="h-[600px] p-4 bg-gray-50 rounded-2xl shadow-md">
-      <Calendar
-        localizer={localizer}
-        events={arrCalendar}
-        startAccessor="start"
-        endAccessor="end"
-        views={['month', 'week', 'day']}
-        view={view}
-        date={date}
-        onNavigate={setDate}
-        onView={(newView) => setView(newView)}
-  /*       popup */
-        onSelectEvent={(event) => {
-          console.log(event);
-          
-          alert(`Has clicado en: ${event.title}`)
-        }}
-        messages={{
-          next: 'Siguiente',
-          previous: 'Anterior',
-          today: 'Hoy',
-          month: 'Mes',
-          week: 'Semana',
-          day: 'Día',
-          agenda: 'Agenda',
-          date: 'Fecha',
-          time: 'Hora',
-          event: 'Evento',
-          noEventsInRange: 'No hay eventos en este rango.',
-        }}
+    const onCanceled = async (appointment_id) => {
+      try {
+        const data = {
+          appointment_id
+        }
+        await fetchData('/admin/appointmentCanceled', 'PUT', data, token)
+        const result = await fetchData('/admin/getAppoitment', 'GET', null, token)
+        setAppointments(result.data.citas)
+        setStatusFilter(result.data.citas)
         
-        style={{ height: 500 }}
-      />
-    </div>
-
-
-
-
-
-      </Container>
+      } catch (error) {
+        console.log(error)
+      }
+    }
+ 
+  return (
+    
+     <Container>
+      <Row lg={2}>
+        <Col>
+          <h2>Gestión de citas</h2>
+        </Col>
+        <Col className="d-flex gap-2 justify-content-end">
+          <Boton 
+            icon="bi bi-list-ul"
+            aspecto={view === "list" ? "btn-1" : "btn-2"}
+            valor="Lista"
+            onClick={() => setView('list')}
+          />
+          <Boton 
+            icon="bi bi-calendar4-week"
+            aspecto={view === "calendar" ? "btn-1" : "btn-2"}
+            valor="Calendario"
+            onClick={() => setView('calendar')}
+          />
+        </Col>
+      </Row>
+      <hr />
+      { view === "list" && <AdminAppointmentList 
+                              appointments={appointments} 
+                              setAppointments={setAppointments}
+                              statusFilter={statusFilter}
+                              setStatusFilter={setStatusFilter}
+                              onConfirm={onConfirm}
+                              onCanceled={onCanceled}
+                              />}
+      { view === "calendar" && <AdminAppointmentCalendar appointments={appointments}/>}
+     </Container>
+     
   )
 }
 
