@@ -1,14 +1,21 @@
 import appointmentDal from "./appointment.dal.js";
+import { emailPendienteCita } from "../../services/emailPendienteCita.js";
 
 class AppointmentController {
   reservedAppointment = async (req, res) => {
     try {
-      const { user_id, app_status, app_day, app_hour, app_date } = req.body;
+      const { user_id,email, app_status, app_day, app_hour, app_date } = req.body;
       console.log(req.body);
 
       let values = [user_id, app_status, app_day, app_hour, app_date]
 
      let result = await appointmentDal.reservedAppointment(values)
+
+     await emailPendienteCita({
+        email,
+        app_day,
+        app_hour
+     })
    /*  ([
         user_id,
         app_status,

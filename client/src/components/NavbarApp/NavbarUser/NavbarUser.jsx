@@ -31,7 +31,7 @@ export const NavbarUser = () => {
               <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt="" />
             </div>
 
-            <NavDropdown className='nav-parents'id="collapsible-nav-dropdown">
+            <NavDropdown className='nav-parents d-flex justify-content-start'id="collapsible-nav-dropdown">
 
                 <NavDropdown.Item 
                   as={Link} 
