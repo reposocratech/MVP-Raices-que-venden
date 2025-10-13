@@ -69,7 +69,7 @@ CREATE TABLE text (
     text_title VARCHAR(100) NOT NULL,
     text_body MEDIUMTEXT,
     text_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1,
+    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 oculto | 2 publicado | ¿3 eliminado?
     filename VARCHAR(200),
     user_id INT UNSIGNED NOT NULL,
     last_modified DATETIME NULL,
@@ -77,7 +77,8 @@ CREATE TABLE text (
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
+SELECT * FROM text;
+SELECT text.*, user.* FROM text LEFT JOIN ON text.user_id = user.user_id AND user.user_id=2;
 -- Tablas si nos diese tiempo
 
 CREATE TABLE message (
