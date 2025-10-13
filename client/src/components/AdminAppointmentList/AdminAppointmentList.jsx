@@ -2,16 +2,12 @@ import { Row, Col } from "react-bootstrap";
 import './adminappointmentlis.css'
 import { Boton } from "../Boton/Boton";
 import notAvatar from '../../../public/icons/notAvatar.png'
-import { useEffect, useState } from "react";
-import { es } from "date-fns/locale";
+import { useState } from "react";
 
 
 export const AdminAppointmentList = ({appointments,setAppointments ,statusFilter ,onCanceled, onConfirm}) => {
 
     const [view, setView] = useState(0)
-    const [newArr, setNewArr] = useState()
-
-    
 
     const handleChangeStatus = (statusNumbre) => { 
         let status = '';
@@ -63,7 +59,7 @@ export const AdminAppointmentList = ({appointments,setAppointments ,statusFilter
         setView(statusNumbre)
 
         if (statusNumbre === 0) {
-            return setAppointments(statusFilter.filter(e))
+            return setAppointments(statusFilter.filter(e => e))
         }
         else if(statusNumbre === 1){
             return setAppointments(statusFilter.filter(e => e.app_status === 1))
@@ -113,7 +109,7 @@ export const AdminAppointmentList = ({appointments,setAppointments ,statusFilter
 
                     return (
                         <Row key={e.appointment_2_id} className={handleBorder(e.app_status)}>
-                            <Col lg={1}>
+                            <Col lg={1} md={2} sm={6}>
                             <img
                              className="avatar-appointment"
                              src={
@@ -123,13 +119,13 @@ export const AdminAppointmentList = ({appointments,setAppointments ,statusFilter
                                 }
                             alt="avatar user" />
                             </Col>
-                            <Col lg={1}><p className="m-0">{e.user_name ? e.user_name : "Sin nombre"}</p></Col>
-                            <Col lg={3}><p className="m-0 text-center">{e.email}</p></Col>
-                            <Col lg={1}><p className="m-0">{e.phone_number}</p></Col>
-                            <Col lg={1}><p className="m-0 text-center">{e.app_date}</p></Col>
-                            <Col lg={2}><p className="m-0 text-center">{e.app_hour}:00 - {e.app_hour + 1}:00</p></Col>
-                            <Col lg={1}><p className={handleStatusText(e?.app_status)}>{handleChangeStatus(e.app_status)}</p></Col>
-                            <Col lg={2} className="d-flex gap-2 justify-content-end">
+                            <Col lg={1}  md={5} sm={6}><p className="m-0">{e.user_name ? e.user_name : "Sin nombre"}</p></Col>
+                            <Col lg={3}  md={5} sm={6}><p className="m-0 text-center">{e.email}</p></Col>
+                            <Col lg={1}  md={4}><p className="m-0">{e.phone_number}</p></Col>
+                            <Col lg={1}  md={4}><p className="m-0 text-center">{e.app_date}</p></Col>
+                            <Col lg={2}  md={4}><p className="m-0 text-center">{e.app_hour}:00 - {e.app_hour + 1}:00</p></Col>
+                            <Col lg={1}  md={6}><p className={handleStatusText(e?.app_status)}>{handleChangeStatus(e.app_status)}</p></Col>
+                            <Col lg={2}  md={6} className="d-flex gap-2 justify-content-end">
                             {e.app_status !== 2 && 
                                 <Boton 
                                 aspecto="btn-rounded-ok" 

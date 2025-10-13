@@ -257,6 +257,39 @@ class AdminController {
       console.log(error);
       res.status(500).json({ message: 'Error server', dataError: error });
     }
+  }
+
+  activeUser = async (req, res) => {
+    try {
+      console.log(req.body)
+      const { user_id } = req.body;
+      await adminDal.activeUser([user_id])
+      res.status(200).json({message:"Usuario activado con exito"})
+      
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        message: "Error server",
+        dataError: error
+      })
+    }
+  }
+
+  inactiveUser = async (req, res) => {
+    try {
+      console.log(req.body)
+      const { user_id } = req.body;
+      await adminDal.inactiveUser([user_id])
+      res.status(200).json({message:"Usuario desactivado con exito"})
+      
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        message: "Error server",
+        dataError: error
+      })
+    }
+  }
   };
 }
 

@@ -88,8 +88,8 @@ const Horarios = () => {
   }
 
   return (
-    <Container>
-      <h2 className="title">Horarios disponibilidad citas</h2>
+    <Container className="horarios">
+      <h2 className="title-admin">Horarios disponibilidad citas</h2>
       <hr />
       <Row lg={hourDayPanel.day}>
         { hourDay.map((e,i) => {
