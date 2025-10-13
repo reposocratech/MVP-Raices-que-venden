@@ -1,4 +1,4 @@
-import { sendMailConfirm } from '../../services/emailServices.js';
+import { sendMailConfirm } from '../../services/emailRegister.js';
 import { compareString, hashString } from '../../utils/hashUtils.js';
 import {
   generateTokenConfirm,

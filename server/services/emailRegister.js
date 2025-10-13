@@ -47,7 +47,7 @@ export const sendMailConfirm = (email, name, token = null) => {
                 </p>
 
                 <p style="text-align:center; margin-bottom:30px;">
-                  <a href="http://localhost:5173/user/confirm/${token}" style="display:inline-block; padding:15px 25px; background-color:#7b9c7a; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">
+                  <a href="http://localhost:5173/confirm/${token}" style="display:inline-block; padding:15px 25px; background-color:#7b9c7a; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">
                     Confirmar mi correo
                   </a>
                 </p>

@@ -258,6 +258,28 @@ class AdminDal {
       
     }
   }
+
+  getAppoitmentById = async (appointment_id) => {
+  try {
+    const sql = `
+      SELECT 
+        user.user_name,
+        user.email,
+        appointment.app_day,
+        appointment.app_hour
+      FROM appointment
+      JOIN user ON appointment.user_id = user.user_id
+      WHERE appointment.appointment_2_id = ?
+    `;
+    const result = await executeQuery(sql, [appointment_id]);
+    return result[0];
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+
 }
 
 export default new AdminDal();

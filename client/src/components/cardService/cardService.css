@@ -4,17 +4,30 @@
   padding: 16px;
   margin: 12px;
   background-color: var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  cursor: pointer;
+}
+
+.card-service:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.card-service:hover .card-img {
+  transform: scale(1.05);
 }
 
 .card-img {
-    height: 200px;
-    object-fit: cover;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
-.description-card{
+.description-card {
   padding: 0;
 }
 
-.name-service{
+.name-service {
   color: var(--tertiary-color);
 }
