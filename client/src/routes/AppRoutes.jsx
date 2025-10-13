@@ -39,14 +39,17 @@ import { AdminLayout } from '../layouts/AdminLayout';
 import MyCalendar from '../pages/UserPages/MyCalendar/MyCalendar'
 
 
+
 const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
 const Appointments = lazy(() => import('../pages/AdminPages/Appointments/Appointments'));
 const Horarios = lazy(() => import('../pages/AdminPages/Horarios/Horarios'));
 const AdminUsers = lazy(() => import('../pages/AdminPages/AdminUsers/AdminUsers'));
 const AdminService = lazy(() => import('../pages/AdminPages/AdminService/AdminService'));
 const Dashboard = lazy(() => import('../pages/AdminPages/Dashboard/Dashboard'));
-const Writer = lazy(() => import('../pages/AdminPages/Writer/Writer/Writer'));
 
+const WriterUsers = lazy(() => import('../pages/AdminPages/Writer/Users/WriterUsers'));
+const WriterEditor = lazy(() => import('../pages/AdminPages/Writer/Writer/WriterEditor'));
+const WriterTexts = lazy(() => import('../pages/AdminPages/Writer/Texts/WriterTexts'));
 
 
 export const AppRoutes = () => {
@@ -96,7 +99,9 @@ export const AppRoutes = () => {
           <Route element={<PrivateRoutes user={user} requiredType={1}  />}>
             <Route element={<AdminLayout />}>
              <Route path='/' element={<Home/>}/>
-              <Route path='/admin/write' element={<Writer />} />
+              <Route path='/admin/write' element={<WriterUsers />} />
+              <Route path='/admin/write/texts/:user_id' element={<WriterTexts />} />
+              <Route path='/admin/write/editor/:text_id' element={<WriterEditor />} />
               <Route path='/admin/dashboard' element={<Dashboard/>}/>
               <Route path='/admin/services' element={<AdminService />}/>
               <Route path='/admin/users' element={<AdminUsers/>} />

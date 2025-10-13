@@ -1,4 +1,7 @@
 .writer {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 100px);
   label {
     display: flex;
     flex-direction: column;
@@ -16,5 +19,35 @@
     display: flex;
     gap: 22px;
     justify-content: end;
+    margin-top: auto;
   }
+
+  .text-editor,
+  .w-md-editor,
+  .w-md-editor-toolbar
+   {
+    color: black;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+
+    button {
+      color: black;
+    }
+  }
+
+  .w-md-editor-content,
+  .w-md-editor-text-input,
+  .w-md-editor-preview {
+    height: 100%;
+  }
+
+  
+
+  .text-editor {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  
 }

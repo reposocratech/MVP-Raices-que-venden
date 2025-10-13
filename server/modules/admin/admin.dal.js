@@ -1,6 +1,59 @@
 import executeQuery, { dbPool } from "../../config/db.js";
 
 class AdminDal {
+  getAllUsers = async () => {
+    try {
+      let sql = 'SELECT * FROM user';
+      const result = await executeQuery(sql);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  getTextsFromUser = async (user_id) => {
+    try {
+      let sql = 'SELECT text.*, user.* FROM text LEFT JOIN user ON text.user_id = user.user_id WHERE user.user_id=?'
+      const result = await executeQuery(sql, [user_id]);
+      console.log('array de textos', result);
+      
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  createNewText = async (user_id) => {
+    try {
+      let sql = 'INSERT INTO text(text_title,user_id) VALUES(?,?)'
+      let values = ['sin título', user_id];
+      const result = await executeQuery(sql, values);
+
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  getText = async (text_id) => {
+    try {
+      let sql = 'SELECT * FROM text WHERE text_id=?'
+      const result = await executeQuery(sql, [text_id]);
+
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   showServices = async ()=> {
 
     try {

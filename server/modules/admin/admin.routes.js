@@ -6,6 +6,14 @@ import adminControllers from "./admin.controllers.js";
 
 const router = express.Router();
 
+router.get('/getAllUsers', tokenVerify, adminController.getAllUsers);
+
+router.post('/getTextsFromUser', tokenVerify, adminController.getTextsFromUser);
+
+router.post('/createNewText', tokenVerify, adminController.createNewText);
+
+router.post('/getText', tokenVerify, adminController.getText);
+
 router.get("/getServices", tokenVerify, adminController.showServices);
 
 router.post('/createService', tokenVerify, uploadImage('services'), adminController.createService);

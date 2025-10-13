@@ -1,0 +1,46 @@
+.writer-users-table {
+
+  thead tr {
+    th {
+      background-color: var(--primary-color);
+    }
+  }
+
+  tbody tr:nth-child(even) {
+    td {
+      background-color: var(--primary-color);
+    }
+  }
+
+  th,
+  td {
+    height: 70px;
+    vertical-align: middle;
+  }
+}
+
+
+
+
+.table-photo{
+    width: 50px;
+    height: 50px;
+    background-color: var(--tertiary-color-almu);
+    border-radius: 50%;
+
+    img{
+      width: 100%;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position:top;
+      padding: 0;
+      border: 2px solid var(--tertiary-color-almu)
+    }
+
+
+  }
+
+.table-striped > tbody > tr:nth-of-type(even) {
+  --bs-table-accent-bg: var(--bs-table-striped-bg);
+}
