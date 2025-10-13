@@ -236,6 +236,28 @@ class AdminDal {
       throw error
     }
   }
+
+  activeUser = async (user_id) => {
+    try {
+      let sql = `UPDATE user 
+      SET is_deactivated = 0 WHERE user_id=?`
+      await executeQuery(sql, user_id)
+    } catch (error) {
+      throw error
+      
+    }
+  }
+
+  inactiveUser = async (user_id) => {
+    try {
+      let sql = `UPDATE user 
+      SET is_deactivated = 1 WHERE user_id=?`
+      await executeQuery(sql, user_id)
+    } catch (error) {
+      throw error
+      
+    }
+  }
 }
 
 export default new AdminDal();

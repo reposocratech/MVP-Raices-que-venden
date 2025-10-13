@@ -1,12 +1,11 @@
 import { Container, Row , Col} from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContextProvider.jsx";
-
 import { Boton } from "../../../components/Boton/Boton.jsx";
 import { AdminAppointmentList } from "../../../components/AdminAppointmentList/AdminAppointmentList.jsx";
 import AdminAppointmentCalendar from "../../../components/AdminAppointmentCalendar/AdminAppointmentCalendar.jsx";
 import { fetchData } from "../../../helpers/axiosHelper.js";
-
+import './appointment.css'
 
 
 
@@ -61,10 +60,10 @@ const Appointments = () => {
  
   return (
     
-     <Container>
+     <Container className="appointment-admin">
       <Row lg={2}>
         <Col>
-          <h2>Gestión de citas</h2>
+          <h2 className="title-admin">Gestión de citas</h2>
         </Col>
         <Col className="d-flex gap-2 justify-content-end">
           <Boton 
