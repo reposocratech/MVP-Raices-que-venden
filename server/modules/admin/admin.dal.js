@@ -192,7 +192,50 @@ class AdminDal {
     }
   }
 
-  
+  getAppoitment = async () => {
+    try {
+
+      let sql = ` SELECT 
+                  appointment.*,
+                  user.user_name,
+                  user.last_name,
+                  user.email,
+                  user.phone_number,
+                  user.avatar
+                  FROM appointment, user
+                  WHERE appointment.user_id = user.user_id
+                  `
+      const result = await executeQuery(sql);
+      return result
+      
+    } catch (error) {
+      throw error
+    }
+  }
+
+  appointmentConfirm = async (appointment_id) => {
+    try {
+      let sql = `UPDATE appointment 
+      SET app_status = 2 WHERE appointment_2_id=?
+      `
+      const result =  await executeQuery(sql, appointment_id)
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
+  appointmentCanceled = async (appointment_id) => {
+    try {
+      let sql = `UPDATE appointment 
+      SET app_status = 3 WHERE appointment_2_id=?
+      `
+      const result =  await executeQuery(sql, appointment_id)
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export default new AdminDal();

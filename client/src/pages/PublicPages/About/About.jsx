@@ -10,7 +10,7 @@ const About = () => {
         </h1>
         <Row className='div-row'>
           <Col className="about-img" sm={12} md={6}>
-            <img src="/image/almu.png" alt="" />
+            <img src="/image/almu2.jpg" alt="" />
             <p>
               “Contar la historia de un pueblo es mantener vivo su futuro. Y esa
               es mi misión.”

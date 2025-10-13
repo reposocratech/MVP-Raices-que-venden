@@ -5,6 +5,7 @@ import { Boton } from "../../../components/Boton/Boton";
 import { fetchData } from "../../../helpers/axiosHelper.js";
 import { AuthContext } from "../../../context/AuthContextProvider.jsx";
 import './horarios.css'
+import { ftnArrCalendar, ftnFechaDisponibilidad } from "../../../middlewares/generadorCitas.js";
 
 
 const hourDayPanel = {
@@ -24,8 +25,18 @@ const Horarios = () => {
   
   const [hourDay, setHourDay] = useState(ftnHourDay)
 
+  //------------
+/*   const [appointment, setAppointment] = useState([]) */
+
   // Array de las horas de disponibilidad semanal
   const [availability, setAvailability] = useState([])
+
+  // Funcionalidad para transpormar availability
+  const fechasDisponibilidad = ftnFechaDisponibilidad(availability);
+
+  // Funcionalidad para generar Appointments
+  const arrCalendar =  ftnArrCalendar(fechasDisponibilidad)
+  console.log(arrCalendar)
 
 
   useEffect(() => {
@@ -33,12 +44,18 @@ const Horarios = () => {
       const getAllDaysHours = async () => {
         let result = await fetchData('/admin/getAllDaysHours', 'GET', null, token);
         setAvailability([...availability, ...result.data.daysHours]);
+        
       }
+     
       getAllDaysHours()
     } catch (error) {
       console.log(error)
     }
+
+  
   },[])
+
+
 
   //
   const getDayHour = async(availability_day, availability_hour) => {

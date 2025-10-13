@@ -9,9 +9,6 @@ export const AuthContextProvider = ({children}) => {
   const [services, setServices] = useState([])
 
 
-  /* console.log("Desde el AuthContext" , user , token) */
-
-
   const logOut = () => {
     setUser(null);
     setToken(null);
@@ -37,11 +34,11 @@ export const AuthContextProvider = ({children}) => {
       fetchUser()
       
     }
+ 
   },[])
   
 
   
-
   return (
     <AuthContext.Provider 
       value={{
@@ -51,7 +48,8 @@ export const AuthContextProvider = ({children}) => {
                setToken,
                services,
                setServices,
-               logOut
+               logOut,
+               
                }}>
     
       {children}

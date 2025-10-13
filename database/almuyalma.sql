@@ -131,4 +131,15 @@ INSERT INTO service(service_id, service_name, service_description, service_image
 SELECT * FROM social_network;
 
 SELECT * FROM availability;
- 
+
+SELECT * FROM appointment;
+
+SELECT 
+appointment.*,
+user.user_name,
+user.last_name,
+user.email,
+user.phone_number,
+user.avatar
+FROM appointment, user
+WHERE appointment.user_id = user.user_id

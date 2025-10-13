@@ -11,3 +11,10 @@
     object-fit: cover;
 }
 
+.description-card{
+  padding: 0;
+}
+
+.name-service{
+  color: var(--tertiary-color);
+}

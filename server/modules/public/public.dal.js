@@ -48,6 +48,14 @@ class PublicDal {
       }
 
     }
+
+
+    getAdminEmail = async () => {
+    const sql = 'SELECT email FROM user WHERE type = 1 LIMIT 1';
+    const [admin] = await executeQuery(sql);
+    return admin?.email;
+  }
+
 }
 
 export default new PublicDal();

@@ -1,45 +1,64 @@
-import appointmentDal from './appointment.dal.js'
+import appointmentDal from "./appointment.dal.js";
 
 class AppointmentController {
-    reserve = async (req, res) => {
-        try {
-            const {app_day, app_hour, app_date, user_id} = req.body;
+  reservedAppointment = async (req, res) => {
+    try {
+      const { user_id, app_status, app_day, app_hour, app_date } = req.body;
+      console.log(req.body);
 
-            const result = await appointmentDal.reserveAppointment([
-                app_day,
-                app_hour,
-                app_date,
-                user_id
+      let values = [user_id, app_status, app_day, app_hour, app_date]
 
-            ])
-            res.status(200).json({message: "reserva registrada correctamente", result})
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({message: "error al registrar la reserva", error})
-        }
+     let result = await appointmentDal.reservedAppointment(values)
+   /*  ([
+        user_id,
+        app_status,
+        app_day,
+        app_hour,
+        app_date,
+      ]);*/
+      res.status(200).json({message: "reserva registrada correctamente", result})
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: "error al registrar la reserva", error });
     }
+  };
 
-    getAvailableAppointment = async (req, res) => {
-        try {
-            const today = new Date();
-            today.setDate(today.getDate() + 1);
+  getAvailableAppointment = async (req, res) => {
+    try {
+      const availability = await appointmentDal.getAllDaysHours();
+      const citas = [];
 
-            const endDate = new Date();
-            endDate.setDate(today.getDate() + 28);
+      for (let i = 1; i <= 31; i++) {
+        const fecha = new Date();
+        fecha.setDate(fecha.getDate() + i);
+        const diaSemana = fecha.getDay();
 
-            const result = await appointmentDal.getAvailableAppointment(
-                today.toISOString().split("T")[0],
-                endDate.toISOString().split("T")[0]
-            );
-            res.json(result);
+        const horas = availability
+          .filter((a) => a.availability_day === diaSemana)
+          .map((a) => Number(a.availability_hour));
 
-        } catch (error) {
-            console.log(error)
-            throw error;
+        for (const hora of horas) {
+          const start = new Date(fecha);
+          start.setHours(hora, 0, 0, 0);
 
+          const end = new Date(start);
+          end.setHours(start.getHours() + 1);
+
+          citas.push({
+            start,
+            end,
+            title: "Disponible",
+            status: "free",
+          });
         }
-    } 
+      }
+
+      res.json({ result: citas });
+    } catch (error) {
+      console.error("error al ver citas", error);
+      res.status(500).json({ message: "Error al generar las citas", error });
+    }
+  };
 }
 
-
-export default new AppointmentController;
+export default new AppointmentController();

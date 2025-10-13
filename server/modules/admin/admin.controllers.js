@@ -221,7 +221,53 @@ class AdminController {
     }
   }
 
+  getAppoitment = async (req, res) => {
+    try {
   
+      const result = await adminDal.getAppoitment();
+      res.status(200).json({message: "Citas obtenidas con exito",
+                            citas: result
+                            })
+      
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({message: "Error server",
+                            dataError: error
+      })
+    }
+  }
+
+  appointmentConfirm = async (req, res) => {
+    try {
+      const { appointment_id } = req.body
+      const result = await adminDal.appointmentConfirm([appointment_id]);
+      res.status(200).json({message: 'Confirmación realizada con exito',
+                            result
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message: 'Error server',
+                            dataError: error
+      })
+    }
+  }
+
+  appointmentCanceled = async (req, res) => {
+    try {
+      const { appointment_id } = req.body
+      const result = await adminDal.appointmentCanceled([appointment_id]);
+      res.status(200).json({message: 'Cancelación realizada con exito',
+                            result
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message: 'Error server',
+                            dataError: error
+      })
+    }
+  }
 }
 
+
+ 
 export default new AdminController();
