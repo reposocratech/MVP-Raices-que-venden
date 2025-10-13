@@ -1,11 +1,3 @@
-
-:root{
-  --primary-color: #FAF8F4;
-  --text-color: #5A4633;
-  --bs-nav-link-hover-color:#5A4633 !important;
-}
-
-
 .nav-public{
   background-color: var(--primary-color) ;
 

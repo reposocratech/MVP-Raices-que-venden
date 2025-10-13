@@ -1,5 +1,7 @@
 .section-service {
-
+  background: 
+    linear-gradient(rgba(255, 255, 255, 0.876), rgb(255, 255, 255, 0.876)), 
+    url(../../../../public/fondo/fondo.jpg);
   .service-detail {
     padding: 0;
 
@@ -37,6 +39,8 @@
         font-weight: bold;
         z-index: 1; 
         position: relative;
+        
+        
       }
     }
   }
@@ -46,13 +50,55 @@
 
 
     .card-service-unic{
-       background-color: var(--primary-color-homedark);
-      border: none;
+      background-color: var(--primary-color-homedark);
+      border-radius: var( --border-medium);
+      transform: translate(0, -80px);
+      text-wrap-style: pretty;
+      padding: 2rem;
+
+      .img-service-unic{
+        max-width:50%;
+
+        object-fit: cover;
+        margin: 1rem;
+        padding: .1rem;
+        border-radius: var( --border-medium);
+        border: 4px double var(--secundary-color-dark);
+        overflow:hidden;
+      }
+      .img-service-unic:hover{
+        -webkit-transform:scale(1.1);
+        transform:scale(1.1);
+        transition-duration: 1s;
+      }
+
+      .h2-service-unic{
+        font-weight: bold;
+        color: var(--secundary-color-dark);
+      }
+
+      .description-service-unic{
+        padding-inline: 2rem;
+
+        .price-service{
+          color: var(--secundary-color-dark);
+        }
+      }
     }
     
   }
 
+  
 }
+
+
+.section-servicios{
+  .title{
+    color: var( --tertiary-color-almu);
+  }
+}
+
+
 
 
 /* .section-servicios{

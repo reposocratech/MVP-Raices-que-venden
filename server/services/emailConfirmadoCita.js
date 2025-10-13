@@ -5,21 +5,21 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: 'almuyalma.raices@gmail.com',
+     user: 'almuyalma.raices@gmail.com',
     pass: 'zbxjchvvceyafbnf',
   },
 });
 
-//email que recibe quien completa el formulario
-export const emailconficontact = async (user_name, email) => {
-  let emailconficontact = `
+export const emailConfirmadoCita = async({ user_name, email, app_day, app_hour }) => {
+  
+  let emailConfirmadoCitahtml = `
   
   <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario recibido</title>
+  <title>Cita confirmada</title>
 </head>
 <body
   style="margin:0; padding:0; font-family: Georgia, 'Times New Roman', Times, serif; background-color:#f4f4f4;"
@@ -42,7 +42,7 @@ export const emailconficontact = async (user_name, email) => {
             <td
               style="background-color:#E7DED3; color:#4B7F52; text-align:center; padding:20px; font-size:24px; font-weight:bold;"
             >
-              ¡Gracias por tu mensaje!
+              ¡Tu cita ha sido confirmada!
             </td>
           </tr>
 
@@ -51,21 +51,32 @@ export const emailconficontact = async (user_name, email) => {
               <p>Hola ${user_name},</p>
 
               <p>
-                Hemos recibido tu mensaje en <strong>Raíces que venden</strong> y queremos
-                darte las gracias por escribirnos. 💚  
-                En breve nos pondremos en contacto contigo para conocer mejor tu proyecto.
+                ¡Nos alegra confirmarte que tu cita con <strong style="color: #4B7F52;">Raíces que venden</strong> ha sido aprobada!  
+                <br>
+                Te esperamos con mucha ilusión para seguir cultivando ideas y palabras con propósito.
               </p>
 
-              <div style="text-align:center; margin-top:25px;">
-                <p
-                  style="display:inline-block; padding:12px 30px; border-radius:20px; border:1px solid #7b9c7a; background-color:#7b9c7a; font-weight:bold;"
-                >
-                  <a
-                    href="mailto:almuyalma.raices@gmail.com"
-                    style="color:white !important; text-decoration:none !important;"
-                  >
-                    Escribir a Raíces
-                  </a>
+              <div style="background-color:#F5F2EB; border-radius:8px; padding:14px; margin:20px 0; color:#4b4b4b;">
+                <p style="margin:0 0 8px 0;"><strong>Detalles de tu cita</strong></p>
+                <p style="margin:0;">📅 Fecha: <strong>${app_day}</strong></p>
+                <p style="margin:6px 0 0 0;">🕒 Hora: <strong>${app_hour}</strong></p>
+              </div>
+
+              <div>
+                Si necesitas modificar o cancelar tu cita, puedes hacerlo respondiendo directamente a este correo antes de 48h de la cita.
+                <br><br>
+                Recuerda revisar tu bandeja de entrada (y la de spam) por si te enviamos alguna actualización o recordatorio.
+              </div>
+
+              <div style="margin-top:20px;">
+                <p>
+                  Gracias por confiar en Raíces, donde cada palabra germina con intención y florece con autenticidad.
+                  <br><br>
+                  <div>
+                    Con cariño,
+                    <br>
+                    <strong>El equipo de Almuyalma</strong>
+                  </div>
                 </p>
               </div>
             </td>
@@ -85,20 +96,19 @@ export const emailconficontact = async (user_name, email) => {
     </tr>
   </table>
 </body>
-
-
- 
-  
-</body>
 </html>
 
-  `;
+  `
 
-  await transporter.sendMail({
+
+   await transporter.sendMail({
     from: '"AlmuyAlma (Raíces que venden)" <almuyalma.raices@gmail.com>',
     to: email,
-    subject: ' Hemos recibido tu mensaje',
-    html: emailconficontact,
+    subject: 'cita confirmada',
+    html: emailConfirmadoCitahtml,
   });
-  console.log('email recibido');
-};
+
+  console.log('cita confirmada');
+
+
+}
