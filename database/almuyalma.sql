@@ -103,6 +103,7 @@ CREATE TABLE text (
 
 
 SELECT * FROM text;
+-- SELECT text.*, user.
 SELECT text.*, user.* FROM text LEFT JOIN ON text.user_id = user.user_id AND user.user_id=2;
 
 INSERT INTO service(service_id, service_name, service_description, service_image)

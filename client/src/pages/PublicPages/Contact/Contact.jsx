@@ -20,11 +20,32 @@ const Contact = () => {
               <p>
                 Contáctanos directamente o síguenos para ver ejemplos de proyectos rurales que ya están floreciendo.
               </p>
-              <p><i class="bi bi-envelope-at"></i>     almuyalma.raices@gmail.com
+              <p><i class="bi bi-envelope-at"></i>        almuyalma.raices@gmail.com
               </p>
               <p>
-                <i class="bi bi-whatsapp"></i>        +34 658748225
+                <i class="bi bi-whatsapp"></i>        +34-658748225
               </p>
+               <div className="col d-flex justify-content-center mb-2">
+              <a href="https://www.instagram.com/almuyalma.copy" className="textIcon mx-4">
+                <i
+                  className="bi bi-instagram "
+                  style={{ fontSize: "1.5rem" }}
+                ></i>
+              </a>
+              <a href="https://www.facebook.com/" className="textIcon mx-4">
+                <i
+                  className="bi bi-facebook "
+                  style={{ fontSize: "1.5rem" }}
+                ></i>
+              </a>
+              <a href="https://www.linkedin.com/in/almudenatorreslopez" className="textIcon mx-4">
+                <i
+                  className="bi bi-linkedin "
+                  style={{ fontSize: "1.5rem" }}
+                ></i>
+              </a>
+              
+            </div>
             </div>
             <img className='imgAlmu' src="/image/almu5.jpg" alt="" />
           </Col>

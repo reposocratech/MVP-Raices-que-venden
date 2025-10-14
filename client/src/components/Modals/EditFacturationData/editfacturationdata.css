@@ -1,8 +1,9 @@
+ .modal-titleForm{
+     color: var(--tertiary-color);
 
+}
 
-
-
-    .edit-form {
+ .edit-form {
         width: 100%;
         padding: 1rem;
 
@@ -12,10 +13,11 @@
             padding-top: 0.5rem;
             
 
-            input {
+           .inputForm {
                 border-radius: var(--border-hight);
                 padding: 0.5rem 1rem; 
-                border: 1px solid var(--secundary-color);
+                border: 1px solid var(--tertiary-color);
+                background-color: var( --primary-color);
 
             }
 
@@ -23,5 +25,4 @@
 
     
 
-        
-    }
+}
