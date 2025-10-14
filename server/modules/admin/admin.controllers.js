@@ -175,12 +175,10 @@ class AdminController {
   getAllDaysHours = async (req, res) => {
     try {
       let result = await adminDal.getAllDaysHours();
-      res
-        .status(200)
-        .json({
-          message: 'Todas los días y horas extraidos con exito',
-          daysHours: result,
-        });
+      res.status(200).json({
+        message: 'Todas los días y horas extraidos con exito',
+        daysHours: result,
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Error server', dataError: error });
@@ -219,13 +217,12 @@ class AdminController {
 
       const appointment = await adminDal.getAppoitmentById(appointment_id);
 
-    await emailConfirmadoCita({
-      user_name: appointment.user_name,
-      email: appointment.email,
-      app_day: appointment.app_day,
-      app_hour: appointment.app_hour,
-    });
-
+      await emailConfirmadoCita({
+        user_name: appointment.user_name,
+        email: appointment.email,
+        app_day: appointment.app_day,
+        app_hour: appointment.app_hour,
+      });
 
       res
         .status(200)
@@ -243,12 +240,12 @@ class AdminController {
 
       const appointment = await adminDal.getAppoitmentById(appointment_id);
 
-    await emailCanceladoCita({
-      user_name: appointment.user_name,
-      email: appointment.email,
-      app_day: appointment.app_day,
-      app_hour: appointment.app_hour,
-    });
+      await emailCanceladoCita({
+        user_name: appointment.user_name,
+        email: appointment.email,
+        app_day: appointment.app_day,
+        app_hour: appointment.app_hour,
+      });
 
       res
         .status(200)
@@ -257,39 +254,36 @@ class AdminController {
       console.log(error);
       res.status(500).json({ message: 'Error server', dataError: error });
     }
-  }
+  };
 
   activeUser = async (req, res) => {
     try {
-      console.log(req.body)
+      console.log(req.body);
       const { user_id } = req.body;
-      await adminDal.activeUser([user_id])
-      res.status(200).json({message:"Usuario activado con exito"})
-      
+      await adminDal.activeUser([user_id]);
+      res.status(200).json({ message: 'Usuario activado con exito' });
     } catch (error) {
       console.log(error);
       res.status(500).json({
-        message: "Error server",
-        dataError: error
-      })
+        message: 'Error server',
+        dataError: error,
+      });
     }
-  }
+  };
 
   inactiveUser = async (req, res) => {
     try {
-      console.log(req.body)
+      console.log(req.body);
       const { user_id } = req.body;
-      await adminDal.inactiveUser([user_id])
-      res.status(200).json({message:"Usuario desactivado con exito"})
-      
+      await adminDal.inactiveUser([user_id]);
+      res.status(200).json({ message: 'Usuario desactivado con exito' });
     } catch (error) {
       console.log(error);
       res.status(500).json({
-        message: "Error server",
-        dataError: error
-      })
+        message: 'Error server',
+        dataError: error,
+      });
     }
-  }
   };
 }
 
