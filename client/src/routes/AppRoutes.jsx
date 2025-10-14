@@ -36,8 +36,7 @@ const ChooseDate = lazy(() => import('../pages/UserPages/ChooseDate/ChooseDate')
 
 //importacion de las ruta de Admin
 import { AdminLayout } from '../layouts/AdminLayout';
-import MyCalendar from '../pages/UserPages/MyCalendar/MyCalendar'
-
+const AdminMessage = lazy(() => import('../pages/AdminPages/AdminMessage/AdminMessage'));
 
 
 const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
@@ -103,12 +102,17 @@ export const AppRoutes = () => {
               <Route path='/admin/write' element={<WriterUsers />} />
               <Route path='/admin/write/texts/:user_id' element={<WriterTexts />} />
               <Route path='/admin/write/editor/:text_id' element={<WriterEditor />} />
+
               <Route path='/admin/dashboard' element={<Dashboard/>}/>
+
+              {/* <Route path='/admin/message' element={<AdminMessage />}/> */}
+              {/* <Route path='/admin/dashboard' element={<Dashboard/>}/> */}
+
               <Route path='/admin/services' element={<AdminService />}/>
               <Route path='/admin/users' element={<AdminUsers/>} />
               <Route path='/admin/horarios' element={<Horarios />} />
               <Route path='/admin/appointments' element={<Appointments />} />
-              <Route path='/admin/orders' element={<AdminOrders />} />
+              {/* <Route path='/admin/orders' element={<AdminOrders />} /> */}
             </Route>
           </Route>
 

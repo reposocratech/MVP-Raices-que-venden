@@ -36,5 +36,7 @@ router.delete('/deleteRedSocial/:social_network_id', tokenVerify, userController
 
 router.put('/editRedSocial/:social_network_id', tokenVerify, userController.editRedSocial)
 
+router.post('/getTexts', tokenVerify, userController.getTexts);
+
 
 export default router;

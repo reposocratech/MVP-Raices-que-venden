@@ -5,10 +5,13 @@ import { tokenVerify } from '../../middlewares/tokenVerify.js';
 const router = express.Router();
 
 //recoge los datos de la reserva de la cita y lo mando al bd
-router.post('/reservedAppointment' ,tokenVerify, appointmentControllers.reservedAppointment)
+router.post('/reservedAppointment' , tokenVerify, appointmentControllers.reservedAppointment)
 
 //manda los datos de las citas disponibles al calendario
 router.get('/available' , appointmentControllers.getAvailableAppointment)
+
+//muestra las citas del usuario logueado
+router.get('/myAppointments' , tokenVerify, appointmentControllers.getUserAppointments)
 
 
 
