@@ -37,6 +37,11 @@ router.delete('/deleteDayHour', tokenVerify, adminControllers.deleteDayHour)
 router.get('/getAppoitment', tokenVerify, adminControllers.getAppoitment)
 
 router.put('/appointmentConfirm', tokenVerify, adminController.appointmentConfirm)
-export default router;
 
 router.put('/appointmentCanceled', tokenVerify, adminController.appointmentCanceled)
+
+router.put('/activeUser', tokenVerify, adminController.activeUser);
+
+router.put('/inactiveUser', tokenVerify, adminController.inactiveUser)
+
+export default router;

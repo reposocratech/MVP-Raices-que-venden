@@ -17,6 +17,7 @@ import { fetchData } from '../../../helpers/axiosHelper';
             const datos = {
                 
                 user_id: user.user_id,
+                email: user.email,
                 app_status: 1,
                 app_day: reserved.start.getDay(),
                 app_hour: reserved.start.getHours(),
