@@ -11,7 +11,7 @@ const initialValue = {
   service_price: ''
 }
 
-export const CreateService = ({handleClose, show, setServices}) => {
+export const CreateService = ({close, show, setServices}) => {
   const {token} = useContext(AuthContext);
   const [newServiceData, setNewServiceData] = useState(initialValue);
   const [newImg, setNewImg] = useState('');
@@ -23,6 +23,11 @@ export const CreateService = ({handleClose, show, setServices}) => {
 
   const handleChangeImg = (e) => {
     setNewImg(e.target.files[0]);
+  }
+
+  const handleClose = () => {
+    setNewServiceData(initialValue);
+    close();
   }
 
   const onSubmit = async() => {

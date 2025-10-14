@@ -79,7 +79,7 @@ const AdminService = () => {
           )
         })}
       </Row>
-      <CreateService show={showCreateService} handleClose={()=>setShowCreateService(false)} setServices={setServices}/>
+      <CreateService show={showCreateService} close={()=>setShowCreateService(false)} setServices={setServices}/>
       {selectedService && <ModifyService show={showModifyService} handleClose={handleCloseEdit} setServices={setServices} service={selectedService} deselect={()=>setSelectedService(null)}/>}
       {selectedService && <DeleteService show={showDeleteService} handleClose={handleCloseDelete} setServices={setServices} service={selectedService} deselect={()=>setSelectedService(null)}/>}
     </Container>
