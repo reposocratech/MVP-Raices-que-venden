@@ -1,0 +1,21 @@
+.carrousel{
+  max-width: 500px;
+  margin: auto;
+
+  .imgC{
+    width: 500px;
+    max-height: 372px;
+    object-fit: cover;
+    background-size: cover;
+  }
+
+  .carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.6); /* fondo oscuro */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-size: 60%;
+}
+
+}

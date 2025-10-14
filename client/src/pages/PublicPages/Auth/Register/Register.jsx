@@ -39,6 +39,8 @@ const Register = () => {
       navigate('/login');
 
     } catch (error) {
+      console.log("Error completo:", error);
+  console.log("Error response:", error.response?.data);
       if (error instanceof ZodError) {
         const fieldErrors = {};
         error.issues.forEach((e) => {
@@ -47,7 +49,7 @@ const Register = () => {
         setValorError(fieldErrors);
         console.log(fieldErrors)
         setErrMsg("");
-      }else if (error.response.data.errno === 1062) {
+      }else if (error.response?.data?.errno === 1062) {
         setErrMsg("¡Este correo ya esta registrado!")
       }else {
         console.log("otro error" , error)
@@ -71,7 +73,10 @@ const Register = () => {
               value={text.email}
               onChange={handleChange}
               />
+             
           </div>
+          <p className='text-danger'>{errMsg}</p>
+         
           <div className='input-div'>
             <label htmlFor="password">Contraseña</label>
             <div className='div-pass'>
@@ -86,7 +91,9 @@ const Register = () => {
                  <i 
                     onClick={() => setShowPass(!showPass)}  
                     className={showPass ? "bi bi-eye" :  "bi bi-eye-slash"}></i>
+                    
             </div>
+            { valorError?.password && <p className='text-danger'>{valorError.password}</p>}
           </div>
           <div className='input-div'>
             <label htmlFor="repetirPassword">Repetir Contraseña</label>
@@ -102,7 +109,9 @@ const Register = () => {
               <i  
                   onClick={() => setShowPassRep(!showPassRep)} 
                   className={showPassRep ? "bi bi-eye" :  "bi bi-eye-slash"} ></i>
+                 
             </div>
+             { valorError?.repetirPassword && <p className='text-danger'>{valorError.repetirPassword}</p>}
           </div>
           <div className='check-input'>
             <div>
@@ -114,6 +123,7 @@ const Register = () => {
               <label htmlFor="newslatter">Suscribirme a la newslatter personalizada</label>
             </div>
           </div>
+          
           <div className='req-zod'>
             <Row lg={3}>
               <Col>

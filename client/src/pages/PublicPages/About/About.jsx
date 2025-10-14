@@ -1,16 +1,17 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import './about.css';
+import { Carrousel } from '../../../components/Carrousel/Carrousel';
 
 const About = () => {
   return (
     <section className='section-about'>
       <Container className="about">
-        <h1>
+        <h1 >
           Conoce a Almudena: La Esencia de Almuyalma
         </h1>
         <Row className='div-row'>
           <Col className="about-img" sm={12} md={6}>
-            <img src="/image/almu2.jpg" alt="" />
+            <Carrousel/>
             <p>
               “Contar la historia de un pueblo es mantener vivo su futuro. Y esa
               es mi misión.”
@@ -26,6 +27,7 @@ const About = () => {
             </p>
           </Col>
         </Row>
+        
       </Container>
     </section>
   );

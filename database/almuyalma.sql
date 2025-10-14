@@ -78,7 +78,7 @@ CREATE TABLE text (
 );
 
 SELECT * FROM text;
-SELECT text.*, user.* FROM text LEFT JOIN ON text.user_id = user.user_id AND user.user_id=2;
+-- SELECT text.*, user.* FROM text LEFT JOIN ON text.user_id = user.user_id AND user.user_id=2;
 -- Tablas si nos diese tiempo
 
 CREATE TABLE message (
