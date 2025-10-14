@@ -3,6 +3,8 @@ CREATE DATABASE almuyalma;
 USE almuyalma;
 -- DROP DATABASE almuyalma;
 
+SELECT * FROM user;
+
 CREATE TABLE user (
     user_id INT UNSIGNED NOT NULL  PRIMARY KEY,
     user_name VARCHAR(55),
@@ -44,7 +46,7 @@ CREATE TABLE service (
     is_visible BOOLEAN NOT NULL DEFAULT 0
 );
 
-
+SELECT * FROM availability;
 
 CREATE TABLE availability (
     availability_id MEDIUMINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -52,10 +54,32 @@ CREATE TABLE availability (
     availability_hour TINYINT UNSIGNED  NOT NULL -- "08:00 - 09:00" de 1 a 12, para 8 am y 8 pm
 );
 
-    
+  SELECT * FROM appointment;
+  
+SELECT * FROM appointment WHERE app_status = 1;
+
+INSERT INTO appointment (app_status, app_day, app_hour, app_date, user_id)
+VALUES 
+(1, 4, 1, '2025-10-10', 1),  -- viernes, 08:00
+(1, 1, 2, '2025-10-13', 1),  -- lunes, 09:00
+(1, 2, 3, '2025-10-14', 1),  -- martes, 10:00
+(1, 3, 4, '2025-10-15', 1),  -- miércoles, 11:00
+(1, 4, 5, '2025-10-16', 1);  -- jueves, 12:00
+INSERT INTO appointment (app_status, app_day, app_hour, app_date, user_id)
+VALUES 
+(1, 5, 1, '2025-10-10', 1),  -- 08:00
+(1, 5, 2, '2025-10-10', 1),  -- 09:00
+(1, 5, 3, '2025-10-10', 1),  -- 10:00
+(1, 5, 4, '2025-10-10', 1);  -- 11:00
+SELECT appointment_2_id, app_hour FROM appointment;
+DELETE FROM appointment WHERE app_hour < 1 OR app_hour > 12;
+
+SELECT * FROM appointment WHERE app_status = 2;
+
+  
 CREATE TABLE appointment (
     appointment_2_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
-    app_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 pendiente | 2 confirmado | 3 cancelado
+    app_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 pending | 2 confirmed | 3 cancelled
     app_day TINYINT UNSIGNED NOT NULL, -- de 1 a 5 para de lunes a viernes
     app_hour TINYINT UNSIGNED NOT NULL,  -- "08:00 - 09:00" de 1 a 12, para 8 am y 8 pm
     app_date DATE NOT NULL, -- 23/09/2025
@@ -69,7 +93,7 @@ CREATE TABLE text (
     text_title VARCHAR(100) NOT NULL,
     text_body MEDIUMTEXT,
     text_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 oculto | 2 publicado | ¿3 eliminado?
+    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1,
     filename VARCHAR(200),
     user_id INT UNSIGNED NOT NULL,
     last_modified DATETIME NULL,
@@ -77,8 +101,9 @@ CREATE TABLE text (
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-SELECT * FROM text;
-SELECT text.*, user.* FROM text LEFT JOIN ON text.user_id = user.user_id AND user.user_id=2;
+INSERT INTO service(service_id, service_name, service_description, service_image)
+VALUES(1, "marketing", "textos escritos", "estaimagen");
+
 -- Tablas si nos diese tiempo
 
 CREATE TABLE message (
@@ -123,23 +148,3 @@ CREATE TABLE purchase (
     CONSTRAINT fk_product_1 FOREIGN KEY (product_id)
     REFERENCES product(product_id) ON DELETE CASCADE ON UPDATE CASCADE    
 );
-
-
-INSERT INTO service(service_id, service_name, service_description, service_image) VALUES(1, "marketing", "textos escritos", "estaimagen");
-
-
-SELECT * FROM social_network;
-
-SELECT * FROM availability;
-
-SELECT * FROM appointment;
-
-SELECT 
-appointment.*,
-user.user_name,
-user.last_name,
-user.email,
-user.phone_number,
-user.avatar
-FROM appointment, user
-WHERE appointment.user_id = user.user_id

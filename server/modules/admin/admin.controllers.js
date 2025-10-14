@@ -211,7 +211,7 @@ class AdminController {
     }
   };
 
-  getAllDaysHours = async (req, res) => {
+    getAllDaysHours = async (req, res) => {
     try {
       let result = await adminDal.getAllDaysHours();
       res
