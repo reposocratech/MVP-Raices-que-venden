@@ -64,6 +64,43 @@ class AdminController {
     }
   }
 
+  saveText = async (req, res) => {
+    const {text_id, text_title, text_body} = req.body;
+
+    try {
+      const textData = {
+        text_id: text_id,
+        text_title: text_title,
+        text_body: text_body,
+        last_modified: new Date()
+      }
+
+      const result = await adminDal.saveText(textData);
+
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+    
+  }
+
+  publishOrHide = async (req, res) => {
+    const {text_id, text_status} = req.body;
+    console.log(req.body);
+    
+    try {
+      await adminDal.publishOrHide({text_id, text_status});
+      res.status(200).json({message: 'todo ok'});
+
+    } catch (error) {
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
+
   deleteText = async (req, res) => {
     
   }

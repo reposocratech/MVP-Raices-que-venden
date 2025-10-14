@@ -13,10 +13,10 @@ export const NavbarUser = () => {
   return (
      <Navbar collapseOnSelect expand="lg" className='nav-user d-flex justify-content-center align-items-center'>
       <Container>
-        <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand>
+        <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt=""/></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto nav-parents">
+          <Nav className="me-auto nav-parents  align-items-center">
             <Nav.Link   as={Link} to='/user'>Inicio</Nav.Link>
             <Nav.Link   as={Link} to='/user/services'  >Servicios</Nav.Link>
             <Nav.Link  as={Link} to='/user/about'>Almudena</Nav.Link>  
@@ -24,48 +24,45 @@ export const NavbarUser = () => {
             <Nav.Link  as={Link} to='/user/chooseDate'>Agendar cita</Nav.Link>
           </Nav>
 
-          <Nav className='nav-parents'>
-            <div  
-              className='nav-photo'
-              >
-              <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt="" />
-            </div>
+          <Nav className='nav-parents align-items-center'>
+              <div 
+                className='nav-photo'
+                >
+                <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt=""/>
+              </div>
 
-            <NavDropdown className='nav-parents'id="collapsible-nav-dropdown">
+            <NavDropdown className='nav-parents' id='dropdown-button-drop-down-centered' as='btn-group' drop='down-centered' align={{ lg: 'end'}}>
 
-                <NavDropdown.Item 
-                  as={Link} 
-                  to='/user/profile' 
-                  >
-                    <i className="bi bi-person-check"></i> 
-                    Mi perfil
-                </NavDropdown.Item>
-
-                <NavDropdown.Item 
-                  as={Link} 
-                  to='/user/myorders' 
-                  ><i className="bi bi-bag-check"></i> 
-                  Mis Compras
-                </NavDropdown.Item>
-
-                <NavDropdown.Item 
-                  as={Link} 
-                  to='/user/texts'
-                  >
-                  <i className="bi bi-file-earmark-text"></i> 
-                  Mis Textos
-                </NavDropdown.Item>
-
-                <NavDropdown.Item 
-                  as={Link} to='/user/myAppointments' ><i className="bi bi-calendar-check"></i>  
-                  Mis Citas
+                  <NavDropdown.Item
+                    as={Link}
+                    to='/user/profile'
+                    >
+                      <i className="bi bi-person-check"></i>
+                      Mi perfil
                   </NavDropdown.Item>
-                <NavDropdown.Item 
-                  onClick={logOut} 
-                  >
-                    <i className="bi bi-box-arrow-left"></i> 
-                    Salir
+                  <NavDropdown.Item
+                    as={Link}
+                    to='/user/myorders'
+                    ><i className="bi bi-bag-check"></i>
+                    Mis Compras
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link}
+                    to='/user/texts'
+                    >
+                    <i className="bi bi-file-earmark-text"></i>
+                    Mis Textos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={Link} to='/user/myAppointments' ><i className="bi bi-calendar-check"></i>
+                    Mis Citas
                     </NavDropdown.Item>
+                  <NavDropdown.Item
+                    onClick={logOut}
+                    >
+                      <i className="bi bi-box-arrow-left"></i>
+                      Salir
+                      </NavDropdown.Item>
               
             </NavDropdown>
 
