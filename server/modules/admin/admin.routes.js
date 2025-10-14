@@ -14,6 +14,10 @@ router.post('/createNewText', tokenVerify, adminController.createNewText);
 
 router.post('/getText', tokenVerify, adminController.getText);
 
+router.put('/saveText', tokenVerify, adminController.saveText);
+
+router.put('/publishOrHide', tokenVerify, adminController.publishOrHide);
+
 router.get("/getServices", tokenVerify, adminController.showServices);
 
 router.post('/createService', tokenVerify, uploadImage('services'), adminController.createService);

@@ -54,6 +54,28 @@ class AdminDal {
     }
   }
 
+  saveText = async ({text_id, text_title, text_body, last_modified}) => {
+    try {
+      let sql = 'UPDATE text SET text_title=?, text_body=?, last_modified=? WHERE text_id=?';
+      await executeQuery(sql, [text_title, text_body, last_modified, text_id]);
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  publishOrHide = async ({text_id, text_status}) => {
+    try {
+      let sql = 'UPDATE text SET text_status=? WHERE text_id=?';
+      await executeQuery(sql, [text_status, text_id]);
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   showServices = async ()=> {
 
     try {
