@@ -1,4 +1,4 @@
-import { sendMailConfirm } from '../../services/emailServices.js';
+import { sendMailConfirm } from '../../services/emailRegister.js';
 import { compareString, hashString } from '../../utils/hashUtils.js';
 import {
   generateTokenConfirm,
@@ -249,6 +249,18 @@ class UserController {
         } catch (error) {
             res.status(500).json({message: "Error server", dataError: error})
         }
+    }
+
+    getTexts = async (req, res) => {     
+      try {
+        const {user_id} = req.body;
+        const result = await userDal.getTexts(user_id)
+        console.log(result);
+        res.status(200).json(result);
+
+      } catch (error) {
+        res.status(500).json({message: "Error server", dataError: error})
+      }
     }
 
 }

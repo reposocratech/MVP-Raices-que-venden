@@ -23,7 +23,7 @@ class UserDal {
 
   findEmail = async (email) => {
     try {
-      let sql = 'SELECT user_id, password FROM user WHERE email = ?';
+      let sql = 'SELECT user_id, password FROM user WHERE email = ? AND is_deactivated = 0';
       const result = await executeQuery(sql, [email]);
       return result;
     } catch (error) {
@@ -33,7 +33,7 @@ class UserDal {
 
   findUserById = async (id) => {
     try {
-      let sql = 'SELECT * FROM user WHERE user_id = ?';
+      let sql = 'SELECT * FROM user WHERE user_id = ? AND is_deactivated = 0';
       const result = executeQuery(sql, [id]);
       return result;
     } catch (error) {
@@ -151,6 +151,17 @@ class UserDal {
     }
   }
 
+  getTexts = async (user_id) => {
+    try {
+      let sql = 'SELECT * FROM text WHERE user_id=?';
+      const result = await executeQuery(sql, [user_id]);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 
 }
 

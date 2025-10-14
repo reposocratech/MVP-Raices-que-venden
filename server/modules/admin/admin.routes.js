@@ -14,6 +14,10 @@ router.post('/createNewText', tokenVerify, adminController.createNewText);
 
 router.post('/getText', tokenVerify, adminController.getText);
 
+router.put('/saveText', tokenVerify, adminController.saveText);
+
+router.put('/publishOrHide', tokenVerify, adminController.publishOrHide);
+
 router.get("/getServices", tokenVerify, adminController.showServices);
 
 router.post('/createService', tokenVerify, uploadImage('services'), adminController.createService);
@@ -33,6 +37,11 @@ router.delete('/deleteDayHour', tokenVerify, adminControllers.deleteDayHour)
 router.get('/getAppoitment', tokenVerify, adminControllers.getAppoitment)
 
 router.put('/appointmentConfirm', tokenVerify, adminController.appointmentConfirm)
-export default router;
 
 router.put('/appointmentCanceled', tokenVerify, adminController.appointmentCanceled)
+
+router.put('/activeUser', tokenVerify, adminController.activeUser);
+
+router.put('/inactiveUser', tokenVerify, adminController.inactiveUser)
+
+export default router;

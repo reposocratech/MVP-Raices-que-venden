@@ -35,7 +35,11 @@
       object-fit: cover;
       object-position:top;
       padding: 0;
+
       border: 2px solid var(--tertiary-color-almu)
+
+      border: 2px solid var(--tertiary-color-almu);
+
     }
 
 

@@ -18,7 +18,7 @@ export const NavbarApp = () => {
         <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto nav-parents">
+          <Nav className="me-auto nav-parents text-center">
             <Nav.Link   as={Link} to='/'  >Inicio</Nav.Link>
             <Nav.Link   as={Link} to='/services'  >Servicios</Nav.Link>
             <Nav.Link  as={Link} to='/about'  >Almudena</Nav.Link>
@@ -27,7 +27,7 @@ export const NavbarApp = () => {
           </Nav>
           <Nav>
 
-            <div className='d-flex gap-2'>
+            <div className='btn-group-vertical d-flex flex-lg-row gap-2 align-items-center'>
               <Boton
                 aspecto="btn-1"
                 valor="Registrar"
