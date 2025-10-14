@@ -8,9 +8,10 @@ import { AuthContext } from '../../../../context/AuthContextProvider';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { fetchData } from '../../../../helpers/axiosHelper';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const WriterEditor = () => {
+  const navigate = useNavigate();
   const {text_id} = useParams();
   const {token} = useContext(AuthContext);
   const [textForm, setTextForm] = useState();
@@ -87,12 +88,13 @@ const WriterEditor = () => {
                     commands={[
                       commands.bold,
                       commands.italic,
-                      commands.link
+                      commands.quote,
+                      commands.strikethrough
                     ]}
                     
             />
           <div className="writer-buttons">
-            <Boton aspecto='btn-err-1' valor='Cancelar' />
+            <Boton aspecto='btn-err-1' icon='bi bi-box-arrow-left' valor='Volver' onClick={()=>navigate(`/admin/write/texts/${textForm.user_id}`)} />
             <Boton aspecto='btn-1' valor='Añadir archivo'/>
             {textForm?.text_status === 1?
               <Boton aspecto='btn-1' icon='bi bi-eye' valor='Publicar' onClick={()=>publishOrHide(1)}/>
