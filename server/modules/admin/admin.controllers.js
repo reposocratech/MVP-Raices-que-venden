@@ -394,7 +394,7 @@ class AdminController {
     }
   }
 
-}
+
 
 
   inactiveUser = async (req, res) => {
@@ -412,9 +412,7 @@ class AdminController {
       })
     }
   }
-
-=======
-};
+}
 
 
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import CardService from "../../../components/cardService/CardService";
 import { fetchData } from "../../../helpers/axiosHelper";
-import CardServiceUser from "../../../components/cardService/CardServiceUser";
 import './serviceDetail.css'
 
 
