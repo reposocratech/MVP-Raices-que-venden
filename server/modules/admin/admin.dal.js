@@ -74,6 +74,45 @@ class AdminDal {
     }
   };
 
+  
+
+  deleteTextLogical = async (text_id) => {
+    try {
+      let sql = 'UPDATE text SET text_status=3 WHERE text_id=?';
+      const result = await executeQuery(sql, [text_id]);
+      console.log(result);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  restoreText = async (text_id) => {
+    try {
+      let sql = 'UPDATE text SET text_status=1 WHERE text_id=?';
+      const result = await executeQuery(sql, [text_id]);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  deleteTextTotal = async (text_id) => {
+    try {
+      let sql = 'DELETE FROM text WHERE text_id=?';
+      const result = await executeQuery(sql, [text_id]);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   showServices = async () => {
     try {
       const sql = 'SELECT * FROM service';
@@ -315,6 +354,66 @@ class AdminDal {
       throw error;
     }
   };
+
+  getChatSender = async (values) => {
+    try {
+      let sql = ` SELECT * 
+                  FROM message
+                  WHERE sender_user_id = ? 
+                  AND recipient_user_id = ?`
+      
+      const result = await executeQuery(sql, values)
+
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
+  getChatClient = async(values2) => {
+    try {
+      let sql = ` SELECT * 
+                  FROM message
+                  WHERE sender_user_id = ? 
+                  AND recipient_user_id  = ?`
+      
+      const result = await executeQuery(sql, values2)
+
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
+  getChat = async(values) => {
+    try {
+      console.log(values);
+      let sql = ` SELECT * 
+                  FROM message
+                  WHERE sender_user_id = ? 
+                  OR recipient_user_id  = ?`
+                  
+      const result = await executeQuery(sql, values);
+      console.log(result);
+      return result;
+
+    } catch (error) {
+      throw error
+    }
+  }
+
+  sendCurrentChat = async (values) => {
+    try {
+      let sql = `INSERT INTO message (message_text,sender_user_id,recipient_user_id)
+                 VALUES (?,?,?)`
+      await executeQuery(sql, values);
+      return;
+
+    } catch (error) {
+      throw error
+    }
+  }
+
 }
 
 export default new AdminDal();

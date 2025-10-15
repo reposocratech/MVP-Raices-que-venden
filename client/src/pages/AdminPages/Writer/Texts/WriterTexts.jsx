@@ -11,6 +11,7 @@ import './writerTexts.css';
 const WriterTexts = () => {
   const navigate = useNavigate();
   const [view, setView] = useState(0);
+  const [textsChanged, setTextsChanged] = useState(false);
   const {user_id} = useParams();
   const [texts, setTexts] = useState([]);
   const [filteredTexts, setFilteredTexts] = useState([]);
@@ -19,14 +20,20 @@ const WriterTexts = () => {
 
   useEffect( ()=>{
     const getTextsFromUser = async() => {
-      console.log(user_id, 'lololo');
       const res = await fetchData('/admin/getTextsFromUser', 'POST', {user_id: user_id}, token);
-      console.log(res);
       setTexts(res.data);
-      setFilteredTexts(res.data.filter((text)=>text.status !== 3));
+      if (view === 0) {
+      return setFilteredTexts(res.data.filter((text)=>text.text_status !== 3));
+    } else if (view === 1) {
+      return setFilteredTexts(res.data.filter((text) => text.text_status === 1));
+    } else if (view === 2) {
+      return setFilteredTexts(res.data.filter((text) => text.text_status === 2));
+    } else if (view === 3) {
+      return setFilteredTexts(res.data.filter((text) => text.text_status === 3));
+    }
     }
     getTextsFromUser();
-  }, [])
+  }, [textsChanged])
 
   const createNewText = async () => {
     const res = await fetchData('/admin/createNewText', 'POST', {user_id: user_id}, token);
@@ -37,7 +44,7 @@ const WriterTexts = () => {
     setView(statusText);
 
     if (statusText === 0) {
-      return setFilteredTexts(texts.filter((text)=>text.status !== 3));
+      return setFilteredTexts(texts.filter((text)=>text.text_status !== 3));
     } else if (statusText === 1) {
       return setFilteredTexts(texts.filter((text) => text.text_status === 1));
     } else if (statusText === 2) {
@@ -50,11 +57,11 @@ const WriterTexts = () => {
   return (
     <Container>
 
-      <h2 className='titletexto'><Boton aspecto='btn-rounded-1 d-inline' icon='bi bi-box-arrow-left' onClick={()=>navigate('/admin/write')}/> Textos para {texts[0]?.user_name?texts[0]?.user_name:texts[0]?.email}</h2>
+      <h2><Boton aspecto='btn-rounded-1 d-inline' icon='bi bi-box-arrow-left' onClick={()=>navigate('/admin/write')}/> Textos para {texts[0]?.user_name?texts[0]?.user_name:texts[0]?.email}</h2>
 
       <hr />
       {/* <Boton aspecto='btn-3 ms-auto mb-3' valor='Añadir servicio' onClick={()=>setShowCreateService(true)}/> */}
-      <Row>
+      <Row className='justify-content-between'>
         <Col className='col-auto'>
           <ul className="lista-filter">
             <li
@@ -77,7 +84,7 @@ const WriterTexts = () => {
             </li>
             <li
               className={view === 3 ? 'active-3' : ''}
-              onClick={() => handleFilter(2)}
+              onClick={() => handleFilter(3)}
             >
               <i className="bi bi-trash"></i> Papelera
             </li>
@@ -92,7 +99,7 @@ const WriterTexts = () => {
           {filteredTexts.map((text)=>{
             return(
               <Col xs={12} md={4} lg={2} key={text.text_id}>
-                <AdminCardText text={text}/>
+                <AdminCardText text={text} textsChanged={()=>setTextsChanged(!textsChanged)}/>
               </Col>
             )
           })}

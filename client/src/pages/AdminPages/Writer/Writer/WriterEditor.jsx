@@ -7,6 +7,7 @@ import { AuthContext } from '../../../../context/AuthContextProvider';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { fetchData } from '../../../../helpers/axiosHelper';
+
 import { useNavigate, useParams } from 'react-router-dom';
 
 
@@ -16,6 +17,7 @@ const WriterEditor = () => {
   const {token} = useContext(AuthContext);
   const [textForm, setTextForm] = useState();
   const [newImg, setNewImg] = useState('');
+  const [timer, setTimer] = useState(null);
 
   useEffect(()=>{
     const getText = async () => {
@@ -29,9 +31,13 @@ const WriterEditor = () => {
   }, [])
 
 
-  const saveText = async () => {
+  const saveText = async (data=null) => {
     try {
-      const res = await fetchData('/admin/saveText', 'PUT', textForm, token);
+      let sentForm = textForm;
+      if(data){
+        sentForm = data;
+      }
+      const res = await fetchData('/admin/saveText', 'PUT', sentForm, token);
       
     } catch (error) {
       console.log(error);
@@ -57,10 +63,30 @@ const WriterEditor = () => {
     e.preventDefault();
     const {name, value} = e.target;
     setTextForm({...textForm, [name]: value});
+
+    if(timer) {
+      clearTimeout(timer);
+    }
+
+    const newTimer = setTimeout(()=>{
+      saveText({...textForm, [name]: value});
+    }, 2000);
+
+    setTimer(newTimer);
   }
 
   const handleText = (value) => {
     setTextForm({...textForm, text_body: value});
+
+    if(timer) {
+      clearTimeout(timer);
+    }
+
+    const newTimer = setTimeout(()=>{
+      saveText({...textForm, text_body: value});
+    }, 2000);
+
+    setTimer(newTimer);
   }
 
   const handleChangeImg = (e) => {
@@ -99,11 +125,6 @@ const WriterEditor = () => {
                     
             />
           <div className="writer-buttons">
-
-            <Boton aspecto='btn-err-1' valor='Cancelar' />
-            <Boton aspecto='btn-1' valor='Añadir archivo'/>
-            <Boton aspecto='btn-1' valor='Publicar'/>
-            <Boton aspecto='btn-3' valor='Guardar'/>
 
             <Boton aspecto='btn-err-1' icon='bi bi-box-arrow-left' valor='Volver' onClick={()=>navigate(`/admin/write/texts/${textForm.user_id}`)} />
             <Boton aspecto='btn-1' valor='Añadir archivo'/>
