@@ -62,6 +62,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      color: var(--secundary-color-dark);
     }
 }
 h2 {
@@ -81,7 +82,7 @@ h2 {
 
 
 
-    h2.title{
+    .h2-section2{
       color: var( --tertiary-color-almu);
       font-weight: bold;
     }
@@ -130,6 +131,9 @@ h2 {
     p{
       font-size: .8rem;
     }}
+
+    
+  
   }
 
 @media (width<995px){
@@ -138,13 +142,17 @@ h2 {
   .home{
    .texto-home{
     .h1-home{
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: bold;
     }
    }
   }
 
   .section-2{
+    .h2-section2{
+      font-size: 1;
+    }
+
     .text-center{
       .h3-title{
         font-size: 1rem;
@@ -157,10 +165,21 @@ h2 {
   }
 
     .section-3{
-      .texto{
-        h2.pb-2{
-          font-size: 1.5rem;
-        }
+      
+      .h2-section3, .p-section3{
+        text-align: center;
+        
+      }
+      .h2-section3{
+        font-size: 1.4rem;
+      }
+    
+    }
+
+    .section-servicios{
+
+      .h2-sectionService{
+        font-size: 1.3rem;
       }
     }
 
@@ -172,7 +191,7 @@ h2 {
   .home{
      background: 
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(../../../../public/fondo/fondo-home.png);
+    url(../../../../public/images/home.png);
     background-size: cover;
     object-fit: cover;
     background-position: bottom;

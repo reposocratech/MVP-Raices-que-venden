@@ -64,7 +64,7 @@ const Home = () => {
 
       <section className="section-2 ">
       <Container>
-         <h2 className="mb-4 title text-center">La autenticidad es tu mayor ventaja</h2>
+         <h2 className="mb-4 text-center h2-section2">La autenticidad es tu mayor ventaja</h2>
         <Row className="text-center">
          
           <Col md={4}>
@@ -104,8 +104,8 @@ const Home = () => {
             </Col>
 
              <Col md={6} className="texto ">
-              <h2 className="pb-2 fw-bold">Sumamos historias juntos...</h2>
-              <p>
+              <h2 className="pb-2 fw-bold h2-section3">Sumamos historias juntos...</h2>
+              <p className="p-section3">
                 Convierto las cosas en emociones, convierto cada detalle en una
                 historia emocional. La vida rural es lo más valioso que tenemos,
                 en ella existe la raíz de nuestra esencia y cultura. Por ello
@@ -117,7 +117,7 @@ const Home = () => {
       </section>
       <section className="section-servicios">
         <Container>
-           <h2 className="text-center fw-bold pt-4 title">Nuestras semillas de Copywriting</h2>
+           <h2 className="text-center fw-bold pt-4 title h2-sectionService">Nuestras semillas de Copywriting</h2>
           <Row lg={4} className="justify-content-center">
            
           {services.map((servicio)=> {  

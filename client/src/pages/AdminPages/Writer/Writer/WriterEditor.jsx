@@ -1,7 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { Boton } from '../../../../components/Boton/Boton';
 import MDEditor, { commands } from '@uiw/react-md-editor';
-
 import './writer.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../context/AuthContextProvider';
@@ -10,6 +9,7 @@ import { useEffect } from 'react';
 import { fetchData } from '../../../../helpers/axiosHelper';
 
 import { useNavigate, useParams } from 'react-router-dom';
+
 
 const WriterEditor = () => {
   const navigate = useNavigate();

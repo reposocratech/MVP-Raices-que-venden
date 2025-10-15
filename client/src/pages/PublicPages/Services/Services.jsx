@@ -28,9 +28,9 @@ const Services = () => {
 
 
   return (
-    <section className="section-servicios">
+    <section className="section-service">
         <Container>
-            <h2 className="text-center fw-bold pt-4 title">Nuestras semillas de Copywriting</h2>
+            <h2 className="text-center fw-bold pt-4 h2-section1">Nuestras semillas de Copywriting</h2>
           <Row lg={4} className="justify-content-center">
           
           {services.map((servicio)=> {  

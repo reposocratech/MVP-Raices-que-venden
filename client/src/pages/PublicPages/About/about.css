@@ -7,7 +7,7 @@
   padding: 2rem 1rem;
 }
 
-.section-about h1 {
+.section-about .h1-about {
   text-align: center;
   color: var(--tertiary-color-almu);
   padding-bottom: 2rem;
@@ -100,7 +100,7 @@
 
 
 
-@media (max-width: 992px) {
+@media (width<992px) {
 
   .about-img {
     padding: 1rem 2rem;
@@ -109,9 +109,10 @@
   .about-text {
     margin-top: 2rem;
   }
+
 }
 
-@media (max-width: 600px) {
+@media (width<600px) {
 
   .section-about {
     min-height: auto;
@@ -130,8 +131,33 @@
     padding: 1.5rem;
   }
 
-  .section-about h1 {
-    font-size: 1.6rem;
-    padding-bottom: 1.5rem;
+  
+}
+
+@media (width<821px){
+  .section-about .h1-about {
+    font-size: 1.8rem;
+    padding-bottom: 0;
+  }
+}
+
+@media (width<481px){
+  .section-about .h1-about {
+    font-size: 1.9rem;
+    padding-bottom: 0;
+  }
+
+  .titleSum{
+    font-size: .9rem;
+  }
+}
+
+@media (width<394px){
+  .section-about .h1-about {
+    font-size: 1.7rem;
+    padding-bottom: 0;
+  }
+  .titleSum{
+    font-size: .8rem;
   }
 }
