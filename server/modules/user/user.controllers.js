@@ -23,6 +23,10 @@ class UserController {
       res.status(200).json({ message: 'Hola mundo' });
     } catch (error) {
       console.log(error);
+
+      if(error.errno === 1062){
+        return res.status(400).json({errno: 1062,  message: 'El correo ya está registrado'})
+      }
       res.status(500).json({ message: error });
     }
   };
@@ -35,15 +39,15 @@ class UserController {
       //comprobar si existe ese email
       const result = await userDal.findEmail(email);
 
-      if (result === 0) {
-        res.status(401).json({ message: 'Email no registrado' });
+      if (!result || result.length === 0) {
+        return res.status(401).json({ message: 'Email no registrado' });
       } else {
         //comprobar password
         const match = await compareString(password, result[0].password);
 
         if (!match) {
           //si no es correcto
-          res.status(401).json({ message: 'Contraseña incorrecta' });
+         return res.status(401).json({ message: 'Contraseña incorrecta' });
         } else {
           //genera un token
           const token = generateTokenLogin(result[0].user_id);
@@ -249,6 +253,29 @@ class UserController {
         } catch (error) {
             res.status(500).json({message: "Error server", dataError: error})
         }
+    }
+
+    getTexts = async (req, res) => {     
+      try {
+        const {user_id} = req.body;
+        const result = await userDal.getTexts(user_id)
+        console.log(result);
+        res.status(200).json(result);
+
+      } catch (error) {
+        res.status(500).json({message: "Error server", dataError: error})
+      }
+    }
+
+    getText = async (req, res) => {
+      try {
+        const {text_id} = req.body;
+        const result = await userDal.getText(text_id);
+        res.status(200).json(result);
+
+      } catch (error) {
+        res.status(500).json({message: "Error server", dataError: error})
+      }
     }
 
 }

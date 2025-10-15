@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+  .titulo-citas {
+    font-size: 1.2rem;
+  }
+
+  .rbc-calendar {
+    font-size: 0.75rem;
+  }
+};

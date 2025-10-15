@@ -8,24 +8,25 @@ const FooterApp = () => {
         <div className="container">
           <div className="row justify-content-center mb-2">
             <div className="col d-flex justify-content-center mt-3 mb-2">
-              <a>
+              <a href="https://www.instagram.com/almuyalma.copy" className="text-white mx-4">
                 <i
                   className="bi bi-instagram "
                   style={{ fontSize: "1.5rem" }}
                 ></i>
               </a>
-              <a className="text-white mx-4">
+              <a href="https://www.facebook.com/" className="text-white mx-4">
                 <i
                   className="bi bi-facebook "
                   style={{ fontSize: "1.5rem" }}
                 ></i>
               </a>
-              <a>
+              <a href="https://www.linkedin.com/in/almudenatorreslopez" className="text-white mx-4">
                 <i
                   className="bi bi-linkedin "
                   style={{ fontSize: "1.5rem" }}
                 ></i>
               </a>
+              
             </div>
             <div className="row justify-content-center text-center">
               <div className="col-md-8">

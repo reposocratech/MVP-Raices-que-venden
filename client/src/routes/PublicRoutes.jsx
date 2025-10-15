@@ -8,7 +8,7 @@ export const PublicRoutes = ({user}) => {
 
   useEffect(() => {
     if(user){
-      if (user.type === 1) navigate("/admin/dashboard");
+      if (user.type === 1) navigate("/admin/write");
       if (user.type === 2) navigate('/user/profile');
     }
   },[user])

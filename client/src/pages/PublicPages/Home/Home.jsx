@@ -87,7 +87,7 @@ const Home = () => {
           <i className="bi bi-activity fs-4 icono"></i>
           <h3 className="h3-title">Resultados Tangibles</h3>
           <p className="p-text">
-            Un buen <strong>copy</strong> no es solo bonito, es estratégico. Te ayudamos a traer, fidelizar y aumnetar tus ventas online.
+            Un buen <strong>copy</strong> no es solo bonito, es estratégico. Te ayudamos a traer, fidelizar y aumentar tus ventas online.
           </p>
           </Col>
         </Row>
@@ -100,7 +100,7 @@ const Home = () => {
 
               {/* Cuando tengamos foto cambiar */}
             <Col md={6} className="text-center pb-2" >
-            <img className="w-75 img " src="/image/almu3.jpg" alt="" />
+            <img className="w-75 img " src="/image/almu7.jpg" alt="" />
             </Col>
 
              <Col md={6} className="texto ">

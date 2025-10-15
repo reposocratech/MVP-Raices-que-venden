@@ -1,0 +1,15 @@
+/* Puedes poner esto en tu archivo CSS o dentro de un módulo */
+.title-app, hr {
+    color: var(--secundary-color-dark)
+}
+
+.appointment-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f5f1e8, #E7DED3);
+  padding: 20px;
+}
+
+.appointment-card:hover {
+  transform: scale(1.02);
+}

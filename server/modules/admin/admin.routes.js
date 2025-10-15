@@ -14,6 +14,10 @@ router.post('/createNewText', tokenVerify, adminController.createNewText);
 
 router.post('/getText', tokenVerify, adminController.getText);
 
+router.put('/saveText', tokenVerify, adminController.saveText);
+
+router.put('/publishOrHide', tokenVerify, adminController.publishOrHide);
+
 router.get("/getServices", tokenVerify, adminController.showServices);
 
 router.post('/createService', tokenVerify, uploadImage('services'), adminController.createService);
@@ -39,5 +43,9 @@ router.put('/appointmentCanceled', tokenVerify, adminController.appointmentCance
 router.put('/activeUser', tokenVerify, adminController.activeUser);
 
 router.put('/inactiveUser', tokenVerify, adminController.inactiveUser)
+
+router.get('/getMessage', tokenVerify, adminController.getMessage)
+
+router.get('/getChat/:idClient', tokenVerify, adminController.getChat)
 
 export default router;

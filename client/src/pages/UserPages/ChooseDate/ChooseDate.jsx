@@ -7,8 +7,7 @@ const ChooseDate = () => {
   return (
     <div>
         <Container className='titulo-citas'>
-        <h2>Elige tu cita</h2>
-        <hr />
+      
         <Row className='container-choose'>
             <Col> 
             <MyCalendar />

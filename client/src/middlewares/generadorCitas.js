@@ -59,11 +59,13 @@ export const ftnArrCalendar = (fechasDisponibilidad) => {
                               fecha.getDate(), // FECHA - ejemplo 10
                               horas[j], // HORA - 10
                               0),
+                              title: `🕒 ${horas[j]}:00 - ${horas[j] + 1}:00 hrs`,
               end: new Date(anio.getFullYear(), // AÑejemplo 2025
                               mes.getMonth(), // MES - ejemplo 10
                               fecha.getDate(), // FECHA - ejemplo 10
                               horas[j] + 1, // HORA - 10 + 1
                               0),
+                             
           })
           
       }

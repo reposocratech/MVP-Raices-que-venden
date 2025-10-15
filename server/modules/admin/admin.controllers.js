@@ -58,6 +58,88 @@ class AdminController {
 
   showServices = async (req, res) => {
     try {
+      const result = await adminDal.getAllUsers();
+      /* console.log('getusers', result); */
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Error Server', dataError: error });
+    }
+  };
+
+  getTextsFromUser = async (req, res) => {
+    console.log(req.body, 'wololo');
+    const { user_id } = req.body;
+
+    try {
+      const result = await adminDal.getTextsFromUser(user_id);
+      console.log(result);
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Error Server', dataError: error });
+    }
+  };
+
+  createNewText = async (req, res) => {
+    console.log(req.body, 'wolole');
+    const { user_id } = req.body;
+
+    try {
+      const result = await adminDal.createNewText(user_id);
+      console.log(result);
+      res.status(200).json(result);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Error Server', dataError: error });
+    }
+  };
+
+  getText = async (req, res) => {
+    const { text_id } = req.body;
+    try {
+      const [textData] = await adminDal.getText(text_id);
+      res.status(200).json(textData);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Error Server', dataError: error });
+    }
+  };
+
+  saveText = async (req, res) => {
+    const { text_id, text_title, text_body } = req.body;
+
+    try {
+      const textData = {
+        text_id: text_id,
+        text_title: text_title,
+        text_body: text_body,
+        last_modified: new Date(),
+      };
+
+      const result = await adminDal.saveText(textData);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: 'Error Server', dataError: error });
+    }
+  };
+
+  publishOrHide = async (req, res) => {
+    const { text_id, text_status } = req.body;
+    console.log(req.body);
+
+    try {
+      await adminDal.publishOrHide({ text_id, text_status });
+      res.status(200).json({ message: 'todo ok' });
+    } catch (error) {
+      res.status(500).json({ message: 'Error Server', dataError: error });
+    }
+  };
+
+  deleteText = async (req, res) => {};
+
+  showServices = async (req, res) => {
+    try {
       const serviceData = await adminDal.showServices();
       res.status(200).json(serviceData);
     } catch (error) {
@@ -121,6 +203,9 @@ class AdminController {
       res.status(200).json(result);
     } catch (error) {
       console.log();
+
+      res.status(500).json({ messaje: 'Error server', dataError: error });
+
       res.status(500).json({ messaje: 'Error server', dataError: error });
     }
   };
@@ -154,6 +239,9 @@ class AdminController {
       res.status(200).json({ message: 'borrado ok' });
     } catch (error) {
       console.log(error);
+
+      res.status(500).json({ messaje: 'Error server', dataError: error });
+
       res.status(500).json({ messaje: 'Error server', dataError: error });
     }
   };
@@ -217,7 +305,7 @@ class AdminController {
 
       const appointment = await adminDal.getAppoitmentById(appointment_id);
 
-      await emailConfirmadoCita({
+      emailConfirmadoCita({
         user_name: appointment.user_name,
         email: appointment.email,
         app_day: appointment.app_day,
@@ -240,7 +328,7 @@ class AdminController {
 
       const appointment = await adminDal.getAppoitmentById(appointment_id);
 
-      await emailCanceladoCita({
+      emailCanceladoCita({
         user_name: appointment.user_name,
         email: appointment.email,
         app_day: appointment.app_day,
@@ -281,6 +369,50 @@ class AdminController {
       console.log(error);
       res.status(500).json({
         message: 'Error server',
+        dataError: error,
+      });
+    }
+  };
+
+  getMessage = async (req, res) => {
+    try {
+      const resultUsers = await adminDal.getAllUsers();
+      const result = await adminDal.getMessage();
+      res.status(200).json({
+        message: 'Chat obtenidos con exito',
+        chat: result,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        message: 'Error server',
+        dataError: error,
+      });
+    }
+  };
+
+  getChat = async (req, res) => {
+    try {
+      const {idClient} = req.params;
+      const {user_id} = req;
+      console.log(idClient, user_id)
+      let values = [user_id, parseInt(idClient)]
+      const resultSender = await adminDal.getChatSender(values)
+      let values2 = [parseInt(idClient) , user_id ]
+      const resultRecipient = await adminDal.getChatClient(values2)
+      res
+      .status(200)
+      .json(
+        {
+          message:'chat obtenido con exito',
+          sender: resultSender,
+          recipient: resultRecipient
+
+        })
+
+    } catch (error) {
+      res.status(500).json({
+        message: 'error server',
         dataError: error,
       });
     }

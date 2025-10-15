@@ -1,0 +1,45 @@
+.lista-filter {
+    display: flex;
+    width: fit-content;
+    list-style-type: none;
+    padding: 0;
+
+    li {
+        padding-inline: 1rem;
+        cursor: pointer;
+        transition: initial 0.3s;
+        color: var(--secundary-color);
+    }
+
+    li:hover {
+        font-weight: 500;
+        color: var(--secundary-color-dark);
+        
+        
+    }
+
+    .active-0 {
+        border-bottom: 2px solid var(--secundary-color);
+        color:  var(--secundary-color-dark);
+    }
+
+    .active-1 {
+        border-bottom: 2px solid var(--pendding-color);
+        color:  var(--pendding-color);
+    }
+
+    .active-2 {
+        border-bottom: 2px solid var(--tertiary-color-almu);
+        color: var(--tertiary-color-almu);
+    }
+
+    .active-3 {
+        border-bottom: 2px solid var(--err-color);
+        color: var(--err-color);
+    }
+
+}
+
+.text-cols {
+  height: max-content;
+}

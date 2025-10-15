@@ -8,6 +8,7 @@ import { AuthContext } from '../../../../context/AuthContextProvider';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { fetchData } from '../../../../helpers/axiosHelper';
+
 import { useParams } from 'react-router-dom';
 
 const WriterEditor = () => {
@@ -20,12 +21,51 @@ const WriterEditor = () => {
       console.log('entramos al fetch');
       const result = await fetchData('/admin/getText', 'POST', {text_id: text_id}, token);
       console.log(result.data);
+
+import { useNavigate, useParams } from 'react-router-dom';
+
+const WriterEditor = () => {
+  const navigate = useNavigate();
+  const {text_id} = useParams();
+  const {token} = useContext(AuthContext);
+  const [textForm, setTextForm] = useState();
+  const [newImg, setNewImg] = useState('');
+
+  useEffect(()=>{
+    const getText = async () => {
+      const result = await fetchData('/admin/getText', 'POST', {text_id: text_id}, token);
+
       setTextForm(result.data);
       
       /* setTextForm(result) */
     }
     getText()
   }, [])
+
+
+  const saveText = async () => {
+    try {
+      const res = await fetchData('/admin/saveText', 'PUT', textForm, token);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+  const publishOrHide = async (currentStatus) => {
+    let futureStatus = 2;
+    if(currentStatus === 2) {
+      futureStatus = 1
+    }
+
+    let statusData = {
+      text_id: text_id,
+      text_status: futureStatus
+    }
+
+    const res = await fetchData('/admin/publishOrHide', 'PUT', statusData, token);
+  }
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -37,6 +77,10 @@ const WriterEditor = () => {
     setTextForm({...textForm, text_body: value});
   }
 
+  const handleChangeImg = (e) => {
+    setNewImg(e.target.files[0]);
+  }
+
   return (
     <>
       <Container>
@@ -46,7 +90,11 @@ const WriterEditor = () => {
             <input type="text" 
                     name='text_title'
                     onChange={handleChange}
+
                     value={textForm?.text_title}/>
+
+                    value={textForm?.text_title?textForm?.text_title:''}/>
+
           </label>
           {/* Cuando importemos react-md-editor, hay que adaptarlo */}
 
@@ -60,15 +108,31 @@ const WriterEditor = () => {
                     commands={[
                       commands.bold,
                       commands.italic,
+
                       commands.link
+
+                      commands.quote,
+                      commands.strikethrough
+
                     ]}
                     
             />
           <div className="writer-buttons">
+
             <Boton aspecto='btn-err-1' valor='Cancelar' />
             <Boton aspecto='btn-1' valor='Añadir archivo'/>
             <Boton aspecto='btn-1' valor='Publicar'/>
             <Boton aspecto='btn-3' valor='Guardar'/>
+
+            <Boton aspecto='btn-err-1' icon='bi bi-box-arrow-left' valor='Volver' onClick={()=>navigate(`/admin/write/texts/${textForm.user_id}`)} />
+            <Boton aspecto='btn-1' valor='Añadir archivo'/>
+            {textForm?.text_status === 1?
+              <Boton aspecto='btn-1' icon='bi bi-eye' valor='Publicar' onClick={()=>publishOrHide(1)}/>
+            :
+              <Boton aspecto='btn-1' icon='bi bi-eye-slash' valor='Ocultar' onClick={()=>publishOrHide(2)}/>
+            }
+            <Boton aspecto='btn-3' valor='Guardar' onClick={saveText}/>
+
           </div>
 
         </form>

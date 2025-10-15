@@ -1,6 +1,9 @@
 .container-choose {
     min-height: calc(100dvh - 150px); 
-    color: var(--tertiary-color-almu);
+    color: var(--secundary-color-dark);
 
-}
+};
+
+
+
 
