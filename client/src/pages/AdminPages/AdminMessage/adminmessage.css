@@ -1,0 +1,22 @@
+
+.chat-container {
+
+    .card-user-chat {
+        background-color: var(--primary-color-homedark);
+        border-radius: 50px;
+        padding-block: 0.5rem;
+        display: flex;
+        align-items: center;
+        margin-block: 1rem;
+        gap: 1rem;
+        
+        .img-user-chat {
+            width: 50px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 50px;
+        }
+    }
+    
+}
