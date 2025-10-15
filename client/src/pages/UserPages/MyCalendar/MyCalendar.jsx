@@ -133,7 +133,7 @@ export default function MyCalendar() {
 
   return (
     <>
-      <div className="h-[600px] p-4 bg-gray-50 rounded-2xl shadow-md">
+      <div className="min-h-[60vh] p-4 bg-gray-50 rounded-2xl shadow-md">
         <h2 className="titulo-citas">Elige tu cita</h2>
         <hr />
         <Calendar
