@@ -394,7 +394,7 @@ class AdminController {
     }
   }
 
-}
+
 
 
   inactiveUser = async (req, res) => {
@@ -412,6 +412,7 @@ class AdminController {
       })
     }
   }
+}
 
   getMessage = async (req, res) => {
     try {

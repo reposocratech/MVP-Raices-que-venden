@@ -54,7 +54,7 @@ const ServiceDetail = () => {
                 </p>
               )}
               <Boton
-                onClick={() => navigate('/services')}
+                onClick={() => navigate(-1)}
                 valor="Volver a los servicios"
                 aspecto="btn-3  mt-3"
               />
