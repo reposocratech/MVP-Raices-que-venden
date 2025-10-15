@@ -1,28 +1,14 @@
 import { Container } from 'react-bootstrap';
 import { Boton } from '../../../../components/Boton/Boton';
 import MDEditor, { commands } from '@uiw/react-md-editor';
-
 import './writer.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../context/AuthContextProvider';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { fetchData } from '../../../../helpers/axiosHelper';
-
-import { useParams } from 'react-router-dom';
-
-const WriterEditor = () => {
-  const {text_id} = useParams();
-  const {token} = useContext(AuthContext);
-  const [textForm, setTextForm] = useState();
-
-  useEffect(()=>{
-    const getText = async () => {
-      console.log('entramos al fetch');
-      const result = await fetchData('/admin/getText', 'POST', {text_id: text_id}, token);
-      console.log(result.data);
-
 import { useNavigate, useParams } from 'react-router-dom';
+
 
 const WriterEditor = () => {
   const navigate = useNavigate();
@@ -90,9 +76,6 @@ const WriterEditor = () => {
             <input type="text" 
                     name='text_title'
                     onChange={handleChange}
-
-                    value={textForm?.text_title}/>
-
                     value={textForm?.text_title?textForm?.text_title:''}/>
 
           </label>
@@ -108,9 +91,7 @@ const WriterEditor = () => {
                     commands={[
                       commands.bold,
                       commands.italic,
-
-                      commands.link
-
+                      commands.link,
                       commands.quote,
                       commands.strikethrough
 

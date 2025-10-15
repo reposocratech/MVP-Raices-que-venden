@@ -37,17 +37,17 @@ const NewsletterForm = () => {
         <Col>
           <Card className="p-4 mb-4 rounded-4 card-newsletter">
             <Card.Body>
-              <Card.Title className="p-3 title text-center">
+              <Card.Title className="p-3 title-new text-center">
                 ¡Suscríbete y recibe un regalo!
               </Card.Title>
-              <Card.Text className="text-center mx-md-5 mx-sm-1">
+              <Card.Text className="text-center mx-md-5 mx-sm-1 cardtexto">
                 Únete a nuestra newsletter y recibe consejos exclusivos de copywriting natural. 
                 Además, al suscribirte, te enviaremos un pequeño obsequio personalizado para tu negocio 
                 como agradecimiento por confiar en Almuyalma.
               </Card.Text>
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3 mx-md-5 mx-sm-1">
-                  <Form.Label>Nombre:</Form.Label>
+                  <Form.Label className="label-new">Nombre:</Form.Label>
                   <Form.Control
                     type="text"
                     name="name"
@@ -59,7 +59,7 @@ const NewsletterForm = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3 mx-md-5 mx-sm-1">
-                  <Form.Label>Email:</Form.Label>
+                  <Form.Label className="label-new">Email:</Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
@@ -70,7 +70,7 @@ const NewsletterForm = () => {
                   />
                 </Form.Group>
 
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center boton-new">
                   <Boton 
                     aspecto="btn-3 text-center" 
                     onClick={handleSubmit}

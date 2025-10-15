@@ -28,7 +28,7 @@ const WriterUsers = () => {
 
   return (
     <Container>
-      <h2>Panel de usuarios textos</h2>
+      <h2 className='titlew'>Panel de usuarios textos</h2>
       <hr />
       <Table borderless hover responsive className='writer-users-table mt-4'>
       <thead>
@@ -44,20 +44,20 @@ const WriterUsers = () => {
       <tbody>
         {users.map((user) => (
           <tr key={user.user_id}>
-            <td>
+            <td data-label='Avatar'>
               <div  
                 className='table-photo'
                 >
                 <img src={user?.avatar ? `${import.meta.env.VITE_SERVER_IMAGES}/users/${user.avatar}`: notAvatar} alt="" />
               </div>
             </td>
-            <td>{user.user_name}</td>
-            <td>{user.last_name}</td>
-            <td>{user.email}</td>
-            <td>
+            <td data-label='Nombre'>{user.user_name}</td>
+            <td data-label='Apellidos'>{user.last_name}</td>
+            <td data-label='Correo'>{user.email}</td>
+            <td data-label='Estado'>
                 {user.is_deactivated ? "Inactivo" : "Activo"}
             </td>
-            <td>
+            <td data-label='Escribir'>
                 <Boton aspecto='btn-3' valor='ver textos' onClick={()=>navigate(`/admin/write/texts/${user.user_id}`)}/>
             </td>
           </tr>

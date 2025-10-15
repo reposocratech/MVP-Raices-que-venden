@@ -94,11 +94,7 @@ const Login = () => {
           { errMsg && <p className='text-danger mt-2'>{errMsg}</p>}
           
           <div className='btn-div'>
-            <Boton
-              valor="Cancelar"
-              aspecto="btn-err-1 w-50"
-              onClick={()=> navigate('/')}
-            />
+           
             <Boton
               aspecto="btn-3 w-100"
               valor="Acceder"

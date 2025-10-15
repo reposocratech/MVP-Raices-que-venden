@@ -1,5 +1,3 @@
-
-
 .appointment-admin {
     .title-admin {
         color: var(--tertiary-color-almu);
@@ -9,4 +7,19 @@
     hr {
         color: var(--tertiary-color-almu);
     }
+
+    
 }
+
+@media (width<480px){
+  .appointment-admin{
+     .title-admin{
+        font-size: 1.2rem;
+       
+     }
+  }
+}
+
+
+
+

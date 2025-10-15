@@ -94,7 +94,7 @@ const Horarios = () => {
       <Row lg={hourDayPanel.day}>
         { hourDay.map((e,i) => {
           return(
-            <Col className="text-center" key={i+1}>
+            <Col className="text-center calendar" key={i+1}>
               <p className="title-days">{converteNumInTextDay(i+1)}</p>
               {e[i+1].map ( h => {
                 return (
