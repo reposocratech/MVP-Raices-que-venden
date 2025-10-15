@@ -39,13 +39,14 @@ export const EditFacturationData = ({handleClose, show}) => {
     return(
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title><i className="bi bi-pencil-square"></i> Editar Datos de Facturación</Modal.Title>
+          <Modal.Title className="modal-titleForm"><i className="bi bi-pencil-square"></i> Editar Datos de Facturación</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <form className="edit-form">
             <div className='input-div'>
                 <label htmlFor="company_name">Nombre persona física o empresa</label>
                 <input
+                className="inputForm"
                   id='company_name'
                   type="text"
                   name='company_name'
@@ -56,6 +57,7 @@ export const EditFacturationData = ({handleClose, show}) => {
             <div className='input-div'>
                 <label htmlFor="nif_cif">NIF/CIF</label>
                 <input
+                className="inputForm"
                   id='nif_cif'
                   type="text"
                   name='nif_cif'
@@ -66,6 +68,7 @@ export const EditFacturationData = ({handleClose, show}) => {
             <div className='input-div'>
                 <label htmlFor="city">Ciudad</label>
                 <input
+                className="inputForm"
                   id='city'
                   type="text"
                   name='city'
@@ -76,6 +79,7 @@ export const EditFacturationData = ({handleClose, show}) => {
             <div className='input-div'>
                 <label htmlFor="province">Provincia</label>
                 <input
+                className="inputForm"
                   id='province'
                   type="text"
                   name='province'
@@ -86,6 +90,7 @@ export const EditFacturationData = ({handleClose, show}) => {
             <div className='input-div'>
                 <label htmlFor="adress">Dirección</label>
                 <input
+                className="inputForm"
                   id='adress'
                   type="text"
                   name='address'
@@ -96,15 +101,15 @@ export const EditFacturationData = ({handleClose, show}) => {
           
         </form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="justify-content-center gap-4">
           <Boton 
-            aspecto="btn-1"
+            aspecto="btn-3 w-25"
             valor="Guardar"
             onClick={saveFacturationData}
           />
           <Boton 
             onClick={handleClose}
-            aspecto="btn-err-1"
+            aspecto="btn-err-1 w-25"
             valor="Cancelar"
           />
         </Modal.Footer>

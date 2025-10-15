@@ -116,6 +116,7 @@
                 }
 
                 .map-redes {
+                    color: var(--secundary-color-dark);
 
                     div {
                         display: flex;
@@ -126,6 +127,7 @@
                         }
                     }
                 }
+
             }
 
         }

@@ -46,7 +46,7 @@ export const AddRedSocialData = ({ handleClose, show, addRedSocial}) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title><i className="bi bi-pencil-square"></i> Mis Redes Sociales</Modal.Title>
+        <Modal.Title className="modal-titleForm"><i className="bi bi-pencil-square"></i> Mis Redes Sociales</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -54,6 +54,7 @@ export const AddRedSocialData = ({ handleClose, show, addRedSocial}) => {
           <div className="input-div">
             <label>Nombre de la red</label>
             <select
+            className="inputForm"
               type="text"
               name="name"
               value={newRedSocial.name}
@@ -73,6 +74,7 @@ export const AddRedSocialData = ({ handleClose, show, addRedSocial}) => {
           <div className="input-div">
             <label>URL</label>
             <input
+            className="inputForm"
               type="text"
               name="link"
               value={newRedSocial.link}
@@ -83,9 +85,9 @@ export const AddRedSocialData = ({ handleClose, show, addRedSocial}) => {
         </form>
       </Modal.Body>
 
-      <Modal.Footer>
-        <Boton aspecto="btn-1" valor="Guardar" onClick={onSubmit} />
-        <Boton aspecto="btn-err-1" valor="Cancelar" onClick={handleClose} />
+      <Modal.Footer className="justify-content-center gap-4">
+        <Boton aspecto="btn-3 w-25" valor="Guardar" onClick={onSubmit} />
+        <Boton aspecto="btn-err-1 w-25" valor="Cancelar" onClick={handleClose} />
       </Modal.Footer>
     </Modal>
   );

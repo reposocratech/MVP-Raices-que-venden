@@ -1,10 +1,11 @@
 import React from 'react'
 import { useContext } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AuthContext } from "../../../context/AuthContextProvider";
 import { fetchData } from '../../../helpers/axiosHelper';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import './myAppointments.css'
 
 
 const MyAppointments = () => {
@@ -28,27 +29,32 @@ const MyAppointments = () => {
     
     return (
         <>
-        <Container>
-            <div>
-        <h2>Mis citas</h2>
-        <hr />
-        {appointments.length === 0 ? (
-            <p>No tienes citas confirmadas.</p>
-        ) : ( 
-            appointments.map(e => (
-                <Row key={e.appointment_2_id}>
-                    <Col lg={3}> <p className='m-0'> 🗓️ {e.app_date}</p> </Col>
-                    <Col lg={3}> <p className='m-0'> 🕒 {e.app_hour}:00 - {e.app_hour + 1}:00</p></Col>
-                    <Col lg={3}> <p className='app-text'> Confirmada </p></Col>
-                </Row>
-            ))
-        )
+        <Container className="py-4">
+      <h2 className="title-app mb-4">Mis citas</h2>
+      <hr />
+      {appointments.length === 0 ? (
+        <p>No tienes citas confirmadas.</p>
+      ) : (
+        <Row xs={1} md={2} lg={3} className="g-4">
+          {appointments.map((e) => (
+            <Col key={e.appointment_2_id}>
+              <Card className="appointment-card shadow-sm border-0 h-100">
+                <Card.Body>
+                  <Card.Title className="mb-2">🗓️ {e.app_date}</Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    🕒 {e.app_hour}:00 - {e.app_hour + 1}:00
+                  </Card.Subtitle>
+                  <Card.Text className="text-success fw-bold">
+                    ✅ Confirmada
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      )}
+    </Container>
 
-        }
-
-           </div>
-
-        </Container>  
         </>
     )
 }

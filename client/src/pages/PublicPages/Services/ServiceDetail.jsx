@@ -56,8 +56,8 @@ const ServiceDetail = () => {
                 </p>
               )}
               <Boton
-                onClick={() => navigate(`${user?'/user':''}/services`)}
-                valor="Volver a los servicios"
+                onClick={() => navigate(-1)}
+                valor="Volver atrás"
                 aspecto="btn-3  mt-3"
               />
             </div>

@@ -19,6 +19,8 @@ const Login = () => {
   const [ login, setLogin ] = useState(initialValue);
   const [showPass, setShowPass] = useState(false);
 
+  const [errMsg, setErrMsg] = useState("");
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -27,7 +29,9 @@ const Login = () => {
   }
 
   const onSubmit = async(e) => {
-      
+    e.preventDefault();
+      setErrMsg('')
+
       try {
         e.preventDefault();
 
@@ -42,6 +46,14 @@ const Login = () => {
         
 
       } catch (error) {
+
+        if(error.response?.data?.message === 'Email no registrado'){
+          setErrMsg('Este correo no está registrado')
+        }else if(error.response?.data?.message === 'Contraseña incorrecta'){
+          setErrMsg('La contraseña no es correcta');
+        }else{
+          setErrMsg('Error al iniciar sesión, inténtalo de nuevo')
+        }
         console.log(error)
       }
   }
@@ -79,6 +91,7 @@ const Login = () => {
                     className={showPass ? "bi bi-eye" :  "bi bi-eye-slash"}></i>
             </div>
           </div>
+          { errMsg && <p className='text-danger mt-2'>{errMsg}</p>}
           
           <div className='btn-div'>
             <Boton

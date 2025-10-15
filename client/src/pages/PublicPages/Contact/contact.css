@@ -42,9 +42,14 @@
     justify-content: flex-start;
     padding: 2rem;
     padding-bottom: 5rem;
+    color: var(--secundary-color-dark);
     h2{
       text-align: center;
       color: var(--tertiary-color);
+    }
+
+    .textIcon{
+      color: var(--secundary-color-dark);
     }
 
 
@@ -53,10 +58,37 @@
   img.imgAlmu{
     width: 50%;
       border-radius:50%;
-      transform: translate(140px, -80px);
+      transform: translate(155px, -80px);
+      box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.2);
     }
 
-  @media (width<600px){
-    padding-inline: 2rem
+
+    @media (width<1200px){
+      img.imgAlmu{
+      transform: translate(115px, -80px);
+    }
+    }
+
+  @media (width<992px){
+
+    .formcontact{
+      padding: 0;
+    }
+    img.imgAlmu{
+      transform: translate(80px, -80px);
+    }
+  }
+
+  @media (width<768px){
+    img.imgAlmu{
+      transform: translate(120px, -80px);
+    }
+  }
+
+  @media (width<420px){
+    margin-inline: .5rem;
+    img.imgAlmu{
+      transform: translate(90px, -80px);
+    }
   }
 }

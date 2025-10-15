@@ -39,7 +39,7 @@ export const EditImage = ({show, handleClose}) => {
     return (
         <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title><i className="bi bi-pencil-square"></i> Editar Datos Personales</Modal.Title>
+          <Modal.Title className="modal-titleForm"><i className="bi bi-pencil-square"></i> Editar Datos Personales</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <form className="edit-form">
@@ -57,15 +57,15 @@ export const EditImage = ({show, handleClose}) => {
             
         </form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="justify-content-center gap-4">
           <Boton 
             onClick={saveImage}
-            aspecto="btn-1"
+            aspecto="btn-3 w-25"
             valor="Guardar"
           />
           <Boton 
             onClick={handleClose}
-            aspecto="btn-err-1"
+            aspecto="btn-err-1 w-25"
             valor="Cancelar"
           />
         </Modal.Footer>

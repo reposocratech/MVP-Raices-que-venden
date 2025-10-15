@@ -40,6 +40,7 @@ import { AdminLayout } from '../layouts/AdminLayout';
 
 const AdminMessage = lazy(() => import('../pages/AdminPages/AdminMessage/AdminMessage'));
 
+
 const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
 const Appointments = lazy(() => import('../pages/AdminPages/Appointments/Appointments'));
 const Horarios = lazy(() => import('../pages/AdminPages/Horarios/Horarios'));
@@ -105,7 +106,7 @@ export const AppRoutes = () => {
               <Route path='/admin/write' element={<WriterUsers />} />
               <Route path='/admin/write/texts/:user_id' element={<WriterTexts />} />
               <Route path='/admin/write/editor/:text_id' element={<WriterEditor />} />
-              {/* <Route path='/admin/message' element={<AdminMessage />}/> */}
+              <Route path='/admin/message' element={<AdminMessage />}/>
               {/* <Route path='/admin/dashboard' element={<Dashboard/>}/> */}
               <Route path='/admin/services' element={<AdminService />}/>
               <Route path='/admin/users' element={<AdminUsers/>} />

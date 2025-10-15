@@ -25,7 +25,9 @@ export const AdminCardText = ({text}) => {
   return (
     <>
       <div className={`admin-card-text`}>
+
         <img src={`/public/icons/doc-${text.text_status}.png`} alt="image text" className={`card-img`} onClick={openTextEdit}/>
+
         <h3 onClick={openTextEdit}>{text.text_title}</h3>
         <div className='d-flex justify-content-center gap-3'>
           <Boton onClick={openTextEdit} icon="bi bi-pen" aspecto='btn-rounded-ok btn-card btn-edit' />

@@ -100,7 +100,7 @@ const Home = () => {
 
               {/* Cuando tengamos foto cambiar */}
             <Col md={6} className="text-center pb-2" >
-            <img className="w-75 img " src="/image/almu3.jpg" alt="" />
+            <img className="w-75 img " src="/image/almu7.jpg" alt="" />
             </Col>
 
              <Col md={6} className="texto ">

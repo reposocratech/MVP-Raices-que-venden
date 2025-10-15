@@ -13,7 +13,12 @@
         text-align: center;
         border-radius: var(--border-hight);
         padding: 0.5rem 1rem; 
-        border: 2px dashed var(--secundary-color);
+        border: 2px dashed var(--tertiary-color);
+       background-color: var( --primary-color);
+
+            
+
+
         label{
             cursor: pointer;
 
