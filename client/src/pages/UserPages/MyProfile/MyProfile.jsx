@@ -98,7 +98,7 @@ const MyProfile = () => {
       <Container className="py-3 contenedor-profile">
         <h2>Mi Perfil</h2>
         <hr />
-        <Row sm={1} md={1} lg={2} className="sub-container-profile py-5">
+        <Row xs={1} lg={2} className="sub-container-profile py-5">
           <Col className="img-profile">
             <h2>
               ¡Hola{' '}
@@ -173,17 +173,17 @@ const MyProfile = () => {
               {redes?.map((e) => {
                 return (
                   <Row className="map-redes" key={e.social_network_id}>
-                    <Col sm={1}>
+                    <Col xs={1}>
                       <i className={iconsRedes(e.name)}></i>
                     </Col>
-                    <Col sm={2}>
+                    <Col xs={2}>
                       <p>{e.name}</p>
                     </Col>
-                    <Col sm={6}>
+                    <Col xs={6}>
                       <p>{e.link}</p>
                     </Col>
                     <Col
-                      sm={3}
+                      xs={3}
                       className="d-flex justify-content-center align-content-center"
                     >
                       <Boton

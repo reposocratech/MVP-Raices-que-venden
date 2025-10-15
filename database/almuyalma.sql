@@ -93,7 +93,7 @@ CREATE TABLE text (
     text_title VARCHAR(100) NOT NULL,
     text_body MEDIUMTEXT,
     text_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1,
+    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 pending | 2 confirmed | 3 cancelled
     filename VARCHAR(200),
     user_id INT UNSIGNED NOT NULL,
     last_modified DATETIME NULL,
@@ -108,7 +108,7 @@ VALUES(1, "marketing", "textos escritos", "estaimagen");
 
 CREATE TABLE message (
 	message_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
-	message_text VARCHAR(300) NOT NULL,
+	message_text VARCHAR(300) NOT NULL, 
 	sender_user_id  INT UNSIGNED NOT NULL,
 	recipient_user_id INT UNSIGNED NOT NULL,
 	message_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

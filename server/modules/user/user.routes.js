@@ -38,5 +38,7 @@ router.put('/editRedSocial/:social_network_id', tokenVerify, userController.edit
 
 router.post('/getTexts', tokenVerify, userController.getTexts);
 
+router.post('/getText', tokenVerify, userController.getText);
+
 
 export default router;

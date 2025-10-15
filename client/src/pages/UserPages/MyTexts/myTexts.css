@@ -1,0 +1,105 @@
+
+
+.lista-citas {
+    
+    .lista-filter {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            padding-inline: 1rem;
+            cursor: pointer;
+            transition: initial 0.3s;
+            color: var(--secundary-color);
+        }
+
+        li:hover {
+            font-weight: 500;
+            color: var(--secundary-color-dark);
+           
+            
+        }
+
+        .active-0 {
+            border-bottom: 2px solid var(--secundary-color);
+            color:  var(--secundary-color-dark);
+        }
+
+        .active-1 {
+            border-bottom: 2px solid var(--pendding-color);
+            color:  var(--pendding-color);
+        }
+
+        .active-2 {
+            border-bottom: 2px solid var(--tertiary-color-almu);
+            color: var(--tertiary-color-almu);
+        }
+
+        .active-3 {
+            border-bottom: 2px solid var(--err-color);
+            color: var(--err-color);
+        }
+
+    }
+
+    .card-list {
+        align-items: center;
+        padding-block: .5rem;
+        background-color: var( --primary-color);
+        /* border: 1px solid var(--secundary-color); */
+        border-radius: 50px;
+        transition: 0.3s;
+        margin-block: 1rem;
+
+
+        .avatar-appointment{
+            width: 3.125rem;
+            border-radius: 50px;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+            object-position: top;
+        }
+    }
+
+    @media (width < 1000px) {
+        .card-list {
+            border-radius: 20px;
+        }
+    }
+
+    .card-list:hover{
+        box-shadow: 0 0 4px 2px rgba(0,0,0,0.1);
+    }
+
+    .pendding {
+        border:2px solid var(--pendding-color);
+    }
+
+    .confirm {
+        border: 2px solid var(--tertiary-color-almu);
+    }
+
+    .canceled {
+        border: 2px solid var(--err-color);
+    }
+
+    .pendding-text {
+        margin: 0;
+        color: var(--pendding-color);
+        font-weight: 600;
+    }
+
+    .confirm-text {
+        margin: 0;
+        color: var(--tertiary-color-almu);
+        font-weight: 600;
+    }
+
+    .canceled-text {
+        margin: 0;
+        color: var(--err-color);
+        font-weight: 600;
+    }
+
+}

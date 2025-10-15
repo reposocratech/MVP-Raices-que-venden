@@ -33,7 +33,10 @@ class AdminDal {
       let values = ['sin título', user_id];
       const result = await executeQuery(sql, values);
 
-      return result;
+      let sql2 = 'SELECT * FROM text WHERE text_id=?';
+      const [result2] = await executeQuery(sql2, [result.insertId]);
+
+      return result2;
 
     } catch (error) {
       console.log(error);

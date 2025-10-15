@@ -8,7 +8,7 @@ import { AuthContext } from "../../../context/AuthContextProvider";
 export const AddRedSocialData = ({ handleClose, show, addRedSocial}) => {
   const { user, token } = useContext(AuthContext);
 
-  const [newRedSocial, setNewRedSocial] = useState({ name: '', link: '' });
+  const [newRedSocial, setNewRedSocial] = useState({ name: 'facebook', link: '' });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
