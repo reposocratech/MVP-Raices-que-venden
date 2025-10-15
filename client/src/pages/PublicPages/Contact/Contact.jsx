@@ -18,8 +18,11 @@ const Contact = () => {
             <div className="contact-text">
               <h2>¿Necesitas una respuesta rápida?</h2>
               <p>
-                Contáctanos directamente o síguenos para ver ejemplos de proyectos rurales que ya están floreciendo.
-              </p>
+              Si eres emprendedor o empresa rural y quieres posicionarte en el mundo digital con una voz única, me encantará escucharte. Porque vender desde las raíces no solo es posible, es necesario.
+            </p>
+            <p>
+              Educación: BIG school Ubicación: España · 180 contactos en LinkedIn. Mira el perfil de Almudena Torres López en LinkedIn, una red profesional de más de 1.000 millones de miembros.
+            </p>
               <p><i class="bi bi-envelope-at"></i>        almuyalma.raices@gmail.com
               </p>
               <p>

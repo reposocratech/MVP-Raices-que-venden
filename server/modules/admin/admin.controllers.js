@@ -75,7 +75,7 @@ class AdminController {
 
     try {
       const result = await adminDal.getAllUsers();
-      console.log('getusers', result);
+      /* console.log('getusers', result); */
       res.status(200).json(result);
     } catch (error) {
       console.log(error);
@@ -393,7 +393,7 @@ class AdminController {
       })
     }
   }
-  inactiveUser = async (req, res) => {
+inactiveUser = async (req, res) => {
     try {
       console.log(req.body)
       const { user_id } = req.body;
@@ -408,12 +408,31 @@ class AdminController {
       })
     }
   }
+
+
+  getMessage = async (req, res) => {
+    try {
+      const resultUsers = await adminDal.getAllUsers()
+      const result = await adminDal.getMessage()
+      res
+      .status(200)
+      .json({
+        message: "Chat obtenidos con exito",
+        chat: result
+      })
+
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .json({
+          message: "Error server",
+          dataError: error
+        })
+    }
+  }
+
 }
-
-
-
-
-
 
 
 
