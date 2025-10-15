@@ -354,6 +354,37 @@ class AdminDal {
       throw error;
     }
   };
+
+  getChatSender = async (values) => {
+    try {
+      let sql = ` SELECT * 
+                  FROM message
+                  WHERE sender_user_id = ? 
+                  AND recipient_user_id = ?`
+      
+      const result = await executeQuery(sql, values)
+
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
+  getChatClient = async(values2) => {
+    try {
+      let sql = ` SELECT * 
+                  FROM message
+                  WHERE sender_user_id = ? 
+                  AND recipient_user_id  = ?`
+      
+      const result = await executeQuery(sql, values2)
+
+      return result
+    } catch (error) {
+      throw error
+    }
+  }
+
 }
 
 export default new AdminDal();
