@@ -13,7 +13,7 @@ export const NavbarUser = () => {
   return (
      <Navbar collapseOnSelect expand="lg" className='nav-user d-flex justify-content-center align-items-center'>
       <Container>
-        <Navbar.Brand href="#home"><img src="/logo/logo-marron.png" alt=""/></Navbar.Brand>
+        <Navbar.Brand as={Link} to='/user'><img src="/logo/logo-marron.png" alt=""/></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto nav-parents  align-items-center">

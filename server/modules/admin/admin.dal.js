@@ -74,6 +74,45 @@ class AdminDal {
     }
   };
 
+  
+
+  deleteTextLogical = async (text_id) => {
+    try {
+      let sql = 'UPDATE text SET text_status=3 WHERE text_id=?';
+      const result = await executeQuery(sql, [text_id]);
+      console.log(result);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  restoreText = async (text_id) => {
+    try {
+      let sql = 'UPDATE text SET text_status=1 WHERE text_id=?';
+      const result = await executeQuery(sql, [text_id]);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  deleteTextTotal = async (text_id) => {
+    try {
+      let sql = 'DELETE FROM text WHERE text_id=?';
+      const result = await executeQuery(sql, [text_id]);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   showServices = async () => {
     try {
       const sql = 'SELECT * FROM service';

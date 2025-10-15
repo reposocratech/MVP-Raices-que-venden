@@ -6,6 +6,22 @@
   background-color: var(--primary-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease; 
   cursor: pointer;
+
+  .card-img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .description-card {
+    padding: 0;
+  }
+
+  .name-service {
+    color: var(--tertiary-color);
+  }
+
 }
 
 .card-service:hover {
@@ -17,17 +33,3 @@
   transform: scale(1.05);
 }
 
-.card-img {
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
-}
-
-.description-card {
-  padding: 0;
-}
-
-.name-service {
-  color: var(--tertiary-color);
-}
