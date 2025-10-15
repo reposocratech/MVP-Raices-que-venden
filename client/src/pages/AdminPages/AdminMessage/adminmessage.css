@@ -76,11 +76,14 @@
                 height: 90%;
                 display: flex;
                 flex-direction: column;
+                overflow-y: scroll;
+                
 
                 .admin {
                     display: flex;
                     align-items: end;
                     flex-direction: column;
+                    padding-inline-end: 1rem;
 
                     .fecha {
                         font-size: 0.8rem;

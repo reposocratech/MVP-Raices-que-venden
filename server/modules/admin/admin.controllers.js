@@ -434,19 +434,22 @@ class AdminController {
   getChat = async (req, res) => {
     try {
       const {idClient} = req.params;
-      const {user_id} = req;
-      console.log(idClient, user_id)
-      let values = [user_id, parseInt(idClient)]
-      const resultSender = await adminDal.getChatSender(values)
+      console.log(idClient);
+      
+      /* const {user_id} = req;
+      console.log(idClient, user_id) */
+      let values = [parseInt(idClient), parseInt(idClient)]
+      const chat = await adminDal.getChat(values);
+      console.log(chat);
+      /* const resultSender = await adminDal.getChatSender(values)
       let values2 = [parseInt(idClient) , user_id ]
-      const resultRecipient = await adminDal.getChatClient(values2)
+      const resultRecipient = await adminDal.getChatClient(values2) */
       res
       .status(200)
       .json(
         {
           message:'chat obtenido con exito',
-          sender: resultSender,
-          recipient: resultRecipient
+          chatData: chat
 
         })
 
@@ -457,6 +460,22 @@ class AdminController {
       });
     }
   };
+
+  sendCurrentChat = async (req, res) => {
+    try {
+      const {currentChat, sender, recipient} = req.body;
+      console.log(currentChat, sender, recipient);
+      const values = [currentChat, sender, recipient];
+      await adminDal.sendCurrentChat(values);
+      res.status(200).json({message: 'todo ok'})
+
+    } catch (error) {
+      res.status(500).json({
+        message: 'error server',
+        dataError: error,
+      });
+    }
+  }
 }
 
 export default new AdminController();
