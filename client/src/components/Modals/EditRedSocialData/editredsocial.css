@@ -1,30 +1,11 @@
 
-.edit-form {
-    width: 100%;
-    padding: 1rem;
-
-    .input-div{
-        display: flex;
-        flex-direction: column;
-        padding-top: 0.5rem;
-        
-
-  .inputForm{
-    border-radius: var(--border-hight);
+.inputForm{
+   border-radius: var(--border-hight);
     padding: 0.5rem 1rem; 
     border: 1px solid var(--tertiary-color);
     background-color: var( --primary-color);
-  }
-
-        select {
-            border-radius: var(--border-hight);
-            padding: 0.5rem 1rem; 
-            border: 1px solid var(--secundary-color);
-        }
-
-    }
-
-    select, ::picker(select){
+}
+select, ::picker(select){
         appearance: base-select;
     }
 
@@ -47,7 +28,3 @@
         margin-bottom: 2px;
         color: var( --secundary-color-dark);
     }
-
-
-    
-}

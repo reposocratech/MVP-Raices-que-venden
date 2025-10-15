@@ -38,6 +38,7 @@ const ChooseDate = lazy(() => import('../pages/UserPages/ChooseDate/ChooseDate')
 import { AdminLayout } from '../layouts/AdminLayout';
 const AdminMessage = lazy(() => import('../pages/AdminPages/AdminMessage/AdminMessage'));
 
+
 const AdminOrders = lazy(() => import('../pages/AdminPages/AdminOrders/AdminOrders'));
 const Appointments = lazy(() => import('../pages/AdminPages/Appointments/Appointments'));
 const Horarios = lazy(() => import('../pages/AdminPages/Horarios/Horarios'));
@@ -89,6 +90,7 @@ export const AppRoutes = () => {
               <Route path='/user/chooseDate' element={<ChooseDate/>} />
               <Route path='/user/myAppointments' element={<MyAppointments />} />
               <Route path='/user/profile' element={<MyProfile/>}/>
+              <Route path='/user/contact' element={<Contact/>}/>
                
             </Route>
           </Route>

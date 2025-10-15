@@ -5,6 +5,74 @@ import { emailConfirmadoCita } from '../../services/emailConfirmadoCita.js';
 
 class AdminController {
   getAllUsers = async (req, res) => {
+
+    try {
+      const result = await adminDal.getAllUsers();
+      console.log('getusers', result);
+      res.status(200).json(result);
+
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
+
+  getTextsFromUser = async (req, res) => {
+    console.log(req.body, 'wololo');
+    const {user_id} = req.body;
+
+    try {
+      const result = await adminDal.getTextsFromUser(user_id)
+      console.log(result);
+      res.status(200).json(result);
+      
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
+
+  createNewText = async (req, res) => {
+    console.log(req.body, 'wolole');
+    const {user_id} = req.body;
+
+    try {
+      const result = await adminDal.createNewText(user_id);
+      console.log(result);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
+
+  getText = async (req, res) => {
+    const {text_id} = req.body;
+    try {
+      const [textData] = await adminDal.getText(text_id);
+      res.status(200).json(textData);
+
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
+
+  deleteText = async (req, res) => {
+    
+  }
+
+  showServices = async (req, res) => {
+
     try {
       const result = await adminDal.getAllUsers();
       /* console.log('getusers', result); */
@@ -160,7 +228,13 @@ class AdminController {
       res.status(200).json(result);
     } catch (error) {
       console.log();
+
+      res.status(500).json({messaje: "Error server",
+                            dataError: error
+                            })
+
       res.status(500).json({ messaje: 'Error server', dataError: error });
+
     }
   };
 
@@ -193,7 +267,13 @@ class AdminController {
       res.status(200).json({ message: 'borrado ok' });
     } catch (error) {
       console.log(error);
+
+      res.status(500).json({messaje: "Error server",
+                            dataError: error
+                            })
+
       res.status(500).json({ messaje: 'Error server', dataError: error });
+
     }
   };
 
@@ -314,6 +394,9 @@ class AdminController {
     }
   }
 
+}
+
+
   inactiveUser = async (req, res) => {
     try {
       console.log(req.body)
@@ -366,6 +449,8 @@ class AdminController {
     }
   }
 };
+
+
 
 
 export default new AdminController();
