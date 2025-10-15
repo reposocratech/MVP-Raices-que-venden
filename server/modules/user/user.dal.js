@@ -153,8 +153,20 @@ class UserDal {
 
   getTexts = async (user_id) => {
     try {
-      let sql = 'SELECT * FROM text WHERE user_id=?';
+      let sql = 'SELECT * FROM text WHERE user_id=? AND text_status=2';
       const result = await executeQuery(sql, [user_id]);
+      return result;
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  getText = async (text_id) => {
+    try {
+      let sql = 'SELECT * FROM text WHERE text_id=? AND text_status=2';
+      const [result] = await executeQuery(sql, [text_id]);
       return result;
 
     } catch (error) {

@@ -267,6 +267,17 @@ class UserController {
       }
     }
 
+    getText = async (req, res) => {
+      try {
+        const {text_id} = req.body;
+        const result = await userDal.getText(text_id);
+        res.status(200).json(result);
+
+      } catch (error) {
+        res.status(500).json({message: "Error server", dataError: error})
+      }
+    }
+
 }
 
 export default new UserController();

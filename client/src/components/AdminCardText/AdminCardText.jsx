@@ -8,7 +8,7 @@ import { fetchData } from '../../helpers/axiosHelper';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContextProvider';
 
-export const AdminCardText = ({text, setTexts}) => {
+export const AdminCardText = ({text}) => {
   const {token} = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -26,9 +26,7 @@ export const AdminCardText = ({text, setTexts}) => {
     <>
       <div className={`admin-card-text`}>
 
-        <img src={docImage} alt="image text" className={`card-img ${text.text_status === 1?null:'card-img-blur'}`} onClick={openTextEdit}/>
-
-        <img src={docImage} alt="image text" className={`card-img ${text.text_status === 2?null:'card-img-blur'}`} onClick={openTextEdit}/>
+        <img src={`/public/icons/doc-${text.text_status}.png`} alt="image text" className={`card-img`} onClick={openTextEdit}/>
 
         <h3 onClick={openTextEdit}>{text.text_title}</h3>
         <div className='d-flex justify-content-center gap-3'>

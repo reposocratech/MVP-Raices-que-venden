@@ -21,8 +21,9 @@ export const NavbarUser = () => {
             <Nav.Link   as={Link} to='/user/services'  >Servicios</Nav.Link>
             <Nav.Link  as={Link} to='/user/about'>Almudena</Nav.Link>  
             {/* <Nav.Link  as={Link} to='/user/shop'>Tienda</Nav.Link> */}
-             <Nav.Link  as={Link} to='/user/contact'>Contacto</Nav.Link>
+            <Nav.Link  as={Link} to='/user/contact'>Contacto</Nav.Link>
             <Nav.Link  as={Link} to='/user/chooseDate'>Agendar cita</Nav.Link>
+            
           </Nav>
 
           <Nav className='nav-parents align-items-center'>

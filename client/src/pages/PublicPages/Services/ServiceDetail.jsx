@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { fetchData } from '../../../helpers/axiosHelper';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
 import './serviceDetail.css';
 import { Boton } from '../../../components/Boton/Boton';
+import { AuthContext } from '../../../context/AuthContextProvider';
 
 const ServiceDetail = () => {
   const { id } = useParams();
+  const {user} = useContext(AuthContext);
   const [service, setService] = useState([]);
 
   const navigate = useNavigate();
@@ -55,7 +57,7 @@ const ServiceDetail = () => {
               )}
               <Boton
                 onClick={() => navigate(-1)}
-                valor="Volver a los servicios"
+                valor="Volver atrás"
                 aspecto="btn-3  mt-3"
               />
             </div>

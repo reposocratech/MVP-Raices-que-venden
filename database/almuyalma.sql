@@ -114,7 +114,7 @@ VALUES(1, "marketing", "textos escritos", "estaimagen");
 
 CREATE TABLE message (
 	message_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
-	message_text VARCHAR(300) NOT NULL,
+	message_text VARCHAR(300) NOT NULL, 
 	sender_user_id  INT UNSIGNED NOT NULL,
 	recipient_user_id INT UNSIGNED NOT NULL,
 	message_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

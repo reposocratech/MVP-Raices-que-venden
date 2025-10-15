@@ -104,7 +104,7 @@ class AdminController {
     try {
       const result = await adminDal.createNewText(user_id);
       console.log(result);
-      return result;
+      res.status(200).json(result);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Error Server', dataError: error });
@@ -338,7 +338,7 @@ class AdminController {
 
       const appointment = await adminDal.getAppoitmentById(appointment_id);
 
-    await emailConfirmadoCita({
+    emailConfirmadoCita({
       user_name: appointment.user_name,
       email: appointment.email,
       app_day: appointment.app_day,
@@ -362,7 +362,7 @@ class AdminController {
 
       const appointment = await adminDal.getAppoitmentById(appointment_id);
 
-    await emailCanceladoCita({
+    emailCanceladoCita({
       user_name: appointment.user_name,
       email: appointment.email,
       app_day: appointment.app_day,

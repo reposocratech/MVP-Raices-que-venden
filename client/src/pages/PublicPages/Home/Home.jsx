@@ -87,7 +87,7 @@ const Home = () => {
           <i className="bi bi-activity fs-4 icono"></i>
           <h3 className="h3-title">Resultados Tangibles</h3>
           <p className="p-text">
-            Un buen <strong>copy</strong> no es solo bonito, es estratégico. Te ayudamos a traer, fidelizar y aumnetar tus ventas online.
+            Un buen <strong>copy</strong> no es solo bonito, es estratégico. Te ayudamos a traer, fidelizar y aumentar tus ventas online.
           </p>
           </Col>
         </Row>

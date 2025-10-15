@@ -31,11 +31,13 @@ const MyOrders = lazy(() => import('../pages/UserPages/MyOrders/MyOrders'));
 const MyAppointments = lazy(() => import('../pages/UserPages/MyAppointments/MyAppointments'))
 const MyProfile = lazy(() => import('../pages/UserPages/MyProfile/MyProfile'));
 const MyTexts = lazy(() => import('../pages/UserPages/MyTexts/MyTexts'));
+const MyTextPreview = lazy(() => import('../pages/UserPages/MyTextPreview/MyTextPreview'));
 const ChooseDate = lazy(() => import('../pages/UserPages/ChooseDate/ChooseDate'));
 
 
 //importacion de las ruta de Admin
 import { AdminLayout } from '../layouts/AdminLayout';
+
 const AdminMessage = lazy(() => import('../pages/AdminPages/AdminMessage/AdminMessage'));
 
 
@@ -71,7 +73,7 @@ export const AppRoutes = () => {
               <Route path='/contact' element={<Contact/>}/>
               {/* Servicios dinamicos??? */}
               <Route path='/services' element={<Services/>}/>
-              <Route path='/shop' element={<Shop />} />
+              {/* <Route path='/shop' element={<Shop />} /> */}
               <Route path='/confirm/:token' element={<Confirm />} />
               <Route path='/service/:id' element={<ServiceDetail />} />
             </Route>
@@ -82,15 +84,17 @@ export const AppRoutes = () => {
             <Route element={<UserLayout />}>
               <Route path='/user' element={<Home/>}/>
               {/* Servicios dinamicos??? */}
-              <Route path='/user/services' element={<Services/>}/>
+              <Route path='/user/services' element={<Services user={user}/>}/>
               <Route path='/user/about' element={<About/>} />
-              <Route path='/user/shop' element={<Shop />} />
+              {/* <Route path='/user/shop' element={<Shop />} /> */}
               <Route path='/user/myorders' element={<MyOrders />} />
               <Route path='/user/texts' element={<MyTexts/>}/>
+              <Route path='/user/textPreview/:text_id' element={<MyTextPreview/>}/>
+              <Route path='/user/contact' element={<Contact/>}/>
               <Route path='/user/chooseDate' element={<ChooseDate/>} />
               <Route path='/user/myAppointments' element={<MyAppointments />} />
               <Route path='/user/profile' element={<MyProfile/>}/>
-              <Route path='/user/contact' element={<Contact/>}/>
+              <Route path='/user/service/:id' element={<ServiceDetail />} />
                
             </Route>
           </Route>
