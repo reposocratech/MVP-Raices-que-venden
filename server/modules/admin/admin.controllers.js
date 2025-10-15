@@ -136,7 +136,47 @@ class AdminController {
     }
   };
 
-  deleteText = async (req, res) => {};
+  deleteTextLogical = async (req, res) => {
+    const {text_id} = req.body;
+    try {
+      const result = await adminDal.deleteTextLogical(text_id);
+      res.status(200).json(result);
+
+
+    } catch (error) {
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
+
+  restoreText = async (req, res) => {
+    const {text_id} = req.body;
+    try {
+      const result = await adminDal.restoreText(text_id);
+      res.status(200).json(result);
+
+
+    } catch (error) {
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
+
+
+  deleteTextTotal = async (req, res) => {
+    const {text_id} = req.body;
+    try {
+      const result = await adminDal.deleteTextTotal(text_id);
+      res.status(200).json(result);
+
+    } catch (error) {
+      res.status(500).json({message: "Error Server",
+                            dataError: error
+      })
+    }
+  }
 
   showServices = async (req, res) => {
     try {

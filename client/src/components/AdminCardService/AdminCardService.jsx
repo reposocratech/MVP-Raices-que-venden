@@ -45,16 +45,16 @@ export const AdminCardService = ({
         />
       </div>
       <div className="d-flex justify-content-between">
-        <Boton aspecto="btn-rounded-2 btn-card" valor="25 post" />
+        <Boton aspecto="btn-rounded-2 btn-card-service" valor="25 post" />
         <Boton
           onClick={modify}
           icon="bi bi-pen"
-          aspecto="btn-rounded-ok btn-card btn-edit"
+          aspecto="btn-rounded-ok btn-card-service btn-edit"
         />
         <Boton
           onClick={deleteService}
           icon="bi bi-trash"
-          aspecto="btn-rounded-err btn-card btn-delete"
+          aspecto="btn-rounded-err btn-card-service btn-delete"
         />
       </div>
     </>
