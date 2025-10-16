@@ -1,7 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { AuthContext } from "../../../context/AuthContextProvider";
 import { fetchData } from "../../../helpers/axiosHelper";
+import { Boton } from "../../Boton/Boton";
+import "./AppointmentReserved.css"
 
 export const AppointmentReserved = ({
   reserved,
@@ -13,10 +15,13 @@ export const AppointmentReserved = ({
 
   const { user, token } = useContext(AuthContext);
   const [reservaEnviada, setReservaEnviada] = useState(false);
+  const [enviando, setEnviando] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false)
+
+
 
   const enviaReserva = async () => {
-    setShowModal(false);
-
+    setEnviando(true);
     try {
       const datos = {
         user_id: user.user_id,
@@ -41,21 +46,32 @@ export const AppointmentReserved = ({
         app_date: datos.app_date,
         app_hour: datos.app_hour,
       });
-     
-      setReservaEnviada(true)
 
+      setReservaEnviada(true);
+      setShowConfirmModal(true);
 
     } catch (error) {
       console.log(error);
+    } finally {
+      setEnviando(false);
     }
   };
 
+  useEffect(() => {
+    if (showModal) {
+      setReservaEnviada(false);
+    }
+  }, [showModal]);
+
   return (
+    <>
     <Modal show={showModal} onHide={() => setShowModal(false)}>
-      <Modal.Header closeButton>
-        <Modal.Title>Reserva pendiente de confirmar</Modal.Title>
+      <Modal.Header closeButton className="bg-light">
+        <Modal.Title className="fw-bold">
+          Reserva pendiente de confirmar
+        </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="text-gray-700">
         Has seleccionado una cita libre de{" "}
         {new Date(reserved?.start).toLocaleTimeString("es-ES", {
           hour: "2-digit",
@@ -68,16 +84,61 @@ export const AppointmentReserved = ({
         })}
         .
         <br />
-        Tu reserva está pendiente de aprobación. Te enviaremos un email con la confirmación.
+        <p>
+          Tu reserva está pendiente de aprobación. Te enviaremos un email con la
+          confirmación.
+        </p>
+        
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => setShowModal(false)}>
+        <Button 
+        variant="outline-secondary" 
+        onClick={() => setShowModal(false)}
+        className="boton-cancelar rounded-pill"
+        >
           Cancelar
         </Button>
-        <Button variant="primary" onClick={enviaReserva}>
-          Enviar reserva
-        </Button>
+          <Button 
+          variant="success"
+          onClick={enviaReserva} 
+          disabled={reservaEnviada || enviando}
+          className={`boton rounded-pill {reservaEnviada ? "pulse": ""}`}
+          >
+
+        {enviando ? (
+          <>
+          <span className="spinner-border spinner-border-sm me2" role="status"/>
+          Enviando...
+          </>
+         ) : reservaEnviada ? "✅ Enviada" : "Enviar reserva"}   
+          </Button>
+      
       </Modal.Footer>
     </Modal>
+    <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
+  <Modal.Header closeButton>
+    <Modal.Title>Reserva enviada 🗓️</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <p>Tu reserva ha sido enviada correctamente y está pendiente de confirmación.</p>
+    <hr />
+    <p><strong>Fecha:</strong> {reserved?.start.toLocaleDateString("es-ES")}</p>
+    <p><strong>Hora:</strong> {reserved?.start.toLocaleTimeString("es-ES", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })} - {reserved?.end.toLocaleTimeString("es-ES", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })}</p>
+  </Modal.Body>
+  <Modal.Footer>
+    <Boton onClick={() => setShowConfirmModal(false)}
+    aspecto="btn-1" valor="Cerrar"
+      />
+   
+  </Modal.Footer>
+</Modal>
+
+    </>
   );
 };

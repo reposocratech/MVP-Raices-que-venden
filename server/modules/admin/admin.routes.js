@@ -52,8 +52,11 @@ router.put('/inactiveUser', tokenVerify, adminController.inactiveUser)
 
 router.get('/getMessage', tokenVerify, adminController.getMessage)
 
+//router.get('/getChat/:idClient', tokenVerify, adminController.getChat)
+
 router.get('/getChat/:idClient', tokenVerify, adminController.getChat);
 
 router.post('/sendCurrentChat', tokenVerify, adminController.sendCurrentChat);
+
 
 export default router;
