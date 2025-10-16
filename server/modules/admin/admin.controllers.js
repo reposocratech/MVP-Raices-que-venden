@@ -439,20 +439,23 @@ class AdminController {
       /* const {user_id} = req;
       console.log(idClient, user_id) */
       let values = [parseInt(idClient), parseInt(idClient)]
-      const chat = await adminDal.getChat(values);
+     
+     
+        const chat = await adminDal.getChat(values);
+        res
+        .status(200)
+        .json(
+          {
+            message:'chat obtenido con exito',
+            chatData: chat
+  
+          })
+
       console.log(chat);
       /* const resultSender = await adminDal.getChatSender(values)
       let values2 = [parseInt(idClient) , user_id ]
       const resultRecipient = await adminDal.getChatClient(values2) */
-      res
-      .status(200)
-      .json(
-        {
-          message:'chat obtenido con exito',
-          chatData: chat
-
-        })
-
+    
     } catch (error) {
       res.status(500).json({
         message: 'error server',

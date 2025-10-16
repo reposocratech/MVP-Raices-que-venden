@@ -55,9 +55,9 @@ const AdminService = () => {
   }
 
   return (
-    <Container>
+    <Container className='container-services'>
       <h2 className='title-admin'>Panel de servicios</h2>
-      
+      <hr />
       <Boton aspecto='btn-3 ms-auto mb-3' valor='Añadir servicio' onClick={()=>setShowCreateService(true)}/>
       <Row className='justify-content-center g-4 mb-4'>
         {services.map((service)=>{

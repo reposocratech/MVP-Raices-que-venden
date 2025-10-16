@@ -27,8 +27,8 @@ const WriterUsers = () => {
   }, [])
 
   return (
-    <Container>
-      <h2 className='titlew'>Panel de usuarios textos</h2>
+    <Container className='container-writer-user'>
+      <h2 className='title-admin'>Panel de usuarios textos</h2>
       <hr />
       <Table borderless hover responsive className='writer-users-table mt-4'>
       <thead>
