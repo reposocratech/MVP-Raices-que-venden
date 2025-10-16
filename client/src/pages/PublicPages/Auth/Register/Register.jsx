@@ -124,28 +124,9 @@ const Register = () => {
             </div>
           </div>
           
-          <div className='req-zod'>
-            <Row lg={3}>
-              <Col>
-                <p>Contraseñas iguales</p>
-                <p>Más de 8 caracteres</p>
-              </Col>
-              <Col>
-                <p>Mínimo 1 Símbolo</p>
-                <p>Mínimo 1 Número</p>
-              </Col>
-              <Col>
-                <p>Mínimo 1 Mayúscula</p>
-                <p>Mínimo 1 Minúscula</p>
-              </Col>
-            </Row>
-          </div>
+          
           <div className='btn-div'>
-            <Boton
-              valor="Cancelar"
-              aspecto="btn-err-1 w-50"
-              onClick={()=> navigate('/')}
-            />
+            
             <Boton
               aspecto="btn-3 w-100"
               valor="Registrar"

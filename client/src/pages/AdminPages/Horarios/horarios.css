@@ -1,17 +1,85 @@
-
-
 .horarios {
-    .title-admin {
-        color: var(--tertiary-color-almu);
-        margin: 0;
-    }
-    
-    hr {
-        color: var(--tertiary-color-almu);
-    }
-    
-    .title-days {
-        color: var(--secundary-color-dark);
-        font-size: 1.5rem;
-    }
+  .title-admin {
+    color: var(--tertiary-color-almu);
+    margin: 0;
+  }
+
+  hr {
+    color: var(--tertiary-color-almu);
+  }
+
+  .title-days {
+    color: var(--secundary-color-dark);
+    font-size: 1.5rem;
+  }
 }
+
+@media (max-width: 850px) {
+  .horarios {
+    .title-admin {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+
+    .title-days {
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .calendar {
+      padding: 0.25rem;
+    }
+
+    .btn-1,
+    .btn-6 {
+      font-size: 1rem;
+      padding: 0.25rem 0.3rem;
+      line-height: 2;       
+      border-radius: 12px;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .horarios {
+    .title-admin {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+
+    .title-days {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .calendar {
+      padding: 0.25rem;
+    }
+
+    .btn-1,
+    .btn-6 {
+      font-size: 0.65rem;
+      padding: 0.25rem 0.3rem;
+      line-height: 2;       
+      border-radius: 12px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .horarios {
+    .title-days {
+      font-size: 0.8rem;
+    }
+
+    .btn-1,
+    .btn-6 {
+      font-size: 0.6rem;
+      padding: 0.2rem 0.25rem;
+    }
+  }
+}
+

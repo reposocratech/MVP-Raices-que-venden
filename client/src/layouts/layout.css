@@ -1,3 +1,19 @@
 .main-layout{
     min-height: calc(100dvh - 186px);
+    position: relative;
+
+    .btn-chat {
+        position: fixed;
+        z-index: 0;
+        inset-inline-end: 0;
+        inset-block-end: 0;
+        background-color: var(--primary-color);
+        padding: 1rem;
+        margin: 2rem 3rem;
+    }
+
+    .btn-chat:hover {
+        background-color: var(--secundary-color);
+    }
+
 }

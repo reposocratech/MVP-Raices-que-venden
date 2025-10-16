@@ -48,7 +48,7 @@ export const NavbarAdmin = () => {
               />
               <Li
                 icon="bi bi-chat-right-dots"
-                valor="Mensajes"
+                valor="Chat"
                 as={Link}
                 to="/admin/message"
                 active={view === 'message'}

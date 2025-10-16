@@ -18,6 +18,12 @@ router.put('/saveText', tokenVerify, adminController.saveText);
 
 router.put('/publishOrHide', tokenVerify, adminController.publishOrHide);
 
+router.put('/deleteTextLogical', tokenVerify, adminController.deleteTextLogical);
+
+router.put('/restoreText', tokenVerify, adminController.restoreText);
+
+router.delete('/deleteTextTotal', tokenVerify, adminController.deleteTextTotal);
+
 router.get("/getServices", tokenVerify, adminController.showServices);
 
 router.post('/createService', tokenVerify, uploadImage('services'), adminController.createService);
@@ -47,5 +53,10 @@ router.put('/inactiveUser', tokenVerify, adminController.inactiveUser)
 router.get('/getMessage', tokenVerify, adminController.getMessage)
 
 //router.get('/getChat/:idClient', tokenVerify, adminController.getChat)
+
+router.get('/getChat/:idClient', tokenVerify, adminController.getChat);
+
+router.post('/sendCurrentChat', tokenVerify, adminController.sendCurrentChat);
+
 
 export default router;

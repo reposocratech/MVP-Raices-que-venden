@@ -6,7 +6,7 @@ const About = () => {
   return (
     <section className="section-about">
       <Container className="about">
-        <h1>Conoce a Almudena: La Esencia de Almuyalma</h1>
+        <h1 className='h1-about'>Conoce a Almudena: La Esencia de Almuyalma</h1>
         <Row className="div-row">
           <Col className="about-img" sm={12} md={6}>
             <Carrousel />
@@ -41,7 +41,7 @@ const About = () => {
           <h2 className='text-h2'>Más sobre nuestra historia</h2>
            
               <details className='accordion mb-1 about-text-acordion'>
-                <summary className='h5 fw-semibold'>Nuevo lanzamiento “Raíces que venden”</summary>
+                <summary className='h5 fw-semibold titleSum'>Nuevo lanzamiento “Raíces que venden”</summary>
                 <p>
                   Soy Almudena Torres López, copywriter especializada en negocios
                   rurales y fundadora de Almuyalma, mi marca de servicios de
@@ -57,7 +57,7 @@ const About = () => {
               </details>
               
               <details className='accordion mb-1 about-text-acordion'>
-                <summary className='h5 fw-semibold'>
+                <summary className='h5 fw-semibold titleSum'>
                   Mi historia con el mundo rural
                 </summary>
                 <p>
@@ -92,7 +92,7 @@ const About = () => {
               </details>
 
               <details className='accordion mb-1 about-text-acordion'>
-                <summary className='h5 fw-semibold'>Mi experiencia</summary>
+                <summary className='h5 fw-semibold titleSum'>Mi experiencia</summary>
                 <p>
                   Mi experiencia en recursos humanos, banca y
                   seguros me ha dado una visión más amplia del mercado y la
@@ -104,7 +104,7 @@ const About = () => {
 
 
              <details className='accordion mb-1 about-text-acordion'>
-               <summary className='h5 fw-semibold'>Nuestros objetivos</summary>
+               <summary className='h5 fw-semibold titleSum'>Nuestros objetivos</summary>
                 <p>
                   Hoy mi trayectoria evoluciona con mi
                   proyecto más personal: <strong>“Raíces que venden”</strong>, seleccionado en el

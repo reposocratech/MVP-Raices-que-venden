@@ -25,9 +25,9 @@
         height: 100%;
         background: linear-gradient(to bottom, rgba(0,0,0,0) 90%, var(--primary-color-homedark) 100%),
         linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-        url(../../../../public/fondo/fondo-home.png);
+        url(../../../../public/fondo/naranja.png);
         background-size: cover;
-        background-position: center;
+        background-position: bottom;
         filter: blur(2px);
         transform: scale(1.05);
         z-index: 0;
@@ -79,6 +79,7 @@
 
       .description-service-unic{
         padding-inline: 2rem;
+        color: var(--secundary-color-dark);
 
         .price-service{
           color: var(--secundary-color-dark);
@@ -90,6 +91,37 @@
 
   
 }
+
+  .h2-section1{
+    color: var(--tertiary-color-almu);
+  }
+
+  
+
+  @media (width<481px){
+    
+    .title-service{
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (width<431px){
+    .h2-section1{
+      font-size: 1.4rem;
+    }
+    .title-service{
+      font-size: 1.4rem;
+    }
+  }
+  @media (width<394px){
+    .h2-section1{
+      font-size: 1.3rem;
+    }
+    .title-service{
+      font-size: 1.2rem;
+    }
+  }
+
 
 
 

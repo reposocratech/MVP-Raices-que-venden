@@ -23,7 +23,7 @@ class UserDal {
 
   findEmail = async (email) => {
     try {
-      let sql = 'SELECT user_id, password FROM user WHERE email = ? AND is_deactivated = 0';
+      let sql = 'SELECT user_id, password FROM user WHERE email = ?';
       const result = await executeQuery(sql, [email]);
       return result;
     } catch (error) {
@@ -172,6 +172,33 @@ class UserDal {
     } catch (error) {
       console.log(error);
       throw error;
+    }
+  }
+
+  getChat = async (values) => {
+    try {
+      let sql = ` SELECT * 
+                  FROM message
+                  WHERE sender_user_id = ? 
+                  OR recipient_user_id  = ?`
+                  
+      const result = await executeQuery(sql, values);
+      console.log(result);
+      return result;
+    } catch (error) {
+      throw error
+    }
+  }
+
+  sendCurrentChat = async (values) => {
+    try {
+      let sql = `INSERT INTO message (message_text,sender_user_id,recipient_user_id)
+                 VALUES (?,?,?)`
+      await executeQuery(sql, values);
+      return;
+
+    } catch (error) {
+      throw error
     }
   }
 

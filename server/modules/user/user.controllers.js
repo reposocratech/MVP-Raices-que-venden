@@ -1,3 +1,4 @@
+import executeQuery from '../../config/db.js';
 import { sendMailConfirm } from '../../services/emailRegister.js';
 import { compareString, hashString } from '../../utils/hashUtils.js';
 import {
@@ -277,6 +278,49 @@ class UserController {
         res.status(500).json({message: "Error server", dataError: error})
       }
     }
+
+    getChat = async (req, res) => {
+      try {
+        const {user_id } = req;
+        let values = [user_id, user_id];
+        const result = await userDal.getChat(values);
+        console.log(result)
+        res
+        .status(200)
+        .json(
+          {
+            message: "Chat obtenido con exito",
+            chatData: result
+          }
+        )
+      } catch (error) {
+        console.log(error)
+        res
+        .status(500)
+        .json(
+          {
+            message: 'Error server',
+            dataError: error
+          }
+        )
+      }
+    }
+
+    sendCurrentChat = async (req, res) => {
+        try {
+          const {currentChat, sender, recipient} = req.body;
+          console.log(currentChat, sender, recipient);
+          const values = [currentChat, sender, recipient];
+          await userDal.sendCurrentChat(values);
+          res.status(200).json({message: 'todo ok'})
+    
+        } catch (error) {
+          res.status(500).json({
+            message: 'error server',
+            dataError: error,
+          });
+        }
+      }
 
 }
 

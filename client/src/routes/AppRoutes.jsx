@@ -95,7 +95,6 @@ export const AppRoutes = () => {
               <Route path='/user/myAppointments' element={<MyAppointments />} />
               <Route path='/user/profile' element={<MyProfile/>}/>
               <Route path='/user/service/:id' element={<ServiceDetail />} />
-               
             </Route>
           </Route>
 
