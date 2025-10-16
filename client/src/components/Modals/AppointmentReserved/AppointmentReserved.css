@@ -1,0 +1,30 @@
+.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.boton {
+  background-color: var(--tertiary-color);
+  font-family: var(--font-body);
+  border: var(--tertiary-color)
+}
+
+.boton-cancelar {
+  background-color: var(--primary-color-dark);
+  
+  
+}
+
+.btn-primary:hover {
+  background-color: #3a8549 !important; /* verde oscuro */
+ 
+}
+.btn-outline-secondary:hover {
+  background-color: #8b6e52 !important; /* verde oscuro */
+}
+
