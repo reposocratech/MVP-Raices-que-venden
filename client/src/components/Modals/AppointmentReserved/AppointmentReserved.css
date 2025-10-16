@@ -21,10 +21,21 @@
 }
 
 .btn-primary:hover {
-  background-color: #3a8549 !important; /* verde oscuro */
+  background-color: #3a8549 !important;
  
 }
 .btn-outline-secondary:hover {
-  background-color: #8b6e52 !important; /* verde oscuro */
+  background-color: #8b6e52 !important; 
 }
 
+.modal-title {
+  color: var(--secundary-color-dark)
+}
+
+.modal-text {
+  color: var(--secundary-color-dark)
+}
+
+.modal-title-green {
+  color: var(--tertiary-color-almu)
+}

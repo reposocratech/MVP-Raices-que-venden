@@ -67,11 +67,11 @@ export const AppointmentReserved = ({
     <>
     <Modal show={showModal} onHide={() => setShowModal(false)}>
       <Modal.Header closeButton className="bg-light">
-        <Modal.Title className="fw-bold">
+        <Modal.Title className="modal-title fw-bold">
           Reserva pendiente de confirmar
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className="text-gray-700">
+      <Modal.Body className="modal-text text-gray-700">
         Has seleccionado una cita libre de{" "}
         {new Date(reserved?.start).toLocaleTimeString("es-ES", {
           hour: "2-digit",
@@ -84,7 +84,7 @@ export const AppointmentReserved = ({
         })}
         .
         <br />
-        <p>
+        <p className="modal-text">
           Tu reserva está pendiente de aprobación. Te enviaremos un email con la
           confirmación.
         </p>
@@ -117,19 +117,19 @@ export const AppointmentReserved = ({
     </Modal>
     <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
   <Modal.Header closeButton>
-    <Modal.Title>Reserva enviada 🗓️</Modal.Title>
+    <Modal.Title className="modal-title-green fw-bold">Reserva enviada 🗓️</Modal.Title>
   </Modal.Header>
   <Modal.Body>
-    <p>Tu reserva ha sido enviada correctamente y está pendiente de confirmación.</p>
+    <p className="modal-text">Tu reserva ha sido enviada correctamente y está pendiente de confirmación.</p>
     <hr />
-    <p><strong>Fecha:</strong> {reserved?.start.toLocaleDateString("es-ES")}</p>
-    <p><strong>Hora:</strong> {reserved?.start.toLocaleTimeString("es-ES", {
+    <p className="modal-text"><strong>Fecha:</strong> {reserved?.start.toLocaleDateString("es-ES")}</p>
+    <p className="modal-text"><strong>Hora:</strong> {reserved?.start.toLocaleTimeString("es-ES", {
       hour: "2-digit",
       minute: "2-digit",
     })} - {reserved?.end.toLocaleTimeString("es-ES", {
       hour: "2-digit",
       minute: "2-digit",
-    })}</p>
+    })}<span>hrs</span></p> 
   </Modal.Body>
   <Modal.Footer>
     <Boton onClick={() => setShowConfirmModal(false)}
