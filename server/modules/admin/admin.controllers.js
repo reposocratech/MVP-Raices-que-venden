@@ -348,7 +348,7 @@ class AdminController {
       emailConfirmadoCita({
         user_name: appointment.user_name,
         email: appointment.email,
-        app_day: appointment.app_day,
+        app_date: appointment.app_date,
         app_hour: appointment.app_hour,
       });
 
@@ -371,7 +371,7 @@ class AdminController {
       emailCanceladoCita({
         user_name: appointment.user_name,
         email: appointment.email,
-        app_day: appointment.app_day,
+        app_date: appointment.app_date,
         app_hour: appointment.app_hour,
       });
 
