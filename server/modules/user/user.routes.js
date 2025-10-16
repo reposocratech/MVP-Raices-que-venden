@@ -40,5 +40,9 @@ router.post('/getTexts', tokenVerify, userController.getTexts);
 
 router.post('/getText', tokenVerify, userController.getText);
 
+router.get('/getChat', tokenVerify, userController.getChat)
+
+router.post('/sendCurrentChat', tokenVerify, userController.sendCurrentChat);
+
 
 export default router;

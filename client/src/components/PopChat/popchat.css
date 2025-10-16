@@ -1,0 +1,125 @@
+.mini-chat {
+  height: 500px;
+  width: 500px;
+  border-radius: 20px;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  z-index: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  margin: 6rem 3rem;
+  transition: 0.3s;
+  border: 1px solid var(--secundary-color);
+
+  .title-chat {
+    color: var(--secundary-color);
+  }
+
+  .container-chat {
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    margin-block: 0.5rem;
+
+
+    .admin {
+      display: flex;
+      align-items: end;
+      flex-direction: column;
+      padding-inline-end: 1rem;
+
+      .fecha {
+        font-size: 0.7rem;
+      }
+
+      .message {
+        padding: 0.5rem 2rem;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        width: 300px;
+        text-align: end;
+        background-color: var(--primary-color-homedark-2);
+       
+
+        white-space: normal;
+        word-wrap: break-word;
+      }
+    }
+    .client {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+
+      .fecha {
+        font-size: 0.7rem;
+      }
+
+      .message {
+        padding: 0.5rem 2rem;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 300px;
+        background-color: var(--primary-color-homedark);
+        white-space: normal;
+        word-wrap: break-word;
+      }
+    }
+
+    .sin-chat-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 500px;
+      .sin-chat {
+        color: var(--secundary-color);
+        justify-content: center;
+        margin: 0;
+      }
+    }
+  }
+
+  .form-chat {
+    display: flex;
+    gap: 1rem;
+
+    textarea {
+      width: 100%;
+      border-radius: 20px;
+      padding-inline: 0.5rem;
+      padding-block: 0.5rem;
+    }
+  }
+}
+
+@media (width < 500px) {
+  .mini-chat {
+    width: 400px;
+  }
+}
+
+@media (width < 400px) {
+  .mini-chat {
+    width: 300px;
+
+    .admin {
+      .message {
+        width: 200px;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+    }
+
+    .client {
+      .message {
+        width: 200px;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+    }
+  }
+}

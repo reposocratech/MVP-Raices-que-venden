@@ -12,7 +12,7 @@ const AdminMessage = () => {
   const [usersChat, setUsersChat] = useState([]);
   const [clientChat, setClientChat] = useState();
   const [chat, setChat] = useState([]);
-  const [chatOrder, setChatOrder] = useState([])
+  const [chatOrder, setChatOrder] = useState([]);
   const [currentChat, setCurrentChat] = useState('');
   const [timer, setTimer] = useState(null);
 
@@ -31,7 +31,6 @@ const AdminMessage = () => {
         setUsersChat(result.data.filter((e) => e.user_id !== user.user_id));
       };
       fetchUsers();
-
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +49,6 @@ const AdminMessage = () => {
 
       setClientChat(users.filter((e) => e.user_id === idClient));
       setChat(chatData);
-      
     } catch (error) {
       console.log(error);
     }
@@ -59,15 +57,15 @@ const AdminMessage = () => {
   const handleChange = (e) => {
     e.preventDefault();
     setCurrentChat(e.target.value);
-  }
+  };
 
   const sendCurrentChat = async (idClient) => {
     try {
       const currentChatData = {
         currentChat: currentChat,
         sender: user.user_id,
-        recipient: idClient
-      }
+        recipient: idClient,
+      };
       await fetchData('/admin/sendCurrentChat', 'POST', currentChatData, token);
       setCurrentChat('');
       const result = await fetchData(
@@ -79,12 +77,10 @@ const AdminMessage = () => {
 
       const { chatData } = result.data;
       setChat(chatData);
-
     } catch (error) {
       console.log(error);
     }
-  }
-  
+  };
 
   return (
     <Container className="chat-container">
@@ -116,7 +112,9 @@ const AdminMessage = () => {
                     </Col>
                     <Col>
                       <p className="m-0">
-                        {e.user_name && e.last_name?`${e.user_name} ${e.last_name}`:e.email}
+                        {e.user_name && e.last_name
+                          ? `${e.user_name} ${e.last_name}`
+                          : e.email}
                       </p>
                     </Col>
                   </Row>
@@ -126,7 +124,7 @@ const AdminMessage = () => {
             })}
           </div>
         </Col>
-        <Col lg={9}>
+        <Col lg={9} className="right-column">
           <div className="chat">
             {clientChat?.map((e) => {
               return (
@@ -143,42 +141,59 @@ const AdminMessage = () => {
                     alt="Avatar user"
                   />
                   <p className="m-0">
-                    {e.user_name && e.last_name?`${e.user_name} ${e.last_name}`:e.email}
+                    {e.user_name && e.last_name
+                      ? `${e.user_name} ${e.last_name}`
+                      : e.email}
                   </p>
                 </div>
               );
             })}
-            <hr />
+            {clientChat && <hr />}
+
             <div className="container-chat">
               <div className="message-chat">
-                {chat.map((e) => {
-                  return (
-                    <div key={e.message_id}>
-                      {clientChat[0]?.user_id === e.sender_user_id && (
-                        <div className="client">
-                          <span className='fecha'>{e.message_date}</span>
-                          <p className='message'>{e.message_text}</p>
-                        </div>
-                      )}
+                {clientChat ? (
+                  chat.map((e) => {
+                    return (
+                      <div key={e.message_id}>
+                        {clientChat[0]?.user_id === e.sender_user_id && (
+                          <div className="client">
+                            <span className="fecha">{e.message_date}</span>
+                            <p className="message">{e.message_text}</p>
+                          </div>
+                        )}
 
-                      {user?.user_id === e.sender_user_id && (
-                        <div className="admin">
-                          <span className='fecha'>{e.message_date}</span>
-                          <p className='message'>{e.message_text}</p>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                        {user?.user_id === e.sender_user_id && (
+                          <div className="admin">
+                            <span className="fecha">{e.message_date}</span>
+                            <p className="message">{e.message_text}</p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className="sin-chat-div">
+                    <h3 className="sin-chat"> 
+                        <i className="bi bi-chat-right-dots"></i> Inicia tu chat con tu cliente...</h3>
+                  </div>
+                )}
               </div>
-              <div className="form-chat">
-                <input type="text"
-                        name='chat-body'
-                        value={currentChat}
-                        onChange={handleChange}
-                        className='rounded-pill p-2 border-1' />
-                <Boton aspecto='btn-rounded-1' icon='bi bi-send' onClick={()=>sendCurrentChat(clientChat[0].user_id)} />
-              </div>
+              {clientChat && (
+                <div className="form-chat">
+                  <textarea
+                    type="text"
+                    name="chat-body"
+                    value={currentChat}
+                    onChange={handleChange}
+                  />
+                  <Boton
+                    aspecto="btn-rounded-1"
+                    icon="bi bi-send"
+                    onClick={() => sendCurrentChat(clientChat[0].user_id)}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </Col>
