@@ -332,7 +332,7 @@ class AdminDal {
       SELECT 
         user.user_name,
         user.email,
-        appointment.app_day,
+        appointment.app_date,
         appointment.app_hour
       FROM appointment
       JOIN user ON appointment.user_id = user.user_id

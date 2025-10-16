@@ -1,6 +1,8 @@
 
 
 .lista-citas {
+
+    
     
     .lista-filter {
         display: flex;
@@ -55,7 +57,6 @@
 
         .avatar-appointment{
             width: 3.125rem;
-            border-radius: 50px;
             object-fit: cover;
             aspect-ratio: 1/1;
             object-position: top;

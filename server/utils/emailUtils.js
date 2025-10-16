@@ -16,4 +16,15 @@ export const sendAppointmentEmail = async ({to, subject, message}) => {
         html: `<p>${message}</p>`
 
     })
+
+
 ;}
+
+
+export const reverseDate = (date) => {
+
+    date.split('-').reverse().join('-')
+
+    return date.split('-').reverse().join('-');
+
+}
