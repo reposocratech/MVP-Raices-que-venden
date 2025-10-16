@@ -1,6 +1,11 @@
+.whole-service-card {
+  height: 100%;
+}
+
 .admin-card-service {
   display: flex;
   flex-direction: column;
+  height: calc(100% - 88px);
   width: 300px;
   border-radius: 12px;
   padding: 16px;
@@ -20,6 +25,15 @@
     position: absolute;
     right: 25px;
     top: 25px;
+  }
+
+  .description-body {
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   

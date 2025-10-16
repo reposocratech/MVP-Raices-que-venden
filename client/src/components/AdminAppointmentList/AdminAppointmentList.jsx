@@ -125,7 +125,7 @@ export const AdminAppointmentList = ({
               <p className="m-0">{e.phone_number}</p>
             </Col>
             <Col lg={1} md={6} sm={4}>
-              <p className="m-0 text-lg-center text-md-center">{e.app_date}</p>
+              <p className="m-0 text-lg-center text-md-center">{e.app_date.split('-').reverse().join('-')}</p>
             </Col>
             <Col lg={2} md={6} sm={4}>
               <p className="m-0 text-lg-center">

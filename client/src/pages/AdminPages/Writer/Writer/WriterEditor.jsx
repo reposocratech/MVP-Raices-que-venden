@@ -56,7 +56,7 @@ const WriterEditor = () => {
       text_status: futureStatus
     }
 
-    const res = await fetchData('/admin/publishOrHide', 'PUT', statusData, token);
+    await fetchData('/admin/publishOrHide', 'PUT', statusData, token);
   }
 
   const handleChange = (e) => {
