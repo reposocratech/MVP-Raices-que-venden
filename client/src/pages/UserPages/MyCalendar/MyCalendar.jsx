@@ -19,10 +19,10 @@ export default function MyCalendar() {
   // Array de las horas de disponibilidad semanal
   const [availability, setAvailability] = useState([]);
 
-  // Funcionalidad para transpormar availability
+  // para transpormar availability
   //const fechasDisponibilidad = ftnFechaDisponibilidad(availability);
 
-  // Funcionalidad para generar Appointments
+  // para generar Appointments
   //const arrCalendar = ftnArrCalendar(fechasDisponibilidad);
 
   const [view, setView] = useState("month");
@@ -149,14 +149,7 @@ export default function MyCalendar() {
           onView={(newView) => setView(newView)}
           onSelectEvent={handleReservedEvent}
           min={new Date(2025, 0, 1, 8, 0)} // el tramo horas empieza a las 8:00 a.m.
-         /* eventPropGetter={() => ({
-            style: {
-              whiteSpace: "normal", // ✅ permite que el texto se envuelva
-              overflow: "visible", // evita que se corte
-              fontSize: "0.85rem", // ajusta el tamaño
-              padding: "2px 4px", // mejora el espacio interno
-            },
-          })}*/
+        
           messages={{
             next: "Siguiente",
             previous: "Anterior",

@@ -42,7 +42,7 @@ const MyAppointments = () => {
                 <Card.Body>
                   <Card.Title className="mb-2">🗓️ {e.app_date}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    🕒 {e.app_hour}:00 - {e.app_hour + 1}:00
+                    🕒 {e.app_hour}:00 - {e.app_hour + 1}:00 <span>hrs</span>
                   </Card.Subtitle>
                   <Card.Text className="text-success fw-bold">
                     ✅ Confirmada
