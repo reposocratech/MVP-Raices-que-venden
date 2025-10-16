@@ -114,9 +114,9 @@ export const AdminAppointmentList = ({
             </Col>
             <Col lg={2} md={4} sm={12}>
               <p className="m-0">
-                {e.user_name ? e.user_name : 'Sin nombre'} 
-                {' '}
-                {e.last_name ? e.last_name  : 'Sin Apellidos'}</p>
+                {e.user_name ? e.user_name : 'Sin nombre'}{' '}
+                {e.last_name ? e.last_name : 'Sin Apellidos'}
+              </p>
             </Col>
             <Col lg={2} md={4} sm={12}>
               <p className="m-0 ">{e.email}</p>
@@ -137,7 +137,12 @@ export const AdminAppointmentList = ({
                 {handleChangeStatus(e.app_status)}
               </p>
             </Col>
-            <Col lg={2} md={6} sm={6} className="d-flex gap-2 justify-content-end">
+            <Col
+              lg={2}
+              md={6}
+              sm={6}
+              className="d-flex gap-2 justify-content-end"
+            >
               {e.app_status !== 2 && (
                 <Boton
                   aspecto="btn-rounded-ok"
