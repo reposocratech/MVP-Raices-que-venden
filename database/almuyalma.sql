@@ -39,7 +39,7 @@ CREATE TABLE service (
     service_name VARCHAR(55) NOT NULL,
     service_description VARCHAR(500) NOT NULL,
     service_special BOOLEAN NOT NULL DEFAULT 0, -- si es especial(ej: todo en uno) será 1 y tendrá otros estilos
-    service_image VARCHAR(200) NOT NULL, -- OJO!!! si son varias imágenes habrá que crear una tabla!!!
+    service_image VARCHAR(200) NOT NULL,
     service_price DECIMAL(7,2), -- 9.999,99
     is_visible BOOLEAN NOT NULL DEFAULT 0
 );
@@ -81,9 +81,8 @@ CREATE TABLE text (
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
 SELECT * FROM text;
--- SELECT text.*, user.* FROM text LEFT JOIN ON text.user_id = user.user_id AND user.user_id=2;
--- Tablas si nos diese tiempo
 
 CREATE TABLE message (
 	message_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -97,6 +96,7 @@ CREATE TABLE message (
 	REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- Tablas no incluidas
 
  CREATE TABLE category (
 	category_id MEDIUMINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -127,9 +127,6 @@ CREATE TABLE purchase (
     CONSTRAINT fk_product_1 FOREIGN KEY (product_id)
     REFERENCES product(product_id) ON DELETE CASCADE ON UPDATE CASCADE    
 );
-
-
-INSERT INTO service(service_id, service_name, service_description, service_image) VALUES(1, "marketing", "textos escritos", "estaimagen");
 
 
 SELECT * FROM social_network;

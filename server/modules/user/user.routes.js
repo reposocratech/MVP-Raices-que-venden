@@ -44,5 +44,7 @@ router.get('/getChat', tokenVerify, userController.getChat)
 
 router.post('/sendCurrentChat', tokenVerify, userController.sendCurrentChat);
 
+router.post('/downloadText', tokenVerify, userController.downloadText);
+
 
 export default router;

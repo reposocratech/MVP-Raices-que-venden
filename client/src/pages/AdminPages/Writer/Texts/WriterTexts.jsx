@@ -57,7 +57,7 @@ const WriterTexts = () => {
   return (
     <Container>
 
-      <h2><Boton aspecto='btn-rounded-1 d-inline' icon='bi bi-box-arrow-left' onClick={()=>navigate('/admin/write')}/> Textos para {texts[0]?.user_name?texts[0]?.user_name:texts[0]?.email}</h2>
+      <h2><Boton aspecto='btn-rounded-1 d-inline' icon='bi bi-box-arrow-left' onClick={()=>navigate('/admin/write')}/> Textos para {texts[0]?.user_name? texts[0]?.user_name : texts[0]?.email}</h2>
 
       <hr />
       {/* <Boton aspecto='btn-3 ms-auto mb-3' valor='Añadir servicio' onClick={()=>setShowCreateService(true)}/> */}

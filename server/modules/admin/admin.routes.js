@@ -3,6 +3,7 @@ import adminController from "./admin.controllers.js";
 import uploadImage from "../../middlewares/multerSingle.js";
 import { tokenVerify } from "../../middlewares/tokenVerify.js";
 import adminControllers from "./admin.controllers.js";
+import uploadDocx from "../../middlewares/multerDocx.js";
 
 const router = express.Router();
 
@@ -57,6 +58,8 @@ router.get('/getMessage', tokenVerify, adminController.getMessage)
 router.get('/getChat/:idClient', tokenVerify, adminController.getChat);
 
 router.post('/sendCurrentChat', tokenVerify, adminController.sendCurrentChat);
+
+router.post('/uploadDoc', tokenVerify, uploadDocx('wordFiles'), adminController.uploadDoc);
 
 
 export default router;
