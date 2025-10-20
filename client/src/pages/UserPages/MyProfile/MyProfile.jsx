@@ -203,7 +203,7 @@ const MyProfile = () => {
 
               <Link onClick={addRedSocialData} className="edit-link">
                 <i className="bi bi-plus-circle"></i>
-                Añadir Red Social
+                Añadir
               </Link>
             </div>
           </Col>
