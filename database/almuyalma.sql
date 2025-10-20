@@ -1,7 +1,7 @@
-drop DATABASE almuyalma;
+-- drop DATABASE almuyalma;
 CREATE DATABASE almuyalma;
 USE almuyalma;
--- DROP DATABASE almuyalma;
+
 
 CREATE TABLE user (
     user_id INT UNSIGNED NOT NULL  PRIMARY KEY,
@@ -44,6 +44,8 @@ CREATE TABLE service (
     is_visible BOOLEAN NOT NULL DEFAULT 0
 );
 
+select * from service;
+
 
 
 CREATE TABLE availability (
@@ -63,13 +65,15 @@ CREATE TABLE appointment (
     CONSTRAINT fk_user_1 FOREIGN KEY (user_id)
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+select * from appointment;
     
 CREATE TABLE text (
     text_id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
     text_title VARCHAR(100) NOT NULL,
     text_body MEDIUMTEXT,
     text_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1,
+    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 oculto | 2 publicado | ¿3 eliminado?
     filename VARCHAR(200),
     user_id INT UNSIGNED NOT NULL,
     last_modified DATETIME NULL,
@@ -77,7 +81,8 @@ CREATE TABLE text (
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-
+SELECT * FROM text;
+-- SELECT text.*, user.* FROM text LEFT JOIN ON text.user_id = user.user_id AND user.user_id=2;
 -- Tablas si nos diese tiempo
 
 CREATE TABLE message (
@@ -92,11 +97,6 @@ CREATE TABLE message (
 	REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-SELECT * FROM message WHERE recipient_user_id = 1 AND sender_user_id = 2;
-INSERT INTO message (message_text,sender_user_id,recipient_user_id) VALUES ("que quieres", 1,2);
-
-INSERT INTO message (message_text,sender_user_id,recipient_user_id) VALUES ("Muy bien y tu?", 2,1);
-SELECT * FROM message;
 
  CREATE TABLE category (
 	category_id MEDIUMINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -133,8 +133,6 @@ INSERT INTO service(service_id, service_name, service_description, service_image
 
 
 SELECT * FROM social_network;
-
-SELECT * FROM user;
 
 SELECT * FROM availability;
 

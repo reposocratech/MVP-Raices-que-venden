@@ -37,6 +37,7 @@ const Register = () => {
       const res =  await fetchData('/user/register', 'POST', text );
       console.log(res)
       navigate('/login');
+      alert('Registro con éxito, revisa tu correo')
 
     } catch (error) {
       console.log("Error completo:", error);
@@ -113,7 +114,7 @@ const Register = () => {
             </div>
              { valorError?.repetirPassword && <p className='text-danger'>{valorError.repetirPassword}</p>}
           </div>
-          <div className='check-input'>
+         {/*  <div className='check-input'>
             <div>
               <input type="checkbox" />
               <label htmlFor="privacity">Accepto la política de privacidad</label>
@@ -122,7 +123,7 @@ const Register = () => {
               <input type="checkbox" />
               <label htmlFor="newslatter">Suscribirme a la newslatter personalizada</label>
             </div>
-          </div>
+          </div> */}
           
           
           <div className='btn-div'>

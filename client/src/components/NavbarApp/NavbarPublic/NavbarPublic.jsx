@@ -13,7 +13,7 @@ export const NavbarApp = () => {
   const navigate = useNavigate();
 
   return (
-    <Navbar collapseOnSelect expand="lg" className='nav-public'>
+    <Navbar collapseOnSelect expand="lg" className='nav-public fixed-top'>
       <Container>
         <Navbar.Brand as={Link} to='/'><img src="/logo/logo-marron.png" alt="" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
