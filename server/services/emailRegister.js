@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendMailConfirm = (email, name, token = null) => {
+export const sendMailConfirm = (email, token) => {
   let emailBody = `
  
 <!DOCTYPE html>
