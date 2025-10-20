@@ -33,6 +33,32 @@ const MyTexts = () => {
     return result;
   };
 
+  const handleDownload = async (textData) => {
+    const safeTitle = (textData.filename).replace(/[^\w\-]+/g, '_') + '.docx';
+
+    const res = await fetchData(
+      `/user/downloadText`,
+      'POST',
+      {text_id: textData.text_id, filename: textData.filename},
+      token,
+      { responseType: 'blob' }
+    );
+
+    const blob = new Blob(
+      [res.data],
+      { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }
+    );
+
+    const link = document.createElement('a');
+    const href = URL.createObjectURL(blob);
+    link.href = href;
+    link.download = safeTitle;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(href);
+  }
+
   return (
     <>
       <Container>
@@ -73,14 +99,22 @@ const MyTexts = () => {
                   ></Boton>
                 </Col>
                 <Col lg={2} md={6} xs={6}>
+                  {text.filename?
                   <Boton
                     aspecto="btn-3 mx-auto"
                     icon="bi bi-download"
                     valor="descargar"
-                    onClick={() =>
-                      navigate(`/user/textPreview/${text.text_id}`)
-                    }
+                    onClick={()=>handleDownload(text)}
                   ></Boton>
+                  :
+                  <Boton
+                    aspecto="btn-2 mx-auto"
+                    icon="bi bi-x"
+                    valor="sin archivo"
+                  ></Boton>
+                  
+                }
+                  
                 </Col>
               </Row>
             );

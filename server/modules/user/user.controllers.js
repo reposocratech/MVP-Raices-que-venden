@@ -6,6 +6,8 @@ import {
   generateTokenLogin,
 } from '../../utils/tokenUtils.js';
 import userDal from './user.dal.js';
+import path from 'path';
+import fs from 'fs';
 
 class UserController {
   register = async (req, res) => {
@@ -321,6 +323,23 @@ class UserController {
           });
         }
       }
+
+  downloadText = async (req, res) => {
+    try {
+      const {text_id, filename} = req.body;
+
+      const filePath = path.resolve('public/docs/wordFiles', filename);
+      if (!fs.existsSync(filePath)) return res.status(404).json({ ok: false, message: 'Archivo no encontrado' });
+
+      return res.download(filePath, `${filename}.docx`);
+
+    } catch (error) {
+      res.status(500).json({
+        message: 'error server',
+        dataError: error,
+      });
+    }
+  }
 
 }
 
