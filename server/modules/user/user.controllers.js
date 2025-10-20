@@ -22,6 +22,7 @@ class UserController {
       const userId = await userDal.register(data);
       console.log(userId, '*****');
       const token = generateTokenConfirm(userId);
+      console.log(token);
       sendMailConfirm(email, token);
       res.status(200).json({ message: 'Hola mundo' });
     } catch (error) {
