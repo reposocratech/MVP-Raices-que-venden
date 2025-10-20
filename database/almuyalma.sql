@@ -1,7 +1,7 @@
-drop DATABASE almuyalma;
+-- drop DATABASE almuyalma;
 CREATE DATABASE almuyalma;
 USE almuyalma;
--- DROP DATABASE almuyalma;
+
 
 CREATE TABLE user (
     user_id INT UNSIGNED NOT NULL  PRIMARY KEY,
@@ -44,6 +44,8 @@ CREATE TABLE service (
     is_visible BOOLEAN NOT NULL DEFAULT 0
 );
 
+select * from service;
+
 
 
 CREATE TABLE availability (
@@ -63,13 +65,15 @@ CREATE TABLE appointment (
     CONSTRAINT fk_user_1 FOREIGN KEY (user_id)
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+select * from appointment;
     
 CREATE TABLE text (
     text_id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
     text_title VARCHAR(100) NOT NULL,
     text_body MEDIUMTEXT,
     text_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1,
+    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 oculto | 2 publicado | ¿3 eliminado?
     filename VARCHAR(200),
     user_id INT UNSIGNED NOT NULL,
     last_modified DATETIME NULL,
@@ -78,7 +82,7 @@ CREATE TABLE text (
 );
 
 
-
+SELECT * FROM text;
 
 CREATE TABLE message (
 	message_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -126,8 +130,6 @@ CREATE TABLE purchase (
 
 
 SELECT * FROM social_network;
-
-SELECT * FROM user;
 
 SELECT * FROM availability;
 
