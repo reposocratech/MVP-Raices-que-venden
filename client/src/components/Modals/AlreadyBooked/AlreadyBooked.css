@@ -1,0 +1,16 @@
+.modal-overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+
+  .modal-content-booked {
+  background-color: white;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+};
+

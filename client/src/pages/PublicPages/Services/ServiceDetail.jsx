@@ -8,7 +8,6 @@ import { AuthContext } from '../../../context/AuthContextProvider';
 
 const ServiceDetail = () => {
   const { id } = useParams();
-  const {user} = useContext(AuthContext);
   const [service, setService] = useState([]);
 
   const navigate = useNavigate();

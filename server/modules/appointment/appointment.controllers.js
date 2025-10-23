@@ -16,13 +16,7 @@ class AppointmentController {
         app_day,
         app_hour
      })
-   /*  ([
-        user_id,
-        app_status,
-        app_day,
-        app_hour,
-        app_date,
-      ]);*/
+   
       res.status(200).json({message: "reserva registrada correctamente", result})
     } catch (error) {
       console.log(error);

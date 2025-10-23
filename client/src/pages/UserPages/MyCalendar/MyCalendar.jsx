@@ -12,6 +12,7 @@ import {
 import { AppointmentReserved } from "../../../components/Modals/AppointmentReserved/AppointmentReserved.jsx";
 import { useMemo } from "react";
 import "./myCalendar.css";
+import AlreadyBookedModal from "../../../components/Modals/AlreadyBooked/AlreadyBooked.jsx";
 
 export default function MyCalendar() {
   const { token } = useContext(AuthContext);
@@ -19,17 +20,12 @@ export default function MyCalendar() {
   // Array de las horas de disponibilidad semanal
   const [availability, setAvailability] = useState([]);
 
-  // para transpormar availability
-  //const fechasDisponibilidad = ftnFechaDisponibilidad(availability);
-
-  // para generar Appointments
-  //const arrCalendar = ftnArrCalendar(fechasDisponibilidad);
-
   const [view, setView] = useState("month");
   const [date, setDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
   const [reserved, setReserved] = useState(null);
   const [reservedAppointments, setReservedAppointments] = useState([]);
+  const [showAlreadyBooked, setShowAlreadyBooked] = useState(false);
 
   const fechasDisponibilidad = useMemo(() => {
     return ftnFechaDisponibilidad(availability);
@@ -39,7 +35,21 @@ export default function MyCalendar() {
     return ftnArrCalendar(fechasDisponibilidad);
   }, [fechasDisponibilidad]);
 
+
+
   const handleReservedEvent = (event) => {
+    const selectedDate = format(new Date(event.start), "yyyy-MM-dd");
+
+    const yaTieneCitaEseDia = reservedAppointments.some((cita) => {
+      const citaDate = format(new Date(cita.app_date), "yyyy-MM-dd");
+      return citaDate === selectedDate;
+    });
+
+    if (yaTieneCitaEseDia) {
+      setShowAlreadyBooked(true);
+      return;
+    }
+
     setReserved(event);
     setShowModal(true);
   };
@@ -131,7 +141,6 @@ export default function MyCalendar() {
     getAllData();
   }, []);
 
-  
   return (
     <>
       <div className="min-h-[60vh] p-4 bg-gray-50 rounded-2xl shadow-md">
@@ -149,7 +158,6 @@ export default function MyCalendar() {
           onView={(newView) => setView(newView)}
           onSelectEvent={handleReservedEvent}
           min={new Date(2025, 0, 1, 8, 0)} // el tramo horas empieza a las 8:00 a.m.
-        
           messages={{
             next: "Siguiente",
             previous: "Anterior",
@@ -171,6 +179,10 @@ export default function MyCalendar() {
         showModal={showModal}
         setShowModal={setShowModal}
         handleClose={handleClose}
+      />
+      <AlreadyBookedModal
+        show={showAlreadyBooked}
+        onClose={() => setShowAlreadyBooked(false)}
       />
     </>
   );
