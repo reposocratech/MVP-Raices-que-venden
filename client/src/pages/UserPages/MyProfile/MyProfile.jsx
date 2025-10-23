@@ -177,10 +177,10 @@ const MyProfile = () => {
                       <i className={iconsRedes(e.name)}></i>
                     </Col>
                     <Col xs={2}>
-                      <p>{e.name}</p>
+                      <p className='pe-3'>{e.name}</p>
                     </Col>
                     <Col xs={6}>
-                      <p>{e.link}</p>
+                      <p className='ps-3'>{e.link}</p>
                     </Col>
                     <Col
                       xs={3}

@@ -1,4 +1,4 @@
--- drop DATABASE almuyalma;
+drop DATABASE almuyalma;
 CREATE DATABASE almuyalma;
 USE almuyalma;
 -- DROP DATABASE almuyalma;

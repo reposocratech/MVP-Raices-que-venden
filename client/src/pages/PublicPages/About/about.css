@@ -110,6 +110,10 @@
     margin-top: 2rem;
   }
 
+  .text-h2{
+    font-size: 1.5rem;
+  }
+
 }
 
 @media (width<600px) {
