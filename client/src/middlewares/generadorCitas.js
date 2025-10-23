@@ -25,7 +25,6 @@ export const ftnFechaDisponibilidad = (disponibilidad) => {
 
               horas.push(disponibilidad[j].availability_hour)
                   
-                    
           }
           
       }

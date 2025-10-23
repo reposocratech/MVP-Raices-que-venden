@@ -11,6 +11,7 @@
     min-height: 700px;
     border-radius: 10px;
     padding: 2rem 1rem;
+    background-color: var(--primary-color);
 
     input {
       border-radius: var(--border-hight);
@@ -49,6 +50,7 @@
   }
 
   .right-column {
+
     .chat {
       box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
       max-height: 700px;
@@ -56,6 +58,7 @@
       border-radius: 10px;
       padding: 2rem 1rem;
       margin-bottom: 2rem;
+      border: 1px solid var(--primary-color-homedark);
 
       .header-chat {
         display: flex;
@@ -73,7 +76,7 @@
       .message-chat {
         display: flex;
         flex-direction: column;
-        overflow-y: scroll;
+        overflow-y: auto;
         max-height: 500px;
         min-height: 500px;
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { AuthContext } from '../../../context/AuthContextProvider';
 import { fetchData } from '../../../helpers/axiosHelper';
@@ -15,6 +15,9 @@ const AdminMessage = () => {
   const [chatOrder, setChatOrder] = useState([]);
   const [currentChat, setCurrentChat] = useState('');
   const [timer, setTimer] = useState(null);
+  const [userSelect, setUserSelect] = useState(null);
+  const chatRef = useRef(null);
+  
 
   console.log(usersChat);
 
@@ -36,6 +39,38 @@ const AdminMessage = () => {
     }
   }, []);
 
+
+  useEffect(() => {
+    
+    try {
+      if (userSelect) {
+        
+        const listenChat = async () => {
+          const result = await fetchData(
+            `/admin/getChat/${userSelect}`,
+            'GET',
+            null,
+            token
+          );
+  
+          const { chatData } = result.data;
+          setChat(chatData);
+          chatRef.current.scrollTop = chatRef.current.scrollHeight;
+          
+          
+        };
+        listenChat()
+        
+        const intervalo = setInterval(listenChat, 1000);
+        return () => clearInterval(intervalo);
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }, [userSelect]);
+
+  
   const openChat = async (idClient) => {
     try {
       const result = await fetchData(
@@ -49,8 +84,9 @@ const AdminMessage = () => {
 
       setClientChat(users.filter((e) => e.user_id === idClient));
       setChat(chatData);
+      setUserSelect(idClient);
 
-     /*  const intervalo = setInterval(fetchData, 3000);
+      /*  const intervalo = setInterval(fetchData, 3000);
       return () => clearInterval(intervalo); */
     } catch (error) {
       console.log(error);
@@ -69,17 +105,24 @@ const AdminMessage = () => {
         sender: user.user_id,
         recipient: idClient,
       };
-      await fetchData('/admin/sendCurrentChat', 'POST', currentChatData, token);
-      setCurrentChat('');
-      const result = await fetchData(
-        `/admin/getChat/${idClient}`,
-        'GET',
-        null,
-        token
-      );
+      if (currentChat) {
+        await fetchData(
+          '/admin/sendCurrentChat',
+          'POST',
+          currentChatData,
+          token
+        );
+        setCurrentChat('');
+        const result = await fetchData(
+          `/admin/getChat/${idClient}`,
+          'GET',
+          null,
+          token
+        );
 
-      const { chatData } = result.data;
-      setChat(chatData);
+        const { chatData } = result.data;
+        setChat(chatData);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -87,7 +130,7 @@ const AdminMessage = () => {
 
   return (
     <Container className="chat-container">
-      <h2 className='title-admin'>Chat</h2>
+      <h2 className="title-admin">Chat</h2>
       <hr />
       <Row className="g-2">
         <Col lg={3}>
@@ -131,7 +174,7 @@ const AdminMessage = () => {
           <div className="chat">
             {clientChat?.map((e) => {
               return (
-                <div key={e.user_id} className="header-chat">
+                <div key={e.user_id} className="header-chat" >
                   <img
                     className="img-user-chat"
                     src={
@@ -154,11 +197,11 @@ const AdminMessage = () => {
             {clientChat && <hr />}
 
             <div className="container-chat">
-              <div className="message-chat">
+              <div className="message-chat" ref={chatRef}>
                 {clientChat ? (
                   chat.map((e) => {
                     return (
-                      <div key={e.message_id}>
+                      <div key={e.message_id } >
                         {clientChat[0]?.user_id === e.sender_user_id && (
                           <div className="client">
                             <span className="fecha">{e.message_date}</span>
@@ -177,8 +220,10 @@ const AdminMessage = () => {
                   })
                 ) : (
                   <div className="sin-chat-div">
-                    <h3 className="sin-chat"> 
-                        <i className="bi bi-chat-right-dots"></i> Inicia tu chat con tu cliente...</h3>
+                    <h3 className="sin-chat">
+                      <i className="bi bi-chat-right-dots"></i> Inicia tu chat
+                      con tu cliente...
+                    </h3>
                   </div>
                 )}
               </div>
