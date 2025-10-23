@@ -31,8 +31,8 @@ export const AdminCardService = ({
           className={`card-img ${is_visible ? null : 'card-img-blur'}`}
         />
         <p className='h5 pt-2 service-name'>{name}</p>
-        <p>{description}</p>
-        <div className="d-flex gap-3 justify-content-between">
+        <p className='description-body'>{description}</p>
+        <div className="gap-3 align-content-end flex-grow-1">
           <h4>{price ? price : 'sin precio'}</h4>
           {category ? (
             <Boton aspecto="btn-1" valor="Post" onClick={null} />

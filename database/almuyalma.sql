@@ -1,7 +1,7 @@
-drop DATABASE almuyalma;
+-- drop DATABASE almuyalma;
 CREATE DATABASE almuyalma;
 USE almuyalma;
--- DROP DATABASE almuyalma;
+
 
 CREATE TABLE user (
     user_id INT UNSIGNED NOT NULL  PRIMARY KEY,
@@ -39,10 +39,12 @@ CREATE TABLE service (
     service_name VARCHAR(55) NOT NULL,
     service_description VARCHAR(500) NOT NULL,
     service_special BOOLEAN NOT NULL DEFAULT 0, -- si es especial(ej: todo en uno) será 1 y tendrá otros estilos
-    service_image VARCHAR(200) NOT NULL, -- OJO!!! si son varias imágenes habrá que crear una tabla!!!
+    service_image VARCHAR(200) NOT NULL,
     service_price DECIMAL(7,2), -- 9.999,99
     is_visible BOOLEAN NOT NULL DEFAULT 0
 );
+
+select * from service;
 
 
 
@@ -63,13 +65,15 @@ CREATE TABLE appointment (
     CONSTRAINT fk_user_1 FOREIGN KEY (user_id)
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+select * from appointment;
     
 CREATE TABLE text (
     text_id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
     text_title VARCHAR(100) NOT NULL,
     text_body MEDIUMTEXT,
     text_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1,
+    text_status TINYINT UNSIGNED NOT NULL DEFAULT 1, -- 1 oculto | 2 publicado | ¿3 eliminado?
     filename VARCHAR(200),
     user_id INT UNSIGNED NOT NULL,
     last_modified DATETIME NULL,
@@ -78,7 +82,7 @@ CREATE TABLE text (
 );
 
 
--- Tablas si nos diese tiempo
+SELECT * FROM text;
 
 CREATE TABLE message (
 	message_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -92,11 +96,7 @@ CREATE TABLE message (
 	REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-SELECT * FROM message WHERE recipient_user_id = 1 AND sender_user_id = 2;
-INSERT INTO message (message_text,sender_user_id,recipient_user_id) VALUES ("que quieres", 1,2);
-
-INSERT INTO message (message_text,sender_user_id,recipient_user_id) VALUES ("Muy bien y tu?", 2,1);
-SELECT * FROM message;
+-- Tablas no incluidas
 
  CREATE TABLE category (
 	category_id MEDIUMINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -129,12 +129,7 @@ CREATE TABLE purchase (
 );
 
 
-INSERT INTO service(service_id, service_name, service_description, service_image) VALUES(1, "marketing", "textos escritos", "estaimagen");
-
-
 SELECT * FROM social_network;
-
-SELECT * FROM user;
 
 SELECT * FROM availability;
 

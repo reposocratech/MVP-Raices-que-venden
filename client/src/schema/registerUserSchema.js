@@ -1,9 +1,6 @@
 import {z} from 'zod';
 
-/* const verifyPassUpperCase = /[A-Z]/;
-const verifyPassLowerCase = /[a-z]/;
-const verifyPassNumber = /\d/;
-const verifyPassSimbol = /[^A-Za-z0-9]/; */
+
 
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d])[A-Za-z\d\W]{8,}$/

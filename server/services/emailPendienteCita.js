@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { reverseDate } from '../utils/emailUtils.js';
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -11,7 +12,9 @@ const transporter = nodemailer.createTransport({
 });
 
 
-export const emailPendienteCita = async({ email, app_day, app_hour }) => {
+export const emailPendienteCita = async({ email, app_date, app_hour}) => {
+
+
  
   let emailpendiente = `
   <!DOCTYPE html>
@@ -57,8 +60,8 @@ export const emailPendienteCita = async({ email, app_day, app_hour }) => {
               
                  <div style="background-color:#F5F2EB; border-radius:8px; padding:14px; margin:20px 0; color:#4b4b4b;">
                 <p style="margin:0 0 8px 0;"><strong>Detalles de tu solicitud</strong></p>
-                <p style="margin:0;">📅 Fecha: <strong>${app_day}</strong></p>
-                <p style="margin:6px 0 0 0;">🕒 Hora: <strong>${app_hour}</strong></p>
+                <p style="margin:0;">📅 Fecha: <strong>${reverseDate(app_date)}</strong></p>
+                <p style="margin:6px 0 0 0;">🕒 Hora: <strong>${app_hour}:00 - ${app_hour + 1}:00</strong></p>
              
               </div>
                 <br>

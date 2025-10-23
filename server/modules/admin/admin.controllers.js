@@ -348,7 +348,7 @@ class AdminController {
       emailConfirmadoCita({
         user_name: appointment.user_name,
         email: appointment.email,
-        app_day: appointment.app_day,
+        app_date: appointment.app_date,
         app_hour: appointment.app_hour,
       });
 
@@ -371,7 +371,7 @@ class AdminController {
       emailCanceladoCita({
         user_name: appointment.user_name,
         email: appointment.email,
-        app_day: appointment.app_day,
+        app_date: appointment.app_date,
         app_hour: appointment.app_hour,
       });
 
@@ -439,20 +439,23 @@ class AdminController {
       /* const {user_id} = req;
       console.log(idClient, user_id) */
       let values = [parseInt(idClient), parseInt(idClient)]
-      const chat = await adminDal.getChat(values);
+     
+     
+        const chat = await adminDal.getChat(values);
+        res
+        .status(200)
+        .json(
+          {
+            message:'chat obtenido con exito',
+            chatData: chat
+  
+          })
+
       console.log(chat);
       /* const resultSender = await adminDal.getChatSender(values)
       let values2 = [parseInt(idClient) , user_id ]
       const resultRecipient = await adminDal.getChatClient(values2) */
-      res
-      .status(200)
-      .json(
-        {
-          message:'chat obtenido con exito',
-          chatData: chat
-
-        })
-
+    
     } catch (error) {
       res.status(500).json({
         message: 'error server',
@@ -468,6 +471,21 @@ class AdminController {
       const values = [currentChat, sender, recipient];
       await adminDal.sendCurrentChat(values);
       res.status(200).json({message: 'todo ok'})
+
+    } catch (error) {
+      res.status(500).json({
+        message: 'error server',
+        dataError: error,
+      });
+    }
+  }
+
+  uploadDoc = async (req, res) => {
+    const {text_id} = req.body;
+    
+    try {
+      const result = await adminDal.uploadDoc([req.file.filename, text_id]);
+      res.status(200).json(result);
 
     } catch (error) {
       res.status(500).json({

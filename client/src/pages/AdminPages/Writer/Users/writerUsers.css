@@ -1,92 +1,85 @@
-.titlew{
-    font-weight: bold;
+.container-writer-user {
+  .title-admin {
     color: var(--tertiary-color-almu);
+    margin: 0;
   }
-.writer-users-table {
-
-  thead tr {
-    th {
-      background-color: var(--primary-color);
+  .writer-users-table {
+    thead tr {
+      th {
+        background-color: var(--primary-color);
+      }
     }
-  }
 
-  tbody tr:nth-child(even) {
+    tbody tr:nth-child(even) {
+      td {
+        background-color: var(--primary-color);
+      }
+    }
+
+    th,
     td {
-      background-color: var(--primary-color);
+      height: 70px;
+      vertical-align: middle;
     }
   }
 
-  th,
-  td {
-    height: 70px;
-    vertical-align: middle;
-  }
-}
-
-
-.table-photo{
+  .table-photo {
     width: 50px;
     height: 50px;
     background-color: var(--tertiary-color-almu);
     border-radius: 50%;
 
-    img{
+    img {
       width: 100%;
       border-radius: 50%;
       aspect-ratio: 1/1;
       object-fit: cover;
-      object-position:top;
+      object-position: top;
       padding: 0;
 
-      border: 2px solid var(--tertiary-color-almu)
-
+      border: 2px solid var(--tertiary-color-almu);
     }
   }
 
+  @media (max-width: 768px) {
+    .writer-users-table {
+      thead {
+        display: none;
+      }
 
+      tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid var(--secundary-color);
+        border-radius: 8px;
+        padding: 0.5rem;
+      }
 
-@media (max-width: 768px) {
+      tbody td {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 0.5rem 0;
+        height: auto;
+      }
 
-  
+      tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
 
-  .writer-users-table {
-    thead {
-      display: none;
-    }
+      .table-photo {
+        width: 40px;
+        height: 40px;
+      }
 
-    tbody tr {
-      display: block;
-      margin-bottom: 1rem;
-      border: 1px solid var(--secundary-color);
-      border-radius: 8px;
-      padding: 0.5rem;
-    }
-
-    tbody td {
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      padding: 0.5rem 0;
-      height: auto;
-    
-    }
-
-    tbody td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      margin-right: 0.5rem;
-    }
-
-    .table-photo {
-      width: 40px;
-      height: 40px;
-    }
-
-    .table-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-width: 2px;
+      .table-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-width: 2px;
+      }
     }
   }
 }

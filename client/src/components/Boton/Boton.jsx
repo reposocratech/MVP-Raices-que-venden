@@ -1,6 +1,6 @@
 import './boton.css';
 
-export const Boton = ({aspecto, icon, onClick, valor}) => {
+export const Boton = ({aspecto, icon, onClick, valor, type, disabled}) => {
     return(
         /* 
             Usar clases personalizadas:
@@ -21,6 +21,8 @@ export const Boton = ({aspecto, icon, onClick, valor}) => {
         <button 
             onClick={onClick} 
             className={aspecto}
+            type={type}
+            disabled={disabled}
         >
             {icon && <i className={icon}></i>}
             {valor}

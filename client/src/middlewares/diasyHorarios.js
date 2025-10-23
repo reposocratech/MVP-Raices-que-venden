@@ -73,4 +73,3 @@ export const converteNumInTextDay = (n) => {
 
     return day
 }
-

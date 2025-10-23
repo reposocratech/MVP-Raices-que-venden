@@ -6,11 +6,13 @@ import CardService from "../../../components/cardService/CardService";
 import { fetchData } from "../../../helpers/axiosHelper";
 import NewsletterForm from "../../../components/newsletterForm/NewsletterForm";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContextProvider";
 
 const Home = () => {
 
   const [services, setServices] = useState([]);
-
+  const {user} = useContext(AuthContext)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const Home = () => {
                 quiero hacer crecer cualquier rincón rural en valor.
               </p>
               <div className="btn-home">
-                <Button className="btn" onClick={()=> navigate('/contact')} >Contactar</Button>
+                <Button className="btn" onClick={()=> navigate(`${user?'/user':''}/contact`)} >Contactar</Button>
               </div>
             
             </Col>

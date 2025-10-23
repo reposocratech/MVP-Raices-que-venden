@@ -9,6 +9,10 @@ export const PopChat = () => {
   const [chat, setChat] = useState([]);
   const [currentChat, setCurrentChat] = useState('');
 
+  setTimeout(() => {
+    
+  }, 2000);
+
   useEffect(() => {
     try {
       const fetchChat = async () => {
@@ -17,6 +21,9 @@ export const PopChat = () => {
         setChat(chatData);
       };
       fetchChat();
+
+      const intervalo = setInterval(fetchChat, 3000);
+      return () => clearInterval(intervalo);
     } catch (error) {
       console.log(error);
     }

@@ -49,6 +49,9 @@ const AdminMessage = () => {
 
       setClientChat(users.filter((e) => e.user_id === idClient));
       setChat(chatData);
+
+     /*  const intervalo = setInterval(fetchData, 3000);
+      return () => clearInterval(intervalo); */
     } catch (error) {
       console.log(error);
     }
@@ -84,8 +87,8 @@ const AdminMessage = () => {
 
   return (
     <Container className="chat-container">
-      <h2>Chat</h2>
-
+      <h2 className='title-admin'>Chat</h2>
+      <hr />
       <Row className="g-2">
         <Col lg={3}>
           <div className="column-user-chats">

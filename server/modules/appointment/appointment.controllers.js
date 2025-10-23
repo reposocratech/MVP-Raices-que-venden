@@ -14,6 +14,7 @@ class AppointmentController {
      await emailPendienteCita({
         email,
         app_day,
+        app_date,
         app_hour
      })
    
