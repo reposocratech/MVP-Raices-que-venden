@@ -414,6 +414,17 @@ class AdminDal {
     }
   }
 
+  uploadDoc = async (values) => {
+    try {
+      console.log(values);
+      let sql = 'UPDATE text SET filename=? WHERE text_id=?'
+      await executeQuery(sql, values);
+      return [values];
+
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export default new AdminDal();

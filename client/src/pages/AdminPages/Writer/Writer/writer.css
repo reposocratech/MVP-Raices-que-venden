@@ -35,13 +35,19 @@
     }
   }
 
+  .w-md-editor-text-pre > code,
+  .w-md-editor-text-input {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+
   .w-md-editor-content,
   .w-md-editor-text-input,
   .w-md-editor-preview {
-    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
-
-  
 
   .text-editor {
     display: flex;
@@ -49,5 +55,34 @@
     flex: 1;
   }
 
+  .wmde-markdown {
+    background-color: var(--primary-color) !important;
+    color: black !important;
+  }
+
+  .button-upload {
+    cursor: pointer;
+  }
   
+  .input-hide {
+  position: absolute;
+  left: -9999px;
 }
+
+  .fake-button {
+    pointer-events: none;
+  }
+
+  table {
+  background-color: var(--primary-color);
+  color: black;
+  }
+  th {
+    background-color: var(--primary-color);
+  }
+  td, th {
+    border: 1px solid #444;
+    background-color: var(--primary-color);
+  }
+}
+

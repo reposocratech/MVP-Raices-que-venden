@@ -65,7 +65,7 @@ export const AppointmentReserved = ({
 
   return (
     <>
-    <Modal show={showModal} onHide={() => setShowModal(false)}>
+    <Modal className="modal-appReserved" show={showModal} onHide={() => setShowModal(false)}>
       <Modal.Header closeButton className="bg-light">
         <Modal.Title className="modal-title fw-bold">
           Reserva pendiente de confirmar
@@ -81,7 +81,7 @@ export const AppointmentReserved = ({
         {new Date(reserved?.end).toLocaleTimeString("es-ES", {
           hour: "2-digit",
           minute: "2-digit",
-        })}
+        })} <span>hrs</span>
         .
         <br />
         <p className="modal-text">

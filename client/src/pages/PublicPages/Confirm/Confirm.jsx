@@ -56,7 +56,7 @@ const Confirm = () => {
             <div className='confirm'>
             <div className='text'>
               <h2>¡Algo ha salido mal!</h2>
-              <h3>Comproba de nuevo su correo o vuelva a registrar</h3>
+              <h3>Comprueba de nuevo su correo o vuelva a registrar</h3>
             </div>
             <DotLottieReact
               className='icon'

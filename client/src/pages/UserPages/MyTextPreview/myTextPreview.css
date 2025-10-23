@@ -29,6 +29,7 @@
     color: black;
     background-color: var(--primary-color);
     border-radius: 8px;
+    padding: 1rem;
 
     button {
       color: black;
@@ -49,5 +50,15 @@
     flex: 1;
   }
 
-  
+  table {
+  background-color: var(--primary-color);
+  color: black;
+  }
+  th {
+    background-color: var(--primary-color);
+  }
+  td, th {
+    border: 1px solid #444;
+    background-color: var(--primary-color);
+  }
 }

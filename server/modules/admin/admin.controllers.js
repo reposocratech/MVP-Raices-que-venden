@@ -479,6 +479,21 @@ class AdminController {
       });
     }
   }
+
+  uploadDoc = async (req, res) => {
+    const {text_id} = req.body;
+    
+    try {
+      const result = await adminDal.uploadDoc([req.file.filename, text_id]);
+      res.status(200).json(result);
+
+    } catch (error) {
+      res.status(500).json({
+        message: 'error server',
+        dataError: error,
+      });
+    }
+  }
 }
 
 export default new AdminController();
