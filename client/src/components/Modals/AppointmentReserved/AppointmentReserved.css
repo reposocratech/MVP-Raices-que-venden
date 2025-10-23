@@ -1,3 +1,5 @@
+.modal-appReserved {
+
 .pulse {
   animation: pulse 1s infinite;
 }
@@ -39,3 +41,7 @@
 .modal-title-green {
   color: var(--tertiary-color-almu)
 }
+
+
+};
+
