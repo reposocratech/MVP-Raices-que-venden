@@ -44,6 +44,7 @@ const Login = () => {
         setToken(token);
         setUser(resUser.data.user);
         
+        console.log(resUser)
 
       } catch (error) {
 

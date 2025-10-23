@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Boton } from '../Boton/Boton';
 import './popchat.css';
 import { AuthContext } from '../../context/AuthContextProvider';
@@ -8,6 +8,7 @@ export const PopChat = () => {
   const { user, token } = useContext(AuthContext);
   const [chat, setChat] = useState([]);
   const [currentChat, setCurrentChat] = useState('');
+  const chatRef = useRef(null);
 
   setTimeout(() => {
     
@@ -19,10 +20,11 @@ export const PopChat = () => {
         const result = await fetchData('/user/getChat', 'GET', null, token);
         const { chatData } = result.data;
         setChat(chatData);
+        chatRef.current.scrollTop = chatRef.current.scrollHeight;
       };
       fetchChat();
-
-      const intervalo = setInterval(fetchChat, 3000);
+      
+      const intervalo = setInterval(fetchChat, 1000);
       return () => clearInterval(intervalo);
     } catch (error) {
       console.log(error);
@@ -61,7 +63,7 @@ export const PopChat = () => {
       <h4 className='title-chat'>Almudena Torres López</h4>
       <hr />
 
-      <div className="container-chat">
+      <div className="container-chat " ref={chatRef}>
         {chat ? (
           chat.map((e) => {
             return (
