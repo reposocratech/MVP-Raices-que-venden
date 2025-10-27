@@ -1,6 +1,8 @@
--- drop DATABASE almuyalma;
+drop DATABASE almuyalma;
 CREATE DATABASE almuyalma;
 USE almuyalma;
+-- DROP DATABASE almuyalma;
+ 
 
 
 CREATE TABLE user (
@@ -22,9 +24,9 @@ CREATE TABLE user (
     is_deactivated BOOLEAN NOT NULL DEFAULT 0,
     register_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
+ 
 SELECT * FROM user;
-
+ 
 create table social_network(
 	social_network_id INT UNSIGNED PRIMARY KEY,
     user_id INT UNSIGNED NOT NULL,
@@ -33,6 +35,61 @@ create table social_network(
     CONSTRAINT fk_user_6 FOREIGN KEY (user_id)
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+ 
+INSERT INTO service (
+    service_id, 
+    service_name, 
+    service_description, 
+    service_special, 
+    service_image, 
+    service_price, 
+    is_visible
+) VALUES (
+    7, 
+    "Copywriting", 
+    "Redacción persuasiva para páginas web, anuncios, blogs y contenido comercial que conecta con tu audiencia", 
+    0, 
+    "copywriting.jpg", 
+    130.00, 
+    1
+);
+ 
+INSERT INTO service (
+    service_id, 
+    service_name, 
+    service_description, 
+    service_special, 
+    service_image, 
+    service_price, 
+    is_visible
+) VALUES (
+    8, 
+    "Gestión de Redes Sociales", 
+    "Planificación, diseño y publicación de contenido en Instagram, Facebook, TikTok y LinkedIn con enfoque estratégico", 
+    1, 
+    "redes_sociales.jpg", 
+    220.00, 
+    1
+);
+ 
+INSERT INTO service (
+    service_id, 
+    service_name, 
+    service_description, 
+    service_special, 
+    service_image, 
+    service_price, 
+    is_visible
+) VALUES (
+    9, 
+    "Email Marketing", 
+    "Diseño de campañas de correo electrónico efectivas, automatización y segmentación para aumentar conversiones", 
+    0, 
+    "email_marketing.jpg", 
+    160.00, 
+    1
+);
+ 
     
 CREATE TABLE service ( 
     service_id SMALLINT UNSIGNED NOT NULL PRIMARY KEY, -- let id = select max(service_id) from service; id++; insert into servics.... (id)
@@ -43,6 +100,8 @@ CREATE TABLE service (
     service_price DECIMAL(7,2), -- 9.999,99
     is_visible BOOLEAN NOT NULL DEFAULT 0
 );
+ 
+ 
 
 select * from service;
 
@@ -53,7 +112,7 @@ CREATE TABLE availability (
     availability_day TINYINT NOT NULL, -- de 1 a 5 para de lunes a viernes
     availability_hour TINYINT UNSIGNED  NOT NULL -- "08:00 - 09:00" de 1 a 12, para 8 am y 8 pm
 );
-
+ 
     
 CREATE TABLE appointment (
     appointment_2_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -80,6 +139,10 @@ CREATE TABLE text (
     CONSTRAINT fk_user_2 FOREIGN KEY (user_id)
     REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+ 
+ 
+-- Tablas si nos diese tiempo
+ 
 
 
 SELECT * FROM text;
@@ -95,6 +158,14 @@ CREATE TABLE message (
 	CONSTRAINT fk_user_4 FOREIGN KEY (recipient_user_id)
 	REFERENCES user(user_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+ 
+SELECT * FROM message WHERE recipient_user_id = 1 AND sender_user_id = 2;
+INSERT INTO message (message_text,sender_user_id,recipient_user_id) VALUES ("que quieres", 1,2);
+ 
+INSERT INTO message (message_text,sender_user_id,recipient_user_id) VALUES ("Muy bien y tu?", 2,1);
+SELECT * FROM message;
+ 
+CREATE TABLE category (
 
 -- Tablas no incluidas
 
@@ -102,9 +173,8 @@ CREATE TABLE message (
 	category_id MEDIUMINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
     category_name VARCHAR(50) NOT NULL
 );
-
-
-
+ 
+ 
 CREATE TABLE product (
    product_id INT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
    product_name VARCHAR(100) NOT NULL,
@@ -116,7 +186,7 @@ CREATE TABLE product (
    CONSTRAINT fk_category_1 FOREIGN KEY (category_id)
    REFERENCES category(category_id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
+ 
 CREATE TABLE purchase (
     purchase_id BIGINT UNSIGNED NOT NULL auto_increment PRIMARY KEY,
     purchase_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -127,14 +197,23 @@ CREATE TABLE purchase (
     CONSTRAINT fk_product_1 FOREIGN KEY (product_id)
     REFERENCES product(product_id) ON DELETE CASCADE ON UPDATE CASCADE    
 );
+ 
+ 
+INSERT INTO service(service_id, service_name, service_description, service_image) VALUES(1, "marketing", "textos escritos", "estaimagen");
+ 
+ 
+SELECT * FROM social_network;
+ 
+SELECT * FROM user;
+ 
 
 
 SELECT * FROM social_network;
 
 SELECT * FROM availability;
-
+ 
 SELECT * FROM appointment;
-
+ 
 SELECT 
 appointment.*,
 user.user_name,

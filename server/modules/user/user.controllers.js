@@ -13,20 +13,19 @@ class UserController {
   register = async (req, res) => {
     const { email, password } = req.body;
     try {
-      // hachear el password
+
       const hashPass = await hashString(password);
 
-      // Preparar la data con el password hacheado
       let data = [email, hashPass];
-      // Enviamos la data al DAL
+     
       const userId = await userDal.register(data);
-      console.log(userId, '*****');
+   
       const token = generateTokenConfirm(userId);
-      console.log(token);
+     
       sendMailConfirm(email, token);
       res.status(200).json({ message: 'Hola mundo' });
+
     } catch (error) {
-      console.log(error);
 
       if(error.errno === 1062){
         return res.status(400).json({errno: 1062,  message: 'El correo ya está registrado'})
@@ -40,20 +39,19 @@ class UserController {
     try {
       const { email, password } = req.body;
 
-      //comprobar si existe ese email
       const result = await userDal.findEmail(email);
 
       if (!result || result.length === 0) {
         return res.status(401).json({ message: 'Email no registrado' });
       } else {
-        //comprobar password
+      
         const match = await compareString(password, result[0].password);
 
         if (!match) {
-          //si no es correcto
+          
          return res.status(401).json({ message: 'Contraseña incorrecta' });
         } else {
-          //genera un token
+          
           const token = generateTokenLogin(result[0].user_id);
           res.status(200).json({ token });
         }
@@ -109,7 +107,6 @@ class UserController {
       const { user_id, user_name, last_name, phone_number, user_description } =
         req.body;
 
-      /* console.log(req.body) */
 
       let values = [
         user_name,
@@ -178,7 +175,7 @@ class UserController {
         }
     }
 
-      //Añadir datos de  redes sociales
+     
     addRedSocialData = async (req, res) => {
         try {
           const { user_id, name, link } = req.body;
